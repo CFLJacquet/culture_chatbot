@@ -283,3 +283,4 @@ def get_5_last_movies():
         })
     
     return results
+print (results)
