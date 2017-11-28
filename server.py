@@ -3,6 +3,7 @@ import logging
 from logging.handlers import RotatingFileHandler
 import requests
 import json
+from backend.cinema.allocine import get_last_movies 
 
 
 #Block to create logs
@@ -72,7 +73,7 @@ def send_button(recipient,text,title,payload):
     if r.status_code != 200:
         logging.info('STATUS CODE - BUTTON: {} - {}'.format(r.status_code, r.text))
 
-def send_card(recipient, title, img_url, description, url):
+def send_card(recipient, cards):
     r = requests.post("https://graph.facebook.com/v2.6/me/messages",
         params={"access_token": ACCESS_TOKEN},
         data=json.dumps({
@@ -82,38 +83,7 @@ def send_card(recipient, title, img_url, description, url):
                     "type":"template",
                     "payload":{
                         "template_type":"generic",
-                        "elements":[
-                            {
-                            "title":title,
-                            "image_url":img_url,
-                            "subtitle":description,
-                            "buttons":[{
-                                "type":"web_url",
-                                "url":url,
-                                "title":"Voir sur Allociné"
-                            }]      
-                            },
-                            {
-                            "title":title,
-                            "image_url":img_url,
-                            "subtitle":description,
-                            "buttons":[{
-                                "type":"web_url",
-                                "url":url,
-                                "title":"Voir sur Allociné"
-                            }]      
-                            },
-                            {
-                            "title":title,
-                            "image_url":img_url,
-                            "subtitle":description,
-                            "buttons":[{
-                                "type":"web_url",
-                                "url":url,
-                                "title":"Voir sur Allociné"
-                            }]      
-                            }
-                            ]
+                        "elements":cards
                     }
                 }
             }
@@ -143,16 +113,42 @@ def handle_event():
         if message == "bonjour":
             user = user_details(sender)
             
-            answer="Bonjour {} {} {}, bienvenue sur Strolling. Je suis Alfred votre majordome, je vais vous trouver le divertissement qui vous plaira.".format(user[0],user[1],user[2])
+            answer="Bonjour {} {} {}, bienvenue sur Strolling. Je suis Iris votre majordome, je vais vous trouver le divertissement qui vous plaira.".format(user[0],user[1],user[2])
             send_msg(sender, answer)
             send_button(sender,"Seriez-vous intéressé par une séance de cinéma ?","Oui","sorties_cine")
         else:
             answer='Et si vous me disiez "bonjour" ?'
             send_msg(sender, answer)
 
+    #Gestion de l'evenement "je veux des infins sur le cinema"
     if "postback" in event:
         if event['postback']['payload'] == "sorties_cine":
-            send_card(sender, "Le Brio", "http://fr.web.img2.acsta.net/c_215_290/pictures/17/09/25/10/41/2444205.jpg", "film 5/5", "http://www.allocine.fr/film/fichefilm_gen_cfilm=251711.html")
+            send_msg(sender,'Voici les 5 dernières sorties au cinéma')
+            
+            latest = get_last_movies()
+            cards=[]
+            for i in range (0,len(latest)):
+                cards.append(
+                    {
+                    "title": latest[i]['title'],
+                    "image_url": latest[i]['img_url'], 
+                    "subtitle":"Note Presse : {}".format(latest[i]['notepresse']),
+                    "buttons":[{
+                        "type":"web_url",
+                        "url": latest[i]['url'],
+                        "title":"Voir sur Allociné"
+                        },
+                        {
+                        "type":"postback",
+                        "title":"Résumé",
+                        "payload":"Summary"
+                        }]      
+                    }
+                )
+            send_card(sender, cards)
+
+        if event['postback']['payload'] == "Summary":
+            send_msg(sender, "Fonctionnalité en développement, elle arrive bientot !")
             
 
     return "ok"
