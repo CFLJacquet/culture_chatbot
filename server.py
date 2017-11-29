@@ -6,7 +6,7 @@ import json
 from backend.cinema.allocine import get_last_movies 
 
 
-#Block to create logs
+#Bloc créant des logs
 logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
 formatter = logging.Formatter('%(asctime)s :: %(levelname)s :: %(message)s')
@@ -113,17 +113,27 @@ def handle_event():
         if message == "bonjour":
             user = user_details(sender)
             
-            answer="Bonjour {} {} {}, bienvenue sur Strolling. Je suis Iris votre majordome, je vais vous trouver le divertissement qui vous plaira.".format(user[0],user[1],user[2])
+            answer="Bonjour {} {} {}, bienvenue sur Strolling.  \
+                Je suis Iris votre majordome, je vais vous trouver le \
+                divertissement qui vous plaira.".format(user[0],user[1],user[2])
             send_msg(sender, answer)
             send_button(sender,"Seriez-vous intéressé par une séance de cinéma ?","Oui","sorties_cine")
         else:
             answer='Et si vous me disiez "bonjour" ?'
             send_msg(sender, answer)
 
-    #Gestion de l'evenement "je veux des infins sur le cinema"
+    # Gestion de l'evenement "je veux des infos sur le cinema"
     if "postback" in event:
-        if event['postback']['payload'] == "sorties_cine":
-            send_msg(sender,'Voici les 5 dernières sorties au cinéma')
+        if event['postback']['payload'] == "sorties_cine" or event['postback']['payload'] == "first_conv":
+            
+            # Structure code à changer!!! sale...
+            if event['postback']['payload'] == "first_conv":
+                user = user_details(sender)
+                send_msg(sender, "Bonjour {}, c'est la 1e fois que nous nous parlons. \
+                    Je suis un bot capable de te trouver les meilleures activités culturelles à Paris. \
+                    Pour l'instant, je peux te proposer ces films qui viennent de sortir.".format(user[1]))
+            else:
+                send_msg(sender,'Les 5 dernières sorties au cinéma sont: ')
             
             latest = get_last_movies()
             cards=[]
