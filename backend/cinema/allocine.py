@@ -264,7 +264,7 @@ def episode(code, profile=None, mediafmt=None, format="json", striptags=None):
     return do_request("episode", data)
 
 
-def get_5_last_movies():
+def get_last_movies():
     
     last_release = movielist(0, count=5, page=None, profile="medium", filter="nowshowing", order="toprank", format="json")
     last_release=last_release["feed"]["movie"]
@@ -283,4 +283,3 @@ def get_5_last_movies():
         })
     
     return results
-print (results)
