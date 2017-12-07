@@ -1,5 +1,7 @@
+# -*- coding: utf-8 -*-
 # code found here: https://github.com/thomasRousseau/python-allocine-api
 
+import sys
 import hashlib
 from base64 import b64encode
 try: # python3
@@ -265,21 +267,30 @@ def episode(code, profile=None, mediafmt=None, format="json", striptags=None):
 
 
 def get_last_movies():
-    
-    last_release = movielist(0, count=5, page=None, profile="medium", filter="nowshowing", order="toprank", format="json")
+
+    # ATTENTION - count parameter not working, len(last_release)=100 movies ! => filtering in return
+    last_release = movielist(0, count=9, page=None, profile="medium", filter="nowshowing", order="toprank", format="json")
     last_release=last_release["feed"]["movie"]
     results=[]
 
-    #for i in range (0, len(last_release)):
-    #    print(last_release[i]["title"])
-    
     for i in range (0, len(last_release)):
+        genres = []
+        for item in last_release[i]["genre"]:
+            genres.append(item['$'])
         results.append({
             "title":last_release[i]["title"],
-            "notepresse":last_release[i]["statistics"]["pressRating"],
-            "notespectateur":last_release[i]["statistics"]["userRating"],
+            "notespectateur":last_release[i]["statistics"].get('userRating', -1),
+            "notepresse": last_release[i]["statistics"].get('pressRating', -1),
             "img_url":last_release[i]["poster"]["href"],
-            "url":last_release[i]["link"][0]["href"]
+            "url":last_release[i]["link"][0]["href"],
+            "summary":last_release[i].get('synopsisShort', '').replace('<span>', '').replace('</span>', '').replace('<br/>','').replace('\xa0',''),
+            "genre": genres
         })
-    
+    results = sorted(results, key= lambda x: x["notepresse"], reverse=True)
     return results
+
+
+if __name__ == '__main__':
+    print(sys.stdout.encoding)
+    
+    print(get_last_movies())
