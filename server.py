@@ -3,8 +3,9 @@ import logging
 from logging.handlers import RotatingFileHandler
 import requests
 import json
-from backend.cinema.allocine import get_last_movies 
 
+from backend.cinema.allocine import get_last_movies
+from backend.messenger.msg_fct import user_details, send_msg, send_button, send_card
 
 #Bloc créant des logs
 logger = logging.getLogger()
@@ -18,81 +19,6 @@ logger.addHandler(file_handler)
 app = Flask(__name__)
 
 ACCESS_TOKEN = "EAAHSfldMxYcBAAt4D30ZAzVHSnhhFqxV15wMJ0RwZCOBH4MZALBJOa8gTvUV0OTL5t3Q4ZBOosziQ3AXIwYpgpdbJCRRkbJKBuB7FASzhnZAcZCsy6expZATAbflsnln2Hd5I1Yo8J2Ddny170yI13r7A224a20yBWczLeYZAzZBDTQZDZD"
-
-def user_details(sender):
-        
-    url = "https://graph.facebook.com/v2.6/"+str(sender)
-    params = {'fields':'first_name,last_name,profile_pic,gender,locale', 'access_token':ACCESS_TOKEN}
-    user_details = requests.get(url, params).json()
-    
-    if user_details['gender'] == 'male':
-        user_gender="M"
-    else:
-        user_gender="Mme"
-
-    logging.info('USER DETAIL: {}'.format(user_details))
-
-    return user_gender,user_details['first_name'],user_details['last_name']
-
-def send_msg(recipient, answer):
-
-    r = requests.post("https://graph.facebook.com/v2.6/me/messages",
-        params={"access_token": ACCESS_TOKEN},
-        data=json.dumps({
-            "recipient": {"id": recipient},
-            "message": {"text": answer}
-            }),
-        headers={'Content-type': 'application/json'})
-    if r.status_code != 200:
-        logging.info('STATUS CODE - MSG: {} - {}'.format(r.status_code, r.text))
-
-    return 'sent'
-
-def send_button(recipient,text,title,payload):
-    r = requests.post("https://graph.facebook.com/v2.6/me/messages",
-        params={"access_token": ACCESS_TOKEN},
-        data=json.dumps({
-            "recipient":{"id":recipient},
-            "message":{
-                "attachment":{
-                    "type":"template",
-                    "payload":{
-                        "template_type":"button",
-                        "text":text,
-                        "buttons":
-                        [{
-                            "type":"postback",
-                            "title":title,
-                            "payload":payload
-                        }]      
-                    }
-                }
-            }
-        }),
-        headers={'Content-type': 'application/json'})
-    if r.status_code != 200:
-        logging.info('STATUS CODE - BUTTON: {} - {}'.format(r.status_code, r.text))
-
-def send_card(recipient, cards):
-    r = requests.post("https://graph.facebook.com/v2.6/me/messages",
-        params={"access_token": ACCESS_TOKEN},
-        data=json.dumps({
-            "recipient":{"id":recipient},
-            "message":{
-                "attachment":{
-                    "type":"template",
-                    "payload":{
-                        "template_type":"generic",
-                        "elements":cards
-                    }
-                }
-            }
-        }),
-        headers={'Content-type': 'application/json'})
-    if r.status_code != 200:
-        logging.info('STATUS CODE - CARD: {} - {}'.format(r.status_code, r.text))
-
-
 
 @app.route('/', methods=['GET'])
 def handle_verification():
@@ -115,21 +41,21 @@ def handle_event():
         message = event['message']['text'].lower()
 
         if message == "bonjour":
-            user = user_details(sender)
+            user = user_details(sender, ACCESS_TOKEN)
             
             answer="Bonjour {} {} {}, bienvenue sur Strolling.  \
                 Je suis Iris votre majordome, je vais vous trouver le \
                 divertissement qui vous plaira.".format(user[0],user[1],user[2])
-            send_msg(sender, answer)
-            send_button(sender,"Seriez-vous intéressé par une séance de cinéma ?","Oui","sorties_cine")
+            send_msg(sender, answer, ACCESS_TOKEN)
+            send_button(sender,"Seriez-vous intéressé par une séance de cinéma ?","Oui","sorties_cine", ACCESS_TOKEN)
         else:
             answer='Et si vous me disiez "bonjour" ?'
-            send_msg(sender, answer)
+            send_msg(sender, answer, ACCESS_TOKEN)
 
     #Gestion de l'evenement "je veux des infos sur le cinema"
     if "postback" in event:
         if event['postback']['payload'] == "sorties_cine":
-            send_msg(sender,'Voici les meilleurs films en salle')
+            send_msg(sender,'Voici les meilleurs films en salle', ACCESS_TOKEN)
 
             cards=[]
             for i in range (0,3):
@@ -150,11 +76,11 @@ def handle_event():
                         }]      
                     }
                 )
-            send_card(sender,cards)
+            send_card(sender,cards, ACCESS_TOKEN)
 
         if event['postback']['payload'][:7] == "Summary":
             i = int(event['postback']['payload'][8:])
-            send_msg(sender, "-- "+latest[i]['title']+" -- Résumé -- \n\n"+latest[i]['summary'])
+            send_msg(sender, "-- "+latest[i]['title']+" -- Résumé -- \n\n"+latest[i]['summary'], ACCESS_TOKEN)
             
 
     return "ok"
