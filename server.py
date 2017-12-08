@@ -101,7 +101,7 @@ def handle_verification():
 
 @app.route('/', methods=['POST'])
 def handle_event():
-    #On devrait mettre un try: / except: pour indiquer à l'utilisateur si notre appel API a foiré
+    #On devrait mettre un try: / except: pour indiquer à l'utilisateur si notre appel API a foiré + actualiser chaque semaine
     latest = get_last_movies()
     logging.info('LATEST FILMS :'+str(latest))
     
