@@ -101,6 +101,10 @@ def handle_verification():
 
 @app.route('/', methods=['POST'])
 def handle_event():
+    #On devrait mettre un try: / except: pour indiquer à l'utilisateur si notre appel API a foiré
+    latest = get_last_movies()
+    logging.info('LATEST FILMS :'+str(latest))
+    
     data = request.json
     logging.info("DATA: {}".format(data))
 
@@ -124,10 +128,6 @@ def handle_event():
     if "postback" in event:
         if event['postback']['payload'] == "sorties_cine":
             send_msg(sender,'Voici les meilleurs films en salle')
-            
-            #On devrait mettre un try: / except: pour indiquer à l'utilisateur si notre appel API a foiré
-            latest = get_last_movies()
-            logging.info(latest)
 
             cards=[]
             for i in range (0,3):
@@ -151,12 +151,8 @@ def handle_event():
             send_card(sender,cards)
 
         if event['postback']['payload'][:7] == "Summary":
-            send_msg(sender, event['postback']['payload'])
             i = int(event['postback']['payload'][8:])
-
-            #problème 2 lignes suivantes ne renvoient rien
-            logging.info(latest)
-            send_msg(sender, latest[i]['summary'])
+            send_msg(sender, "-- "+latest[i]['title']+" -- Résumé -- \n\n"+latest[i]['summary'])
             
 
     return "ok"
