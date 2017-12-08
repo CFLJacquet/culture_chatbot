@@ -106,7 +106,7 @@ def handle_event():
                 send_msg(sender, "Dommage ! A bientôt", ACCESS_TOKEN)
 
             elif event['message']['quick_reply']['payload'] == "Thanks":
-                send_msg(sender, "Ravie d'avoir pu t'aider ! A bientôt :)", ACCESS_TOKEN)
+                send_msg(sender, "Ravie d'avoir pu vous aider ! A bientôt :)", ACCESS_TOKEN)
 
             else : 
                 send_msg(sender, "Et si vous me disiez bonjour ?", ACCESS_TOKEN)
