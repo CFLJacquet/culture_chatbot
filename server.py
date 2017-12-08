@@ -5,7 +5,7 @@ import requests
 import json
 
 from backend.cinema.allocine import get_last_movies
-from backend.messenger.msg_fct import user_details, send_msg, send_button, send_card
+from backend.messenger.msg_fct import user_details, send_msg, send_button, send_card, send_quick_rep
 
 #Bloc créant des logs
 logger = logging.getLogger()
@@ -47,42 +47,75 @@ def handle_event():
                 Je suis Iris votre majordome, je vais vous trouver le \
                 divertissement qui vous plaira.".format(user[0],user[1],user[2])
             send_msg(sender, answer, ACCESS_TOKEN)
-            send_button(sender,"Seriez-vous intéressé par une séance de cinéma ?","Oui","sorties_cine", ACCESS_TOKEN)
+            btns =[
+                {
+                    "content_type":"text",
+                    "title":"Oh oui !",
+                    "payload":"sorties_cine-0"
+                },
+                {
+                    "content_type":"text",
+                    "title":"Bof",
+                    "payload":"Not_interested"
+                }
+            ]
+            send_quick_rep(sender, "Seriez-vous intéressé par une séance de cinéma ?", btns ,ACCESS_TOKEN)
         else:
-            answer='Et si vous me disiez "bonjour" ?'
-            send_msg(sender, answer, ACCESS_TOKEN)
+            if event['message']['quick_reply']['payload'][:12] == "sorties_cine":
+                num = int(event['message']['quick_reply']['payload'][13:])
+                if num == 0 :
+                    send_msg(sender,'Voici les meilleurs films en salle', ACCESS_TOKEN)
 
-    #Gestion de l'evenement "je veux des infos sur le cinema"
-    if "postback" in event:
-        if event['postback']['payload'] == "sorties_cine":
-            send_msg(sender,'Voici les meilleurs films en salle', ACCESS_TOKEN)
-
-            cards=[]
-            for i in range (0,3):
-                cards.append(
-                    {
-                    "title": latest[i]['title'],
-                    "image_url": latest[i]['img_url'], 
-                    "subtitle":"Note Presse : {}/5 \n Genre: {}".format(latest[i]['notepresse'], ', '.join(latest[i]['genre'])),
-                    "buttons":[{
-                        "type":"web_url",
-                        "url": latest[i]['url'],
-                        "title":"Voir sur Allociné"
-                        },
+                cards=[]
+                for i in range (num, num+3):
+                    cards.append(
                         {
-                        "type":"postback",
-                        "title":"Résumé",
-                        "payload":"Summary-{}".format(i)
-                        }]      
+                        "title": latest[i]['title'],
+                        "image_url": latest[i]['img_url'], 
+                        "subtitle":"Note Presse : {}/5 \n Genre: {}".format(latest[i]['notepresse'], ', '.join(latest[i]['genre'])),
+                        "buttons":[{
+                            "type":"web_url",
+                            "url": latest[i]['url'],
+                            "title":"Voir sur Allociné"
+                            },
+                            {
+                            "type":"postback",
+                            "title":"Résumé",
+                            "payload":"Summary-{}".format(i)
+                            }]      
+                        }
+                    )
+                send_card(sender,cards, ACCESS_TOKEN)
+                btns =[
+                    {
+                        "content_type":"text",
+                        "title":"Plus de films !",
+                        "payload":"sorties_cine-3"
+                    },
+                    {
+                        "content_type":"text",
+                        "title":"Merci Iris",
+                        "payload":"Thanks"
                     }
-                )
-            send_card(sender,cards, ACCESS_TOKEN)
+                ]
+                if num == 0:
+                    send_quick_rep(sender, "Voulez-vous voir d'autres films ?", btns ,ACCESS_TOKEN)
+                    
+            
+            elif event['message']['quick_reply']['payload'] == "Not_interested":
+                send_msg(sender, "Dommage ! A bientôt", ACCESS_TOKEN)
 
+            elif event['message']['quick_reply']['payload'] == "Thanks":
+                send_msg(sender, "Ravie d'avoir pu t'aider ! A bientôt :)", ACCESS_TOKEN)
+
+            else : 
+                send_msg(sender, "Et si vous me disiez bonjour ?", ACCESS_TOKEN)
+
+    if "postback" in event:
         if event['postback']['payload'][:7] == "Summary":
             i = int(event['postback']['payload'][8:])
             send_msg(sender, "-- "+latest[i]['title']+" -- Résumé -- \n\n"+latest[i]['summary'], ACCESS_TOKEN)
-            
-
+           
     return "ok"
 
 if __name__ == '__main__':

@@ -32,6 +32,24 @@ def send_msg(recipient, answer, ACCESS_TOKEN):
 
     return 'sent'
 
+def send_quick_rep(recipient, text, btns, ACCESS_TOKEN):
+
+    r = requests.post("https://graph.facebook.com/v2.6/me/messages",
+        params={"access_token": ACCESS_TOKEN},
+        data=json.dumps({
+            "recipient": {"id": recipient},
+            "message": {
+                "text": text, 
+                "quick_replies": btns
+            }
+            }),
+        headers={'Content-type': 'application/json'})
+    if r.status_code != 200:
+        logging.info('STATUS CODE - QCK: {} - {}'.format(r.status_code, r.text))
+
+    return 'sent'
+
+
 def send_button(recipient,text,title,payload, ACCESS_TOKEN):
     r = requests.post("https://graph.facebook.com/v2.6/me/messages",
         params={"access_token": ACCESS_TOKEN},
