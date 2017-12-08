@@ -90,7 +90,7 @@ def send_card(recipient, cards):
         }),
         headers={'Content-type': 'application/json'})
     if r.status_code != 200:
-        logging.info('STATUS CODE - BUTTON: {} - {}'.format(r.status_code, r.text))
+        logging.info('STATUS CODE - CARD: {} - {}'.format(r.status_code, r.text))
 
 
 
@@ -101,6 +101,10 @@ def handle_verification():
 
 @app.route('/', methods=['POST'])
 def handle_event():
+    #On devrait mettre un try: / except: pour indiquer à l'utilisateur si notre appel API a foiré + actualiser chaque semaine
+    latest = get_last_movies()
+    logging.info('LATEST FILMS :'+str(latest))
+    
     data = request.json
     logging.info("DATA: {}".format(data))
 
@@ -122,27 +126,18 @@ def handle_event():
             answer='Et si vous me disiez "bonjour" ?'
             send_msg(sender, answer)
 
-    # Gestion de l'evenement "je veux des infos sur le cinema"
+    #Gestion de l'evenement "je veux des infos sur le cinema"
     if "postback" in event:
-        if event['postback']['payload'] == "sorties_cine" or event['postback']['payload'] == "first_conv":
-            
-            # Structure code à changer!!! sale...
-            if event['postback']['payload'] == "first_conv":
-                user = user_details(sender)
-                send_msg(sender, "Bonjour {}, c'est la 1e fois que nous nous parlons. \
-                    Je suis un bot capable de te trouver les meilleures activités culturelles à Paris. \
-                    Pour l'instant, je peux te proposer ces films qui viennent de sortir.".format(user[1]))
-            else:
-                send_msg(sender,'Les 5 dernières sorties au cinéma sont: ')
-            
-            latest = get_last_movies()
+        if event['postback']['payload'] == "sorties_cine":
+            send_msg(sender,'Voici les meilleurs films en salle')
+
             cards=[]
-            for i in range (0,len(latest)):
+            for i in range (0,3):
                 cards.append(
                     {
                     "title": latest[i]['title'],
                     "image_url": latest[i]['img_url'], 
-                    "subtitle":"Note Presse : {}".format(latest[i]['notepresse']),
+                    "subtitle":"Note Presse : {}/5 \n Genre: {}".format(latest[i]['notepresse'], ', '.join(latest[i]['genre'])),
                     "buttons":[{
                         "type":"web_url",
                         "url": latest[i]['url'],
@@ -151,14 +146,15 @@ def handle_event():
                         {
                         "type":"postback",
                         "title":"Résumé",
-                        "payload":"Summary"
+                        "payload":"Summary-{}".format(i)
                         }]      
                     }
                 )
-            send_card(sender, cards)
+            send_card(sender,cards)
 
-        if event['postback']['payload'] == "Summary":
-            send_msg(sender, "Fonctionnalité en développement, elle arrive bientot !")
+        if event['postback']['payload'][:7] == "Summary":
+            i = int(event['postback']['payload'][8:])
+            send_msg(sender, "-- "+latest[i]['title']+" -- Résumé -- \n\n"+latest[i]['summary'])
             
 
     return "ok"
