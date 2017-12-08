@@ -1,1 +1,0 @@
-from allocine import get_last_movies
