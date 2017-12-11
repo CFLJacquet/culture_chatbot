@@ -45,5 +45,9 @@ jokes = [
     'Did I tell you the time I fell in love during a backflip? I was heels over head'
 ]
 
+def random_joke():
+    return jokes[random.randrange(0,len(jokes))]
+
+
 if __name__=="__main__":
-    print(jokes[random.randrange(0,39)])
+    print(random_joke())

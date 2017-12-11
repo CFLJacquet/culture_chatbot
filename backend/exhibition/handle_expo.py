@@ -33,5 +33,39 @@ def merge_offspect():
         p = pickle.Pickler(f)
         p.dump(merged)
 
+def get_genre():
+    """ Returns a tuple: list of exhibition genres + cards to be used in quck replies """
+    
+    with open("backend/exhibition/expo_offspect", 'rb') as f:
+        d = pickle.Unpickler(f)
+        data = d.load()
+
+    genre = []
+    for elt in data:
+        genre.append(elt['type'])
+    no_duplicates = list(set(genre))
+    genre = sorted(no_duplicates)        # genre list without duplicates
+    
+    btns = []
+    for g in genre:                 #create button list to be sent
+        btns.append(
+        {
+            "content_type":"text",
+            "title": g,
+            "payload": g + "-1"
+        })
+    btns.append(
+        {
+            "content_type":"text",
+            "title":"Rien de tout ça",
+            "payload":"Not_interested"
+        })
+
+    return genre, btns
+
+
+
 if __name__ == "__main__":
-    merge_offspect()
+    #merge_offspect()
+    test = get_genre()
+    print(test)

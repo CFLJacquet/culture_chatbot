@@ -3,9 +3,13 @@ import logging
 from logging.handlers import RotatingFileHandler
 import requests
 import json
+import pickle
 
 from backend.cinema.allocine import get_last_movies
 from backend.messenger.msg_fct import user_details, send_msg, send_button, send_card, send_quick_rep
+from backend.exhibition.handle_expo import get_genre
+from backend.others.bdd_jokes import random_joke
+
 
 #Bloc créant des logs
 logger = logging.getLogger()
@@ -45,15 +49,24 @@ def handle_event():
         message = event['message']['text'].lower()
 
         if message == "bonjour":
-            welcome_film(sender, user)
+            welcome(sender, user)
             
         else:
             if event['message']['quick_reply']['payload'][:12] == "sorties_cine":
                 num = int(event['message']['quick_reply']['payload'][13:])
-                film_display(num, sender, latest)   
+                film_display(num, sender, latest)
+            
+            elif event['message']['quick_reply']['payload'][:10] == "exhibition":
+                num = int(event['message']['quick_reply']['payload'][11:])
+                exhibition_display(num, sender)
+            elif event['message']['quick_reply']['payload'][:-2] in get_genre()[0]:
+                num = int(event['message']['quick_reply']['payload'][-1])
+                exhibition_display(num, sender, event['message']['quick_reply']['payload'])      
             
             elif event['message']['quick_reply']['payload'] == "Not_interested":
-                send_msg(sender, "Dommage ! A bientôt", ACCESS_TOKEN)
+                send_msg(sender, "Dommage... Voici une dadjoke de consolation:", ACCESS_TOKEN)
+                send_msg(sender, random_joke(), ACCESS_TOKEN)                
+                send_msg(sender, "A bientôt !", ACCESS_TOKEN)
 
             elif event['message']['quick_reply']['payload'] == "Thanks":
                 send_msg(sender, "Ravie d'avoir pu vous aider ! A bientôt :)", ACCESS_TOKEN)
@@ -66,14 +79,14 @@ def handle_event():
             i = int(event['postback']['payload'][8:])
             send_msg(sender, "-- "+latest[i]['title']+" -- Résumé -- \n\n"+latest[i]['summary'], ACCESS_TOKEN)
         elif event['postback']['payload'] == "first_conv":
-            welcome_film(sender, user)
+            welcome(sender, user)
 
     return "ok"
 
 
 
 
-def welcome_film(sender, user):
+def welcome(sender, user):
     answer="Bonjour {} {} {}, bienvenue sur Strolling.  \
             Je suis Iris votre majordome, je vais vous trouver le \
             divertissement qui vous plaira.".format(user[0],user[1],user[2])
@@ -81,19 +94,26 @@ def welcome_film(sender, user):
     btns =[
         {
             "content_type":"text",
-            "title":"Oh oui !",
+            "title":"Cinéma",
             "payload":"sorties_cine-0"
         },
         {
             "content_type":"text",
-            "title":"Bof",
+            "title":"Exposition",
+            "payload":"exhibition-0"
+        },
+        {
+            "content_type":"text",
+            "title":"Rien de tout ça",
             "payload":"Not_interested"
         }
     ]
-    send_quick_rep(sender, "Seriez-vous intéressé par une séance de cinéma ?", btns ,ACCESS_TOKEN)
+    send_quick_rep(sender, "Qu'est ce qui vous intéresserait ?", btns ,ACCESS_TOKEN)
 
 
 def film_display(num, sender, latest):
+    """ returns cards with films from the "latest" var (extracted with API) """
+
     if num == 0 :
         send_msg(sender,'Voici les meilleurs films en salle', ACCESS_TOKEN)
 
@@ -132,6 +152,20 @@ def film_display(num, sender, latest):
     if num == 0:
         send_quick_rep(sender, "Voulez-vous voir d'autres films ?", btns ,ACCESS_TOKEN)
         
+def exhibition_display(num, sender, payload =""):
+    if num == 0 :             
+        send_msg(sender, "Une petite expo donc ! ", ACCESS_TOKEN)
+        msg = "Il y a plusieurs types d'expositions, qu'est ce qui vous intéresse le plus ?"
+    elif num == 1 :
+        send_msg(sender, "tu veux du: "+payload, ACCESS_TOKEN)
+        msg = "Un autre genre d'expo ?"
+    else : 
+        msg = "Un autre genre d'expo ?"
+
+
+    btns_genre = get_genre()[1]
+    send_quick_rep(sender, msg, btns_genre ,ACCESS_TOKEN)
+
 
 
 
