@@ -5,6 +5,8 @@ import scrapy
 from scrapy.crawler import CrawlerProcess
 import json
 import re
+from unicodedata import normalize   #to Normalize Unicode -> look for "e\u0301" in https://www.safaribooksonline.com/library/view/fluent-python/9781491946237/ch04.html
+
 
 list_urls =[]
 with open('backend/exhibition/expo_scraper/expo_offspect.jsonl') as f:
@@ -31,7 +33,7 @@ class Expo_offspec_Spider(scrapy.Spider):
 
         yield {
             'url': response.url,
-            'summary': s, 
+            'summary': normalize('NFC', s), 
             'price': response.css("div.info ul.detail li::text").extract()[1][1:].capitalize(),
         }
 

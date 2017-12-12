@@ -3,7 +3,6 @@ import logging
 from logging.handlers import RotatingFileHandler
 import requests
 import json
-import time
 import datetime # to read datetime objects in exhibition data
 import pickle
 
@@ -55,16 +54,15 @@ def handle_event():
             
         else:
             if event['message']['quick_reply']['payload'][:12] == "sorties_cine":
-                num = int(event['message']['quick_reply']['payload'][-1])
+                num = int(event['message']['quick_reply']['payload'][13:])
                 film_display(num, sender, latest)
             
             elif event['message']['quick_reply']['payload'][:10] == "exhibition":
-                num = int(event['message']['quick_reply']['payload'][-1])
+                num = int(event['message']['quick_reply']['payload'][11:])
                 exhibition_display(num, sender)
             elif event['message']['quick_reply']['payload'][:-2] in get_genre()[0]:
-                p = event['message']['quick_reply']['payload']
-                num = int(p[-1])
-                exhibition_display(num, sender, p)      
+                num = int(event['message']['quick_reply']['payload'][-1])
+                exhibition_display(num, sender, event['message']['quick_reply']['payload'])      
             
             elif event['message']['quick_reply']['payload'] == "Not_interested":
                 send_msg(sender, "Dommage... Voici une dadjoke de consolation:", ACCESS_TOKEN)
@@ -82,7 +80,7 @@ def handle_event():
             welcome(sender, user)
         
         elif event['postback']['payload'][:12] == "Summary_cine":
-            i = int(event['postback']['payload'][-1])
+            i = int(event['postback']['payload'][13:])
             send_msg(sender, "-- "+latest[i]['title']+" -- Résumé -- \n\n"+latest[i]['summary'], ACCESS_TOKEN)
         
         elif event['postback']['payload'][:12] == "Summary_expo":
@@ -90,11 +88,9 @@ def handle_event():
             
             # x[0]: 'Summary_expo' / x[1]: genre / x[2]: card n° / x[3]: iteration
             data = get_exhib(x[1], int(x[3]))[0][int(x[2])]
-            
+
             send_msg(sender, "Description: "+data['summary'], ACCESS_TOKEN)
-            time.sleep(10)
             send_msg(sender, "Horaires: "+data['prog'], ACCESS_TOKEN)
-            time.sleep(2)
             send_msg(sender, "Prix: "+data['price'], ACCESS_TOKEN)
         
 
@@ -173,33 +169,18 @@ def exhibition_display(num, sender, payload =""):
     if num == 0 :             
         send_msg(sender, "Une petite expo donc ! ", ACCESS_TOKEN)
         msg = "Il y a plusieurs types d'expositions, qu'est ce qui vous intéresse le plus ?"
-        
-        btns_genre = get_genre()[1]
-        send_quick_rep(sender, msg, btns_genre ,ACCESS_TOKEN)
-
-    elif num in range(1,4):
+    elif num == 1 :
         cards = get_exhib(payload[:-2], int(payload[-1]))[1]
         send_card(sender, cards, ACCESS_TOKEN)
-        
-        btns =[
-            {
-                "content_type":"text",
-                "title":"Plus d'expos !",
-                "payload":"{}-{}".format(payload[:-2], int(payload[-1]) + 1)
-            },
-            {
-                "content_type":"text",
-                "title":"Un autre genre",
-                "payload":"exhibition-0"
-            },
-            {
-                "content_type":"text",
-                "title":"Merci Iris",
-                "payload":"Thanks"
-            }
-        ]
-        time.sleep(10)
-        send_quick_rep(sender, "Voulez-vous voir d'autres expos ?", btns ,ACCESS_TOKEN)
+        msg = "Un autre genre d'expo ?"
+    else : 
+        msg = "Un autre genre d'expo ?"
+
+
+    btns_genre = get_genre()[1]
+    send_quick_rep(sender, msg, btns_genre ,ACCESS_TOKEN)
+
+
 
 
 
