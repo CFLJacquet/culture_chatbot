@@ -86,8 +86,8 @@ def get_exhib(genre, iteration):
             "subtitle": r['location'] + "\nJusqu'au" + r['date_end'],
             "buttons":[{
                 "type":"web_url",
-                "url": r['url'],
-                "title":"Voir sur Offi"
+                "url": "https://www.google.fr/maps/search/"+r['location'],
+                "title":"C'est où ?"
                 },
                 {
                 "type":"postback",
@@ -104,6 +104,8 @@ if __name__ == "__main__":
     #---to get merged result of scraped data, uncomment the following line
     #merge_offspect()
     
+    #---to test get genre function, uncomment the following line
+    print(get_genre())
+    
     #---to test get exhibition function, uncomment the following line
-    test = get_exhib('Art contemporain', 1)
-    print(test)
+    #print('Art contemporain', 1)
