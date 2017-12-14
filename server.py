@@ -47,37 +47,36 @@ def handle_event():
     sender = event['sender']['id']
     user = user_details(sender, ACCESS_TOKEN)
 
-    if "message" in event: 
-        message = event['message']['text'].lower()
-
-        if message == "bonjour":
-            welcome(sender, user)
-            
-        else:
-            if event['message']['quick_reply']['payload'][:12] == "sorties_cine":
-                num = int(event['message']['quick_reply']['payload'][-1])
+    if "message" in event:     
+        if 'quick_reply' in event['message'] :
+            payload = event['message']['quick_reply']['payload']
+            if payload[:12] == "sorties_cine":
+                num = int(payload[-1])
                 film_display(num, sender, latest)
             
-            elif event['message']['quick_reply']['payload'][:10] == "exhibition":
-                num = int(event['message']['quick_reply']['payload'][-1])
+            elif payload[:10] == "exhibition":
+                num = int(payload[-1])
                 exhibition_display(num, sender)
-            elif event['message']['quick_reply']['payload'][:-2] in get_genre()[0]:
-                p = event['message']['quick_reply']['payload']
-                num = int(p[-1])
-                exhibition_display(num, sender, p)      
+            elif payload[:-2] in get_genre()[0]:
+                num = int(payload[-1])
+                exhibition_display(num, sender, payload)      
             
-            elif event['message']['quick_reply']['payload'] == "Not_interested":
+            elif payload == "Not_interested":
                 send_msg(sender, "Dommage... Voici une dadjoke de consolation:", ACCESS_TOKEN)
                 send_msg(sender, random_joke(), ACCESS_TOKEN)                
                 send_msg(sender, "A bientôt !", ACCESS_TOKEN)
 
-            elif event['message']['quick_reply']['payload'] == "Thanks":
+            elif payload == "Thanks":
                 send_msg(sender, "Ravie d'avoir pu vous aider ! A bientôt :)", ACCESS_TOKEN)
-
+        
+        else:
+            message = event['message']['text'].lower()
+            if message == "bonjour":
+                welcome(sender, user)
             else : 
                 send_msg(sender, "Et si vous me disiez bonjour ?", ACCESS_TOKEN)
 
-    if "postback" in event:
+    elif "postback" in event:
         if event['postback']['payload'] == "first_conv":
             welcome(sender, user)
         
@@ -97,7 +96,9 @@ def handle_event():
             time.sleep(2)
             send_msg(sender, "Prix: "+data['price'], ACCESS_TOKEN)
         
-
+    else: 
+        send_msg(sender, "Je n'ai pas compris votre demande... :(", ACCESS_TOKEN)
+        
     return "ok"
 
 
