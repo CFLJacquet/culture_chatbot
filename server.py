@@ -27,8 +27,6 @@ app = Flask(__name__)
 ACCESS_TOKEN = "EAAHSfldMxYcBAAt4D30ZAzVHSnhhFqxV15wMJ0RwZCOBH4MZALBJOa8gTvUV0OTL5t3Q4ZBOosziQ3AXIwYpgpdbJCRRkbJKBuB7FASzhnZAcZCsy6expZATAbflsnln2Hd5I1Yo8J2Ddny170yI13r7A224a20yBWczLeYZAzZBDTQZDZD"
 
 
-
-
 @app.route('/', methods=['GET'])
 def handle_verification():
     logging.info(request.args['hub.challenge'])
@@ -168,6 +166,7 @@ def film_display(num, sender, latest):
     ]
     if num == 0:
         send_quick_rep(sender, "Voulez-vous voir d'autres films ?", btns ,ACCESS_TOKEN)
+
         
 def exhibition_display(num, sender, payload =""):
     if num == 0 :             
