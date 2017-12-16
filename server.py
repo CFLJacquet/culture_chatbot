@@ -112,10 +112,10 @@ def handle_event():
             data = get_exhib(x[1], int(x[3]))[0][int(x[2])]
             
             send_msg(sender, "Description: "+data['summary'], ACCESS_TOKEN)
-            time.sleep(10)
             send_msg(sender, "Horaires: "+data['prog'], ACCESS_TOKEN)
-            time.sleep(2)
             send_msg(sender, "Prix: "+data['price'], ACCESS_TOKEN)
+            time.sleep(10)
+            start_buttons(sender, "Autre chose ?")
         
     else: 
         send_msg(sender, "Je n'ai pas compris votre demande... 😰", ACCESS_TOKEN)
@@ -130,6 +130,9 @@ def welcome(sender, user):
             Je suis Iris votre majordome, je vais vous trouver le \
             divertissement qui vous plaira.".format(user[0],user[1],user[2])
     send_msg(sender, answer, ACCESS_TOKEN)
+    start_buttons(sender, "Qu'est ce qui vous intéresserait ?")
+
+def start_buttons(sender, text):
     btns =[
         {
             "content_type":"text",
@@ -147,7 +150,7 @@ def welcome(sender, user):
             "payload":"Not_interested"
         }
     ]
-    send_quick_rep(sender, "Qu'est ce qui vous intéresserait ?", btns ,ACCESS_TOKEN)
+    send_quick_rep(sender, text, btns ,ACCESS_TOKEN)
 
 
 def film_display(num, sender, latest):
@@ -206,7 +209,7 @@ def exhibition_display(num, sender, payload =""):
         btns =[
             {
                 "content_type":"text",
-                "title":"Plus d'expos !",
+                "title":"Voir plus d'expos",
                 "payload":"{}-{}".format(payload[:-2], int(payload[-1]) + 1)
             },
             {
@@ -220,7 +223,6 @@ def exhibition_display(num, sender, payload =""):
                 "payload":"Thanks"
             }
         ]
-        time.sleep(10)
         send_quick_rep(sender, "Voulez-vous voir d'autres expos ?", btns ,ACCESS_TOKEN)
 
 
