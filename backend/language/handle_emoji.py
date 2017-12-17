@@ -1,7 +1,6 @@
 import unicodedata as ud
 import json
 import pickle
-import nltk
 
 #Note: Needed to put part of the emoji list in the main file because it couldn't be converted into unicode description
 #Note2: "❤️" == "\u2764\uFE0F" -> coded on 2 unicode codepoints
@@ -47,7 +46,7 @@ data1 = [{"img": "✌", "name": "victory hand", "negative": "0.113", "neutral": 
 ]
 
 #Gets all the other converted emojis and appends the "data" list
-with open("emoji_sentiment", 'rb') as f:
+with open("backend/language/emoji_sentiment", 'rb') as f:
     d = pickle.Unpickler(f)
     data2 = d.load()
 data = data2 + data1
@@ -57,47 +56,50 @@ def convert_special(c):
     """ converts emoji into emoji description if it exists """
 
     if c > '\uffff':
-        c = ':{}:'.format(ud.name(c).lower().replace(' ', '_'))
+        try:
+            c = '_.{}._'.format(ud.name(c).lower().replace(' ', '_'))
+        except:
+            c = '_.�._'
     elif c in [":)", ":-)"]:
         c = '☺'
     elif c in ["=)"]:
-        c = ":smiling_face_with_smiling_eyes:"
+        c = "_.smiling_face_with_smiling_eyes._"
     elif c in [":(", ":-(", "=("]:
-        c = ":disappointed_face:"
+        c = "_.disappointed_face._"
     elif c in [":/", ":-/", "=/"]:
-        c = ":confused_face:"
+        c = "_.confused_face._"
     elif c in [">:(", ">:-(", ">:o", ">:-o"]:
-        c = ":persevering_face:"
+        c = "_.persevering_face._"
     elif c in [":'(", ":'-("]:
-        c = ":crying_face:"
+        c = "_.crying_face._"
     elif c in [":p", ":-p", "=p"]:
-        c = ":face_with_stuck-out_tongue:"
+        c = "_.face_with_stuck-out_tongue._"
     elif c in [";p", ";-p"]:
-        c = ":face_with_stuck-out_tongue_and_winking_eye:"
+        c = "_.face_with_stuck-out_tongue_and_winking_eye._"
     elif c in ["3:)", "3:-)"]:
-        c = ":smiling_face_with_horns:"
+        c = "_.smiling_face_with_horns._"
     elif c in [":d", ":-d", "=d"]:
-        c = ":grinning_face:"
+        c = "_.grinning_face._"
     elif c in ["o:)", "o:-)"]:
-        c = ":smiling_face_with_halo:"
+        c = "_.smiling_face_with_halo._"
     elif c in [":o", ":-o"]:
-        c = ":astonished_face:"
+        c = "_.astonished_face._"
     elif c in [":*",":-*"]:
-        c = ":kissing_face:"
+        c = "_.kissing_face._"
     elif c in [";)", ";-)"]:
-        c = ":winking_face:"
+        c = "_.winking_face._"
     elif c in ["<3", "\u2764\uFE0F"]:
         c = "❤"
     elif c in ["8)", "8-)"]:
-        c = ":smiling_face_with_sunglasses:"
+        c = "_.smiling_face_with_sunglasses._"
     elif c in ["-_-"]:
-        c = ":expressionless_face:"
+        c = "_.expressionless_face._"
     elif c in [":|", ":-|"]:
-        c = ":neutral_face:"
+        c = "_.neutral_face._"
     elif c in ["(y)"]:
-        c = ":thumbs_up_sign:"
+        c = "_.thumbs_up_sign._"
     elif c in ["(n)"]:
-        c = ":thumbs_down_sign:"
+        c = "_.thumbs_down_sign._"
     return c
 
 def convert_string(s):
@@ -122,7 +124,7 @@ def emoji_sentiment(s):
 
 if __name__ == '__main__':
     x = convert_string("salut :D je suis trop chaud ⛄ 🤞 ❤️".lower())
-    
+    print(x)
     print(emoji_sentiment(x))
     
     

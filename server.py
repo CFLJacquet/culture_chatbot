@@ -10,6 +10,7 @@ import pickle
 from backend.cinema.allocine import get_last_movies
 from backend.messenger.msg_fct import user_details, send_msg, send_button, send_card, send_quick_rep
 from backend.exhibition.handle_expo import get_genre, get_exhib
+from backend.language.handle_text import get_meaning
 from backend.others.bdd_jokes import random_joke
 
 
@@ -68,7 +69,7 @@ def handle_event():
                 send_msg(sender, "A bientôt !", ACCESS_TOKEN)
 
             elif payload == "Thanks":
-                send_msg(sender, "Ravie d'avoir pu vous aider ! A bientôt :)", ACCESS_TOKEN)
+                send_msg(sender, "Ravie d'avoir pu t'aider ! A bientôt :)", ACCESS_TOKEN)
         
         #handles stickers sent by user. For the moment, only the like button is recognized
         elif 'sticker_id' in event['message'] :
@@ -87,15 +88,24 @@ def handle_event():
                 else: 
                     send_msg(sender, "Jolie image :)", ACCESS_TOKEN)
             else: 
-                send_msg(sender, "Nous avons bien reçu ton fichier, mais pour l'instant nous ne pouvons pas le traiter !", ACCESS_TOKEN)
+                send_msg(sender, "J'ai bien reçu ton fichier, mais pour l'instant je ne peux pas le traiter !", ACCESS_TOKEN)
 
         #handles text sent by user (including unicode emojis 😰, 😀)
         else:
             message = event['message']['text'].lower()
-            if message == "bonjour":
+            answer = get_meaning(message)
+            if answer[0] == 1:
                 welcome(sender, user)
-            else : 
-                send_msg(sender, "Et si vous me disiez bonjour ?", ACCESS_TOKEN)
+            if answer[1] == 1:
+                film_display(0, sender, latest)
+            if answer[2] == 1:
+                exhibition_display(0, sender)
+            if answer[3] == 1:
+                send_msg(sender, "A bientôt !", ACCESS_TOKEN)
+            if answer == [0,0,0,0]:
+                send_msg(sender, "Je n'ai pas compris ce que tu as dit... 😰", ACCESS_TOKEN)
+                send_msg(sender, "Tu peux me demander des infos sur des expos ou des films, et si tu as eu les informations souhaitées, dis moi juste 'ok' ou 'au revoir' :)", ACCESS_TOKEN)
+
 
     elif "postback" in event:
         if event['postback']['payload'] == "first_conv":
@@ -118,7 +128,7 @@ def handle_event():
             start_buttons(sender, "Autre chose ?")
         
     else: 
-        send_msg(sender, "Je n'ai pas compris votre demande... 😰", ACCESS_TOKEN)
+        send_msg(sender, "Je n'ai pas compris ta demande... 😰", ACCESS_TOKEN)
         
     return "ok"
 
@@ -126,11 +136,9 @@ def handle_event():
 
 
 def welcome(sender, user):
-    answer="Bonjour {} {} {}, bienvenue sur Strolling.  \
-            Je suis Iris votre majordome, je vais vous trouver le \
-            divertissement qui vous plaira.".format(user[0],user[1],user[2])
+    answer="Salut {}, je suis Iris ! Je connais les meilleurs films et expos de Paris.".format(user[1])
     send_msg(sender, answer, ACCESS_TOKEN)
-    start_buttons(sender, "Qu'est ce qui vous intéresserait ?")
+    start_buttons(sender, "Qu'est-ce qui t'intéresserait ?")
 
 def start_buttons(sender, text):
     btns =[
@@ -192,12 +200,12 @@ def film_display(num, sender, latest):
         }
     ]
     if num == 0:
-        send_quick_rep(sender, "Voulez-vous voir d'autres films ?", btns ,ACCESS_TOKEN)
+        send_quick_rep(sender, "Veux-tu voir d'autres films ?", btns ,ACCESS_TOKEN)
         
 def exhibition_display(num, sender, payload =""):
     if num == 0 :             
-        send_msg(sender, "Une petite expo donc ! ", ACCESS_TOKEN)
-        msg = "Il y a plusieurs types d'expositions, qu'est ce qui vous intéresse le plus ?"
+        send_msg(sender, "L'art', c'est chouette !", ACCESS_TOKEN)
+        msg = "Il y a plusieurs types d'expositions, qu'est-ce qui t'intéresse le plus ?"
         
         btns_genre = get_genre()[1]
         send_quick_rep(sender, msg, btns_genre ,ACCESS_TOKEN)
@@ -223,7 +231,7 @@ def exhibition_display(num, sender, payload =""):
                 "payload":"Thanks"
             }
         ]
-        send_quick_rep(sender, "Voulez-vous voir d'autres expos ?", btns ,ACCESS_TOKEN)
+        send_quick_rep(sender, "Veux-tu voir d'autres expos ?", btns ,ACCESS_TOKEN)
 
 
 
