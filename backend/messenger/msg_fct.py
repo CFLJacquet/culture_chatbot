@@ -18,6 +18,20 @@ def user_details(sender, ACCESS_TOKEN):
 
     return user_gender,user_details['first_name'],user_details['last_name']
 
+def typing_bubble(recipient, ACCESS_TOKEN):
+
+    r = requests.post("https://graph.facebook.com/v2.6/me/messages",
+        params={"access_token": ACCESS_TOKEN},
+        data=json.dumps({
+            "recipient": {"id": recipient},
+            "sender_action": "typing_on"
+            }),
+        headers={'Content-type': 'application/json'})
+    if r.status_code != 200:
+        logging.info('STATUS CODE - TYPING BUBBLE: {} - {}'.format(r.status_code, r.text))
+
+    return 'sent'
+
 def send_msg(recipient, answer, ACCESS_TOKEN):
 
     r = requests.post("https://graph.facebook.com/v2.6/me/messages",

@@ -8,7 +8,7 @@ import datetime # to read datetime objects in exhibition data
 import pickle
 
 from backend.cinema.allocine import get_last_movies
-from backend.messenger.msg_fct import user_details, send_msg, send_button, send_card, send_quick_rep
+from backend.messenger.msg_fct import user_details, typing_bubble, send_msg, send_button, send_card, send_quick_rep
 from backend.exhibition.handle_expo import get_genre, get_exhib
 from backend.language.handle_text import get_meaning
 from backend.others.bdd_jokes import random_joke
@@ -47,6 +47,8 @@ def handle_event():
     event = data['entry'][0]['messaging'][0]
     sender = event['sender']['id']
     user = user_details(sender, ACCESS_TOKEN)
+    
+    typing_bubble(sender, ACCESS_TOKEN)
 
     if "message" in event:
         #handles quick replies (buttons at the bottom of the conversation)     
@@ -136,6 +138,7 @@ def handle_event():
 
 
 def welcome(sender, user):
+    time.sleep(2)
     answer="Salut {}, je suis Iris ! Je connais les meilleurs films et expos de Paris.".format(user[1])
     send_msg(sender, answer, ACCESS_TOKEN)
     start_buttons(sender, "Qu'est-ce qui t'intéresserait ?")
@@ -164,6 +167,7 @@ def start_buttons(sender, text):
 def film_display(num, sender, latest):
     """ returns cards with films from the "latest" var (extracted with API) """
 
+    time.sleep(3)
     if num == 0 :
         send_msg(sender,'Voici les meilleurs films en salle', ACCESS_TOKEN)
 
@@ -203,8 +207,9 @@ def film_display(num, sender, latest):
         send_quick_rep(sender, "Veux-tu voir d'autres films ?", btns ,ACCESS_TOKEN)
         
 def exhibition_display(num, sender, payload =""):
-    if num == 0 :             
-        send_msg(sender, "L'art', c'est chouette !", ACCESS_TOKEN)
+    time.sleep(3)
+    if num == 0 :        
+        send_msg(sender, "L'art, c'est chouette !", ACCESS_TOKEN)
         msg = "Il y a plusieurs types d'expositions, qu'est-ce qui t'intéresse le plus ?"
         
         btns_genre = get_genre()[1]
