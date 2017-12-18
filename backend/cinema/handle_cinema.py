@@ -12,9 +12,13 @@ except: #python2
 import requests
 import time
 import json
+import base64
 import pathlib
+from PIL import Image
+from urllib.request import urlopen
+from io import StringIO, BytesIO
 from pprint import pprint # for a more readable json output
-from flask import Flask, request
+#from flask import Flask, request
 import logging
 
 ALLOCINE_BASE_URL = "http://api.allocine.fr/rest/v3/"
@@ -103,13 +107,13 @@ def get_details():
     return results
 
 
-def get_genre():
+def get_genre_movie():
     """ Returns a tuple: list of exhibition genres + cards to be used in quck replies """
 
     with open("cinema_allocine", 'rb') as f:
         d = pickle.Unpickler(f)
         data = d.load()
-        pprint(data)
+        #pprint(data)
 
     genre = []
     for i in range(0, len(data)):
@@ -136,19 +140,46 @@ def get_genre():
                 "payload": "Not_interested"
             })
 
-        return genre, btns
+    return genre, btns
 
-
-#faire deux if (un par genre et un pour gérer les cartes comme à partir de la ligne 64 de serveur), essayer de garder dans le serveur tout ce qui permet de récupérer le genre et de faire apparaître ce que l'on veut mais de définir la fonction qui permet d'obtenir le top film par genre dans handle cinema:
-def topmovies_bygenre():
+def get_topmovies_genre(p):
 
     with open("cinema_allocine", 'rb') as f:
         d = pickle.Unpickler(f)
         data = d.load()
 
-    #extraire les ranktopmovie par ordre descendant et prendre les cinq premiers
+    results_genre = []
+    for i in range(0, len(data)):
+        film_genre = data[i]["genre"]
+        if p in film_genre:
+            results_genre.append({
+            "title": data[i]["title"],
+            "notespectateur": data[i]["statistics"].get('userRating', -1),
+            "notepresse": data[i]["statistics"].get('pressRating', -1),
+            "img_url": data[i]["poster"]["href"],
+            "url": data[i]["link"][0]["href"],
+            "summary": data[i].get('synopsisShort', '').replace('<span>', '').replace('</span>', '').replace(
+                '<br/>', '').replace('\xa0', '')
+        })
+    results_genre = sorted(results_genre, key=lambda x: x["notepresse"], reverse=True)
+    return results_genre
 
+def resize_image_from_url(url):
+
+    #Pour transformer les images il faut toujours utiliser PIL (pillow)
+    file = StringIO(urlopen(url).read())
+    img = Image.open(file)
+    # On retraite l'image pour l'obtenir dans la bonne taille en préservant l'aspect ratio:
+    size = 128, 128
+    img.thumbnail(size)
+    # stockage temporaire de l'image en bytes
+    buffer = BytesIO()
+    img.save(buffer, format="PNG")
+    # On transforme l'image en base 64 pour obtenir un url resized
+    img_str = base64.b64encode(buffer.getvalue())
+    # On envoie le png en base 64 (ie sous forme de chaine de caractères)
+    return "data:image/png;base64," + img_str
 
 if __name__ == '__main__':
     print(sys.stdout.encoding)
-    print(get_genre())
+    pprint(get_genre_movie())

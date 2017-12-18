@@ -7,7 +7,7 @@ import time
 import datetime # to read datetime objects in exhibition data
 import pickle
 
-from backend.cinema.allocine import get_last_movies
+from backend.cinema.handle_cinema import get_details, get_genre_movie, get_topmovies_genre, resize_image_from_url
 from backend.messenger.msg_fct import user_details, send_msg, send_button, send_card, send_quick_rep
 from backend.exhibition.handle_expo import get_genre, get_exhib
 from backend.others.bdd_jokes import random_joke
@@ -35,8 +35,10 @@ def handle_verification():
 @app.route('/', methods=['POST'])
 def handle_event():
     #NB: la requête API est effectuée à chaque msg entrant
-    latest = get_last_movies()
+    latest = get_details()
+    latest_genre = get_topmovies_genre()
     logging.info('LATEST FILMS :'+str(latest))
+    logging.info('LATEST FILMS BY GENRE :' + str(latest_genre))
     
     data = request.json
     logging.info("DATA: {}".format(data))
@@ -55,6 +57,13 @@ def handle_event():
             if event['message']['quick_reply']['payload'][:12] == "sorties_cine":
                 num = int(event['message']['quick_reply']['payload'][-1])
                 film_display(num, sender, latest)
+            #boucle pour récupérer le genre:
+            elif event['message']['quick_reply']['payload'][:-5] in get_genre_movie()[0]:
+                p = event['message']['quick_reply']['payload']
+                ranking= get_topmovies_genre(p)
+                print(ranking)
+                num = int(p[-1])
+                film_display_genre(num, sender, p)
             
             elif event['message']['quick_reply']['payload'][:10] == "exhibition":
                 num = int(event['message']['quick_reply']['payload'][-1])
@@ -62,7 +71,7 @@ def handle_event():
             elif event['message']['quick_reply']['payload'][:-2] in get_genre()[0]:
                 p = event['message']['quick_reply']['payload']
                 num = int(p[-1])
-                exhibition_display(num, sender, p)      
+                exhibition_display(num, sender, p)
             
             elif event['message']['quick_reply']['payload'] == "Not_interested":
                 send_msg(sender, "Dommage... Voici une dadjoke de consolation:", ACCESS_TOKEN)
@@ -134,14 +143,15 @@ def film_display(num, sender, latest):
 
     cards=[]
     for i in range (num, num+3):
+        etoile = u'\U0001F31F' * int(round(latest[i]['notepresse']))
         cards.append(
             {
             "title": latest[i]['title'],
             "image_url": latest[i]['img_url'], 
-            "subtitle":"Note Presse : {}/5 \n Genre: {}".format(latest[i]['notepresse'], ', '.join(latest[i]['genre'])),
+            "subtitle":"Note Presse : {}/5 \n Genre: {}".format(etoile, ', '.join(latest[i]['genre'])),
             "buttons":[{
                 "type":"web_url",
-                "url": latest[i]['url'],
+                "url": resize_image_from_url(latest[i]['url']),
                 "title":"Voir sur Allociné"
                 },
                 {
@@ -167,7 +177,51 @@ def film_display(num, sender, latest):
     if num == 0:
         send_quick_rep(sender, "Voulez-vous voir d'autres films ?", btns ,ACCESS_TOKEN)
 
-        
+
+def film_display_genre(num, sender, latest_genre):
+
+    if num == 0 :
+        send_msg(sender, "Voici donc les meilleurs films pour le genre que vous avez sélectionné ! ", ACCESS_TOKEN)
+
+        btns_genre = get_genre_movie()[1]
+        send_quick_rep(sender, btns_genre ,ACCESS_TOKEN)
+
+        cards = []
+        for i in range(num, num + 3):
+            cards.append(
+                {
+                    "title": latest_genre[i]['title'],
+                    "image_url": latest_genre[i]['img_url'],
+                    "subtitle": "Note Presse : {}/5 ".format(latest_genre[i]['notepresse']),
+                    "buttons": [{
+                        "type": "web_url",
+                        "url": resize_image_from_url(latest_genre[i]['url']),
+                        "title": "Voir sur Allociné"
+                    },
+                        {
+                            "type": "postback",
+                            "title": "Résumé",
+                            "payload": "Summary_cine-{}".format(i)
+                        }]
+                }
+            )
+        send_card(sender, cards, ACCESS_TOKEN)
+        btns = [
+            {
+                "content_type": "text",
+                "title": "Plus de films !",
+                "payload": "sorties_cine-3"
+            },
+            {
+                "content_type": "text",
+                "title": "Merci Iris",
+                "payload": "Thanks"
+            }
+        ]
+        if num == 0:
+            send_quick_rep(sender, "Voulez-vous voir d'autres films ?", btns, ACCESS_TOKEN)
+
+
 def exhibition_display(num, sender, payload =""):
     if num == 0 :             
         send_msg(sender, "Une petite expo donc ! ", ACCESS_TOKEN)

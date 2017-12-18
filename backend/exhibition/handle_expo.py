@@ -34,7 +34,7 @@ def merge_offspect():
         p.dump(merged)
 
 def get_genre():
-    """ Returns a tuple: list of exhibition genres + cards to be used in quck replies """
+    """ Returns a tuple: list of exhibition genres + cards to be used in quick replies """
     
     with open("backend/exhibition/expo_offspect", 'rb') as f:
         d = pickle.Unpickler(f)
