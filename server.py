@@ -27,8 +27,9 @@ app = Flask(__name__)
 
 ACCESS_TOKEN = "EAAHSfldMxYcBAAt4D30ZAzVHSnhhFqxV15wMJ0RwZCOBH4MZALBJOa8gTvUV0OTL5t3Q4ZBOosziQ3AXIwYpgpdbJCRRkbJKBuB7FASzhnZAcZCsy6expZATAbflsnln2Hd5I1Yo8J2Ddny170yI13r7A224a20yBWczLeYZAzZBDTQZDZD"
 
-
-
+@app.route('/test')
+def test():
+    return "<h1>Le serveur fonctionne correctement !</h1>"
 
 @app.route('/', methods=['GET'])
 def handle_verification():
@@ -66,7 +67,7 @@ def handle_event():
                 exhibition_display(num, sender, payload)      
             
             elif payload == "Not_interested":
-                send_msg(sender, "Dommage... Voici une dadjoke de consolation:", ACCESS_TOKEN)
+                send_msg(sender, "Je suis en train d'apprendre de nouvelles choses, mais pour l'instant je ne peux que te conseiller en cinéma et en expo ! Pour la peine, voice une dadjoke de consolation:", ACCESS_TOKEN)
                 send_msg(sender, random_joke(), ACCESS_TOKEN)                
                 send_msg(sender, "A bientôt !", ACCESS_TOKEN)
 
@@ -138,7 +139,7 @@ def handle_event():
 
 
 def welcome(sender, user):
-    time.sleep(2)
+    time.sleep(1)
     answer="Salut {}, je suis Iris ! Je connais les meilleurs films et expos de Paris.".format(user[1])
     send_msg(sender, answer, ACCESS_TOKEN)
     start_buttons(sender, "Qu'est-ce qui t'intéresserait ?")
@@ -157,7 +158,7 @@ def start_buttons(sender, text):
         },
         {
             "content_type":"text",
-            "title":"Rien de tout ça",
+            "title":"Autre chose",
             "payload":"Not_interested"
         }
     ]
@@ -167,7 +168,7 @@ def start_buttons(sender, text):
 def film_display(num, sender, latest):
     """ returns cards with films from the "latest" var (extracted with API) """
 
-    time.sleep(3)
+    time.sleep(1)
     if num == 0 :
         send_msg(sender,'Voici les meilleurs films en salle', ACCESS_TOKEN)
 
@@ -207,7 +208,7 @@ def film_display(num, sender, latest):
         send_quick_rep(sender, "Veux-tu voir d'autres films ?", btns ,ACCESS_TOKEN)
         
 def exhibition_display(num, sender, payload =""):
-    time.sleep(3)
+    time.sleep(1)
     if num == 0 :        
         send_msg(sender, "L'art, c'est chouette !", ACCESS_TOKEN)
         msg = "Il y a plusieurs types d'expositions, qu'est-ce qui t'intéresse le plus ?"
@@ -241,4 +242,4 @@ def exhibition_display(num, sender, payload =""):
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',debug=True)
+    app.run(host='0.0.0.0', debug=True)

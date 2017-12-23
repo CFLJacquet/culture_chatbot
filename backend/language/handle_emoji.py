@@ -61,7 +61,7 @@ def convert_special(c):
         except:
             c = '_.�._'
     elif c in [":)", ":-)"]:
-        c = '☺'
+        c = '_.☺._'
     elif c in ["=)"]:
         c = "_.smiling_face_with_smiling_eyes._"
     elif c in [":(", ":-(", "=("]:
@@ -89,7 +89,7 @@ def convert_special(c):
     elif c in [";)", ";-)"]:
         c = "_.winking_face._"
     elif c in ["<3", "\u2764\uFE0F"]:
-        c = "❤"
+        c = "_.❤._"
     elif c in ["8)", "8-)"]:
         c = "_.smiling_face_with_sunglasses._"
     elif c in ["-_-"]:
@@ -103,19 +103,30 @@ def convert_special(c):
     return c
 
 def convert_string(s):
-    return " ".join([convert_special(c) for c in s.split(" ")])
+    """ converts string into a tuple (string without emoji, list of emojis) """
+
+    text = []
+    smileys = []
+    cv = [convert_special(c) for c in s.split(" ")]
+    for elt in cv:
+        if elt[:2] == "_.":
+            smileys.append(elt)
+        else:
+            text.append(elt)
+    
+    return text, smileys
 
 
 def emoji_sentiment(s):
-    """ for each word of the sentence, gets the sentiment score for known emoji in [-1; 1] """
+    """ for each emoji of the sentence, gets its sentiment score in [-1; 1] """
     
-    s = x.split(" ")
+    emoji = convert_string(s)[1]
     results = []
-    for word in s:
+    for elt in emoji:
         for item in data:
-            if item['img'] == word:
+            if item['img'] == elt:
                 sentiment = item['sentiment']
-                results.append((word, sentiment))
+                results.append((elt, sentiment))
                 break
         else:
             sentiment = "0"
@@ -123,8 +134,8 @@ def emoji_sentiment(s):
     return results
 
 if __name__ == '__main__':
-    x = convert_string("salut :D je suis trop chaud ⛄ 🤞 ❤️".lower())
-    print(x)
+    x = "salut >:( je suis trop chaud ⛄ 🤞 ❤️".lower()
+    print(convert_string(x))
     print(emoji_sentiment(x))
     
     

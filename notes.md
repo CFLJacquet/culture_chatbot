@@ -22,3 +22,11 @@ curl -X POST -H "Content-Type: application/json" -d '{
 - quand on supprime le webhook et on le réactive, penser à l'associer à la page FB
 
 - scrapy: exports options !!! https://doc.scrapy.org/en/1.2/topics/feed-exports.html#std:setting-FEED_EXPORT_ENCODING
+
+
+avoir derniere version du master:
+- git pull --rebase master (prendre les modif qui ont été mergé pdt ce temps)
+
+git add [fichier en conflit]
+
+=> git push -f (force push)

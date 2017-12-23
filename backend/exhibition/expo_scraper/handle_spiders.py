@@ -3,8 +3,7 @@ import pickle
 from dateparser import parse
 import json
 from unicodedata import normalize
-import scrapy
-from scrapy.crawler import CrawlerProcess
+from pprint import pprint
 
 def transform_opening_hours(prog):
     "Tous les jours (sauf lun) 14h-19h."
@@ -36,9 +35,11 @@ def merge_results():
                 eltm['price'] = elte['price']
                 merged.append( eltm)
 
-    with open("backend/exhibition/data_exhibition", 'wb') as f:
-        p = pickle.Pickler(f)
-        p.dump(merged)
+    pprint(merged[:1])
+
+    #with open("backend/exhibition/data_exhibition", 'wb') as f:
+    #    p = pickle.Pickler(f)
+    #    p.dump(merged)
 
 
 if __name__ == "__main__":
