@@ -1,7 +1,11 @@
 # spider to scrap data from l'office des spectacles
+# need to update the 'start_url' each month
 
+import os
+from unicodedata import normalize
 import scrapy
 from scrapy.crawler import CrawlerProcess
+from dateparser import parse
 
 class Expo_offspec_Spider(scrapy.Spider):
     name = "expo_offspec"
@@ -12,7 +16,7 @@ class Expo_offspec_Spider(scrapy.Spider):
 
     def parse(self, response):
 
-        for i, expo in enumerate(response.css("div.oneRes")):
+        for expo in response.css("div.oneRes"):
             try:
                 title = ' '.join(expo.css("div.eventTitle strong a span::text").extract_first().split())
             except:
@@ -30,49 +34,78 @@ class Expo_offspec_Spider(scrapy.Spider):
             except:
                 url = ""
             try:
-                prog = ' '.join(expo.xpath(".//li[contains(.,'{}')]//text()".format('Programmation')).extract()[1].split())
+                timetable = ' '.join(expo.xpath(".//li[contains(.,'{}')]//text()".format('Programmation')).extract()[1].split())
             except:
-                prog = "Horaires non disp."
+                timetable = "Horaires non disp."
             try:
-                date_start = expo.xpath(".//li[contains(.,'{}')]//text()".format('Date de début')).extract()[1] #date en francais en str -> besoin de transformer avec dateparser plus tard
+                date_start = parse(expo.xpath(".//li[contains(.,'{}')]//text()".format('Date de début')).extract()[1]).strftime("%Y-%m-%d")
             except:
                 date_start = "Date de départ non disp."
             try:
-                date_end = expo.xpath(".//li[contains(.,'{}')]//text()".format('Date de fin')).extract()[1]
+                date_end = parse(expo.xpath(".//li[contains(.,'{}')]//text()".format('Date de fin')).extract()[1]).strftime("%Y-%m-%d")
             except:
                 date_end = "Date de fin non disp."
             try:
                 location = expo.xpath(".//li[contains(.,'Lieu')]//a//text()").extract_first() + " " + " ".join(expo.xpath(".//li[contains(.,'{}')]//text()".format('Lieu')).extract()[3].split())
             except:
                 location = "Lieu non disp."
-            try:
-                description = ' '.join(' '.join(expo.css("div.oneRes::text").extract()).split())
-            except:
-                description = "Descr. non disp."
 
-
-            yield {
+            request_details = scrapy.Request(url, self.parse_details)
+            request_details.meta['data'] = {
                 'title': title,
-                'type': genre,
                 'img_url': img_url,
                 'url': url,
-                'prog': prog,
-                'date_start': date_start, 
-                'date_end': date_end,
+                'genre': genre,
                 'location': location,
-                'description': description
+                'd_start': date_start, 
+                'd_end': date_end,
+                'timetable': timetable,
+                'reviews':"",
+                'rank':0
             }
+
+            yield request_details 
 
         next_page = response.css("div.dayNav ul li.last a::attr(href)").extract_first()
         if next_page != '/expositions-musees/mois-12-2017.html?npage=1':
             next_page = response.urljoin(next_page)
             yield scrapy.Request(next_page, callback=self.parse)
+        
+
+    def parse_details(self, response):
+        data = response.meta['data']
+        try:
+            main = response.css("ul.detail li")
+            text =[]
+            for i in range(1, len(main)):
+                if '<li style="min-height:28px;margin-bottom:14px;">' in main[i].extract() :
+                    break
+                else:
+                    text.append(' '.join(main[i].xpath('.//text()').extract()))
+            s = ' '.join(text)
+        except :
+            s = "Sacrebleu ! Nous n'avons pas réussi à récupérer le détail... :("
+        try:
+            price = response.xpath("//li[contains(.,'Tarif')]//text()").extract()[1].capitalize()
+        except:
+            price = "Tarif non disp."
+
+        data['summary'] = normalize('NFC', s)
+        data['price'] = price
+
+        yield data
+
 
 if __name__ == "__main__":
+    try:
+        os.remove("backend/exhibition/expo_scraper/extracted_data/offSpectacles.jsonl")
+    except OSError:
+        pass
+
     process = CrawlerProcess({
         'USER_AGENT': 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)',
         'FEED_FORMAT': 'jsonlines',
-        'FEED_URI': 'backend/exhibition/expo_scraper/extracted_data/offSpec_main.jsonl'
+        'FEED_URI': 'backend/exhibition/expo_scraper/extracted_data/offSpectacles.jsonl'
     })
 
     process.crawl(Expo_offspec_Spider)

@@ -23,6 +23,9 @@ curl -X POST -H "Content-Type: application/json" -d '{
 
 - scrapy: exports options !!! https://doc.scrapy.org/en/1.2/topics/feed-exports.html#std:setting-FEED_EXPORT_ENCODING
 
+- scrapy: appeler d'autres scraper dans le scraper principal
+https://stackoverflow.com/questions/33589136/scrapy-understanding-how-do-items-and-requests-work-between-callbacks 
+
 
 avoir derniere version du master:
 - git pull --rebase master (prendre les modif qui ont été mergé pdt ce temps)
