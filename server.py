@@ -107,7 +107,7 @@ def handle_event():
                 send_msg(sender, "A bientôt !", ACCESS_TOKEN)
             if answer == [0,0,0,0]:
                 send_msg(sender, "Je n'ai pas compris ce que tu as dit... 😰", ACCESS_TOKEN)
-                send_msg(sender, "Tu peux me demander des infos sur des expos ou des films, et si tu as eu les informations souhaitées, dis moi juste 'ok' ou 'au revoir' :)", ACCESS_TOKEN)
+                send_msg(sender, "Tu peux me demander des infos sur des expos ou des films. Si tu as eu les informations souhaitées, dis moi juste 'au revoir' ou 'merci' :)", ACCESS_TOKEN)
 
 
     elif "postback" in event:
@@ -125,7 +125,7 @@ def handle_event():
             data = get_exhib(x[1], int(x[3]))[0][int(x[2])]
             
             send_msg(sender, "Description: "+data['summary'], ACCESS_TOKEN)
-            send_msg(sender, "Horaires: "+data['prog'], ACCESS_TOKEN)
+            send_msg(sender, "Horaires: "+data['timetable'], ACCESS_TOKEN)
             send_msg(sender, "Prix: "+data['price'], ACCESS_TOKEN)
             time.sleep(10)
             start_buttons(sender, "Autre chose ?")
@@ -209,8 +209,7 @@ def film_display(num, sender, latest):
         
 def exhibition_display(num, sender, payload =""):
     time.sleep(1)
-    if num == 0 :        
-        send_msg(sender, "L'art, c'est chouette !", ACCESS_TOKEN)
+    if num == 0 :
         msg = "Il y a plusieurs types d'expositions, qu'est-ce qui t'intéresse le plus ?"
         
         btns_genre = get_genre()[1]
