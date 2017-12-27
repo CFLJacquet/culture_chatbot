@@ -1,5 +1,6 @@
 from nltk.tokenize import RegexpTokenizer
 import json
+import re
 import os
 from pprint import pprint
 from operator import itemgetter
@@ -32,19 +33,26 @@ def merge_results():
     merged = []
     with open('backend/exhibition/expo_scraper/extracted_data/offSpectacles.jsonl') as f:
         for line in f:
-            if not any(d['title'].lower() == json.loads(line)['title'].lower() for d in merged):
-                merged.append(json.loads(line))
+            expo = json.loads(line) 
+            if not any(d['title'].lower() == expo['title'].lower() for d in merged):
+                expo['summary'] = expo['summary'].replace("\u2019", "'")
+                print()
+                merged.append(expo)
 
     parisBouge = []
     with open('backend/exhibition/expo_scraper/extracted_data/parisBouge.jsonl') as f:
         for line in f:
-            if not any(d['title'].lower() == json.loads(line)['title'].lower() for d in parisBouge):
-                parisBouge.append(json.loads(line))
+            expo = json.loads(line)
+            if not any(d['title'].lower() == expo['title'].lower() for d in parisBouge):
+                expo['summary'] = expo['summary'].replace("\u2019", "'")
+                parisBouge.append(expo)
     
     timeout = []
     with open('backend/exhibition/expo_scraper/extracted_data/timeout.jsonl') as f:
         for line in f:
-            timeout.append(json.loads(line))
+            expo = json.loads(line)
+            expo['review'].replace("\u2019", "'")
+            timeout.append(expo)
 
     # Merge Parisbouge and Officiel des Spectacles
     extra = []
@@ -96,11 +104,14 @@ def append_to_full(new_list_of_exhib):
     except: 
         data = []
         print('creating new file')
+    db_size = len(data)
 
     for elt in new_list_of_exhib:
         if not any(d['title'] == elt['title'] for d in data):
+            elt['id'] = db_size
             data.append(elt)
             i += 1
+            db_size += 1
     
     with open('backend/exhibition/data_exhibition.json', 'w') as outfile:
         json.dump(data, outfile)

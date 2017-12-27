@@ -1,102 +1,77 @@
 import re
-import pickle
-from nltk.tokenize import RegexpTokenizer
-from nltk.corpus import stopwords
-from classes import Document
+import json
+from math import log10
+from nltk.probability import FreqDist
+import treetaggerwrapper as ttw 
 
-tokenizer = RegexpTokenizer(r'\w+')
+tagger = ttw.TreeTagger(TAGLANG='fr')
+stopwords = open("backend/language/stopwords.txt", 'r', encoding='utf-8').read()
 
-def get_docs(name):
-    """ Pre-treatment of document """
-    with open(name, 'r') as fp:
-        collection = {}
-        write = ""
-        ID = 0
-        collection[ID] = Document(ID)
-        txt = {}
-        
-        for line in fp:
-            if write == "" or line[:2] in (".I", ".W", ".K", ".T"):
-                if re.match(r"^.I", line):
-                    txt[ID] = collection[ID].concat()
-                    ID = int(line[3:-1])
-                    collection[ID] = Document(ID)
-                elif re.match(r"^.T", line):
-                    write = 'title'
-                elif re.match(r"^.W", line):
-                    write = 'summary'
-                elif re.match(r"^.K", line): 
-                    write = 'keywords'
-            elif write != "" and line[0] != ".":
-                if write == 'title':   
-                    collection[ID].title = collection[ID].title + line[:-1] + " "
-                elif write == 'summary':
-                    collection[ID].summary = collection[ID].summary + line[:-1] + " "
-                else :
-                    collection[ID].keywords = collection[ID].keywords + line[:-1] + " "
-            else:
-                write = ""
+def create_collection():
 
-    del txt[0]
-    del collection[0]
+    with open('backend/exhibition/data_exhibition.json', 'r') as f:
+        db = json.load(f)
+    collection = []
 
-    with open('CACM_collection_txt', 'wb') as fichier:
-        p = pickle.Pickler(fichier)
-        p.dump(txt)
-    with open('CACM_collection_docs', 'wb') as fichier:
-        p = pickle.Pickler(fichier)
-        p.dump(collection)
-
-def tok_filter_collection(collection):
-    """ Map - treatment of tokens (to significant unique words for each doc)"""
-
-    dictionary= []
-    nb_tokens = 0 
-    stop = open("data/common_words", 'r').read()
-
-    for i in range (1, len(collection)+1): 
-        tokens = tokenizer.tokenize(collection[i])
-        nb_tokens += len(tokens)
-        for elt in tokens:
-            w = elt.lower()
-            if w not in stop and not re.match(r"[0-9]+", w):
-                #lemmetization ou racinisation
-                dictionary.append((w, i))
-    print("nb tokens: " + str(nb_tokens))
-
-    no_duplicates = list(set(dictionary))
+    for elt in db:
+        text = elt['title'] + elt['summary'] + elt['reviews']
+        terms = tf_text(text.lower(), elt['id'])
+        collection += terms
     
-    return no_duplicates
+    s_list = sorted(collection)
 
-def sort_ag(tokens):
-    """ Shuffle - sort & reduce """
-    s_list = sorted(tokens)
+    return s_list
 
-    for i in range(0, len(s_list)): 
-        s_list[i]=(s_list[i][0], 1, [s_list[i][1]])
+def tf_text(text_title_summary_reviews, docID):
+    """ Returns a list of filtered terms: (term, (docID, tf)) """
+
+    tags = tagger.tag_text(text_title_summary_reviews)
+    tags2 = ttw.make_tags(tags)
+
+    keywords =[]
+    fdist = FreqDist()
+
+    for elt in tags2:
+        try:
+            if not elt.lemma.lower() in stopwords:
+                keywords.append(elt.lemma)
+        except:
+            pass
+
+    fdist = FreqDist(keywords)
+    result = [(x[0],(docID, 1+log10(x[1]))) for x in fdist.items()]
+
+    return result
+
+def aggregate(full_collection_terms):
+    """ Creates the reverse index: list of (term, collection_freq, [posting_list: (docID, tf-idf)]) """
+
+    term = [(x[0], 1, [x[1]]) for x in full_collection_terms]
     
-    dictionary =[s_list[0]]
-    for i in range (1, len(s_list)):
-        if s_list[i][0] != s_list[i-1][0]:
-            dictionary.append(s_list[i])
+    d =[term[0]]
+    for i in range (1, len(term)):
+        if term[i][0] != term[i-1][0]:
+            d.append(term[i])
         else:
-            dictionary[len(dictionary)-1] = (dictionary[len(dictionary)-1][0], dictionary[len(dictionary)-1][1] + 1,dictionary[len(dictionary)-1][2]+s_list[i][2])
+            print()
+            d[len(d)-1] = (d[len(d)-1][0], d[len(d)-1][1] + 1, d[len(d)-1][2] + term[i][2])
 
-    with open('CACM_index_inverse', 'wb') as fichier:
-        p = pickle.Pickler(fichier)
-        p.dump(dictionary)
+    result = []
+    for elt in d:
+        term = [elt[0], elt[1], []]
+        for posting in elt[2]:
+            r = posting[0], posting[1] * log10( len(d) / elt[1] )
+            term[2].append(r)
+        result.append(term)
 
-    return dictionary
+    return result
 
 if __name__ == "__main__":
-    #x = get_docs("data/cacm.all")
     
-    with open('CACM_collection_txt', 'rb') as fichier:
-        d = pickle.Unpickler(fichier)
-        txt = d.load()
+    c = create_collection()
+    a = aggregate(c)
     
-    tokens = tok_filter_collection(txt)
-    
-    dictionary = sort_ag(tokens)
-    
-    print(len(dictionary))
+    with open('backend/exhibition/index.json', 'w') as outfile :
+        json.dump(a, outfile)
+    print("the index contains {} words".format(len(a)))
+
