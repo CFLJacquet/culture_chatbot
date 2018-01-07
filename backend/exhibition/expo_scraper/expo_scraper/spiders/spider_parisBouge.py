@@ -19,9 +19,9 @@ class Expo_parisbouge_Spider(scrapy.Spider):
 
         for expo in expo_list:
             try:
-                title = expo.xpath(".//div[@class = 'card-title- onelined']//a/text()").extract_first()
+                title = expo.xpath(".//div[@class = 'card-title- onelined']//a/text()").extract_first().replace("\u2019","'")
             except:
-                title = "Titre non disp."
+                title = "Titre Indisp."
             try:
                 img_url = expo.xpath(".//img/@data-original").extract_first()
             except:
@@ -47,11 +47,11 @@ class Expo_parisbouge_Spider(scrapy.Spider):
         try :
             price = response.xpath("//div[@class = 'col-xs-12 col-sm-11'][contains(., 'tarif')]//p/text()").extract()[1]
         except:
-            price = "Prix indisp."
+            price = "Prix Indisp."
         try:        # list of genre
             genre = response.xpath("//div[@class = 'col-xs-12 col-sm-11'][contains(., 'style')]//p//span/text()").extract() 
         except:
-            genre = "Genre indisp."
+            genre = "Genre Indisp."
         description = BeautifulSoup(response.xpath("//p[@id = 'event-detail-infos-content']").extract_first())
         
         data['url'] = response.url
@@ -62,7 +62,7 @@ class Expo_parisbouge_Spider(scrapy.Spider):
         data['timetable'] = "Horaires Indisp."
         data['reviews'] = ""
         data['rank'] = 0
-        data['summary'] = description.getText()
+        data['summary'] = description.getText().replace("\u2019","'")
         data['price'] = price
         
         yield data

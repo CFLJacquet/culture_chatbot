@@ -19,7 +19,7 @@ class Expo_timeout_Spider(scrapy.Spider):
             try:
                 url = response.urljoin(expo.xpath(".//h3//a/@href").extract_first())
             except:
-                title = "Non disp."
+                url = "Non disp."
 
             request_details = scrapy.Request(url, self.parse_details)
             request_details.meta['data'] =  { 'url': url }
@@ -34,9 +34,9 @@ class Expo_timeout_Spider(scrapy.Spider):
         except:
             score = 0
 
-        data['title'] = response.xpath("//h1/text()").extract_first()
+        data['title'] = response.xpath("//h1/text()").extract_first().replace("\u2019","'")
         data['score'] = score
-        data['review'] = ' '.join(response.xpath("//article[contains(@itemprop, 'review')]//p/text()").extract())
+        data['review'] = ' '.join(response.xpath("//article[contains(@itemprop, 'review')]//p/text()").extract()).replace("\u2019","'")
         
         yield data
 

@@ -6,21 +6,24 @@ from unicodedata import normalize
 import scrapy
 from scrapy.crawler import CrawlerProcess
 from dateparser import parse
+from datetime import datetime as dt
+
+current_month = dt.today().strftime('%m-%Y')
 
 class Expo_offspec_Spider(scrapy.Spider):
     name = "expo_offspec"
     
     start_urls = [
-        'https://www.offi.fr/expositions-musees/mois-12-2017.html?npage=1',
+        'https://www.offi.fr/expositions-musees/mois-{}.html?npage=1'.format(current_month),
     ]
 
     def parse(self, response):
 
         for expo in response.css("div.oneRes"):
             try:
-                title = ' '.join(expo.css("div.eventTitle strong a span::text").extract_first().split())
+                title = ' '.join(expo.css("div.eventTitle strong a span::text").extract_first().split()).replace("\u2019","'")
             except:
-                title = "Titre non disp."
+                title = "Titre Indisp."
             try:
                 genre = ' '.join(expo.xpath(".//li[contains(.,'{}')]//text()".format('Rubrique')).extract()[1][2:].split())
             except:
@@ -36,19 +39,19 @@ class Expo_offspec_Spider(scrapy.Spider):
             try:
                 timetable = ' '.join(expo.xpath(".//li[contains(.,'{}')]//text()".format('Programmation')).extract()[1].split())
             except:
-                timetable = "Horaires non disp."
+                timetable = "Horaires Indisp."
             try:
                 date_start = parse(expo.xpath(".//li[contains(.,'{}')]//text()".format('Date de début')).extract()[1]).strftime("%Y-%m-%d")
             except:
-                date_start = "Date de départ non disp."
+                date_start = "Date de départ Indisp."
             try:
                 date_end = parse(expo.xpath(".//li[contains(.,'{}')]//text()".format('Date de fin')).extract()[1]).strftime("%Y-%m-%d")
             except:
-                date_end = "Date de fin non disp."
+                date_end = "Date de fin Indisp."
             try:
                 location = expo.xpath(".//li[contains(.,'Lieu')]//a//text()").extract_first() + " " + " ".join(expo.xpath(".//li[contains(.,'{}')]//text()".format('Lieu')).extract()[3].split())
             except:
-                location = "Lieu non disp."
+                location = "Lieu Indisp."
 
             request_details = scrapy.Request(url, self.parse_details)
             request_details.meta['data'] = {
@@ -67,7 +70,7 @@ class Expo_offspec_Spider(scrapy.Spider):
             yield request_details 
 
         next_page = response.css("div.dayNav ul li.last a::attr(href)").extract_first()
-        if next_page != '/expositions-musees/mois-12-2017.html?npage=1':
+        if next_page != '/expositions-musees/mois-{}.html?npage=1'.format(current_month):
             next_page = response.urljoin(next_page)
             yield scrapy.Request(next_page, callback=self.parse)
         
@@ -82,13 +85,13 @@ class Expo_offspec_Spider(scrapy.Spider):
                     break
                 else:
                     text.append(' '.join(main[i].xpath('.//text()').extract()))
-            s = ' '.join(text)
+            s = ' '.join(text).replace("\u2019","'")
         except :
             s = "Sacrebleu ! Nous n'avons pas réussi à récupérer le détail... :("
         try:
             price = response.xpath("//li[contains(.,'Tarif')]//text()").extract()[1].capitalize()
         except:
-            price = "Tarif non disp."
+            price = "Tarif Indisp."
 
         data['summary'] = normalize('NFC', s)
         data['price'] = price

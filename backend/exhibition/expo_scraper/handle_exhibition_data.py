@@ -35,8 +35,6 @@ def merge_results():
         for line in f:
             expo = json.loads(line) 
             if not any(d['title'].lower() == expo['title'].lower() for d in merged):
-                expo['summary'] = expo['summary'].replace("\u2019", "'")
-                print()
                 merged.append(expo)
 
     parisBouge = []
@@ -44,14 +42,19 @@ def merge_results():
         for line in f:
             expo = json.loads(line)
             if not any(d['title'].lower() == expo['title'].lower() for d in parisBouge):
-                expo['summary'] = expo['summary'].replace("\u2019", "'")
                 parisBouge.append(expo)
+
+    expoInTheCity = []
+    with open('backend/exhibition/expo_scraper/extracted_data/expoInTheCity.jsonl') as f:
+        for line in f:
+            expo = json.loads(line)
+            if not any(d['title'].lower() == expo['title'].lower() for d in expoInTheCity):
+                expoInTheCity.append(expo)
     
     timeout = []
     with open('backend/exhibition/expo_scraper/extracted_data/timeout.jsonl') as f:
         for line in f:
             expo = json.loads(line)
-            expo['review'].replace("\u2019", "'")
             timeout.append(expo)
 
     # Merge Parisbouge and Officiel des Spectacles
@@ -76,6 +79,8 @@ def merge_results():
     
     sorted_exhib = sorted(merged + extra, key=itemgetter('title')) 
 
+
+    # Appends TimeOut reviews to existing exhibition
     for timeout_elt in timeout:
         t = tokenizer.tokenize(timeout_elt['title'].lower())
         for elt in sorted_exhib:
