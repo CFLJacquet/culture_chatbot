@@ -8,10 +8,10 @@ from scrapy.crawler import CrawlerProcess
 from dateparser import parse
 from datetime import datetime as dt
 
-current_month = dt.today().strftime('%m-%Y')
-
 class Expo_offspec_Spider(scrapy.Spider):
     name = "expo_offspec"
+    
+    current_month = dt.today().strftime('%m-%Y')
     
     start_urls = [
         'https://www.offi.fr/expositions-musees/mois-{}.html?npage=1'.format(current_month),
@@ -70,7 +70,7 @@ class Expo_offspec_Spider(scrapy.Spider):
             yield request_details 
 
         next_page = response.css("div.dayNav ul li.last a::attr(href)").extract_first()
-        if next_page != '/expositions-musees/mois-{}.html?npage=1'.format(current_month):
+        if next_page != '/expositions-musees/mois-{}.html?npage=1'.format(Expo_offspec_Spider.current_month):
             next_page = response.urljoin(next_page)
             yield scrapy.Request(next_page, callback=self.parse)
         

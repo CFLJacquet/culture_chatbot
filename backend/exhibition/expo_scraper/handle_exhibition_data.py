@@ -5,7 +5,17 @@ import os
 from pprint import pprint
 from operator import itemgetter
 
+from scrapy.crawler import CrawlerProcess
+from expo_scraper.spiders.spider_expoInTheCity import Expo_expoInTheCity_Spider
+from expo_scraper.spiders.spider_offSpectacles import Expo_offspec_Spider
+from expo_scraper.spiders.spider_parisBouge import Expo_parisbouge_Spider
+from expo_scraper.spiders.spider_timeout import Expo_timeout_Spider
+
 tokenizer = RegexpTokenizer(r'\w+')
+
+def run_spiders():
+# Runs the spider on Office des Spectacles
+    pass
 
 def transform_opening_hours(prog):
     "Tous les jours (sauf lun) 14h-19h."
@@ -127,5 +137,8 @@ if __name__ == "__main__":
     #---to test the opening hours transformation function, uncomment the following line
     #transform_opening_hours( "Tous les jours (sauf lun) 14h-19h.")
 
+    #---to run all the spiders, uncomment the following line
+    run_spiders()
+
     #---to get merged result of scraped data, uncomment the following line
-    append_to_full(merge_results())
+    # append_to_full(merge_results())
