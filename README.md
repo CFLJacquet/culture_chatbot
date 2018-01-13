@@ -1,6 +1,11 @@
-Source code of Strolling bot
+# Project Strolling bot
 
-Structure:   
+FB Messenger chatbot that recommends you cultural events in Paris (exhibition, movie...) based on the user's interest.
+
+### Website: https://www.strolling.club/ 
+
+# Back-end Structure:   
+
 ├── backend   
 │   ├── cinema  
 │   ├── exhibition  
@@ -17,13 +22,15 @@ Structure:
 ├── uwsgi_config.ini                  
 └── wsgi.py             
 
-Environment (virtualenv): Python 3.5  
+# Environment 
 
-Installed libraries:  
-- flask   
-- uwsgi (not needed on local machines to dev)  
-- schedule -> to schedule python jobs  
-- scrapy -> to scrape website info  
-- dateparser -> to transform dates in French in date objects  
-- treetaggerwrapper (+TreeTagger) -> to tag and lemmatize French   (http://treetaggerwrapper.readthedocs.io/en/latest/)   
+(virtualenv): Python 3.5  
+
+### Installed libraries:  
+* flask   
+* uwsgi (not needed on local machines to dev)  
+* schedule -> to schedule python jobs  
+* scrapy -> to scrape website info  
+* dateparser -> to transform dates in French in date objects  
+* treetaggerwrapper (+TreeTagger) -> to tag and lemmatize French   (http://treetaggerwrapper.readthedocs.io/en/latest/)   
 
