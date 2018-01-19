@@ -9,8 +9,9 @@ import pickle
 
 from backend.cinema.allocine import get_last_movies
 from backend.messenger.msg_fct import user_details, typing_bubble, send_msg, send_button, send_card, send_quick_rep
-from backend.exhibition.handle_expo import get_genre, get_exhib
+from backend.exhibition.handle_expo import get_genre, get_exhib, get_exhib_query
 from backend.language.handle_text import get_meaning
+from backend.language.handle_text_query import vect_search
 from backend.others.bdd_jokes import random_joke
 
 
@@ -25,7 +26,7 @@ logger.addHandler(file_handler)
 
 app = Flask(__name__)
 
-ACCESS_TOKEN = "EAAHSfldMxYcBAIevH9zyhgT5MEpXJBkD9a2FWJFFZBZBQVvjAB83EVEZB7bdLZC7q3k8xpiSI9DTwuymgimLFZChbVttqVZAmKLUPNy4M1OeHZCulllSGQ1H93iBKw0HS4FvmvzdwlZAqIBDxH26Jp1KnesH61817RBhLexHNkOp6QZDZD"
+ACCESS_TOKEN = "EAACQPdicZCwQBANXldYUCDelT2TPLSjhSVCQTYKN7hffULVva6r4lIfC3TR9ba7q6lvMNKj6UqZA2SjG6vNy9XCYcEbfZBp7N06gqIwc1nFRA1MMEalb30dEy6xSuZCNZBZBIYN7l5MlLfFreKxUucW2omWcJ3eWBS3j0FKylnoAZDZD"
 
 @app.route('/test')
 def test():
@@ -102,12 +103,15 @@ def handle_event():
             if answer[1] == 1:
                 film_display(0, sender, latest)
             if answer[2] == 1:
-                exhibition_display(0, sender)
+                time.sleep(1)
+                send_msg(sender, "J'ai trouvé ça, certaines devraient te plaire !", ACCESS_TOKEN)
+                send_card(sender, get_exhib_query(vect_search(message), 1), ACCESS_TOKEN)
+                #exhibition_display(0, sender)
             if answer[3] == 1:
                 send_msg(sender, "A bientôt !", ACCESS_TOKEN)
             if answer == [0,0,0,0]:
                 send_msg(sender, "Je n'ai pas compris ce que tu as dit... 😰", ACCESS_TOKEN)
-                send_msg(sender, "Tu peux me demander des infos sur des expos ou des films. Si tu as eu les informations souhaitées, dis moi juste 'au revoir' ou 'merci' :)", ACCESS_TOKEN)
+                send_msg(sender, "Tu peux me demander des infos sur des expos ou des films. Si tu as eu les informations souhaitées, dis moi juste 'stop' ou 'merci' :)", ACCESS_TOKEN)
 
 
     elif "postback" in event:
@@ -140,7 +144,7 @@ def handle_event():
 
 def welcome(sender, user):
     time.sleep(1)
-    answer="Salut {}, je suis Iris ! Je connais les meilleurs films et expos de Paris.".format(user[1])
+    answer="Salut {}, je suis Electre ! Je connais les meilleurs films et expos de Paris.".format(user[1])
     send_msg(sender, answer, ACCESS_TOKEN)
     start_buttons(sender, "Qu'est-ce qui t'intéresserait ?")
 

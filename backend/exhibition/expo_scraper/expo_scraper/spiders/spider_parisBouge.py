@@ -56,6 +56,7 @@ class Expo_parisbouge_Spider(scrapy.Spider):
         
         data['url'] = response.url
         data['genre'] = genre
+        data['tags'] = genre
         data['location'] = response.xpath("//div[@class = 'address-container']//strong/text()").extract_first()
         data['d_start'] = response.xpath("//div[@class = 'row event-section l-section']").xpath(".//div[contains(.,'date et heure')]//a/@href").extract_first().split('&')[2][11:]
         data['d_end'] = response.xpath("//div[@class = 'row event-section l-section']").xpath(".//div[contains(.,'date et heure')]//a/@href").extract_first().split('&')[3][9:]
@@ -64,7 +65,8 @@ class Expo_parisbouge_Spider(scrapy.Spider):
         data['rank'] = 0
         data['summary'] = description.getText().replace("\u2019","'")
         data['price'] = price
-        
+        data['source'] = "4-parisBouge"
+
         yield data
 
 

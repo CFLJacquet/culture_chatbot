@@ -6,8 +6,8 @@ tagger = ttw.TreeTagger(TAGLANG='fr')
 
 GREETINGS = ('salut', 'bonjour', 'coucou', 'yo', 'hello', 'hi', 'ola')
 CINEMA = ('ciné', 'cine', 'cinéma', 'cinema', 'film')
-EXHIBITION = ('expo', 'exposition', 'musée', 'musee')
-EXIT = ('stop', 'merci', 'au revoir', 'a plus')
+EXHIBITION = ('expo', 'exposition', 'musée', 'musee', 'gallerie', '')
+EXIT = ('stop', 'merci')
 
 def process_text(msg):
     """ Input: str or list / Output: list of named tuples containing the POS tag and lemma of each word """

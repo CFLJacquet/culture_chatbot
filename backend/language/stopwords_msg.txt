@@ -1,11 +1,9 @@
 alors
-au
 aucuns
 ainsi
 aussi
 autre
 avant
-avec
 avoir
 bon
 car
@@ -33,7 +31,6 @@ dos
 début
 elle
 elles
-en
 encore
 essai
 est
@@ -57,7 +54,6 @@ leur
 là
 lui
 ma
-maintenant
 mais
 mes
 mine
@@ -69,16 +65,12 @@ ni
 nommés
 notre
 nous
-ou
-où
-par
 parce
 pas
 peut
 peu
 plupart
 plus
-pour
 pourquoi
 quand
 que
@@ -121,8 +113,6 @@ vu
 étions
 été
 être
-expo
-exposition
 x
 v
 &

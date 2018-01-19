@@ -58,7 +58,8 @@ class Expo_offspec_Spider(scrapy.Spider):
                 'title': title,
                 'img_url': img_url,
                 'url': url,
-                'genre': genre,
+                'genre': genre,                
+                'tags': [genre],
                 'location': location,
                 'd_start': date_start, 
                 'd_end': date_end,
@@ -95,6 +96,7 @@ class Expo_offspec_Spider(scrapy.Spider):
 
         data['summary'] = normalize('NFC', s)
         data['price'] = price
+        data['source'] = "5-offSpectacles"
 
         yield data
 

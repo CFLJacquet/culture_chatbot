@@ -4,141 +4,105 @@ import re
 import os
 from pprint import pprint
 from operator import itemgetter
+import pandas as pd
 
 from scrapy.crawler import CrawlerProcess
 from expo_scraper.spiders.spider_expoInTheCity import Expo_expoInTheCity_Spider
 from expo_scraper.spiders.spider_offSpectacles import Expo_offspec_Spider
 from expo_scraper.spiders.spider_parisBouge import Expo_parisbouge_Spider
-from expo_scraper.spiders.spider_timeout import Expo_timeout_Spider
+#from expo_scraper.spiders.spider_timeout import Expo_timeout_Spider
 
 tokenizer = RegexpTokenizer(r'\w+')
+stopwords = open("backend/language/stopwords.txt", 'r', encoding='utf-8').read()
 
 def run_spiders():
-# Runs the spider on Office des Spectacles
-    pass
+    ''' Runs all the spiders (expoInTheCity, offspec, parisbouge, timeout) '''
+    try:
+        os.remove("backend/exhibition/expo_scraper/extracted_data/all_expo.jsonl")
+    except OSError:
+        pass
+
+    process = CrawlerProcess({
+        'USER_AGENT': 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)',
+        'FEED_FORMAT': 'jsonlines',
+        'FEED_URI': 'backend/exhibition/expo_scraper/extracted_data/all_expo.jsonl'
+    })
+    
+    process.crawl(Expo_expoInTheCity_Spider)
+    process.crawl(Expo_offspec_Spider)
+    process.crawl(Expo_parisbouge_Spider)
+    #process.crawl(Expo_timeout_Spider)
+    process.start() # the script will block here until the crawling is finished
 
 def transform_opening_hours(prog):
     "Tous les jours (sauf lun) 14h-19h."
     x = prog
     return x
 
+def tok_title(cell):
+    """ for merging operation, to detect duplicates """
+    words = tokenizer.tokenize(cell.lower())
+    return [word for word in words if word not in stopwords]
+
 def merge_results():
     """ Merges the data from scrapped sites (ParisBouge, Offi des Spectacles, TimeOut). Returns a list of dict """
 
-    # Format of data
-    # i = {}
-    # i['title']
-    # i['img_url']
-    # i['url']
-    # i['genre']
-    # i['location']
-    # i['d_start']
-    # i['d_end']
-    # i['timetable']
-    # i['reviews']
-    # i['rank']
-    # i['summary']
-    # i['price']
-
-    merged = []
-    with open('backend/exhibition/expo_scraper/extracted_data/offSpectacles.jsonl') as f:
-        for line in f:
-            expo = json.loads(line) 
-            if not any(d['title'].lower() == expo['title'].lower() for d in merged):
-                merged.append(expo)
-
-    parisBouge = []
-    with open('backend/exhibition/expo_scraper/extracted_data/parisBouge.jsonl') as f:
-        for line in f:
-            expo = json.loads(line)
-            if not any(d['title'].lower() == expo['title'].lower() for d in parisBouge):
-                parisBouge.append(expo)
-
-    expoInTheCity = []
-    with open('backend/exhibition/expo_scraper/extracted_data/expoInTheCity.jsonl') as f:
-        for line in f:
-            expo = json.loads(line)
-            if not any(d['title'].lower() == expo['title'].lower() for d in expoInTheCity):
-                expoInTheCity.append(expo)
+    # Format of data (columns)
+    # ['title']['img_url']['url']['genre']['location']['d_start']['d_end']['timetable']
+    # ['reviews']['rank']['summary']['price']['source']['tags']
     
-    timeout = []
-    with open('backend/exhibition/expo_scraper/extracted_data/timeout.jsonl') as f:
-        for line in f:
-            expo = json.loads(line)
-            timeout.append(expo)
+    data = pd.read_json("backend/exhibition/expo_scraper/extracted_data/all_expo.jsonl", lines=True)
+    data.drop_duplicates(subset=['title', 'summary', 'source'], keep='first', inplace=True)
 
-    # Merge Parisbouge and Officiel des Spectacles
-    extra = []
-    for parisBouge_elt in parisBouge:
-        found = False
-        p = tokenizer.tokenize(parisBouge_elt['title'].lower())
-        for offSpectacles_elt in merged:
-            o = tokenizer.tokenize(offSpectacles_elt['title'].lower())
-            if len(o) < len(p):
-                small = o
-            else: 
-                small = p
-            
-            if set(o) & set(p) == set(small) :
-                offSpectacles_elt['reviews'] += "\n" + parisBouge_elt['summary']
-                offSpectacles_elt['rank'] += 1
-                found = True
-                break
-        if found == False:
-            extra.append(parisBouge_elt)
-    
-    sorted_exhib = sorted(merged + extra, key=itemgetter('title')) 
+    data["title_check"] = data['title'].apply(lambda x: tok_title(x))
+    data["sort"] = data["title_check"].apply(lambda x : ''.join(x))
+    data.sort_values(by=['sort', 'source'], ascending=[False, False], inplace=True)
+
+    clean = pd.DataFrame(columns = data.columns)
+    for index, row in data.iterrows():
+        try:
+            if set(row["title_check"]).issubset(set(clean.tail(1)["title_check"].tolist()[0])):
+                clean.iloc[-1, clean.columns.get_loc("reviews")]  += "\n" + row["summary"]
+                clean.iloc[-1, clean.columns.get_loc("rank")] += 1
+                clean.iloc[-1, clean.columns.get_loc("tags")] += row["tags"]
+                if clean.iloc[-1, clean.columns.get_loc("img_url")] == "":
+                    clean.iloc[-1, clean.columns.get_loc("img_url")] = row["img_url"]
+            else:
+                clean = clean.append(row, ignore_index=True)
+        except:
+            #needed to append the first line of the table
+            clean = clean.append(row, ignore_index=True)
+
+    clean.drop(["title_check", "sort"], axis=1, inplace=True)
+
+    return clean
 
 
-    # Appends TimeOut reviews to existing exhibition
-    for timeout_elt in timeout:
-        t = tokenizer.tokenize(timeout_elt['title'].lower())
-        for elt in sorted_exhib:
-            s = tokenizer.tokenize(elt['title'].lower())
-            if len(s) < len(t):
-                small = s
-            else: 
-                small = t
-            
-            if set(s) & set(t) == set(small) :
-                elt['reviews'] += "\n" + timeout_elt['review']
-                elt['rank'] += 1
-                break
-
-    return sorted_exhib
-
-
-def append_to_full(new_list_of_exhib):
+def append_to_full(new_list):
     """ Appends only the new exhibitions to the existing list of exhibitions """
 
-    i = 0
-    try: 
-        with open('backend/exhibition/data_exhibition.json', 'r') as f:
-            data = json.load(f)
-        print('the database already contains {} exhibitions'.format(len(data)))
-    except: 
-        data = []
-        print('creating new file')
-    db_size = len(data)
+    hist = pd.read_json("backend/exhibition/data_exhibition.json")
+    print("The database contains {} exhibitions.".format(hist.shape[0]))
+    
+    ID = max(hist["ID"])+1
+    nb_add =0
+    for index, row in new_list.iterrows():
+        if row["title"] not in hist["title"].values:
+            row["ID"] = ID
+            hist = hist.append(row, ignore_index=True)
+            nb_add +=1
+            ID +=1
 
-    for elt in new_list_of_exhib:
-        if not any(d['title'] == elt['title'] for d in data):
-            elt['id'] = db_size
-            data.append(elt)
-            i += 1
-            db_size += 1
+    hist.to_json("backend/exhibition/data_exhibition.json", orient="records")
     
-    with open('backend/exhibition/data_exhibition.json', 'w') as outfile:
-        json.dump(data, outfile)
-    
-    print("Appended {} new exhibitions".format(i))
+    print("Appended {} new exhibitions.\nThe database now contains {} exhibitions.".format(nb_add, hist.shape[0]))
 
 if __name__ == "__main__":
     #---to test the opening hours transformation function, uncomment the following line
     #transform_opening_hours( "Tous les jours (sauf lun) 14h-19h.")
 
     #---to run all the spiders, uncomment the following line
-    run_spiders()
+    # run_spiders()
 
     #---to get merged result of scraped data, uncomment the following line
-    # append_to_full(merge_results())
+    append_to_full(merge_results())

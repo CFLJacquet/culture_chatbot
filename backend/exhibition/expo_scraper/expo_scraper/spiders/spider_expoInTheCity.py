@@ -77,6 +77,7 @@ class Expo_expoInTheCity_Spider(scrapy.Spider):
                 'd_end': d_end, 
                 'genre': genre,
                 'location': location,
+                'tags': [genre],
             }
             yield request_details
 
@@ -107,6 +108,7 @@ class Expo_expoInTheCity_Spider(scrapy.Spider):
         data['rank'] = 0
         data['summary'] = description
         data['price'] = price
+        data['source'] = "3-expoInTheCity"
         
         yield data
 

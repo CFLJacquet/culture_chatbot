@@ -29,15 +29,16 @@ class Expo_timeout_Spider(scrapy.Spider):
     def parse_details(self, response):
         data = response.meta['data']
         
-        try:
+        try: #get score from reviews --> not used for the moment
             score = int(response.xpath("//label").xpath(".//div[contains(@class, 'rating')]/@title").extract_first()[0])
         except:
             score = 0
 
         data['title'] = response.xpath("//h1/text()").extract_first().replace("\u2019","'")
-        data['score'] = score
-        data['review'] = ' '.join(response.xpath("//article[contains(@itemprop, 'review')]//p/text()").extract()).replace("\u2019","'")
-        
+        data['rank'] = 0
+        data['reviews'] = ' '.join(response.xpath("//article[contains(@itemprop, 'review')]//p/text()").extract()).replace("\u2019","'")
+        data['source'] = '2-timeout'
+
         yield data
 
 if __name__ == "__main__":
