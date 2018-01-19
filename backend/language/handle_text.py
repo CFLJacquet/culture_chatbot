@@ -4,7 +4,7 @@ from pprint import pprint
 
 tagger = ttw.TreeTagger(TAGLANG='fr')
 
-GREETINGS = ('salut', 'bonjour', 'coucou', 'yo', 'hello', 'hi', 'ola')
+GREETINGS = ('salut', 'bonjour', 'coucou', 'yo', 'hello', 'hi', 'hey', 'ola')
 CINEMA = ('ciné', 'cine', 'cinéma', 'cinema', 'film')
 EXHIBITION = ('expo', 'exposition', 'musée', 'musee', 'gallerie', '')
 EXIT = ('stop', 'merci')

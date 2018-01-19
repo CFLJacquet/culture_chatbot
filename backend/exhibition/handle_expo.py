@@ -12,11 +12,10 @@ def get_genre():
     genre = []
     for elt in data:
         if elt['genre'] not in genre and not isinstance(elt['genre'], list) : 
-            print(elt['genre'])
             genre.append(elt['genre'])
     
     btns = []
-    for g in genre:                 #create button list to be sent
+    for g in genre[:9]:                 #create button list to be sent
         btns.append(
         {
             "content_type":"text",
@@ -68,7 +67,7 @@ def get_exhib(genre, iteration):
             }
         )
 
-    return per_rank, cards
+    return cards
 
 def get_exhib_query(exhib_ID_list, iteration):
     """ returns tuple: data of 5 exhibitions from the list of exhibition found by vect_search + cards to send """
@@ -101,13 +100,20 @@ def get_exhib_query(exhib_ID_list, iteration):
                 {
                 "type":"postback",
                 "title":"C'est quoi ?",
-                "payload":"Summary_expo*-/{}*-/{}*-/{}".format(r['genre'] ,i, iteration)
+                "payload":"Summary_expo*-/{}".format(r['ID'])
                 }]      
             }
         )
 
     return cards
 
+def get_detail_exhib(ID):
+    """ Returns the full info (dict) about the required exhibition """
+
+    with open("backend/exhibition/data_exhibition.json", 'r') as f:
+        data = json.load(f)
+
+    return [ x for x in data if x['ID'] == int(ID)][0]
 
 if __name__ == "__main__":    
     #---to test get genre function, uncomment the following line

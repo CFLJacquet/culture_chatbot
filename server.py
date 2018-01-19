@@ -9,7 +9,7 @@ import pickle
 
 from backend.cinema.allocine import get_last_movies
 from backend.messenger.msg_fct import user_details, typing_bubble, send_msg, send_button, send_card, send_quick_rep
-from backend.exhibition.handle_expo import get_genre, get_exhib, get_exhib_query
+from backend.exhibition.handle_expo import get_genre, get_exhib, get_exhib_query, get_detail_exhib
 from backend.language.handle_text import get_meaning
 from backend.language.handle_text_query import vect_search
 from backend.others.bdd_jokes import random_joke
@@ -68,7 +68,7 @@ def handle_event():
                 exhibition_display(num, sender, payload)      
             
             elif payload == "Not_interested":
-                send_msg(sender, "Je suis en train d'apprendre de nouvelles choses, mais pour l'instant je ne peux que te conseiller en cinéma et en expo ! Pour la peine, voice une dadjoke de consolation:", ACCESS_TOKEN)
+                send_msg(sender, "Je suis en train d'apprendre de nouvelles choses, mais pour l'instant je ne peux que te conseiller en cinéma et en expo ! Pour la peine, voici une dadjoke de consolation:", ACCESS_TOKEN)
                 send_msg(sender, random_joke(), ACCESS_TOKEN)                
                 send_msg(sender, "A bientôt !", ACCESS_TOKEN)
 
@@ -125,8 +125,8 @@ def handle_event():
         elif event['postback']['payload'][:12] == "Summary_expo":
             x = event['postback']['payload'].split("*-/") 
             
-            # x[0]: 'Summary_expo' / x[1]: genre / x[2]: card n° / x[3]: iteration
-            data = get_exhib(x[1], int(x[3]))[0][int(x[2])]
+            # x[0]: 'Summary_expo' / x[1]: exhib_ID
+            data = get_detail_exhib(x[1])
             
             send_msg(sender, "Description: "+data['summary'], ACCESS_TOKEN)
             send_msg(sender, "Horaires: "+data['timetable'], ACCESS_TOKEN)
@@ -204,7 +204,7 @@ def film_display(num, sender, latest):
         },
         {
             "content_type":"text",
-            "title":"Merci Iris",
+            "title":"Merci Electre",
             "payload":"Thanks"
         }
     ]
@@ -215,8 +215,8 @@ def exhibition_display(num, sender, payload =""):
     time.sleep(1)
     if num == 0 :
         msg = "Il y a plusieurs types d'expositions, qu'est-ce qui t'intéresse le plus ?"
-        
         btns_genre = get_genre()[1]
+        logging.info("got genre: "+str(btns_genre))
         send_quick_rep(sender, msg, btns_genre ,ACCESS_TOKEN)
 
     elif num in range(1,4):
@@ -236,7 +236,7 @@ def exhibition_display(num, sender, payload =""):
             },
             {
                 "content_type":"text",
-                "title":"Merci Iris",
+                "title":"Merci Electre",
                 "payload":"Thanks"
             }
         ]

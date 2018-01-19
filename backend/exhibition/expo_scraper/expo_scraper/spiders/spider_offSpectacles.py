@@ -30,6 +30,8 @@ class Expo_offspec_Spider(scrapy.Spider):
                 genre = "En cours"
             try:
                 img_url = expo.css("div.resVignette a img::attr(src)").extract_first()
+                if img_url == "\/res\/img\/photo_vide_small.png":
+                    img_url = "http://fotomelia.com/wp-content/uploads/edd/2015/08/photo-gratuite-libre-de-droit-domaine-public17-1560x1040.jpg"
             except:
                 img_url = ""
             try:
