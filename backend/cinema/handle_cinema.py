@@ -18,6 +18,7 @@ from PIL import Image
 from urllib.request import urlopen
 from io import StringIO, BytesIO
 from pprint import pprint # for a more readable json output
+import os
 #from flask import Flask, request
 import logging
 
@@ -72,19 +73,20 @@ def movielist(code, count=None, page=None, profile=None, filter=None, order=None
 def stock_last_movies():
 
     # ATTENTION - count parameter not working, len(last_release)=100 movies ! => filtering in return
-    last_release = movielist(0, count=9, page=None, profile="medium", filter="nowshowing", order="toprank", format="json")
+    last_release = movielist(0, count=15, page=None, profile="medium", filter="nowshowing", order="toprank", format="json")
     last_release=last_release["feed"]["movie"]
-    print(last_release)
+    pprint(last_release)
 
     #changer le path (avec backend etc.. comme handle_expo) avant de faire tourner le serveur
-    with open("cinema_allocine", 'wb') as fichier:
+
+    with open("/Users/constanceleonard/Desktop/projet_osy/strolling/backend/cinema/cinema_allocine", 'wb') as fichier:
         allocine_pickle = pickle.Pickler(fichier)
         allocine_pickle.dump(last_release)
 
 
 def get_details():
-
-    with open("cinema_allocine", 'rb') as f:
+    print(os.getcwd())
+    with open("/Users/constanceleonard/Desktop/projet_osy/strolling/backend/cinema/cinema_allocine", 'rb') as f:
         d = pickle.Unpickler(f)
         data = d.load()
 
@@ -107,51 +109,21 @@ def get_details():
     return results
 
 
-def get_genre_movie():
-    """ Returns a tuple: list of exhibition genres + cards to be used in quck replies """
+def get_topmovies_genre(genre):
+    #return the top movies filtered by the genre selected by the user of the chatbot:
 
-    with open("cinema_allocine", 'rb') as f:
+    with open("/Users/constanceleonard/Desktop/projet_osy/strolling/backend/cinema/cinema_allocine", 'rb') as f:
         d = pickle.Unpickler(f)
         data = d.load()
         #pprint(data)
 
-    genre = []
-    for i in range(0, len(data)):
-        sous_genres = []
-        for item in data[i]["genre"]:
-            sous_genres.append(item['$'])
-        genre.extend(sous_genres)
-        no_duplicates = list(set(genre))
-        genre = sorted(no_duplicates)  # genre list without duplicates
-        print(type(genre))
-
-        btns = []
-        for g in genre:  # create button list to be sent
-            btns.append(
-                {
-                    "content_type": "text",
-                    "title": g,
-                    "payload": g + "-1"
-                })
-        btns.append(
-            {
-                "content_type": "text",
-                "title": "Aucun de ces genres",
-                "payload": "Not_interested"
-            })
-
-    return genre, btns
-
-def get_topmovies_genre(p):
-
-    with open("cinema_allocine", 'rb') as f:
-        d = pickle.Unpickler(f)
-        data = d.load()
-
     results_genre = []
     for i in range(0, len(data)):
-        film_genre = data[i]["genre"]
-        if p in film_genre:
+        genre_informations = data[i]["genre"]
+        #print(genre_informations)
+        film_genre=[x["$"] for x in genre_informations]
+        print(film_genre)
+        if genre in film_genre:
             results_genre.append({
             "title": data[i]["title"],
             "notespectateur": data[i]["statistics"].get('userRating', -1),
@@ -164,22 +136,21 @@ def get_topmovies_genre(p):
     results_genre = sorted(results_genre, key=lambda x: x["notepresse"], reverse=True)
     return results_genre
 
-def resize_image_from_url(url):
-
-    #Pour transformer les images il faut toujours utiliser PIL (pillow)
-    file = StringIO(urlopen(url).read())
-    img = Image.open(file)
-    # On retraite l'image pour l'obtenir dans la bonne taille en préservant l'aspect ratio:
-    size = 128, 128
-    img.thumbnail(size)
-    # stockage temporaire de l'image en bytes
-    buffer = BytesIO()
-    img.save(buffer, format="PNG")
-    # On transforme l'image en base 64 pour obtenir un url resized
-    img_str = base64.b64encode(buffer.getvalue())
-    # On envoie le png en base 64 (ie sous forme de chaine de caractères)
-    return "data:image/png;base64," + img_str
+# def resize_image_from_url(url):
+#
+#     #Pour transformer les images il faut toujours utiliser PIL (pillow)
+#     file = BytesIO(urlopen(url).read())
+#     img = Image.open(file)
+#     # On retraite l'image pour l'obtenir dans la bonne taille en préservant l'aspect ratio:
+#     size = 128, 128
+#     img.thumbnail(size)
+#     # stockage temporaire de l'image en bytes
+#     img.save('./cache/tmp.png', format="PNG")
+#     # On transforme l'image en base 64 pour obtenir un url resized
+#     print("test")
+#     # On envoie le png en base 64 (ie sous forme de chaine de caractères)
+#     return ""
 
 if __name__ == '__main__':
     print(sys.stdout.encoding)
-    pprint(get_genre_movie())
+    pprint(stock_last_movies())

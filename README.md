@@ -8,4 +8,5 @@ Installed libraries:
 - schedule -> to schedule python jobs
 - scrapy -> to scrape website info
 - dateparser -> to transform dates in French in date objects
+- PIL (pillow) -> to transform image size, download version 4.3.0
 

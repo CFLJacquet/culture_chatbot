@@ -1,0 +1,135 @@
+t=2018-01-17T13:40:51+0100 lvl=dbug msg="init storage" obj=controller mem size=52428800 err=nil
+t=2018-01-17T13:40:51+0100 lvl=dbug msg="Dialing direct, no proxy" obj=tunSess
+t=2018-01-17T13:40:51+0100 lvl=info msg="run component" obj=controller comp="Tunnel session"
+t=2018-01-17T13:40:51+0100 lvl=info msg="run component" obj=controller comp=consoleui
+t=2018-01-17T13:40:51+0100 lvl=info msg="run component" obj=controller comp=updater
+t=2018-01-17T13:40:51+0100 lvl=info msg="run component" obj=controller comp=web
+t=2018-01-17T13:40:51+0100 lvl=info msg="run component" obj=controller comp="memory storage"
+t=2018-01-17T13:40:51+0100 lvl=dbug msg="update check" obj=updater
+t=2018-01-17T13:40:51+0100 lvl=info msg="starting web service" obj=web addr=127.0.0.1:4040
+t=2018-01-17T13:40:51+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:40:51+0100 lvl=dbug msg="open stream" obj=csess id=4f35f41fb093 reqtype=0 err=nil
+t=2018-01-17T13:40:51+0100 lvl=dbug msg="encode request" obj=csess id=4f35f41fb093 sid=3 req="&{Version:[2] ClientId: Extra:0xc420140680}" err=nil
+t=2018-01-17T13:40:51+0100 lvl=dbug msg="decoded response" obj=csess id=4f35f41fb093 sid=3 resp="&{Version:2 ClientId:70f58b78a1972b306932996e0dc60a88 Error: Extra:map[Version:prod Cookie:evY9qbe+LWvqVYF0jnYIO+fIqIZC3EiT$8qzzvC84o0plxROwyzQ/y8Il8hl4yNlHZ+CScxwjHp6f6uTQVZGWtzNxH4kz6VL2KVyk/o7pkkZ1IHgAa83uV/IKgeSSIsG5r72yXnS34lwZ8PYXXYdaUDwVVeoQavB4POJ8Qwolo/iMrmEbPgWzmfBaTOl4QTv18mHj7WgUVD5QRtlSfKB9aEcrWXLCypH7kuC0KT2Hig== AccountName: SessionDuration:0 PlanName:]}" err=nil
+t=2018-01-17T13:40:51+0100 lvl=info msg="tunnel session started" obj=tunSess
+t=2018-01-17T13:40:51+0100 lvl=info msg="client session established" obj=csess id=f4dfda4c693e
+t=2018-01-17T13:40:51+0100 lvl=dbug msg="open stream" obj=csess id=4f35f41fb093 clientid=70f58b78a1972b306932996e0dc60a88 reqtype=1 err=nil
+t=2018-01-17T13:40:51+0100 lvl=dbug msg="encode request" obj=csess id=4f35f41fb093 clientid=70f58b78a1972b306932996e0dc60a88 sid=7 req="&{Id: ClientId: Proto:https Opts:0xc4202984e0 Extra:0xc420290b00}" err=nil
+t=2018-01-17T13:40:51+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:40:51+0100 lvl=dbug msg="decoded response" obj=csess id=4f35f41fb093 clientid=70f58b78a1972b306932996e0dc60a88 sid=7 resp="&{ClientId:ed560f5aff6564916d0f0eeeabb18798 URL:https://1da2cc40.ngrok.io Proto:https Opts:map[Hostname:1da2cc40.ngrok.io Auth: Subdomain:] Error: Extra:map[Token:yKKhWrVRq2T+g7tjkPgkn05pmQxaaHuJ$uEDf7MNIIJoqIVrilCE+gqJLTEzH7ICrQ+jvk+6PNr4RxRuWo/qFlv4LI2YJ+rNFigICHiaubMcxrngllvmRdMlNJjOMU3gaOSD3rp3J7qRArClFVEPQ1CxdseT8512Fxes=]}" err=nil
+t=2018-01-17T13:40:51+0100 lvl=dbug msg="start tunnel listen" obj=tunSess name=app proto=https opts="&{Hostname: Auth: Subdomain:}" err=nil
+t=2018-01-17T13:40:51+0100 lvl=dbug msg="open stream" obj=csess id=4f35f41fb093 clientid=70f58b78a1972b306932996e0dc60a88 reqtype=1 err=nil
+t=2018-01-17T13:40:51+0100 lvl=dbug msg="encode request" obj=csess id=4f35f41fb093 clientid=70f58b78a1972b306932996e0dc60a88 sid=9 req="&{Id: ClientId: Proto:http Opts:0xc4204825d0 Extra:0xc42029e380}" err=nil
+t=2018-01-17T13:40:52+0100 lvl=dbug msg="decoded response" obj=csess id=4f35f41fb093 clientid=70f58b78a1972b306932996e0dc60a88 sid=9 resp="&{ClientId:dc9d1392cff2cd54811b81254d568d9a URL:http://1da2cc40.ngrok.io Proto:http Opts:map[Hostname:1da2cc40.ngrok.io Auth: Subdomain:] Error: Extra:map[Token:daAMh1pi3Fry3DSBdQGi3EbuQT6NqBCc$35z6RW4/l3J6gDRNIEOzkLeC9qT48PeNBdLI/FbQGMECHG51bumtRI8iZ04nMgHeFwOOA5h7tSkwWNOtuwaZHUeXCL2PQYfS7suQxJdI4qMTlHkdz+QeBkuMBh86dM2mfQ==]}" err=nil
+t=2018-01-17T13:40:52+0100 lvl=dbug msg="start tunnel listen" obj=tunSess name="app (http)" proto=http opts="&{Hostname:1da2cc40.ngrok.io Auth: Subdomain:}" err=nil
+t=2018-01-17T13:40:52+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:40:52+0100 lvl=dbug msg="no update available" obj=updater
+t=2018-01-17T13:40:52+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:40:53+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:40:54+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:40:55+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:40:56+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:40:56+0100 lvl=dbug msg="dial private connection" id=fcff09b54ac2 addr=localhost:5000 err=nil
+t=2018-01-17T13:40:56+0100 lvl=info msg="join connections" obj=join id=26f6b8cb64a2 l=127.0.0.1:5000 r=212.198.214.245:51396
+t=2018-01-17T13:40:56+0100 lvl=dbug msg="got request" id=16576604883b typ=proxy path=/
+t=2018-01-17T13:40:56+0100 lvl=dbug msg="add entry" obj=storage entrysz=453 sz=0
+t=2018-01-17T13:40:56+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:40:56+0100 lvl=dbug msg="got response for request" id=16576604883b typ=proxy reqpath=/
+t=2018-01-17T13:40:56+0100 lvl=dbug msg="add entry" obj=storage entrysz=792 sz=0
+t=2018-01-17T13:40:56+0100 lvl=dbug msg="half join complete" obj=join id=26f6b8cb64a2 from=127.0.0.1:5000 to=212.198.214.245:51396 nbytes=339 err=nil
+t=2018-01-17T13:40:56+0100 lvl=dbug msg=close id=239c2a3cc76d type=proxy sess=70f58b78a1972b306932996e0dc60a88 err=nil
+t=2018-01-17T13:40:56+0100 lvl=dbug msg=close id=16576604883b typ=proxy err=nil
+t=2018-01-17T13:40:56+0100 lvl=dbug msg=close id=fcff09b54ac2 err=nil
+t=2018-01-17T13:40:56+0100 lvl=dbug msg=http.ReadRequest id=16576604883b typ=proxy err=EOF
+t=2018-01-17T13:40:56+0100 lvl=dbug msg=http.ReadResponse id=16576604883b typ=proxy err="unexpected EOF"
+t=2018-01-17T13:40:56+0100 lvl=dbug msg="half join complete" obj=join id=26f6b8cb64a2 from=212.198.214.245:51396 to=127.0.0.1:5000 nbytes=453 err="readfrom tcp 127.0.0.1:51399->127.0.0.1:5000: stream closed"
+t=2018-01-17T13:40:56+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:40:56+0100 lvl=dbug msg=close id=239c2a3cc76d type=proxy sess=70f58b78a1972b306932996e0dc60a88 err=nil
+t=2018-01-17T13:40:56+0100 lvl=dbug msg=close id=16576604883b typ=proxy err=nil
+t=2018-01-17T13:40:56+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:40:57+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:40:57+0100 lvl=dbug msg="dial private connection" id=71d249079fa2 addr=localhost:5000 err=nil
+t=2018-01-17T13:40:57+0100 lvl=info msg="join connections" obj=join id=b0793cf120d4 l=127.0.0.1:5000 r=212.198.214.245:51396
+t=2018-01-17T13:40:57+0100 lvl=dbug msg="got request" id=d083ae6f87d4 typ=proxy path=/favicon.ico
+t=2018-01-17T13:40:57+0100 lvl=dbug msg="add entry" obj=storage entrysz=425 sz=792
+t=2018-01-17T13:40:57+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:40:57+0100 lvl=dbug msg="got response for request" id=d083ae6f87d4 typ=proxy reqpath=/favicon.ico
+t=2018-01-17T13:40:57+0100 lvl=dbug msg="half join complete" obj=join id=b0793cf120d4 from=127.0.0.1:5000 to=212.198.214.245:51396 nbytes=378 err=nil
+t=2018-01-17T13:40:57+0100 lvl=dbug msg="add entry" obj=storage entrysz=803 sz=792
+t=2018-01-17T13:40:57+0100 lvl=dbug msg=close id=012e85884876 type=proxy sess=70f58b78a1972b306932996e0dc60a88 err=nil
+t=2018-01-17T13:40:57+0100 lvl=dbug msg=close id=d083ae6f87d4 typ=proxy err=nil
+t=2018-01-17T13:40:57+0100 lvl=dbug msg="half join complete" obj=join id=b0793cf120d4 from=212.198.214.245:51396 to=127.0.0.1:5000 nbytes=425 err="readfrom tcp 127.0.0.1:51401->127.0.0.1:5000: stream closed"
+t=2018-01-17T13:40:57+0100 lvl=dbug msg=close id=71d249079fa2 err=nil
+t=2018-01-17T13:40:57+0100 lvl=dbug msg=http.ReadRequest id=d083ae6f87d4 typ=proxy err=EOF
+t=2018-01-17T13:40:57+0100 lvl=dbug msg=http.ReadResponse id=d083ae6f87d4 typ=proxy err="unexpected EOF"
+t=2018-01-17T13:40:57+0100 lvl=dbug msg=close id=012e85884876 type=proxy sess=70f58b78a1972b306932996e0dc60a88 err=nil
+t=2018-01-17T13:40:57+0100 lvl=dbug msg=close id=d083ae6f87d4 typ=proxy err=nil
+t=2018-01-17T13:40:57+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:40:57+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:40:57+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:40:58+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:40:59+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:00+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:01+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:01+0100 lvl=dbug msg="heartbeat received" obj=csess id=4f35f41fb093 clientid=70f58b78a1972b306932996e0dc60a88 latency_ms=106
+t=2018-01-17T13:41:02+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:03+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:04+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:05+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:06+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:07+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:08+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:09+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:10+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:11+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:11+0100 lvl=dbug msg="heartbeat received" obj=csess id=4f35f41fb093 clientid=70f58b78a1972b306932996e0dc60a88 latency_ms=98
+t=2018-01-17T13:41:12+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:13+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:14+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:15+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:16+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:17+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:18+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:19+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:20+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:21+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:22+0100 lvl=dbug msg="heartbeat received" obj=csess id=4f35f41fb093 clientid=70f58b78a1972b306932996e0dc60a88 latency_ms=179
+t=2018-01-17T13:41:22+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:23+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:24+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:25+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:26+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:27+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:28+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:29+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:30+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:31+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:32+0100 lvl=dbug msg="heartbeat received" obj=csess id=4f35f41fb093 clientid=70f58b78a1972b306932996e0dc60a88 latency_ms=102
+t=2018-01-17T13:41:32+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:33+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:34+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:35+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:36+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:37+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:38+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:39+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:40+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:41+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:42+0100 lvl=dbug msg="heartbeat received" obj=csess id=4f35f41fb093 clientid=70f58b78a1972b306932996e0dc60a88 latency_ms=97
+t=2018-01-17T13:41:42+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:43+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:44+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:45+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:46+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:47+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:48+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:49+0100 lvl=dbug msg="waiting for update" obj=consoleui
+t=2018-01-17T13:41:49+0100 lvl=info msg="Got quit command" obj=consoleui
+t=2018-01-17T13:41:49+0100 lvl=info msg="component stopped" obj=controller comp=consoleui err=nil
+t=2018-01-17T13:41:49+0100 lvl=info msg="requesting shutdown" obj=controller
+t=2018-01-17T13:41:49+0100 lvl=info msg="component stopped" obj=controller comp="memory storage" err=nil
+t=2018-01-17T13:41:49+0100 lvl=info msg="component stopped" obj=controller comp=updater err=nil
+t=2018-01-17T13:41:49+0100 lvl=info msg="session closing" obj=tunSess err=nil
+t=2018-01-17T13:41:49+0100 lvl=info msg="component stopped" obj=controller comp=web err=nil
+t=2018-01-17T13:41:49+0100 lvl=info msg="component stopped" obj=controller comp="Tunnel session" err=nil
+t=2018-01-17T13:41:49+0100 lvl=info msg="all component stopped" obj=controller

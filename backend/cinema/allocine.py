@@ -175,19 +175,19 @@ def filmography(code, profile=None, filter=None, format="json"):
 #   filter (optionnal) : filter results by type ("nowshowing", "comingsoon", separated by a comma)
 #   order (optionnal) : order to sort the results ("datedesc", "dateasc", "theatercount", "toprank")
 #   format (optionnal) : returns the result in JSON or XML format ("json" or "xml", default set to JSON)
-def movielist(code, count=None, page=None, profile=None, filter=None, order=None, format="json"):
-    data = {"code": str(code), "format": format}
-    if count is not None:
-        data["count"] = str(count)
-    if page is not None:
-        data["page"] = page
-    if profile is not None:
-        data["profile"] = profile
-    if filter is not None:
-        data["filter"] = filter
-    if order is not None:
-        data["order"] = order
-    return do_request("movielist", data)
+# def movielist(code, count=None, page=None, profile=None, filter=None, order=None, format="json"):
+#     data = {"code": str(code), "format": format}
+#     if count is not None:
+#         data["count"] = str(count)
+#     if page is not None:
+#         data["page"] = page
+#     if profile is not None:
+#         data["profile"] = profile
+#     if filter is not None:
+#         data["filter"] = filter
+#     if order is not None:
+#         data["order"] = order
+#     return do_request("movielist", data)
 
 
 # theaterlist : theater list
@@ -266,28 +266,28 @@ def episode(code, profile=None, mediafmt=None, format="json", striptags=None):
     return do_request("episode", data)
 
 
-def get_last_movies():
-
-    # ATTENTION - count parameter not working, len(last_release)=100 movies ! => filtering in return
-    last_release = movielist(0, count=9, page=None, profile="medium", filter="nowshowing", order="toprank", format="json")
-    last_release=last_release["feed"]["movie"]
-    results=[]
-
-    for i in range (0, len(last_release)):
-        genres = []
-        for item in last_release[i]["genre"]:
-            genres.append(item['$'])
-        results.append({
-            "title":last_release[i]["title"],
-            "notespectateur":last_release[i]["statistics"].get('userRating', -1),
-            "notepresse": last_release[i]["statistics"].get('pressRating', -1),
-            "img_url":last_release[i]["poster"]["href"],
-            "url":last_release[i]["link"][0]["href"],
-            "summary":last_release[i].get('synopsisShort', '').replace('<span>', '').replace('</span>', '').replace('<br/>','').replace('\xa0',''),
-            "genre": genres
-        })
-    results = sorted(results, key= lambda x: x["notepresse"], reverse=True)
-    return results
+# def get_last_movies():
+#
+#     # ATTENTION - count parameter not working, len(last_release)=100 movies ! => filtering in return
+#     last_release = movielist(0, count=9, page=None, profile="medium", filter="nowshowing", order="toprank", format="json")
+#     last_release=last_release["feed"]["movie"]
+#     results=[]
+#
+#     for i in range (0, len(last_release)):
+#         genres = []
+#         for item in last_release[i]["genre"]:
+#             genres.append(item['$'])
+#         results.append({
+#             "title":last_release[i]["title"],
+#             "notespectateur":last_release[i]["statistics"].get('userRating', -1),
+#             "notepresse": last_release[i]["statistics"].get('pressRating', -1),
+#             "img_url":last_release[i]["poster"]["href"],
+#             "url":last_release[i]["link"][0]["href"],
+#             "summary":last_release[i].get('synopsisShort', '').replace('<span>', '').replace('</span>', '').replace('<br/>','').replace('\xa0',''),
+#             "genre": genres
+#         })
+#     results = sorted(results, key= lambda x: x["notepresse"], reverse=True)
+#     return results
 
 
 if __name__ == '__main__':
