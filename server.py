@@ -26,7 +26,7 @@ logger.addHandler(file_handler)
 
 app = Flask(__name__)
 
-ACCESS_TOKEN = "EAACQPdicZCwQBANXldYUCDelT2TPLSjhSVCQTYKN7hffULVva6r4lIfC3TR9ba7q6lvMNKj6UqZA2SjG6vNy9XCYcEbfZBp7N06gqIwc1nFRA1MMEalb30dEy6xSuZCNZBZBIYN7l5MlLfFreKxUucW2omWcJ3eWBS3j0FKylnoAZDZD"
+ACCESS_TOKEN = "EAACQPdicZCwQBANH7jaSrjqWSGqMZBezC7ouYsq2YbUpxn9QsDurCmtq66cZAlglVigOw99kklESqL2jZCfmiDKUplfcf3Ue0RFPAGUBPxxL2pr0I864Q1jQDlbdy0DoRkIRvZBsiNcwtFmrYNXyYdNZBZBX2M4g8rmpZAZARCcEFqwZDZD"
 
 @app.route('/test')
 def test():
@@ -219,7 +219,7 @@ def exhibition_display(num, sender, payload =""):
         send_quick_rep(sender, msg, btns_genre ,ACCESS_TOKEN)
 
     elif num in range(1,4):
-        cards = get_exhib(payload[:-2], int(payload[-1]))[1]
+        cards = get_exhib(payload[:-2], int(payload[-1]))
         send_card(sender, cards, ACCESS_TOKEN)
         
         btns =[

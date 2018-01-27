@@ -160,7 +160,7 @@ def append_to_full(new_list):
         to_predict[elt] = clf.predict(input_d)
     
     full = hist.append(to_predict, ignore_index=True)
-    full["Other"] = np.where(full[tags].sum(axis = 1) == 0, 1, 0)
+    full["Autre"] = np.where(full[tags].sum(axis = 1) == 0, 1, 0)
     full.to_json("backend/exhibition/data_exhibition.json", orient="records")
     print("Appended {} new exhibitions.\nThe database now contains {} exhibitions.".format(to_predict.shape[0], full.shape[0]))
 

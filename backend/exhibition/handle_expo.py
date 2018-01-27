@@ -2,17 +2,13 @@ import json
 from operator import itemgetter
 from datetime import datetime as dt
 from pprint import pprint
+import pandas as pd
 
 def get_genre():
     """ Returns a tuple: list of exhibition genres + cards to be used in quick replies """
     
-    with open("backend/exhibition/data_exhibition.json", 'r') as f:
-        data = json.load(f)
-
-    genre = []
-    for elt in data:
-        if elt['genre'] not in genre and not isinstance(elt['genre'], list) : 
-            genre.append(elt['genre'])
+    data = pd.read_json("backend/exhibition/data_exhibition.json")
+    genre = [g for g in data.columns.values if g[0].isupper() and g != 'ID']
     
     btns = []
     for g in genre[:9]:                 #create button list to be sent
@@ -38,10 +34,9 @@ def get_exhib(genre, iteration):
         data = json.load(f)
     
     #Appends exhibitions from the selected genre, if it is still shown 
-    exhibs = []
-    for elt in data:
-        if str(elt['genre']) == genre and dt.strptime(elt['d_end'], "%Y-%m-%d") >= dt.today():
-            exhibs.append(elt)
+    exhibs = [ elt for elt in data if elt[genre] == 1 \
+    and dt.strptime(elt['d_end'], "%Y-%m-%d") >= dt.today() \
+    and dt.strptime(elt['d_start'], "%Y-%m-%d") <= dt.today()] 
 
     #Results sorted by rank then ascending date of end , 
     per_date = sorted(exhibs, key = itemgetter('d_end'))
@@ -62,7 +57,7 @@ def get_exhib(genre, iteration):
                 {
                 "type":"postback",
                 "title":"C'est quoi ?",
-                "payload":"Summary_expo*-/{}*-/{}*-/{}".format(r['genre'] ,i, iteration)
+                "payload":"Summary_expo*-/{}".format(r['ID'])
                 }]      
             }
         )
@@ -86,8 +81,8 @@ def get_exhib_query(exhib_ID_list, iteration):
 
 
     #Results sorted by rank then ascending date of end , 
-    #per_date = sorted(exhibs, key = itemgetter('d_end'))
-    #per_rank = sorted(per_date, key= itemgetter('rank'), reverse=True)[(iteration-1)*5 : iteration*5]
+    per_date = sorted(exhibs[:20], key = itemgetter('d_end'))
+    per_rank = sorted(per_date, key= itemgetter('rank'), reverse=True)[(iteration-1)*5 : iteration*5]
 
     cards=[]
     for i, r in enumerate(exhibs[:10]):
@@ -121,11 +116,12 @@ def get_detail_exhib(ID):
 
 if __name__ == "__main__":    
     #---to test get genre function, uncomment the following line
-    # print(get_genre())
+    # print(get_genre()[0])
+
     
     #---to test get exhibition function, uncomment the following line
-    pprint(get_exhib('Beaux-Arts', 1))
+    #pprint(get_exhib('Photographie', 1))
 
     #---to test get exhibition per query function, uncomment the following line
     # the list corresponds to the sentence input "trouve moi une expo d'art moderne"
-    # pprint(get_exhib_query(['266', '193', '105', '251', '81', '221', '182', '174', '89', '249', '243', '137', '211', '51', '50', '297', '98', '127', '64', '264'], 1))
+    pprint(get_exhib_query(['266', '193', '105', '251', '81', '221', '182', '174', '89', '249', '243', '137', '211', '51', '50', '297', '98', '127', '64', '264'], 1))
