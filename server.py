@@ -216,7 +216,6 @@ def exhibition_display(num, sender, payload =""):
     if num == 0 :
         msg = "Il y a plusieurs types d'expositions, qu'est-ce qui t'intéresse le plus ?"
         btns_genre = get_genre()[1]
-        logging.info("got genre: "+str(btns_genre))
         send_quick_rep(sender, msg, btns_genre ,ACCESS_TOKEN)
 
     elif num in range(1,4):

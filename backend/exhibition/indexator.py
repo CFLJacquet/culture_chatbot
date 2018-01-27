@@ -6,7 +6,7 @@ import regex as re
 import treetaggerwrapper as ttw 
 
 tagger = ttw.TreeTagger(TAGLANG='fr')
-stopwords = open("backend/language/stopwords.txt", 'r', encoding='utf-8').read()
+stopwords = open("backend/language/stopwords.txt", 'r', encoding='utf-8').read().split("\n")
 
 with open('backend/exhibition/data_exhibition.json', 'r') as f:
     DB = json.load(f)

@@ -6,7 +6,7 @@ tagger = ttw.TreeTagger(TAGLANG='fr')
 
 GREETINGS = ('salut', 'bonjour', 'coucou', 'yo', 'hello', 'hi', 'hey', 'ola')
 CINEMA = ('ciné', 'cine', 'cinéma', 'cinema', 'film')
-EXHIBITION = ('expo', 'exposition', 'musée', 'musee', 'gallerie', '')
+EXHIBITION = ('expo', 'exposition', 'musée', 'musee', 'gallerie', 'art', 'artiste')
 EXIT = ('stop', 'merci')
 
 def process_text(msg):

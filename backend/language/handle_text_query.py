@@ -28,7 +28,7 @@ def get_postings(word):
     return doc_tfidf, postings
 
 
-def vect_search(query, rappel=15):
+def vect_search(query, rappel=20):
     
     # Calculates (1+log10(tf)) for each word in the query
     q = tf_text(query, 0)

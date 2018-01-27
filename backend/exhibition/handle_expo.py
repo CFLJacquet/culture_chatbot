@@ -78,8 +78,12 @@ def get_exhib_query(exhib_ID_list, iteration):
     #Appends exhibitions from the list, if it is still shown 
     exhibs = []
     for ID in exhib_ID_list:
-        exhib = [ x for x in data if x['ID'] == int(ID)] # and dt.strptime(x['d_end'], "%Y-%m-%d") >= dt.today()
-        exhibs.append(exhib[0])        
+        exhib = [ x for x in data if x['ID'] == int(ID) \
+        and dt.strptime(x['d_end'], "%Y-%m-%d") >= dt.today() \
+        and dt.strptime(x['d_start'], "%Y-%m-%d") <= dt.today()] 
+        if exhib:
+            exhibs.append(exhib[0])   
+
 
     #Results sorted by rank then ascending date of end , 
     #per_date = sorted(exhibs, key = itemgetter('d_end'))
@@ -120,8 +124,8 @@ if __name__ == "__main__":
     # print(get_genre())
     
     #---to test get exhibition function, uncomment the following line
-    # pprint(get_exhib('Art contemporain', 1))
+    pprint(get_exhib('Beaux-Arts', 1))
 
     #---to test get exhibition per query function, uncomment the following line
-    # the list corresponds to the sentence input "je veux voir une expo de peinture"
-    pprint(get_exhib_query(['263', '117', '102', '62', '280', '246', '94', '249', '220', '296', '135', '179', '265', '275', '204'], 1))
+    # the list corresponds to the sentence input "trouve moi une expo d'art moderne"
+    # pprint(get_exhib_query(['266', '193', '105', '251', '81', '221', '182', '174', '89', '249', '243', '137', '211', '51', '50', '297', '98', '127', '64', '264'], 1))

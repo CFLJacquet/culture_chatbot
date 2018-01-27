@@ -31,7 +31,9 @@ FB Messenger chatbot that recommends you cultural events in Paris (exhibition, m
 * uwsgi (not needed on local machines to dev)  
 * schedule -> to schedule python jobs  
 * scrapy -> to scrape website info  
+* BS4 -> to scrape trickier parts
 * dateparser -> to transform dates in French in date objects  
 * treetaggerwrapper (+TreeTagger) -> to tag and lemmatize French   (http://treetaggerwrapper.readthedocs.io/en/latest/)   
 * pandas -> to concatenate text from different sources
+
 
