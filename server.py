@@ -258,7 +258,7 @@ def get_genre_movie(sender):
         genre.extend(sous_genres)
         no_duplicates = list(set(genre))
         genre = sorted(no_duplicates)  # genre list without duplicates
-    #print(genre)
+        genre = [x for x in genre if x not in ['Comédie dramatique', 'Fantastique', 'Aventure']]
 
     btns = []
     i=0
@@ -276,12 +276,10 @@ def get_genre_movie(sender):
                 "title": "Aucun de ces genres",
                 "payload": "Not_interested"
             })
-    print(btns)
 
     list_payload=[]
     for i in range(0, len(btns)):
         list_payload.append(btns[i]['payload'])
-    print(list_payload)
 
     send_quick_rep(sender, "Voici les genres possibles: ", btns , ACCESS_TOKEN)
 
