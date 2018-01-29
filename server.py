@@ -1,5 +1,5 @@
 from flask import Flask, request, session
-from flask_oauthlib.client import OAuth, OAuthException
+# from flask_oauthlib.client import OAuth, OAuthException
 
 import logging
 from logging.handlers import RotatingFileHandler
@@ -17,35 +17,35 @@ from backend.others.bdd_jokes import random_joke
 
 
 # Flask config
-SQLALCHEMY_DATABASE_URI = 'sqlite:///facebook.db'
-SECRET_KEY = '\xfb\x12\xdf\xa1@i\xd6>V\xc0\xbb\x8fp\x16#Z\x0b\x81\xeb\x16'
-DEBUG = True
+# SQLALCHEMY_DATABASE_URI = 'sqlite:///facebook.db'
+# SECRET_KEY = '\xfb\x12\xdf\xa1@i\xd6>V\xc0\xbb\x8fp\x16#Z\x0b\x81\xeb\x16'
+# DEBUG = True
 
-FACEBOOK_APP_ID = '1211518415646800'
-FACEBOOK_APP_SECRET = '9ab82022f2a95642265a4cc195074ab6'
+# FACEBOOK_APP_ID = '1211518415646800'
+# FACEBOOK_APP_SECRET = '9ab82022f2a95642265a4cc195074ab6'
 
 app = Flask(__name__)
-app.debug = True
-app.secret_key = 'development'
-oauth = OAuth(app)
+# app.debug = True
+# app.secret_key = 'development'
+# oauth = OAuth(app)
 
-facebook = oauth.remote_app(
-    'facebook',
-    consumer_key=FACEBOOK_APP_ID,
-    consumer_secret=FACEBOOK_APP_SECRET,
-    request_token_params={'scope': 'email'},
-    base_url='https://graph.facebook.com',
-    request_token_url=None,
-    access_token_url='/oauth/access_token',
-    access_token_method='GET',
-    authorize_url='https://www.facebook.com/dialog/oauth'
-)
+# facebook = oauth.remote_app(
+#     'facebook',
+#     consumer_key=FACEBOOK_APP_ID,
+#     consumer_secret=FACEBOOK_APP_SECRET,
+#     request_token_params={'scope': 'email'},
+#     base_url='https://graph.facebook.com',
+#     request_token_url=None,
+#     access_token_url='/oauth/access_token',
+#     access_token_method='GET',
+#     authorize_url='https://www.facebook.com/dialog/oauth'
+# )
 
 #Bloc créant des logs
 logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
 formatter = logging.Formatter('%(asctime)s :: %(levelname)s :: %(message)s')
-file_handler = RotatingFileHandler("/Users/constanceleonard/Desktop/projet_osy/strolling/log/activity.log", 'w', 1000000, 1)
+file_handler = RotatingFileHandler("activity.log", 'w', 1000000, 1) #/Users/constanceleonard/Desktop/projet_osy/strolling/log/
 file_handler.setLevel(logging.DEBUG)
 file_handler.setFormatter(formatter)
 logger.addHandler(file_handler)
@@ -54,34 +54,34 @@ logger.addHandler(file_handler)
 ACCESS_TOKEN = "EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD"
 
 
-@facebook.tokengetter
-def get_facebook_oauth_token():
-    return session.get('access_token')
+# @facebook.tokengetter
+# def get_facebook_oauth_token():
+#     return session.get('access_token')
 
 @app.route('/test')
 def test():
     return "<h1> Le serveur fonctionne correctement !</h1>"
 
-@app.route('/facebook/authorized')
-def authorized():
-    # check to make sure the user authorized the request
-    if not 'code' in request.args:
-        flash('You did not authorize the request')
-        return redirect(url_for('index'))
+# @app.route('/facebook/authorized')
+# def authorized():
+#     # check to make sure the user authorized the request
+#     if not 'code' in request.args:
+#         flash('You did not authorize the request')
+#         return redirect(url_for('index'))
 
-    # make a request for the access token credentials using code
-    redirect_uri = url_for('authorized', _external=True)
-    data = dict(code=request.args['code'], redirect_uri=redirect_uri)
+#     # make a request for the access token credentials using code
+#     redirect_uri = url_for('authorized', _external=True)
+#     data = dict(code=request.args['code'], redirect_uri=redirect_uri)
 
-    session = facebook.get_auth_session(data=data)
+#     session = facebook.get_auth_session(data=data)
 
-    # the "me" response
-    me = session.get('me').json()
+#     # the "me" response
+#     me = session.get('me').json()
 
-    User.get_or_create(me['username'], me['id'])
+#     User.get_or_create(me['username'], me['id'])
 
-    flash('Logged in as ' + me['name'])
-    return redirect(url_for('index'))
+#     flash('Logged in as ' + me['name'])
+#     return redirect(url_for('index'))
 
 @app.route('/', methods=['GET'])
 def handle_verification():
@@ -246,7 +246,7 @@ def film_display(num, sender, latest):
 
 def get_genre_movie(sender):
 
-    with open("/Users/constanceleonard/Desktop/projet_osy/strolling/backend/cinema/cinema_allocine", 'rb') as f:
+    with open("backend/cinema/cinema_allocine", 'rb') as f: #/Users/constanceleonard/Desktop/projet_osy/strolling/
         d = pickle.Unpickler(f)
         data = d.load()
 

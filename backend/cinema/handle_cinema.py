@@ -79,14 +79,14 @@ def stock_last_movies():
 
     #changer le path (avec backend etc.. comme handle_expo) avant de faire tourner le serveur
 
-    with open("/Users/constanceleonard/Desktop/projet_osy/strolling/backend/cinema/cinema_allocine", 'wb') as fichier:
+    with open("backend/cinema/cinema_allocine", 'wb') as fichier: #/Users/constanceleonard/Desktop/projet_osy/strolling/
         allocine_pickle = pickle.Pickler(fichier)
         allocine_pickle.dump(last_release)
 
 
 def get_details():
     print(os.getcwd())
-    with open("/Users/constanceleonard/Desktop/projet_osy/strolling/backend/cinema/cinema_allocine", 'rb') as f:
+    with open("backend/cinema/cinema_allocine", 'rb') as f: #/Users/constanceleonard/Desktop/projet_osy/strolling/
         d = pickle.Unpickler(f)
         data = d.load()
 
@@ -112,7 +112,7 @@ def get_details():
 def get_topmovies_genre(genre):
     #return the top movies filtered by the genre selected by the user of the chatbot:
 
-    with open("/Users/constanceleonard/Desktop/projet_osy/strolling/backend/cinema/cinema_allocine", 'rb') as f:
+    with open("backend/cinema/cinema_allocine", 'rb') as f: #/Users/constanceleonard/Desktop/projet_osy/strolling/
         d = pickle.Unpickler(f)
         data = d.load()
         #pprint(data)
