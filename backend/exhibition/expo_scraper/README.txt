@@ -8,15 +8,13 @@ Pour l'instant, il y a 4 spiders:
 - crawle les pages de critique de TimeOut
 - crawle chaque page de critique pour obtenir le détail
 
-Classification des artistes :
+Classification des expositions :
 1 - L’architecture
-2 - La sculpture
-3 - Les arts-visuels (peinture et dessin)
+2 - La sculpture + desgin, artisanat
+3 - La peinture (en réalité les arts-visuels : peinture, dessin, gravure)
 4 - La musique 
 5 - La littérature et la poésie
-6 - Les arts de la scène (théâtre, danse, mime, cirque)
-7 - Le cinéma
-8 - Les arts médiatiques (télévision, radio, photographie)
-9 - La bande-dessinée
+6 - La Danse (en réalité les arts de la scène : théâtre, danse, mime, cirque)
+7 - Le cinéma / vidéo
+8 - La photographie
 
-Mouvements artistiques :

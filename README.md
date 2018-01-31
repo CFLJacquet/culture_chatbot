@@ -10,6 +10,8 @@ FB Messenger chatbot that recommends you cultural events in Paris (exhibition, m
 │   ├── cinema  
 │   ├── exhibition  
 │   │   ├── expo_scraper  
+│   │   │   ├── extracted data
+│   │   │   ├── expo_classifier
 │   │   │   └── expo_scraper  
 │   │   │       └── spiders  
 │   │   └── README.txt  
