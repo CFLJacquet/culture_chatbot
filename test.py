@@ -1,7 +1,7 @@
-from server import get_details, get_genre_movie, get_topmovies_genre
+from server import get_genre_exhib
 import sys
 from pprint import pprint
 
 
 print(sys.stdout.encoding)
-pprint(get_topmovies_genre("Comédie"))
+pprint(get_genre_exhib()[0])

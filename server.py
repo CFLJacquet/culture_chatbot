@@ -9,7 +9,7 @@ import time
 import datetime # to read datetime objects in exhibition data
 import pickle
 
-from backend.cinema.handle_cinema import get_details, get_topmovies_genre
+from backend.cinema.handle_cinema import get_details_cinema, get_topmovies_genre
 #resize_image_from_url
 from backend.messenger.msg_fct import user_details, send_msg, send_button, send_card, send_quick_rep
 from backend.exhibition.handle_expo import get_genre_exhib, get_exhib
@@ -96,15 +96,15 @@ def handle_event():
 
     event = data['entry'][0]['messaging'][0]
 
-    latest = get_details()
-    logging.info('LATEST FILMS :'+str(latest))
+    latest = get_details_cinema()
+    #logging.info('LATEST FILMS :'+str(latest))
 
     sender = event['sender']['id']
     user = user_details(sender, ACCESS_TOKEN)
 
     if "message" in event:
         message = event['message']['text'].lower()
-        print(event['message'])
+        #print(event['message'])
         if not 'quick_reply' in event['message']:
             welcome(sender, user)
 
@@ -122,16 +122,17 @@ def handle_event():
             elif event['message']['quick_reply']['payload'] in get_genre_movie(sender)[2]:
                 #on récupère le genre du film pour obtenir une liste des derniers films sortis mais filtrée par le genre
                 p = event['message']['quick_reply']['payload'][0:-2]
-                print(p)
+                #print(p)
                 ranking= get_topmovies_genre(p)
-                print(ranking)
+                #print(ranking)
                 film_display_genre(sender, p)
                 send_msg(sender, " ", ACCESS_TOKEN)
+            
             elif event['message']['quick_reply']['payload'][:10] == "exhibition":
                 num = int(event['message']['quick_reply']['payload'][-1])
                 exhibition_display(num, sender)
             #boucle pour récupérer le genre de l'exposition:
-            elif event['message']['quick_reply']['payload'] in get_genre_exhib()[1]:
+            elif event['message']['quick_reply']['payload'][:-2] in get_genre_exhib()[0]:
                 p = event['message']['quick_reply']['payload']
                 num = int(p[-1])
                 exhibition_display(num, sender, p)
@@ -151,10 +152,11 @@ def handle_event():
         if event['postback']['payload'] == "first_conv":
             welcome(sender, user)
 
-        elif event['postback']['payload'][:12] == "Summary_cine":
-            logging.info("in summury_ciné")
-            i = int(event['postback']['payload'][-1])
-            send_msg(sender, "-- "+latest[i]['title']+" -- Résumé -- \n\n"+latest[i]['summary'], ACCESS_TOKEN)
+        elif "Summary_cine" in event['postback']['payload'] :
+            ID = int(event['postback']['payload'].split("*-/")[1])
+            latest = get_details_cinema()
+            result = [ x for x in latest if x["ID"] == ID][0]
+            send_msg(sender, "-- "+result['title']+" -- Résumé -- \n\n"+result['summary'], ACCESS_TOKEN)
 
         elif event['postback']['payload'][:12] == "Summary_expo":
             x = event['postback']['payload'].split("*-/")
@@ -218,7 +220,8 @@ def film_display(num, sender, latest):
                 {
                 "type":"postback",
                 "title":"Résumé",
-                "payload":"Summary_cine-{}".format(i)
+                # rajout du séparateur *-/, derrière il y a l'ID du film
+                "payload": "Summary_cine*-/{}".format(latest[i]["ID"])
                 }]      
             }
         )
@@ -236,7 +239,7 @@ def film_display(num, sender, latest):
         },
         {
             "content_type":"text",
-            "title":"Merci Iris",
+            "title":"Merci Electre",
             "payload":"Thanks"
         }
     ]
@@ -306,7 +309,8 @@ def film_display_genre(sender, genre):
                         {
                             "type": "postback",
                             "title": "Résumé",
-                            "payload": "Summary_cine-{}".format(i)
+                            # rajout du séparateur *-/, derrière il y a l'ID du film
+                            "payload": "Summary_cine*-/{}".format(movies_filtered[i]["ID"])
                         }]
                 }
             )
@@ -351,7 +355,7 @@ def exhibition_display(num, sender, payload =""):
             },
             {
                 "content_type":"text",
-                "title":"Merci Iris",
+                "title":"Merci Electre",
                 "payload":"Thanks"
             }
         ]

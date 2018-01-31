@@ -77,7 +77,7 @@ def stock_last_movies():
     last_release=last_release["feed"]["movie"]
     for num, elt in enumerate(last_release):
         elt["ID"]= num + 1
-    pprint(last_release)
+    #pprint(last_release)
 
     #changer le path (avec backend etc.. comme handle_expo) avant de faire tourner le serveur
 
@@ -86,8 +86,8 @@ def stock_last_movies():
         allocine_pickle.dump(last_release)
 
 
-def get_details():
-    print(os.getcwd())
+def get_details_cinema():
+    #print(os.getcwd())
     with open("backend/cinema/cinema_allocine", 'rb') as f: #/Users/constanceleonard/Desktop/projet_osy/strolling/
         d = pickle.Unpickler(f)
         data = d.load()
@@ -98,6 +98,7 @@ def get_details():
         for item in data[i]["genre"]:
             genres.append(item['$'])
         results.append({
+            "ID": data[i]["ID"],
             "title": data[i]["title"],
             "notespectateur": data[i]["statistics"].get('userRating', -1),
             "notepresse": data[i]["statistics"].get('pressRating', -1),
@@ -124,9 +125,10 @@ def get_topmovies_genre(genre):
         genre_informations = data[i]["genre"]
         #print(genre_informations)
         film_genre=[x["$"] for x in genre_informations]
-        print(film_genre)
+        #print(film_genre)
         if genre in film_genre:
             results_genre.append({
+            "ID": data[i]["ID"],
             "title": data[i]["title"],
             "notespectateur": data[i]["statistics"].get('userRating', -1),
             "notepresse": data[i]["statistics"].get('pressRating', -1),
@@ -155,4 +157,5 @@ def get_topmovies_genre(genre):
 
 if __name__ == '__main__':
     print(sys.stdout.encoding)
-    pprint(stock_last_movies())
+    #stock_last_movies()
+    pprint(get_details_cinema())
