@@ -1899,3 +1899,285 @@
 2018-01-31 17:01:49,874 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
 2018-01-31 17:01:49,878 :: INFO :: 127.0.0.1 - - [31/Jan/2018 17:01:49] "POST / HTTP/1.1" 200 -
 2018-01-31 17:23:12,300 :: INFO ::  * Detected change in 'c:\\Users\\Charles\\Desktop\\Centrale\\Projet OSY\\strolling_back\\server.py', reloading
+2018-01-31 18:26:03,372 :: INFO ::  * Restarting with stat
+2018-01-31 18:26:05,755 :: WARNING ::  * Debugger is active!
+2018-01-31 18:26:05,763 :: INFO ::  * Debugger PIN: 323-325-445
+2018-01-31 18:26:05,775 :: INFO ::  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2018-01-31 18:26:52,169 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '167354977361963', 'time': 1517419609077, 'messaging': [{'sender': {'id': '2347567705269479'}, 'recipient': {'id': '167354977361963'}, 'timestamp': 1517419608407, 'message': {'mid': 'mid.$cAADCxiyXtIRnfocBV1hTUHCpMKpS', 'seq': 490144, 'text': 'bonjour'}}]}]}
+2018-01-31 18:26:52,175 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 18:26:52,502 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/2347567705269479?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAACQPdicZCwQBAJAkOaE8Na9V0aHSV0mNdQvYrXcySeLtPVffB10NGk4EkwiZBy7qdDWUwz8jKdLN4vOIu14HK6DKoGMBO3X0vyVy1Y0EDqzEV6QK0h1PZCxTTtaklO7NqdqrY9UCjtxUR2uEYdNWBh4cDhLLaBcXgNAhNrXgZDZD HTTP/1.1" 200 229
+2018-01-31 18:26:52,505 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '2347567705269479'}
+2018-01-31 18:26:52,507 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 18:26:52,762 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAACQPdicZCwQBAJAkOaE8Na9V0aHSV0mNdQvYrXcySeLtPVffB10NGk4EkwiZBy7qdDWUwz8jKdLN4vOIu14HK6DKoGMBO3X0vyVy1Y0EDqzEV6QK0h1PZCxTTtaklO7NqdqrY9UCjtxUR2uEYdNWBh4cDhLLaBcXgNAhNrXgZDZD HTTP/1.1" 200 35
+2018-01-31 18:26:52,765 :: DEBUG :: tag_text with option: numlines=0, tagonly=0, prepronly=0, notagurl=0, tagblanks=0, notagemail=0, notagip=0, notagdns=0, nosgmlsplit=0).
+2018-01-31 18:26:52,765 :: DEBUG :: Pre-processing text with internal chunker.
+2018-01-31 18:26:52,765 :: DEBUG :: Preparing text for tagger with options tagblanks=0, numlines=0, notagurl=0, notagemail=0, notagip=0, notagdns=0, nosgmlsplit=0).
+2018-01-31 18:26:52,765 :: DEBUG :: Identifying SGML tags from within text.
+2018-01-31 18:26:52,765 :: DEBUG :: Splitted between SGML tags and others %r.
+2018-01-31 18:26:52,766 :: DEBUG :: Replacing blanks by spaces.
+2018-01-31 18:26:52,766 :: DEBUG :: Blanks replacement done.
+2018-01-31 18:26:52,766 :: DEBUG :: Replacing URLs.
+2018-01-31 18:26:52,766 :: DEBUG :: URLs replacement done.
+2018-01-31 18:26:52,766 :: DEBUG :: Replacing Emails.
+2018-01-31 18:26:52,766 :: DEBUG :: Emails replacement done.
+2018-01-31 18:26:52,766 :: DEBUG :: Replacing IP addresses.
+2018-01-31 18:26:52,766 :: DEBUG :: IP adresses replacement done.
+2018-01-31 18:26:52,766 :: DEBUG :: Replacing DNS names.
+2018-01-31 18:26:52,767 :: DEBUG :: DNS names replacement done.
+2018-01-31 18:26:52,767 :: DEBUG :: Splittint parts of text.
+2018-01-31 18:26:52,767 :: DEBUG :: Text preprocessed, parts splitted one by line.
+2018-01-31 18:26:52,781 :: INFO :: Started TreeTagger from command: ['C:\\Program Files (x86)\\TreeTagger\\bin\\tree-tagger.exe', '-token', '-lemma', '-sgml', '-quiet', '-no-unknown', 'C:\\Program Files (x86)\\TreeTagger\\lib\\french-utf8.par']
+2018-01-31 18:26:52,782 :: DEBUG :: Tagging text.
+2018-01-31 18:26:52,782 :: INFO :: Writing starting part to pipe.
+2018-01-31 18:26:52,782 :: INFO :: Writing data to pipe.
+2018-01-31 18:26:52,782 :: INFO :: Writing ending and flushing part to pipe.
+2018-01-31 18:26:52,783 :: INFO :: Finished writing data to pipe. Pipe flushed.
+2018-01-31 18:26:55,707 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 18:26:56,302 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAACQPdicZCwQBAJAkOaE8Na9V0aHSV0mNdQvYrXcySeLtPVffB10NGk4EkwiZBy7qdDWUwz8jKdLN4vOIu14HK6DKoGMBO3X0vyVy1Y0EDqzEV6QK0h1PZCxTTtaklO7NqdqrY9UCjtxUR2uEYdNWBh4cDhLLaBcXgNAhNrXgZDZD HTTP/1.1" 200 85
+2018-01-31 18:26:56,314 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 18:26:56,999 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAACQPdicZCwQBAJAkOaE8Na9V0aHSV0mNdQvYrXcySeLtPVffB10NGk4EkwiZBy7qdDWUwz8jKdLN4vOIu14HK6DKoGMBO3X0vyVy1Y0EDqzEV6QK0h1PZCxTTtaklO7NqdqrY9UCjtxUR2uEYdNWBh4cDhLLaBcXgNAhNrXgZDZD HTTP/1.1" 200 85
+2018-01-31 18:26:57,005 :: INFO :: 127.0.0.1 - - [31/Jan/2018 18:26:57] "POST / HTTP/1.1" 200 -
+2018-01-31 18:27:00,031 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '167354977361963', 'time': 1517419616938, 'messaging': [{'sender': {'id': '2347567705269479'}, 'recipient': {'id': '167354977361963'}, 'timestamp': 1517419616263, 'message': {'quick_reply': {'payload': 'sorties_cine-0'}, 'mid': 'mid.$cAADCxiyXtIRnfocgB1hTUHhq-gLU', 'seq': 490149, 'text': 'Cinéma'}}]}]}
+2018-01-31 18:27:00,036 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 18:27:00,487 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/2347567705269479?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAACQPdicZCwQBAJAkOaE8Na9V0aHSV0mNdQvYrXcySeLtPVffB10NGk4EkwiZBy7qdDWUwz8jKdLN4vOIu14HK6DKoGMBO3X0vyVy1Y0EDqzEV6QK0h1PZCxTTtaklO7NqdqrY9UCjtxUR2uEYdNWBh4cDhLLaBcXgNAhNrXgZDZD HTTP/1.1" 200 229
+2018-01-31 18:27:00,489 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '2347567705269479'}
+2018-01-31 18:27:00,491 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 18:27:00,753 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAACQPdicZCwQBAJAkOaE8Na9V0aHSV0mNdQvYrXcySeLtPVffB10NGk4EkwiZBy7qdDWUwz8jKdLN4vOIu14HK6DKoGMBO3X0vyVy1Y0EDqzEV6QK0h1PZCxTTtaklO7NqdqrY9UCjtxUR2uEYdNWBh4cDhLLaBcXgNAhNrXgZDZD HTTP/1.1" 200 35
+2018-01-31 18:27:01,762 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 18:27:02,381 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAACQPdicZCwQBAJAkOaE8Na9V0aHSV0mNdQvYrXcySeLtPVffB10NGk4EkwiZBy7qdDWUwz8jKdLN4vOIu14HK6DKoGMBO3X0vyVy1Y0EDqzEV6QK0h1PZCxTTtaklO7NqdqrY9UCjtxUR2uEYdNWBh4cDhLLaBcXgNAhNrXgZDZD HTTP/1.1" 200 85
+2018-01-31 18:27:02,391 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 18:27:03,810 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAACQPdicZCwQBAJAkOaE8Na9V0aHSV0mNdQvYrXcySeLtPVffB10NGk4EkwiZBy7qdDWUwz8jKdLN4vOIu14HK6DKoGMBO3X0vyVy1Y0EDqzEV6QK0h1PZCxTTtaklO7NqdqrY9UCjtxUR2uEYdNWBh4cDhLLaBcXgNAhNrXgZDZD HTTP/1.1" 200 85
+2018-01-31 18:27:03,820 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 18:27:04,462 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAACQPdicZCwQBAJAkOaE8Na9V0aHSV0mNdQvYrXcySeLtPVffB10NGk4EkwiZBy7qdDWUwz8jKdLN4vOIu14HK6DKoGMBO3X0vyVy1Y0EDqzEV6QK0h1PZCxTTtaklO7NqdqrY9UCjtxUR2uEYdNWBh4cDhLLaBcXgNAhNrXgZDZD HTTP/1.1" 200 85
+2018-01-31 18:27:04,467 :: INFO :: 127.0.0.1 - - [31/Jan/2018 18:27:04] "POST / HTTP/1.1" 200 -
+2018-01-31 18:27:11,238 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '167354977361963', 'time': 1517419628364, 'messaging': [{'recipient': {'id': '167354977361963'}, 'timestamp': 1517419628364, 'sender': {'id': '2347567705269479'}, 'postback': {'payload': 'Summary_cine*-/16', 'title': 'Résumé'}}]}]}
+2018-01-31 18:27:11,244 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 18:27:11,549 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/2347567705269479?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAACQPdicZCwQBAJAkOaE8Na9V0aHSV0mNdQvYrXcySeLtPVffB10NGk4EkwiZBy7qdDWUwz8jKdLN4vOIu14HK6DKoGMBO3X0vyVy1Y0EDqzEV6QK0h1PZCxTTtaklO7NqdqrY9UCjtxUR2uEYdNWBh4cDhLLaBcXgNAhNrXgZDZD HTTP/1.1" 200 229
+2018-01-31 18:27:11,551 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '2347567705269479'}
+2018-01-31 18:27:11,554 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 18:27:11,847 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAACQPdicZCwQBAJAkOaE8Na9V0aHSV0mNdQvYrXcySeLtPVffB10NGk4EkwiZBy7qdDWUwz8jKdLN4vOIu14HK6DKoGMBO3X0vyVy1Y0EDqzEV6QK0h1PZCxTTtaklO7NqdqrY9UCjtxUR2uEYdNWBh4cDhLLaBcXgNAhNrXgZDZD HTTP/1.1" 200 35
+2018-01-31 18:27:11,858 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 18:27:12,435 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAACQPdicZCwQBAJAkOaE8Na9V0aHSV0mNdQvYrXcySeLtPVffB10NGk4EkwiZBy7qdDWUwz8jKdLN4vOIu14HK6DKoGMBO3X0vyVy1Y0EDqzEV6QK0h1PZCxTTtaklO7NqdqrY9UCjtxUR2uEYdNWBh4cDhLLaBcXgNAhNrXgZDZD HTTP/1.1" 200 85
+2018-01-31 18:27:12,438 :: INFO :: 127.0.0.1 - - [31/Jan/2018 18:27:12] "POST / HTTP/1.1" 200 -
+2018-01-31 18:27:21,869 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '167354977361963', 'time': 1517419639066, 'messaging': [{'recipient': {'id': '167354977361963'}, 'timestamp': 1517419639066, 'sender': {'id': '2347567705269479'}, 'postback': {'payload': 'Summary_cine*-/25', 'title': 'Résumé'}}]}]}
+2018-01-31 18:27:21,873 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 18:27:22,179 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/2347567705269479?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAACQPdicZCwQBAJAkOaE8Na9V0aHSV0mNdQvYrXcySeLtPVffB10NGk4EkwiZBy7qdDWUwz8jKdLN4vOIu14HK6DKoGMBO3X0vyVy1Y0EDqzEV6QK0h1PZCxTTtaklO7NqdqrY9UCjtxUR2uEYdNWBh4cDhLLaBcXgNAhNrXgZDZD HTTP/1.1" 200 229
+2018-01-31 18:27:22,181 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '2347567705269479'}
+2018-01-31 18:27:22,183 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 18:27:22,450 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAACQPdicZCwQBAJAkOaE8Na9V0aHSV0mNdQvYrXcySeLtPVffB10NGk4EkwiZBy7qdDWUwz8jKdLN4vOIu14HK6DKoGMBO3X0vyVy1Y0EDqzEV6QK0h1PZCxTTtaklO7NqdqrY9UCjtxUR2uEYdNWBh4cDhLLaBcXgNAhNrXgZDZD HTTP/1.1" 200 35
+2018-01-31 18:27:22,456 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 18:27:23,077 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAACQPdicZCwQBAJAkOaE8Na9V0aHSV0mNdQvYrXcySeLtPVffB10NGk4EkwiZBy7qdDWUwz8jKdLN4vOIu14HK6DKoGMBO3X0vyVy1Y0EDqzEV6QK0h1PZCxTTtaklO7NqdqrY9UCjtxUR2uEYdNWBh4cDhLLaBcXgNAhNrXgZDZD HTTP/1.1" 200 85
+2018-01-31 18:27:23,081 :: INFO :: 127.0.0.1 - - [31/Jan/2018 18:27:23] "POST / HTTP/1.1" 200 -
+2018-01-31 18:27:33,232 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '167354977361963', 'time': 1517419650141, 'messaging': [{'sender': {'id': '2347567705269479'}, 'recipient': {'id': '167354977361963'}, 'timestamp': 1517419649252, 'message': {'mid': 'mid.$cAADCxiyXtIRnfoeg5FhTUJiQ4HiQ', 'seq': 490164, 'text': 'ciné'}}]}]}
+2018-01-31 18:27:33,235 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 18:27:33,495 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/2347567705269479?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAACQPdicZCwQBAJAkOaE8Na9V0aHSV0mNdQvYrXcySeLtPVffB10NGk4EkwiZBy7qdDWUwz8jKdLN4vOIu14HK6DKoGMBO3X0vyVy1Y0EDqzEV6QK0h1PZCxTTtaklO7NqdqrY9UCjtxUR2uEYdNWBh4cDhLLaBcXgNAhNrXgZDZD HTTP/1.1" 200 229
+2018-01-31 18:27:33,498 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '2347567705269479'}
+2018-01-31 18:27:33,500 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 18:27:33,803 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAACQPdicZCwQBAJAkOaE8Na9V0aHSV0mNdQvYrXcySeLtPVffB10NGk4EkwiZBy7qdDWUwz8jKdLN4vOIu14HK6DKoGMBO3X0vyVy1Y0EDqzEV6QK0h1PZCxTTtaklO7NqdqrY9UCjtxUR2uEYdNWBh4cDhLLaBcXgNAhNrXgZDZD HTTP/1.1" 200 35
+2018-01-31 18:27:33,806 :: DEBUG :: tag_text with option: numlines=0, tagonly=0, prepronly=0, notagurl=0, tagblanks=0, notagemail=0, notagip=0, notagdns=0, nosgmlsplit=0).
+2018-01-31 18:27:33,806 :: DEBUG :: Pre-processing text with internal chunker.
+2018-01-31 18:27:33,806 :: DEBUG :: Preparing text for tagger with options tagblanks=0, numlines=0, notagurl=0, notagemail=0, notagip=0, notagdns=0, nosgmlsplit=0).
+2018-01-31 18:27:33,806 :: DEBUG :: Identifying SGML tags from within text.
+2018-01-31 18:27:33,806 :: DEBUG :: Splitted between SGML tags and others %r.
+2018-01-31 18:27:33,806 :: DEBUG :: Replacing blanks by spaces.
+2018-01-31 18:27:33,806 :: DEBUG :: Blanks replacement done.
+2018-01-31 18:27:33,807 :: DEBUG :: Replacing URLs.
+2018-01-31 18:27:33,807 :: DEBUG :: URLs replacement done.
+2018-01-31 18:27:33,807 :: DEBUG :: Replacing Emails.
+2018-01-31 18:27:33,807 :: DEBUG :: Emails replacement done.
+2018-01-31 18:27:33,807 :: DEBUG :: Replacing IP addresses.
+2018-01-31 18:27:33,807 :: DEBUG :: IP adresses replacement done.
+2018-01-31 18:27:33,807 :: DEBUG :: Replacing DNS names.
+2018-01-31 18:27:33,807 :: DEBUG :: DNS names replacement done.
+2018-01-31 18:27:33,808 :: DEBUG :: Splittint parts of text.
+2018-01-31 18:27:33,808 :: DEBUG :: Text preprocessed, parts splitted one by line.
+2018-01-31 18:27:33,808 :: DEBUG :: Tagging text.
+2018-01-31 18:27:33,808 :: INFO :: Writing starting part to pipe.
+2018-01-31 18:27:33,809 :: INFO :: Writing data to pipe.
+2018-01-31 18:27:33,809 :: INFO :: Writing ending and flushing part to pipe.
+2018-01-31 18:27:33,809 :: INFO :: Finished writing data to pipe. Pipe flushed.
+2018-01-31 18:27:33,829 :: INFO :: 127.0.0.1 - - [31/Jan/2018 18:27:33] "POST / HTTP/1.1" 500 -
+2018-01-31 18:27:34,859 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '167354977361963', 'time': 1517419651740, 'messaging': [{'sender': {'id': '2347567705269479'}, 'recipient': {'id': '167354977361963'}, 'timestamp': 1517419649252, 'message': {'mid': 'mid.$cAADCxiyXtIRnfoeg5FhTUJiQ4HiQ', 'seq': 490164, 'text': 'ciné'}}]}]}
+2018-01-31 18:27:34,863 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 18:27:35,189 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/2347567705269479?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAACQPdicZCwQBAJAkOaE8Na9V0aHSV0mNdQvYrXcySeLtPVffB10NGk4EkwiZBy7qdDWUwz8jKdLN4vOIu14HK6DKoGMBO3X0vyVy1Y0EDqzEV6QK0h1PZCxTTtaklO7NqdqrY9UCjtxUR2uEYdNWBh4cDhLLaBcXgNAhNrXgZDZD HTTP/1.1" 200 229
+2018-01-31 18:27:35,192 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '2347567705269479'}
+2018-01-31 18:27:35,201 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 18:27:35,466 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAACQPdicZCwQBAJAkOaE8Na9V0aHSV0mNdQvYrXcySeLtPVffB10NGk4EkwiZBy7qdDWUwz8jKdLN4vOIu14HK6DKoGMBO3X0vyVy1Y0EDqzEV6QK0h1PZCxTTtaklO7NqdqrY9UCjtxUR2uEYdNWBh4cDhLLaBcXgNAhNrXgZDZD HTTP/1.1" 200 35
+2018-01-31 18:27:35,469 :: DEBUG :: tag_text with option: numlines=0, tagonly=0, prepronly=0, notagurl=0, tagblanks=0, notagemail=0, notagip=0, notagdns=0, nosgmlsplit=0).
+2018-01-31 18:27:35,469 :: DEBUG :: Pre-processing text with internal chunker.
+2018-01-31 18:27:35,469 :: DEBUG :: Preparing text for tagger with options tagblanks=0, numlines=0, notagurl=0, notagemail=0, notagip=0, notagdns=0, nosgmlsplit=0).
+2018-01-31 18:27:35,469 :: DEBUG :: Identifying SGML tags from within text.
+2018-01-31 18:27:35,469 :: DEBUG :: Splitted between SGML tags and others %r.
+2018-01-31 18:27:35,469 :: DEBUG :: Replacing blanks by spaces.
+2018-01-31 18:27:35,470 :: DEBUG :: Blanks replacement done.
+2018-01-31 18:27:35,470 :: DEBUG :: Replacing URLs.
+2018-01-31 18:27:35,470 :: DEBUG :: URLs replacement done.
+2018-01-31 18:27:35,470 :: DEBUG :: Replacing Emails.
+2018-01-31 18:27:35,470 :: DEBUG :: Emails replacement done.
+2018-01-31 18:27:35,470 :: DEBUG :: Replacing IP addresses.
+2018-01-31 18:27:35,470 :: DEBUG :: IP adresses replacement done.
+2018-01-31 18:27:35,470 :: DEBUG :: Replacing DNS names.
+2018-01-31 18:27:35,471 :: DEBUG :: DNS names replacement done.
+2018-01-31 18:27:35,471 :: DEBUG :: Splittint parts of text.
+2018-01-31 18:27:35,471 :: DEBUG :: Text preprocessed, parts splitted one by line.
+2018-01-31 18:27:35,471 :: DEBUG :: Tagging text.
+2018-01-31 18:27:35,471 :: INFO :: Writing starting part to pipe.
+2018-01-31 18:27:35,472 :: INFO :: Writing data to pipe.
+2018-01-31 18:27:35,472 :: INFO :: Writing ending and flushing part to pipe.
+2018-01-31 18:27:35,472 :: INFO :: Finished writing data to pipe. Pipe flushed.
+2018-01-31 18:27:35,489 :: INFO :: 127.0.0.1 - - [31/Jan/2018 18:27:35] "POST / HTTP/1.1" 500 -
+2018-01-31 18:27:36,702 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '167354977361963', 'time': 1517419653617, 'messaging': [{'sender': {'id': '2347567705269479'}, 'recipient': {'id': '167354977361963'}, 'timestamp': 1517419649252, 'message': {'mid': 'mid.$cAADCxiyXtIRnfoeg5FhTUJiQ4HiQ', 'seq': 490164, 'text': 'ciné'}}]}]}
+2018-01-31 18:27:36,704 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 18:27:37,007 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/2347567705269479?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAACQPdicZCwQBAJAkOaE8Na9V0aHSV0mNdQvYrXcySeLtPVffB10NGk4EkwiZBy7qdDWUwz8jKdLN4vOIu14HK6DKoGMBO3X0vyVy1Y0EDqzEV6QK0h1PZCxTTtaklO7NqdqrY9UCjtxUR2uEYdNWBh4cDhLLaBcXgNAhNrXgZDZD HTTP/1.1" 200 229
+2018-01-31 18:27:37,010 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '2347567705269479'}
+2018-01-31 18:27:37,014 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 18:27:37,264 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAACQPdicZCwQBAJAkOaE8Na9V0aHSV0mNdQvYrXcySeLtPVffB10NGk4EkwiZBy7qdDWUwz8jKdLN4vOIu14HK6DKoGMBO3X0vyVy1Y0EDqzEV6QK0h1PZCxTTtaklO7NqdqrY9UCjtxUR2uEYdNWBh4cDhLLaBcXgNAhNrXgZDZD HTTP/1.1" 200 35
+2018-01-31 18:27:37,267 :: DEBUG :: tag_text with option: numlines=0, tagonly=0, prepronly=0, notagurl=0, tagblanks=0, notagemail=0, notagip=0, notagdns=0, nosgmlsplit=0).
+2018-01-31 18:27:37,267 :: DEBUG :: Pre-processing text with internal chunker.
+2018-01-31 18:27:37,267 :: DEBUG :: Preparing text for tagger with options tagblanks=0, numlines=0, notagurl=0, notagemail=0, notagip=0, notagdns=0, nosgmlsplit=0).
+2018-01-31 18:27:37,268 :: DEBUG :: Identifying SGML tags from within text.
+2018-01-31 18:27:37,268 :: DEBUG :: Splitted between SGML tags and others %r.
+2018-01-31 18:27:37,268 :: DEBUG :: Replacing blanks by spaces.
+2018-01-31 18:27:37,268 :: DEBUG :: Blanks replacement done.
+2018-01-31 18:27:37,268 :: DEBUG :: Replacing URLs.
+2018-01-31 18:27:37,268 :: DEBUG :: URLs replacement done.
+2018-01-31 18:27:37,268 :: DEBUG :: Replacing Emails.
+2018-01-31 18:27:37,268 :: DEBUG :: Emails replacement done.
+2018-01-31 18:27:37,269 :: DEBUG :: Replacing IP addresses.
+2018-01-31 18:27:37,269 :: DEBUG :: IP adresses replacement done.
+2018-01-31 18:27:37,269 :: DEBUG :: Replacing DNS names.
+2018-01-31 18:27:37,269 :: DEBUG :: DNS names replacement done.
+2018-01-31 18:27:37,269 :: DEBUG :: Splittint parts of text.
+2018-01-31 18:27:37,269 :: DEBUG :: Text preprocessed, parts splitted one by line.
+2018-01-31 18:27:37,269 :: DEBUG :: Tagging text.
+2018-01-31 18:27:37,270 :: INFO :: Writing starting part to pipe.
+2018-01-31 18:27:37,270 :: INFO :: Writing data to pipe.
+2018-01-31 18:27:37,270 :: INFO :: Writing ending and flushing part to pipe.
+2018-01-31 18:27:37,270 :: INFO :: Finished writing data to pipe. Pipe flushed.
+2018-01-31 18:27:37,286 :: INFO :: 127.0.0.1 - - [31/Jan/2018 18:27:37] "POST / HTTP/1.1" 500 -
+2018-01-31 18:27:38,813 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '167354977361963', 'time': 1517419655547, 'messaging': [{'sender': {'id': '2347567705269479'}, 'recipient': {'id': '167354977361963'}, 'timestamp': 1517419649252, 'message': {'mid': 'mid.$cAADCxiyXtIRnfoeg5FhTUJiQ4HiQ', 'seq': 490164, 'text': 'ciné'}}]}]}
+2018-01-31 18:27:38,815 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 18:27:39,097 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/2347567705269479?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAACQPdicZCwQBAJAkOaE8Na9V0aHSV0mNdQvYrXcySeLtPVffB10NGk4EkwiZBy7qdDWUwz8jKdLN4vOIu14HK6DKoGMBO3X0vyVy1Y0EDqzEV6QK0h1PZCxTTtaklO7NqdqrY9UCjtxUR2uEYdNWBh4cDhLLaBcXgNAhNrXgZDZD HTTP/1.1" 200 229
+2018-01-31 18:27:39,100 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '2347567705269479'}
+2018-01-31 18:27:39,102 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 18:27:39,392 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAACQPdicZCwQBAJAkOaE8Na9V0aHSV0mNdQvYrXcySeLtPVffB10NGk4EkwiZBy7qdDWUwz8jKdLN4vOIu14HK6DKoGMBO3X0vyVy1Y0EDqzEV6QK0h1PZCxTTtaklO7NqdqrY9UCjtxUR2uEYdNWBh4cDhLLaBcXgNAhNrXgZDZD HTTP/1.1" 200 35
+2018-01-31 18:27:39,397 :: DEBUG :: tag_text with option: numlines=0, tagonly=0, prepronly=0, notagurl=0, tagblanks=0, notagemail=0, notagip=0, notagdns=0, nosgmlsplit=0).
+2018-01-31 18:27:39,397 :: DEBUG :: Pre-processing text with internal chunker.
+2018-01-31 18:27:39,397 :: DEBUG :: Preparing text for tagger with options tagblanks=0, numlines=0, notagurl=0, notagemail=0, notagip=0, notagdns=0, nosgmlsplit=0).
+2018-01-31 18:27:39,397 :: DEBUG :: Identifying SGML tags from within text.
+2018-01-31 18:27:39,398 :: DEBUG :: Splitted between SGML tags and others %r.
+2018-01-31 18:27:39,398 :: DEBUG :: Replacing blanks by spaces.
+2018-01-31 18:27:39,398 :: DEBUG :: Blanks replacement done.
+2018-01-31 18:27:39,398 :: DEBUG :: Replacing URLs.
+2018-01-31 18:27:39,398 :: DEBUG :: URLs replacement done.
+2018-01-31 18:27:39,398 :: DEBUG :: Replacing Emails.
+2018-01-31 18:27:39,399 :: DEBUG :: Emails replacement done.
+2018-01-31 18:27:39,399 :: DEBUG :: Replacing IP addresses.
+2018-01-31 18:27:39,399 :: DEBUG :: IP adresses replacement done.
+2018-01-31 18:27:39,399 :: DEBUG :: Replacing DNS names.
+2018-01-31 18:27:39,399 :: DEBUG :: DNS names replacement done.
+2018-01-31 18:27:39,399 :: DEBUG :: Splittint parts of text.
+2018-01-31 18:27:39,400 :: DEBUG :: Text preprocessed, parts splitted one by line.
+2018-01-31 18:27:39,400 :: DEBUG :: Tagging text.
+2018-01-31 18:27:39,401 :: INFO :: Writing starting part to pipe.
+2018-01-31 18:27:39,401 :: INFO :: Writing data to pipe.
+2018-01-31 18:27:39,401 :: INFO :: Writing ending and flushing part to pipe.
+2018-01-31 18:27:39,401 :: INFO :: Finished writing data to pipe. Pipe flushed.
+2018-01-31 18:27:39,421 :: INFO :: 127.0.0.1 - - [31/Jan/2018 18:27:39] "POST / HTTP/1.1" 500 -
+2018-01-31 18:27:40,996 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '167354977361963', 'time': 1517419657886, 'messaging': [{'sender': {'id': '2347567705269479'}, 'recipient': {'id': '167354977361963'}, 'timestamp': 1517419649252, 'message': {'mid': 'mid.$cAADCxiyXtIRnfoeg5FhTUJiQ4HiQ', 'seq': 490164, 'text': 'ciné'}}]}]}
+2018-01-31 18:27:40,999 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 18:27:41,370 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/2347567705269479?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAACQPdicZCwQBAJAkOaE8Na9V0aHSV0mNdQvYrXcySeLtPVffB10NGk4EkwiZBy7qdDWUwz8jKdLN4vOIu14HK6DKoGMBO3X0vyVy1Y0EDqzEV6QK0h1PZCxTTtaklO7NqdqrY9UCjtxUR2uEYdNWBh4cDhLLaBcXgNAhNrXgZDZD HTTP/1.1" 200 229
+2018-01-31 18:27:41,373 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '2347567705269479'}
+2018-01-31 18:27:41,375 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 18:27:41,730 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAACQPdicZCwQBAJAkOaE8Na9V0aHSV0mNdQvYrXcySeLtPVffB10NGk4EkwiZBy7qdDWUwz8jKdLN4vOIu14HK6DKoGMBO3X0vyVy1Y0EDqzEV6QK0h1PZCxTTtaklO7NqdqrY9UCjtxUR2uEYdNWBh4cDhLLaBcXgNAhNrXgZDZD HTTP/1.1" 200 35
+2018-01-31 18:27:41,733 :: DEBUG :: tag_text with option: numlines=0, tagonly=0, prepronly=0, notagurl=0, tagblanks=0, notagemail=0, notagip=0, notagdns=0, nosgmlsplit=0).
+2018-01-31 18:27:41,734 :: DEBUG :: Pre-processing text with internal chunker.
+2018-01-31 18:27:41,734 :: DEBUG :: Preparing text for tagger with options tagblanks=0, numlines=0, notagurl=0, notagemail=0, notagip=0, notagdns=0, nosgmlsplit=0).
+2018-01-31 18:27:41,734 :: DEBUG :: Identifying SGML tags from within text.
+2018-01-31 18:27:41,734 :: DEBUG :: Splitted between SGML tags and others %r.
+2018-01-31 18:27:41,734 :: DEBUG :: Replacing blanks by spaces.
+2018-01-31 18:27:41,734 :: DEBUG :: Blanks replacement done.
+2018-01-31 18:27:41,735 :: DEBUG :: Replacing URLs.
+2018-01-31 18:27:41,735 :: DEBUG :: URLs replacement done.
+2018-01-31 18:27:41,735 :: DEBUG :: Replacing Emails.
+2018-01-31 18:27:41,735 :: DEBUG :: Emails replacement done.
+2018-01-31 18:27:41,735 :: DEBUG :: Replacing IP addresses.
+2018-01-31 18:27:41,736 :: DEBUG :: IP adresses replacement done.
+2018-01-31 18:27:41,736 :: DEBUG :: Replacing DNS names.
+2018-01-31 18:27:41,736 :: DEBUG :: DNS names replacement done.
+2018-01-31 18:27:41,736 :: DEBUG :: Splittint parts of text.
+2018-01-31 18:27:41,736 :: DEBUG :: Text preprocessed, parts splitted one by line.
+2018-01-31 18:27:41,737 :: DEBUG :: Tagging text.
+2018-01-31 18:27:41,737 :: INFO :: Writing starting part to pipe.
+2018-01-31 18:27:41,738 :: INFO :: Writing data to pipe.
+2018-01-31 18:27:41,738 :: INFO :: Writing ending and flushing part to pipe.
+2018-01-31 18:27:41,738 :: INFO :: Finished writing data to pipe. Pipe flushed.
+2018-01-31 18:27:41,757 :: INFO :: 127.0.0.1 - - [31/Jan/2018 18:27:41] "POST / HTTP/1.1" 500 -
+2018-01-31 18:27:45,801 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '167354977361963', 'time': 1517419662715, 'messaging': [{'sender': {'id': '2347567705269479'}, 'recipient': {'id': '167354977361963'}, 'timestamp': 1517419649252, 'message': {'mid': 'mid.$cAADCxiyXtIRnfoeg5FhTUJiQ4HiQ', 'seq': 490164, 'text': 'ciné'}}]}]}
+2018-01-31 18:27:45,804 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 18:27:46,094 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/2347567705269479?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAACQPdicZCwQBAJAkOaE8Na9V0aHSV0mNdQvYrXcySeLtPVffB10NGk4EkwiZBy7qdDWUwz8jKdLN4vOIu14HK6DKoGMBO3X0vyVy1Y0EDqzEV6QK0h1PZCxTTtaklO7NqdqrY9UCjtxUR2uEYdNWBh4cDhLLaBcXgNAhNrXgZDZD HTTP/1.1" 200 229
+2018-01-31 18:27:46,097 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '2347567705269479'}
+2018-01-31 18:27:46,099 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 18:27:46,402 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAACQPdicZCwQBAJAkOaE8Na9V0aHSV0mNdQvYrXcySeLtPVffB10NGk4EkwiZBy7qdDWUwz8jKdLN4vOIu14HK6DKoGMBO3X0vyVy1Y0EDqzEV6QK0h1PZCxTTtaklO7NqdqrY9UCjtxUR2uEYdNWBh4cDhLLaBcXgNAhNrXgZDZD HTTP/1.1" 200 35
+2018-01-31 18:27:46,408 :: DEBUG :: tag_text with option: numlines=0, tagonly=0, prepronly=0, notagurl=0, tagblanks=0, notagemail=0, notagip=0, notagdns=0, nosgmlsplit=0).
+2018-01-31 18:27:46,409 :: DEBUG :: Pre-processing text with internal chunker.
+2018-01-31 18:27:46,410 :: DEBUG :: Preparing text for tagger with options tagblanks=0, numlines=0, notagurl=0, notagemail=0, notagip=0, notagdns=0, nosgmlsplit=0).
+2018-01-31 18:27:46,410 :: DEBUG :: Identifying SGML tags from within text.
+2018-01-31 18:27:46,410 :: DEBUG :: Splitted between SGML tags and others %r.
+2018-01-31 18:27:46,410 :: DEBUG :: Replacing blanks by spaces.
+2018-01-31 18:27:46,411 :: DEBUG :: Blanks replacement done.
+2018-01-31 18:27:46,411 :: DEBUG :: Replacing URLs.
+2018-01-31 18:27:46,412 :: DEBUG :: URLs replacement done.
+2018-01-31 18:27:46,412 :: DEBUG :: Replacing Emails.
+2018-01-31 18:27:46,413 :: DEBUG :: Emails replacement done.
+2018-01-31 18:27:46,413 :: DEBUG :: Replacing IP addresses.
+2018-01-31 18:27:46,414 :: DEBUG :: IP adresses replacement done.
+2018-01-31 18:27:46,414 :: DEBUG :: Replacing DNS names.
+2018-01-31 18:27:46,414 :: DEBUG :: DNS names replacement done.
+2018-01-31 18:27:46,415 :: DEBUG :: Splittint parts of text.
+2018-01-31 18:27:46,415 :: DEBUG :: Text preprocessed, parts splitted one by line.
+2018-01-31 18:27:46,416 :: DEBUG :: Tagging text.
+2018-01-31 18:27:46,423 :: INFO :: Writing starting part to pipe.
+2018-01-31 18:27:46,424 :: INFO :: Writing data to pipe.
+2018-01-31 18:27:46,425 :: INFO :: Writing ending and flushing part to pipe.
+2018-01-31 18:27:46,425 :: INFO :: Finished writing data to pipe. Pipe flushed.
+2018-01-31 18:27:46,467 :: INFO :: 127.0.0.1 - - [31/Jan/2018 18:27:46] "POST / HTTP/1.1" 500 -
+2018-01-31 18:28:02,404 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '167354977361963', 'time': 1517419679294, 'messaging': [{'sender': {'id': '2347567705269479'}, 'recipient': {'id': '167354977361963'}, 'timestamp': 1517419649252, 'message': {'mid': 'mid.$cAADCxiyXtIRnfoeg5FhTUJiQ4HiQ', 'seq': 490164, 'text': 'ciné'}}]}]}
+2018-01-31 18:28:02,407 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 18:28:02,679 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/2347567705269479?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAACQPdicZCwQBAJAkOaE8Na9V0aHSV0mNdQvYrXcySeLtPVffB10NGk4EkwiZBy7qdDWUwz8jKdLN4vOIu14HK6DKoGMBO3X0vyVy1Y0EDqzEV6QK0h1PZCxTTtaklO7NqdqrY9UCjtxUR2uEYdNWBh4cDhLLaBcXgNAhNrXgZDZD HTTP/1.1" 200 229
+2018-01-31 18:28:02,685 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '2347567705269479'}
+2018-01-31 18:28:02,692 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 18:28:03,030 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAACQPdicZCwQBAJAkOaE8Na9V0aHSV0mNdQvYrXcySeLtPVffB10NGk4EkwiZBy7qdDWUwz8jKdLN4vOIu14HK6DKoGMBO3X0vyVy1Y0EDqzEV6QK0h1PZCxTTtaklO7NqdqrY9UCjtxUR2uEYdNWBh4cDhLLaBcXgNAhNrXgZDZD HTTP/1.1" 200 35
+2018-01-31 18:28:03,037 :: DEBUG :: tag_text with option: numlines=0, tagonly=0, prepronly=0, notagurl=0, tagblanks=0, notagemail=0, notagip=0, notagdns=0, nosgmlsplit=0).
+2018-01-31 18:28:03,037 :: DEBUG :: Pre-processing text with internal chunker.
+2018-01-31 18:28:03,038 :: DEBUG :: Preparing text for tagger with options tagblanks=0, numlines=0, notagurl=0, notagemail=0, notagip=0, notagdns=0, nosgmlsplit=0).
+2018-01-31 18:28:03,038 :: DEBUG :: Identifying SGML tags from within text.
+2018-01-31 18:28:03,038 :: DEBUG :: Splitted between SGML tags and others %r.
+2018-01-31 18:28:03,039 :: DEBUG :: Replacing blanks by spaces.
+2018-01-31 18:28:03,039 :: DEBUG :: Blanks replacement done.
+2018-01-31 18:28:03,039 :: DEBUG :: Replacing URLs.
+2018-01-31 18:28:03,040 :: DEBUG :: URLs replacement done.
+2018-01-31 18:28:03,040 :: DEBUG :: Replacing Emails.
+2018-01-31 18:28:03,041 :: DEBUG :: Emails replacement done.
+2018-01-31 18:28:03,042 :: DEBUG :: Replacing IP addresses.
+2018-01-31 18:28:03,042 :: DEBUG :: IP adresses replacement done.
+2018-01-31 18:28:03,043 :: DEBUG :: Replacing DNS names.
+2018-01-31 18:28:03,043 :: DEBUG :: DNS names replacement done.
+2018-01-31 18:28:03,044 :: DEBUG :: Splittint parts of text.
+2018-01-31 18:28:03,044 :: DEBUG :: Text preprocessed, parts splitted one by line.
+2018-01-31 18:28:03,045 :: DEBUG :: Tagging text.
+2018-01-31 18:28:03,049 :: INFO :: Writing starting part to pipe.
+2018-01-31 18:28:03,050 :: INFO :: Writing data to pipe.
+2018-01-31 18:28:03,050 :: INFO :: Writing ending and flushing part to pipe.
+2018-01-31 18:28:03,051 :: INFO :: Finished writing data to pipe. Pipe flushed.
+2018-01-31 18:28:03,090 :: INFO :: 127.0.0.1 - - [31/Jan/2018 18:28:03] "POST / HTTP/1.1" 500 -
+2018-01-31 18:28:45,964 :: INFO ::  * Detected change in 'c:\\Users\\Charles\\Desktop\\Centrale\\Projet OSY\\strolling\\server.py', reloading
+2018-01-31 18:28:46,087 :: INFO ::  * Restarting with stat
+2018-01-31 18:28:48,802 :: WARNING ::  * Debugger is active!
+2018-01-31 18:28:48,813 :: INFO ::  * Debugger PIN: 323-325-445
+2018-01-31 18:28:48,830 :: INFO ::  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2018-01-31 18:29:27,646 :: INFO ::  * Restarting with stat
+2018-01-31 18:29:29,075 :: WARNING ::  * Debugger is active!
+2018-01-31 18:29:29,083 :: INFO ::  * Debugger PIN: 323-325-445
+2018-01-31 18:29:29,101 :: INFO ::  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2018-01-31 18:30:03,033 :: INFO ::  * Detected change in 'c:\\Users\\Charles\\Desktop\\Centrale\\Projet OSY\\strolling\\server.py', reloading
