@@ -22,7 +22,7 @@ from backend.others.bdd_jokes import random_joke
 
 # TestJ access token: 
 # EAACQPdicZCwQBAJAkOaE8Na9V0aHSV0mNdQvYrXcySeLtPVffB10NGk4EkwiZBy7qdDWUwz8jKdLN4vOIu14HK6DKoGMBO3X0vyVy1Y0EDqzEV6QK0h1PZCxTTtaklO7NqdqrY9UCjtxUR2uEYdNWBh4cDhLLaBcXgNAhNrXgZDZD
-ACCESS_TOKEN = "EAACQPdicZCwQBAJAkOaE8Na9V0aHSV0mNdQvYrXcySeLtPVffB10NGk4EkwiZBy7qdDWUwz8jKdLN4vOIu14HK6DKoGMBO3X0vyVy1Y0EDqzEV6QK0h1PZCxTTtaklO7NqdqrY9UCjtxUR2uEYdNWBh4cDhLLaBcXgNAhNrXgZDZD"
+ACCESS_TOKEN = "EAAHSfldMxYcBAAt4D30ZAzVHSnhhFqxV15wMJ0RwZCOBH4MZALBJOa8gTvUV0OTL5t3Q4ZBOosziQ3AXIwYpgpdbJCRRkbJKBuB7FASzhnZAcZCsy6expZATAbflsnln2Hd5I1Yo8J2Ddny170yI13r7A224a20yBWczLeYZAzZBDTQZDZD"
 
 
 # Flask config
@@ -103,7 +103,7 @@ def handle_event():
 
     sender = event['sender']['id']
     user = user_details(sender, ACCESS_TOKEN)
-    
+
     typing_bubble(sender, ACCESS_TOKEN)
 
     if "message" in event:
@@ -195,6 +195,8 @@ def handle_event():
             latest = get_details_cinema()
             result = [ x for x in latest if x["ID"] == ID][0]
             send_msg(sender, "-- "+result['title']+" -- Résumé -- \n\n"+result['summary'], ACCESS_TOKEN)
+            time.sleep(4)
+            start_buttons(sender, "Autre chose ?")
 
         elif event['postback']['payload'][:12] == "Summary_expo":
             x = event['postback']['payload'].split("*-/") 
@@ -219,7 +221,10 @@ def handle_event():
 
 def welcome(sender, user):
     time.sleep(1)
-    answer="Salut {}, je suis Electre ! Je connais les meilleurs films et expos de Paris.".format(user[1])
+    answer="Salut {}, je suis Electre ! Je connais les meilleurs films et expos de Paris.\n\n \
+Il y a 2-3 trucs qui ont changé depuis la dernière fois :\n \
+- tu peux choisir des types de films (action, comédie...) dans les cartes\n \
+- tu peux me demander avec des phrases des infos sur les expos!".format(user[1])
     send_msg(sender, answer, ACCESS_TOKEN)
     start_buttons(sender, "Qu'est-ce qui t'intéresserait ?")
 
@@ -291,6 +296,7 @@ def film_display(num, sender, latest):
         }
     ]
     if num == 0:
+        time.sleep(4)
         send_quick_rep(sender, "Tu veux voir d'autres films ? Ou plutôt voir un genre de film particulier ?", btns ,ACCESS_TOKEN)
 
 def get_genre_movie(sender):
