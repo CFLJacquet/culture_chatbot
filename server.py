@@ -12,7 +12,7 @@ import pickle
 from backend.cinema.handle_cinema import get_details, get_topmovies_genre
 #resize_image_from_url
 from backend.messenger.msg_fct import user_details, send_msg, send_button, send_card, send_quick_rep
-from backend.exhibition.handle_expo import get_genre, get_exhib
+from backend.exhibition.handle_expo import get_genre_exhib, get_exhib
 from backend.others.bdd_jokes import random_joke
 
 
@@ -95,8 +95,6 @@ def handle_event():
     logging.info("DATA: {}".format(data))
 
     event = data['entry'][0]['messaging'][0]
-    user_says = event['message']['text']
-    print(user_says)
 
     latest = get_details()
     logging.info('LATEST FILMS :'+str(latest))
@@ -133,7 +131,7 @@ def handle_event():
                 num = int(event['message']['quick_reply']['payload'][-1])
                 exhibition_display(num, sender)
             #boucle pour récupérer le genre de l'exposition:
-            elif event['message']['quick_reply']['payload'] in get_genre()[1]:
+            elif event['message']['quick_reply']['payload'] in get_genre_exhib()[1]:
                 p = event['message']['quick_reply']['payload']
                 num = int(p[-1])
                 exhibition_display(num, sender, p)
@@ -154,6 +152,7 @@ def handle_event():
             welcome(sender, user)
 
         elif event['postback']['payload'][:12] == "Summary_cine":
+            logging.info("in summury_ciné")
             i = int(event['postback']['payload'][-1])
             send_msg(sender, "-- "+latest[i]['title']+" -- Résumé -- \n\n"+latest[i]['summary'], ACCESS_TOKEN)
 
@@ -332,7 +331,7 @@ def exhibition_display(num, sender, payload =""):
         send_msg(sender, "Une petite expo donc ! ", ACCESS_TOKEN)
         msg = "Il y a plusieurs types d'expositions, qu'est ce qui vous intéresse le plus ?"
         
-        btns_genre = get_genre()[1]
+        btns_genre = get_genre_exhib()[1]
         send_quick_rep(sender, msg, btns_genre, ACCESS_TOKEN)
 
     elif num in range(1,4):

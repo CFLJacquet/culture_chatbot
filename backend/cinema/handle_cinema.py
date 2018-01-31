@@ -73,8 +73,10 @@ def movielist(code, count=None, page=None, profile=None, filter=None, order=None
 def stock_last_movies():
 
     # ATTENTION - count parameter not working, len(last_release)=100 movies ! => filtering in return
-    last_release = movielist(0, count=15, page=None, profile="medium", filter="nowshowing", order="toprank", format="json")
+    last_release = movielist(0, count=30, page=None, profile="medium", filter="nowshowing", order="toprank", format="json")
     last_release=last_release["feed"]["movie"]
+    for num, elt in enumerate(last_release):
+        elt["ID"]= num + 1
     pprint(last_release)
 
     #changer le path (avec backend etc.. comme handle_expo) avant de faire tourner le serveur

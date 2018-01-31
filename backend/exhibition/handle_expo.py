@@ -33,10 +33,10 @@ def merge_offspect():
         p = pickle.Pickler(f)
         p.dump(merged)
 
-def get_genre():
+def get_genre_exhib():
     """ Returns a tuple: list of exhibition genres + cards to be used in quick replies """
     
-    with open("/Users/constanceleonard/Desktop/projet_osy/strolling/backend/exhibition/expo_offspect", 'rb') as f:
+    with open("backend/exhibition/expo_offspect", 'rb') as f: #/Users/constanceleonard/Desktop/projet_osy/strolling/
         d = pickle.Unpickler(f)
         data = d.load()
 
