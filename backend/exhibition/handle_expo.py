@@ -4,7 +4,7 @@ from datetime import datetime as dt
 from pprint import pprint
 import pandas as pd
 
-def get_genre():
+def get_genre_exhib():
     """ Returns a tuple: list of exhibition genres + cards to be used in quick replies """
     
     data = pd.read_json("backend/exhibition/data_exhibition.json")

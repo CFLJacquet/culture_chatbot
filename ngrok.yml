@@ -1,0 +1,7 @@
+log: /Users/constanceleonard/Desktop/projet_osy/strolling/log/ngrok.log
+log_level: debug
+log_format: logfmt
+tunnels:
+    app:
+        proto: http
+        addr: 5000
