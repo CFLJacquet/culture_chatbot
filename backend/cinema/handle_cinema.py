@@ -75,7 +75,19 @@ def stock_last_movies():
     # ATTENTION - count parameter not working, len(last_release)=100 movies ! => filtering in return
     last_release = movielist(0, count=30, page=None, profile="medium", filter="nowshowing", order="toprank", format="json")
     last_release=last_release["feed"]["movie"]
+
     for num, elt in enumerate(last_release):
+        for genre in elt['genre'] :
+            if genre['$'] in ["Thriller" , 'Aventure']:
+                genre['$'] = "Action"
+            elif genre['$'] == 'Science fiction':
+                genre['$'] = 'Fantastique'
+            elif genre['$'] in ["Guerre", 'Biopic']:
+                genre['$'] = 'Historique'
+            elif genre['$'] == 'Comédie dramatique' :
+                genre['$'] = 'Drame'
+            elif genre['$'] == 'Comédie musicale' :
+                genre['$'] = "Comédie"
         elt["ID"]= num + 1
     #pprint(last_release)
 
@@ -157,5 +169,5 @@ def get_topmovies_genre(genre):
 
 if __name__ == '__main__':
     print(sys.stdout.encoding)
-    #stock_last_movies()
+    pprint(stock_last_movies())
     pprint(get_details_cinema())

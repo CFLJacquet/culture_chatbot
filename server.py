@@ -96,9 +96,6 @@ def handle_event():
 
     event = data['entry'][0]['messaging'][0]
 
-    latest = get_details_cinema()
-    #logging.info('LATEST FILMS :'+str(latest))
-
     sender = event['sender']['id']
     user = user_details(sender, ACCESS_TOKEN)
 
@@ -110,23 +107,23 @@ def handle_event():
 
         else:
             if event['message']['quick_reply']['payload'][:12] == "sorties_cine":
-                num = int(event['message']['quick_reply']['payload'][-1])
+                latest = get_details_cinema()
+                num = int(event['message']['quick_reply']['payload'].split("-")[1])
                 film_display(num, sender, latest)
-                send_msg(sender, " ", ACCESS_TOKEN)
-            elif event['message']['quick_reply']['payload'][:12] == "genres_cine":
+            elif "genres_cine" in event['message']['quick_reply']['payload']:
                 send_msg(sender, "Quel genre vous intéresse?", ACCESS_TOKEN)
-                get_genre_movie(sender)
-                send_msg(sender, " ", ACCESS_TOKEN)
+                btns = get_genre_movie(sender)[1]
+                send_quick_rep(sender, "Voici les genres possibles: ", btns , ACCESS_TOKEN)
+
                 #intégrer NLP dialogflow:
                 #boucle pour récupérer le genre du film:
             elif event['message']['quick_reply']['payload'] in get_genre_movie(sender)[2]:
                 #on récupère le genre du film pour obtenir une liste des derniers films sortis mais filtrée par le genre
-                p = event['message']['quick_reply']['payload'][0:-2]
+                p = event['message']['quick_reply']['payload'][:-2]
                 #print(p)
                 ranking= get_topmovies_genre(p)
                 #print(ranking)
                 film_display_genre(sender, p)
-                send_msg(sender, " ", ACCESS_TOKEN)
             
             elif event['message']['quick_reply']['payload'][:10] == "exhibition":
                 num = int(event['message']['quick_reply']['payload'][-1])
@@ -205,7 +202,7 @@ def film_display(num, sender, latest):
         send_msg(sender,'Voici les meilleurs films en salle', ACCESS_TOKEN)
 
     cards=[]
-    for i in range (num, num+3):
+    for i in range (num, num+9):
         etoile = u'\U0001F31F' * int(round(latest[i]['notepresse']))
         cards.append(
             {
@@ -230,7 +227,7 @@ def film_display(num, sender, latest):
         {
             "content_type":"text",
             "title":"Plus de films !",
-            "payload":"sorties_cine-3"
+            "payload":"sorties_cine-10"
         },
         {
             "content_type": "text",
@@ -247,6 +244,7 @@ def film_display(num, sender, latest):
         send_quick_rep(sender, "Voulez-vous voir d'autres films ? Ou souhaitez-vous voir un genre de film particulier?", btns ,ACCESS_TOKEN)
 
 def get_genre_movie(sender):
+    """ returns : genre, btns, list_payload"""
 
     with open("backend/cinema/cinema_allocine", 'rb') as f: #/Users/constanceleonard/Desktop/projet_osy/strolling/
         d = pickle.Unpickler(f)
@@ -259,8 +257,7 @@ def get_genre_movie(sender):
             sous_genres.append(item['$'])
         genre.extend(sous_genres)
         no_duplicates = list(set(genre))
-        genre = sorted(no_duplicates)  # genre list without duplicates
-        genre = [x for x in genre if x not in ['Comédie dramatique', 'Fantastique', 'Aventure']]
+        genre = sorted(no_duplicates)[:10]  # genre list without duplicates
 
     btns = []
     i=0
@@ -283,8 +280,6 @@ def get_genre_movie(sender):
     for i in range(0, len(btns)):
         list_payload.append(btns[i]['payload'])
 
-    send_quick_rep(sender, "Voici les genres possibles: ", btns , ACCESS_TOKEN)
-
     return genre, btns, list_payload
 
 
@@ -296,11 +291,12 @@ def film_display_genre(sender, genre):
 
         cards=[]
         for i in range(0, len(movies_filtered)):
+            etoile = u'\U0001F31F' * int(round(movies_filtered[i]['notepresse']))
             cards.append(
                 {
                     "title": movies_filtered[i]['title'],
                     "image_url": movies_filtered[i]['img_url'],
-                    "subtitle": "Note Presse : {}/5 ".format(movies_filtered[i]['notepresse']),
+                    "subtitle": "Note Presse : {}/5 ".format(etoile),
                     "buttons": [{
                         "type": "web_url",
                         "url": movies_filtered[i]['url'],
@@ -315,19 +311,7 @@ def film_display_genre(sender, genre):
                 }
             )
         send_card(sender, cards, ACCESS_TOKEN)
-        btns = [
-            {
-                "content_type": "text",
-                "title": "Plus de films !",
-                "payload": "sorties_cine-3"
-            },
-            {
-                "content_type": "text",
-                "title": "Merci Electre",
-                "payload": "Thanks"
-            }
-        ]
-        send_quick_rep(sender, "Voulez-vous voir d'autres films ?", btns , ACCESS_TOKEN)
+        send_msg(sender, "Si tu veux voir un autre film ou une expo, n'hésite pas !", ACCESS_TOKEN)
 
 
 def exhibition_display(num, sender, payload =""):

@@ -1,7 +1,8 @@
 from server import get_genre_exhib
+from backend.cinema.handle_cinema import get_details_cinema, stock_last_movies
 import sys
 from pprint import pprint
 
 
 print(sys.stdout.encoding)
-pprint(get_genre_exhib()[0])
+pprint(stock_last_movies())

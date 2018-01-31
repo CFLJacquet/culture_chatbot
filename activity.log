@@ -1100,3 +1100,802 @@
 2018-01-31 15:34:53,033 :: INFO ::  * Debugger PIN: 323-325-445
 2018-01-31 15:34:53,895 :: INFO ::  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
 2018-01-31 15:35:02,056 :: INFO ::  * Detected change in 'c:\\Users\\Charles\\Desktop\\Centrale\\Projet OSY\\strolling_back\\server.py', reloading
+2018-01-31 15:35:02,154 :: INFO ::  * Restarting with stat
+2018-01-31 15:35:07,330 :: WARNING ::  * Debugger is active!
+2018-01-31 15:35:07,357 :: INFO ::  * Debugger PIN: 323-325-445
+2018-01-31 15:35:08,249 :: INFO ::  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2018-01-31 15:35:49,562 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517409346585, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517409345927, 'message': {'mid': 'mid.$cAAXc-q1lTrFnfepph1hTKUqkg8iN', 'seq': 489697, 'text': 'bonjour'}}]}]}
+2018-01-31 15:35:49,571 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 15:35:50,006 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 15:35:50,009 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 15:35:50,011 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 15:35:50,624 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 15:35:50,631 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 15:35:51,277 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 15:35:51,282 :: INFO :: 127.0.0.1 - - [31/Jan/2018 15:35:51] "POST / HTTP/1.1" 200 -
+2018-01-31 15:35:54,080 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517409351103, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517409350442, 'message': {'quick_reply': {'payload': 'sorties_cine-0'}, 'mid': 'mid.$cAAXc-q1lTrFnfep7KlhTKU78ZyNi', 'seq': 489702, 'text': 'Cinéma'}}]}]}
+2018-01-31 15:35:54,088 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 15:35:54,409 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 15:35:54,412 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 15:35:54,414 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 15:35:55,028 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 15:35:55,037 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 15:35:56,091 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 15:35:56,096 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 15:35:56,816 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 15:35:56,822 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 15:35:57,160 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 400 167
+2018-01-31 15:35:57,163 :: INFO :: STATUS CODE - MSG: 400 - {"error":{"message":"(#100) Message cannot be empty, must provide valid attachment or text","type":"OAuthException","code":100,"error_subcode":2018034,"fbtrace_id":"BOBpguS5Wvc"}}
+2018-01-31 15:35:57,164 :: INFO :: 127.0.0.1 - - [31/Jan/2018 15:35:57] "POST / HTTP/1.1" 200 -
+2018-01-31 15:35:59,473 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517409356508, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517409355867, 'message': {'quick_reply': {'payload': 'genres_cine'}, 'mid': 'mid.$cAAXc-q1lTrFnfeqQW1hTKVRecEkq', 'seq': 489709, 'text': 'Choisir un genre !'}}]}]}
+2018-01-31 15:35:59,478 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 15:35:59,755 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 15:35:59,757 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 15:35:59,759 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 15:36:00,609 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 15:36:00,620 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 15:36:00,926 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 400 144
+2018-01-31 15:36:00,928 :: INFO :: STATUS CODE - QCK: 400 - {"error":{"message":"(#105) param message[quick_replies] has too many elements.","type":"OAuthException","code":105,"fbtrace_id":"EtcAIJBz1UN"}}
+2018-01-31 15:36:00,931 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 15:36:01,377 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 400 168
+2018-01-31 15:36:01,379 :: INFO :: STATUS CODE - MSG: 400 - {"error":{"message":"(#100) Message cannot be empty, must provide valid attachment or text","type":"OAuthException","code":100,"error_subcode":2018034,"fbtrace_id":"DgkduCePKBR"}}
+2018-01-31 15:36:01,380 :: INFO :: 127.0.0.1 - - [31/Jan/2018 15:36:01] "POST / HTTP/1.1" 200 -
+2018-01-31 15:36:52,903 :: INFO ::  * Detected change in 'c:\\Users\\Charles\\Desktop\\Centrale\\Projet OSY\\strolling_back\\server.py', reloading
+2018-01-31 15:36:53,002 :: INFO ::  * Restarting with stat
+2018-01-31 15:36:56,958 :: WARNING ::  * Debugger is active!
+2018-01-31 15:36:56,970 :: INFO ::  * Debugger PIN: 323-325-445
+2018-01-31 15:36:57,837 :: INFO ::  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2018-01-31 15:37:37,941 :: INFO ::  * Detected change in 'c:\\Users\\Charles\\Desktop\\Centrale\\Projet OSY\\strolling_back\\server.py', reloading
+2018-01-31 15:37:38,076 :: INFO ::  * Restarting with stat
+2018-01-31 15:37:42,733 :: INFO ::  * Restarting with stat
+2018-01-31 15:37:45,323 :: WARNING ::  * Debugger is active!
+2018-01-31 15:37:45,330 :: INFO ::  * Debugger PIN: 323-325-445
+2018-01-31 15:37:46,202 :: INFO ::  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2018-01-31 15:40:27,919 :: INFO ::  * Detected change in 'c:\\Users\\Charles\\Desktop\\Centrale\\Projet OSY\\strolling_back\\server.py', reloading
+2018-01-31 15:40:28,036 :: INFO ::  * Restarting with stat
+2018-01-31 15:40:33,381 :: WARNING ::  * Debugger is active!
+2018-01-31 15:40:33,407 :: INFO ::  * Debugger PIN: 323-325-445
+2018-01-31 15:40:34,296 :: INFO ::  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2018-01-31 15:40:34,577 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517409631586, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517409628876, 'message': {'mid': 'mid.$cAAXc-q1lTrFnfe66zFhTKl73VZ3Y', 'seq': 489712, 'text': 'bonjour'}}]}]}
+2018-01-31 15:40:34,589 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 15:40:34,933 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 15:40:34,941 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 15:40:34,946 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 15:40:35,673 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 15:40:35,681 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 15:40:36,377 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 15:40:36,381 :: INFO :: 127.0.0.1 - - [31/Jan/2018 15:40:36] "POST / HTTP/1.1" 200 -
+2018-01-31 15:40:39,991 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517409637016, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517409636356, 'message': {'quick_reply': {'payload': 'sorties_cine-0'}, 'mid': 'mid.$cAAXc-q1lTrFnfe7YBFhTKmZNL0gJ', 'seq': 489715, 'text': 'Cinéma'}}]}]}
+2018-01-31 15:40:39,997 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 15:40:40,292 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 15:40:40,296 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 15:40:40,299 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 15:40:40,947 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 15:40:40,953 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 15:40:42,272 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 15:40:42,277 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 15:40:42,966 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 15:40:42,973 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 15:40:43,242 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 400 168
+2018-01-31 15:40:43,247 :: INFO :: STATUS CODE - MSG: 400 - {"error":{"message":"(#100) Message cannot be empty, must provide valid attachment or text","type":"OAuthException","code":100,"error_subcode":2018034,"fbtrace_id":"F4SZC9z0a53"}}
+2018-01-31 15:40:43,247 :: INFO :: 127.0.0.1 - - [31/Jan/2018 15:40:43] "POST / HTTP/1.1" 200 -
+2018-01-31 15:40:45,523 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517409642531, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517409641850, 'message': {'quick_reply': {'payload': 'genres_cine'}, 'mid': 'mid.$cAAXc-q1lTrFnfe7telhTKmuraOfu', 'seq': 489723, 'text': 'Choisir un genre !'}}]}]}
+2018-01-31 15:40:45,529 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 15:40:46,043 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 15:40:46,046 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 15:40:46,049 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 15:40:46,721 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 15:40:46,734 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 15:40:47,014 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 400 144
+2018-01-31 15:40:47,016 :: INFO :: STATUS CODE - QCK: 400 - {"error":{"message":"(#105) param message[quick_replies] has too many elements.","type":"OAuthException","code":105,"fbtrace_id":"FgDlh+T0bnx"}}
+2018-01-31 15:40:47,019 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 15:40:47,284 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 400 166
+2018-01-31 15:40:47,287 :: INFO :: STATUS CODE - MSG: 400 - {"error":{"message":"(#100) Message cannot be empty, must provide valid attachment or text","type":"OAuthException","code":100,"error_subcode":2018034,"fbtrace_id":"BwuM1wvjpOl"}}
+2018-01-31 15:40:47,288 :: INFO :: 127.0.0.1 - - [31/Jan/2018 15:40:47] "POST / HTTP/1.1" 200 -
+2018-01-31 15:42:09,568 :: INFO ::  * Detected change in 'c:\\Users\\Charles\\Desktop\\Centrale\\Projet OSY\\strolling_back\\server.py', reloading
+2018-01-31 15:42:09,657 :: INFO ::  * Restarting with stat
+2018-01-31 15:42:13,522 :: WARNING ::  * Debugger is active!
+2018-01-31 15:42:13,533 :: INFO ::  * Debugger PIN: 323-325-445
+2018-01-31 15:42:14,407 :: INFO ::  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2018-01-31 15:44:12,406 :: INFO ::  * Detected change in 'c:\\Users\\Charles\\Desktop\\Centrale\\Projet OSY\\strolling_back\\server.py', reloading
+2018-01-31 15:44:12,613 :: INFO ::  * Restarting with stat
+2018-01-31 15:44:20,919 :: INFO ::  * Restarting with stat
+2018-01-31 15:44:24,219 :: WARNING ::  * Debugger is active!
+2018-01-31 15:44:24,226 :: INFO ::  * Debugger PIN: 323-325-445
+2018-01-31 15:44:25,096 :: INFO ::  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2018-01-31 15:44:25,405 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517409862427, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517409857734, 'message': {'mid': 'mid.$cAAXc-q1lTrFnffI4xlhTKz51nX5m', 'seq': 489726, 'text': 'bonjour'}}]}]}
+2018-01-31 15:44:25,416 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 15:44:25,769 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 15:44:25,772 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 15:44:25,774 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 15:44:26,690 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 15:44:26,696 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 15:44:27,369 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 15:44:27,372 :: INFO :: 127.0.0.1 - - [31/Jan/2018 15:44:27] "POST / HTTP/1.1" 200 -
+2018-01-31 15:44:30,324 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517409867342, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517409866664, 'message': {'quick_reply': {'payload': 'sorties_cine-0'}, 'mid': 'mid.$cAAXc-q1lTrFnffJbqFhTK0cuBSkJ', 'seq': 489731, 'text': 'Cinéma'}}]}]}
+2018-01-31 15:44:30,330 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 15:44:30,624 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 15:44:30,627 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 15:44:30,629 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 15:44:31,323 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 15:44:31,331 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 15:44:32,637 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 15:44:32,645 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 15:44:33,326 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 15:44:33,333 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 15:44:33,793 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 400 168
+2018-01-31 15:44:33,797 :: INFO :: STATUS CODE - MSG: 400 - {"error":{"message":"(#100) Message cannot be empty, must provide valid attachment or text","type":"OAuthException","code":100,"error_subcode":2018034,"fbtrace_id":"E57Rw0IuMmp"}}
+2018-01-31 15:44:33,798 :: INFO :: 127.0.0.1 - - [31/Jan/2018 15:44:33] "POST / HTTP/1.1" 200 -
+2018-01-31 15:44:36,398 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517409873394, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517409872700, 'message': {'quick_reply': {'payload': 'genres_cine'}, 'mid': 'mid.$cAAXc-q1lTrFnffJzPFhTK00NmpoQ', 'seq': 489738, 'text': 'Choisir un genre !'}}]}]}
+2018-01-31 15:44:36,404 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 15:44:36,677 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 15:44:36,681 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 15:44:36,684 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 15:44:37,338 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 15:44:37,349 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 15:44:37,698 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 400 144
+2018-01-31 15:44:37,702 :: INFO :: STATUS CODE - QCK: 400 - {"error":{"message":"(#105) param message[quick_replies] has too many elements.","type":"OAuthException","code":105,"fbtrace_id":"DS8efHrH9Hv"}}
+2018-01-31 15:44:37,703 :: INFO :: 127.0.0.1 - - [31/Jan/2018 15:44:37] "POST / HTTP/1.1" 200 -
+2018-01-31 15:48:57,723 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517410134737, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517410134070, 'message': {'mid': 'mid.$cAAXc-q1lTrFnffZwNlhTLExaQVnI', 'seq': 489741, 'text': 'bonjout'}}]}]}
+2018-01-31 15:48:57,731 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 15:48:58,321 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 15:48:58,323 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 15:48:58,325 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 15:48:59,161 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 15:48:59,168 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 15:48:59,840 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 15:48:59,844 :: INFO :: 127.0.0.1 - - [31/Jan/2018 15:48:59] "POST / HTTP/1.1" 200 -
+2018-01-31 15:49:00,963 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517410137978, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517410136397, 'message': {'mid': 'mid.$cAAXc-q1lTrFnffZ5TVhTLE6bss7z', 'seq': 489742, 'text': 'rbonjour'}}]}]}
+2018-01-31 15:49:00,969 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 15:49:01,474 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 15:49:01,477 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 15:49:01,480 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 15:49:02,178 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 15:49:02,184 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 15:49:02,890 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 15:49:02,894 :: INFO :: 127.0.0.1 - - [31/Jan/2018 15:49:02] "POST / HTTP/1.1" 200 -
+2018-01-31 15:49:05,608 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517410142466, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517410141817, 'message': {'quick_reply': {'payload': 'sorties_cine-0'}, 'mid': 'mid.$cAAXc-q1lTrFnffaOeVhTLFPjZsHj', 'seq': 489751, 'text': 'Cinéma'}}]}]}
+2018-01-31 15:49:05,614 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 15:49:05,963 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 15:49:05,966 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 15:49:05,968 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 15:49:06,760 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 15:49:06,768 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 15:49:07,954 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 15:49:07,960 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 15:49:08,738 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 15:49:08,743 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 15:49:09,132 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 400 165
+2018-01-31 15:49:09,136 :: INFO :: STATUS CODE - MSG: 400 - {"error":{"message":"(#100) Message cannot be empty, must provide valid attachment or text","type":"OAuthException","code":100,"error_subcode":2018034,"fbtrace_id":"CeNzndActOB"}}
+2018-01-31 15:49:09,137 :: INFO :: 127.0.0.1 - - [31/Jan/2018 15:49:09] "POST / HTTP/1.1" 200 -
+2018-01-31 15:50:04,804 :: INFO ::  * Detected change in 'c:\\Users\\Charles\\Desktop\\Centrale\\Projet OSY\\strolling_back\\server.py', reloading
+2018-01-31 15:50:04,907 :: INFO ::  * Restarting with stat
+2018-01-31 15:50:09,776 :: WARNING ::  * Debugger is active!
+2018-01-31 15:50:09,785 :: INFO ::  * Debugger PIN: 323-325-445
+2018-01-31 15:50:10,651 :: INFO ::  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2018-01-31 15:50:16,956 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517410213856, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517410212805, 'message': {'quick_reply': {'payload': 'genres_cine'}, 'mid': 'mid.$cAAXc-q1lTrFnffejxVhTLJk0DbeF', 'seq': 489758, 'text': 'Choisir un genre !'}}]}]}
+2018-01-31 15:50:16,966 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 15:50:17,349 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 15:50:17,352 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 15:50:17,355 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 15:50:18,132 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 15:50:18,141 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 15:50:18,450 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 400 144
+2018-01-31 15:50:18,453 :: INFO :: STATUS CODE - QCK: 400 - {"error":{"message":"(#105) param message[quick_replies] has too many elements.","type":"OAuthException","code":105,"fbtrace_id":"D9FDMIKygXB"}}
+2018-01-31 15:50:18,454 :: INFO :: 127.0.0.1 - - [31/Jan/2018 15:50:18] "POST / HTTP/1.1" 200 -
+2018-01-31 15:50:31,766 :: INFO ::  * Detected change in 'c:\\Users\\Charles\\Desktop\\Centrale\\Projet OSY\\strolling_back\\server.py', reloading
+2018-01-31 15:50:31,884 :: INFO ::  * Restarting with stat
+2018-01-31 15:50:35,805 :: WARNING ::  * Debugger is active!
+2018-01-31 15:50:35,812 :: INFO ::  * Debugger PIN: 323-325-445
+2018-01-31 15:50:36,670 :: INFO ::  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2018-01-31 15:51:27,956 :: INFO ::  * Detected change in 'c:\\Users\\Charles\\Desktop\\Centrale\\Projet OSY\\strolling_back\\server.py', reloading
+2018-01-31 15:51:28,059 :: INFO ::  * Restarting with stat
+2018-01-31 15:51:32,825 :: WARNING ::  * Debugger is active!
+2018-01-31 15:51:32,868 :: INFO ::  * Debugger PIN: 323-325-445
+2018-01-31 15:51:33,762 :: INFO ::  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2018-01-31 16:04:27,391 :: INFO ::  * Restarting with stat
+2018-01-31 16:04:30,377 :: WARNING ::  * Debugger is active!
+2018-01-31 16:04:30,384 :: INFO ::  * Debugger PIN: 323-325-445
+2018-01-31 16:04:31,247 :: INFO ::  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2018-01-31 16:04:31,607 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517411067626, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517411065001, 'message': {'mid': 'mid.$cAAXc-q1lTrFnfgSkqVhTL9lg_ofC', 'seq': 489761, 'text': 'bonjour'}}]}]}
+2018-01-31 16:04:31,621 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:04:31,959 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:04:31,964 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:04:31,968 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:04:32,622 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:04:32,631 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:04:33,284 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:04:33,287 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:04:33] "POST / HTTP/1.1" 200 -
+2018-01-31 16:04:36,889 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517411073864, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517411073001, 'message': {'quick_reply': {'payload': 'sorties_cine-0'}, 'mid': 'mid.$cAAXc-q1lTrFnfgTD6VhTL-E3D2ly', 'seq': 489764, 'text': 'Cinéma'}}]}]}
+2018-01-31 16:04:36,896 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:04:37,236 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:04:37,238 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:04:37,240 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:04:37,941 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:04:37,949 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:04:39,362 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:04:39,369 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:04:40,098 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:04:40,102 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:04:40] "POST / HTTP/1.1" 200 -
+2018-01-31 16:04:43,167 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517411080183, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517411079490, 'message': {'quick_reply': {'payload': 'genres_cine'}, 'mid': 'mid.$cAAXc-q1lTrFnfgTdQlhTL-ehqRGJ', 'seq': 489772, 'text': 'Choisir un genre !'}}]}]}
+2018-01-31 16:04:43,174 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:04:43,469 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:04:43,471 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:04:43,474 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:04:44,192 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:04:44,204 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:04:44,926 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:04:44,931 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:04:44] "POST / HTTP/1.1" 200 -
+2018-01-31 16:04:48,231 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517411085251, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517411084587, 'message': {'quick_reply': {'payload': 'Animation-1'}, 'mid': 'mid.$cAAXc-q1lTrFnfgTxK1hTL-ydV0EP', 'seq': 489777, 'text': 'Animation'}}]}]}
+2018-01-31 16:04:48,236 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:04:48,542 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:04:48,545 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:04:48,548 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:04:49,257 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:04:49,265 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:04:49,965 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:04:49,976 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:04:51,383 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:04:51,387 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:04:51,998 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:04:52,002 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:04:52,275 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 400 167
+2018-01-31 16:04:52,281 :: INFO :: STATUS CODE - MSG: 400 - {"error":{"message":"(#100) Message cannot be empty, must provide valid attachment or text","type":"OAuthException","code":100,"error_subcode":2018034,"fbtrace_id":"GqzTo+xOg+r"}}
+2018-01-31 16:04:52,281 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:04:52] "POST / HTTP/1.1" 200 -
+2018-01-31 16:07:34,861 :: INFO ::  * Detected change in 'c:\\Users\\Charles\\Desktop\\Centrale\\Projet OSY\\strolling_back\\server.py', reloading
+2018-01-31 16:07:34,968 :: INFO ::  * Restarting with stat
+2018-01-31 16:07:39,451 :: WARNING ::  * Debugger is active!
+2018-01-31 16:07:39,461 :: INFO ::  * Debugger PIN: 323-325-445
+2018-01-31 16:07:40,327 :: INFO ::  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2018-01-31 16:08:59,420 :: INFO ::  * Detected change in 'c:\\Users\\Charles\\Desktop\\Centrale\\Projet OSY\\strolling_back\\server.py', reloading
+2018-01-31 16:08:59,533 :: INFO ::  * Restarting with stat
+2018-01-31 16:09:03,320 :: WARNING ::  * Debugger is active!
+2018-01-31 16:09:03,333 :: INFO ::  * Debugger PIN: 323-325-445
+2018-01-31 16:09:03,348 :: INFO ::  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2018-01-31 16:09:58,431 :: INFO ::  * Detected change in 'c:\\Users\\Charles\\Desktop\\Centrale\\Projet OSY\\strolling_back\\server.py', reloading
+2018-01-31 16:09:58,638 :: INFO ::  * Restarting with stat
+2018-01-31 16:10:05,223 :: WARNING ::  * Debugger is active!
+2018-01-31 16:10:05,236 :: INFO ::  * Debugger PIN: 323-325-445
+2018-01-31 16:10:05,258 :: INFO ::  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2018-01-31 16:10:09,529 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517411406511, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517411405837, 'message': {'mid': 'mid.$cAAXc-q1lTrFnfgnYDVhTMSZIg2wu', 'seq': 489786, 'text': 'bonjour'}}]}]}
+2018-01-31 16:10:09,540 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:10:09,943 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:10:09,954 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:10:09,956 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:10:11,273 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:10:11,280 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:10:12,286 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:10:12,291 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:10:12] "POST / HTTP/1.1" 200 -
+2018-01-31 16:10:16,880 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517411413537, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517411412759, 'message': {'quick_reply': {'payload': 'sorties_cine-0'}, 'mid': 'mid.$cAAXc-q1lTrFnfgnzF1hTMS0XC76t', 'seq': 489791, 'text': 'Cinéma'}}]}]}
+2018-01-31 16:10:16,886 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:10:17,290 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:10:17,293 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:10:17,295 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:10:18,007 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:10:18,015 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:10:19,490 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:10:19,499 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:10:20,142 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:10:20,146 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:10:20] "POST / HTTP/1.1" 200 -
+2018-01-31 16:10:23,898 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517411420880, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517411420221, 'message': {'quick_reply': {'payload': 'genres_cine'}, 'mid': 'mid.$cAAXc-q1lTrFnfgoQPVhTMTPwHz12', 'seq': 489798, 'text': 'Choisir un genre !'}}]}]}
+2018-01-31 16:10:23,902 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:10:24,301 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:10:24,304 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:10:24,306 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:10:25,018 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:10:25,029 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:10:25,906 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:10:25,909 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:10:25] "POST / HTTP/1.1" 200 -
+2018-01-31 16:10:28,629 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517411425513, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517411424844, 'message': {'quick_reply': {'payload': 'Aventure-2'}, 'mid': 'mid.$cAAXc-q1lTrFnfgoiTFhTMTjc8pg1', 'seq': 489803, 'text': 'Aventure'}}]}]}
+2018-01-31 16:10:28,635 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:10:28,958 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:10:28,961 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:10:28,965 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:10:29,605 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:10:29,617 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:10:30,327 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:10:30,359 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:10:30] "POST / HTTP/1.1" 500 -
+2018-01-31 16:10:31,673 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517411428675, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517411424844, 'message': {'quick_reply': {'payload': 'Aventure-2'}, 'mid': 'mid.$cAAXc-q1lTrFnfgoiTFhTMTjc8pg1', 'seq': 489803, 'text': 'Aventure'}}]}]}
+2018-01-31 16:10:31,678 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:10:31,957 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:10:31,959 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:10:31,963 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:10:32,600 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:10:32,610 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:10:33,380 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:10:33,401 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:10:33] "POST / HTTP/1.1" 500 -
+2018-01-31 16:10:34,378 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517411431368, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517411424844, 'message': {'quick_reply': {'payload': 'Aventure-2'}, 'mid': 'mid.$cAAXc-q1lTrFnfgoiTFhTMTjc8pg1', 'seq': 489803, 'text': 'Aventure'}}]}]}
+2018-01-31 16:10:34,383 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:10:34,671 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:10:34,674 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:10:34,678 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:10:35,372 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:10:35,383 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:10:36,020 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:10:36,041 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:10:36] "POST / HTTP/1.1" 500 -
+2018-01-31 16:10:37,097 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517411434094, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517411424844, 'message': {'quick_reply': {'payload': 'Aventure-2'}, 'mid': 'mid.$cAAXc-q1lTrFnfgoiTFhTMTjc8pg1', 'seq': 489803, 'text': 'Aventure'}}]}]}
+2018-01-31 16:10:37,103 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:10:37,387 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:10:37,390 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:10:37,397 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:10:38,108 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:10:38,114 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:10:39,405 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:10:39,446 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:10:39] "POST / HTTP/1.1" 500 -
+2018-01-31 16:10:41,369 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517411438357, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517411424844, 'message': {'quick_reply': {'payload': 'Aventure-2'}, 'mid': 'mid.$cAAXc-q1lTrFnfgoiTFhTMTjc8pg1', 'seq': 489803, 'text': 'Aventure'}}]}]}
+2018-01-31 16:10:41,378 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:10:41,762 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:10:41,768 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:10:41,779 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:10:42,525 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:10:42,537 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:10:43,481 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:10:43,506 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:10:43] "POST / HTTP/1.1" 500 -
+2018-01-31 16:10:47,602 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517411444566, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517411424844, 'message': {'quick_reply': {'payload': 'Aventure-2'}, 'mid': 'mid.$cAAXc-q1lTrFnfgoiTFhTMTjc8pg1', 'seq': 489803, 'text': 'Aventure'}}]}]}
+2018-01-31 16:10:47,609 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:10:48,126 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:10:48,131 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:10:48,138 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:10:48,906 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:10:48,913 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:10:49,808 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:10:49,825 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:10:49] "POST / HTTP/1.1" 500 -
+2018-01-31 16:11:06,033 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517411463014, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517411424844, 'message': {'quick_reply': {'payload': 'Aventure-2'}, 'mid': 'mid.$cAAXc-q1lTrFnfgoiTFhTMTjc8pg1', 'seq': 489803, 'text': 'Aventure'}}]}]}
+2018-01-31 16:11:06,041 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:11:06,544 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:11:06,549 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:11:06,553 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:11:07,628 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:11:07,635 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:11:08,689 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:11:08,707 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:11:08] "POST / HTTP/1.1" 500 -
+2018-01-31 16:11:11,244 :: INFO ::  * Detected change in 'c:\\Users\\Charles\\Desktop\\Centrale\\Projet OSY\\strolling_back\\server.py', reloading
+2018-01-31 16:11:11,392 :: INFO ::  * Restarting with stat
+2018-01-31 16:11:17,128 :: WARNING ::  * Debugger is active!
+2018-01-31 16:11:17,145 :: INFO ::  * Debugger PIN: 323-325-445
+2018-01-31 16:11:17,197 :: INFO ::  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2018-01-31 16:11:36,192 :: INFO ::  * Restarting with stat
+2018-01-31 16:11:38,991 :: WARNING ::  * Debugger is active!
+2018-01-31 16:11:38,999 :: INFO ::  * Debugger PIN: 323-325-445
+2018-01-31 16:11:39,010 :: INFO ::  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2018-01-31 16:12:33,770 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517411550765, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517411424844, 'message': {'quick_reply': {'payload': 'Aventure-2'}, 'mid': 'mid.$cAAXc-q1lTrFnfgoiTFhTMTjc8pg1', 'seq': 489803, 'text': 'Aventure'}}]}]}
+2018-01-31 16:12:33,783 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:12:34,141 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:12:34,152 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:12:34,159 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:12:34,866 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:12:34,877 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:12:35,514 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:12:35,544 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:12:35] "POST / HTTP/1.1" 500 -
+2018-01-31 16:13:24,992 :: INFO ::  * Detected change in 'c:\\Users\\Charles\\Desktop\\Centrale\\Projet OSY\\strolling_back\\backend\\cinema\\handle_cinema.py', reloading
+2018-01-31 16:13:25,116 :: INFO ::  * Restarting with stat
+2018-01-31 16:13:29,193 :: WARNING ::  * Debugger is active!
+2018-01-31 16:13:29,208 :: INFO ::  * Debugger PIN: 323-325-445
+2018-01-31 16:13:29,226 :: INFO ::  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2018-01-31 16:16:57,031 :: DEBUG :: Starting new HTTP connection (1): api.allocine.fr
+2018-01-31 16:16:57,335 :: DEBUG :: http://api.allocine.fr:80 "GET /rest/v3/movielist?partner=100043982026&code=0&format=json&count=30&profile=medium&filter=nowshowing&order=toprank&sed=20180131&sig=TCtexnPm%2BpI07z%2FyQZdkpAygt4k%3D HTTP/1.1" 200 15697
+2018-01-31 16:17:02,267 :: DEBUG :: Starting new HTTP connection (1): api.allocine.fr
+2018-01-31 16:17:02,359 :: DEBUG :: http://api.allocine.fr:80 "GET /rest/v3/movielist?partner=100043982026&code=0&format=json&count=30&profile=medium&filter=nowshowing&order=toprank&sed=20180131&sig=TCtexnPm%2BpI07z%2FyQZdkpAygt4k%3D HTTP/1.1" 200 15697
+2018-01-31 16:17:51,290 :: DEBUG :: Starting new HTTP connection (1): api.allocine.fr
+2018-01-31 16:17:51,438 :: DEBUG :: http://api.allocine.fr:80 "GET /rest/v3/movielist?partner=100043982026&code=0&format=json&count=30&profile=medium&filter=nowshowing&order=toprank&sed=20180131&sig=TCtexnPm%2BpI07z%2FyQZdkpAygt4k%3D HTTP/1.1" 200 15697
+2018-01-31 16:18:45,661 :: DEBUG :: Starting new HTTP connection (1): api.allocine.fr
+2018-01-31 16:18:45,817 :: DEBUG :: http://api.allocine.fr:80 "GET /rest/v3/movielist?partner=100043982026&code=0&format=json&count=30&profile=medium&filter=nowshowing&order=toprank&sed=20180131&sig=TCtexnPm%2BpI07z%2FyQZdkpAygt4k%3D HTTP/1.1" 200 15697
+2018-01-31 16:19:14,704 :: DEBUG :: Starting new HTTP connection (1): api.allocine.fr
+2018-01-31 16:19:14,819 :: DEBUG :: http://api.allocine.fr:80 "GET /rest/v3/movielist?partner=100043982026&code=0&format=json&count=30&profile=medium&filter=nowshowing&order=toprank&sed=20180131&sig=TCtexnPm%2BpI07z%2FyQZdkpAygt4k%3D HTTP/1.1" 200 15697
+2018-01-31 16:19:44,515 :: DEBUG :: Starting new HTTP connection (1): api.allocine.fr
+2018-01-31 16:19:44,662 :: DEBUG :: http://api.allocine.fr:80 "GET /rest/v3/movielist?partner=100043982026&code=0&format=json&count=30&profile=medium&filter=nowshowing&order=toprank&sed=20180131&sig=TCtexnPm%2BpI07z%2FyQZdkpAygt4k%3D HTTP/1.1" 200 15697
+2018-01-31 16:20:50,391 :: INFO ::  * Restarting with stat
+2018-01-31 16:20:54,003 :: WARNING ::  * Debugger is active!
+2018-01-31 16:20:54,019 :: INFO ::  * Debugger PIN: 323-325-445
+2018-01-31 16:20:54,033 :: INFO ::  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2018-01-31 16:21:52,470 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517412109427, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517411424844, 'message': {'quick_reply': {'payload': 'Aventure-2'}, 'mid': 'mid.$cAAXc-q1lTrFnfgoiTFhTMTjc8pg1', 'seq': 489803, 'text': 'Aventure'}}]}]}
+2018-01-31 16:21:52,492 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:21:52,919 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:21:52,926 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:21:52,936 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:21:54,481 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:21:54,503 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:21:55,210 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:21:55,217 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:21:55] "POST / HTTP/1.1" 200 -
+2018-01-31 16:21:56,322 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517412113312, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517411475675, 'message': {'mid': 'mid.$cAAXc-q1lTrFnfgro21hTMWpYvEJV', 'seq': 489823, 'text': 'bonjour'}}]}]}
+2018-01-31 16:21:56,332 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:21:56,714 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:21:56,717 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:21:56,719 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:21:57,345 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:21:57,353 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:21:58,017 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:21:58,023 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:21:58] "POST / HTTP/1.1" 200 -
+2018-01-31 16:21:58,978 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517412115966, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517411513597, 'message': {'mid': 'mid.$cAAXc-q1lTrFnfgt8_VhTMY9_xQ6e', 'seq': 489824, 'text': 'bonjour'}}]}]}
+2018-01-31 16:21:58,984 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:21:59,267 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:21:59,274 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:21:59,279 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:21:59,986 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:21:59,992 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:22:00,848 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:22:00,853 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:22:00] "POST / HTTP/1.1" 200 -
+2018-01-31 16:22:01,833 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517412118823, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517412048142, 'message': {'mid': 'mid.$cAAXc-q1lTrFnfhOlDlhTM5mG338G', 'seq': 489829, 'text': 'bonjour'}}]}]}
+2018-01-31 16:22:01,842 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:22:02,241 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:22:02,246 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:22:02,251 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:22:02,907 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:22:02,917 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:22:03,576 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:22:03,580 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:22:03] "POST / HTTP/1.1" 200 -
+2018-01-31 16:22:11,839 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517412128778, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517412128114, 'message': {'quick_reply': {'payload': 'sorties_cine-0'}, 'mid': 'mid.$cAAXc-q1lTrFnfhTdclhTM-eqpQoZ', 'seq': 489842, 'text': 'Cinéma'}}]}]}
+2018-01-31 16:22:11,850 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:22:12,279 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:22:12,285 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:22:12,290 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:22:13,036 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:22:13,049 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:22:14,518 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:22:14,526 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:22:15,195 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:22:15,202 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:22:15] "POST / HTTP/1.1" 200 -
+2018-01-31 16:22:20,826 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517412137789, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517412137149, 'message': {'quick_reply': {'payload': 'genres_cine'}, 'mid': 'mid.$cAAXc-q1lTrFnfhUAvVhTM_B9YtcO', 'seq': 489849, 'text': 'Choisir un genre !'}}]}]}
+2018-01-31 16:22:20,837 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:22:21,253 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:22:21,257 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:22:21,259 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:22:21,922 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:22:21,931 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:22:22,586 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:22:22,590 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:22:22] "POST / HTTP/1.1" 200 -
+2018-01-31 16:22:34,778 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517412151759, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517412151099, 'message': {'quick_reply': {'payload': 'Not_interested'}, 'mid': 'mid.$cAAXc-q1lTrFnfhU3O1hTM_4XQ1SO', 'seq': 489854, 'text': 'Aucun de ces genres'}}]}]}
+2018-01-31 16:22:34,790 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:22:35,839 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:22:35,841 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:22:35,845 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:22:36,610 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:22:36,622 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:22:37,427 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:22:37,437 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:22:37,766 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 400 147
+2018-01-31 16:22:37,771 :: INFO :: STATUS CODE - CARD: 400 - {"error":{"message":"(#194) param name_placeholder[elements] has too few elements.","type":"OAuthException","code":194,"fbtrace_id":"Akx+IWUCv8T"}}
+2018-01-31 16:22:37,775 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:22:38,485 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:22:38,493 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:22:38,957 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 400 171
+2018-01-31 16:22:38,961 :: INFO :: STATUS CODE - MSG: 400 - {"error":{"message":"(#100) Message cannot be empty, must provide valid attachment or text","type":"OAuthException","code":100,"error_subcode":2018034,"fbtrace_id":"DQ5PYf\/SSV8"}}
+2018-01-31 16:22:38,962 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:22:38] "POST / HTTP/1.1" 200 -
+2018-01-31 16:22:48,884 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517412165167, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517412164495, 'message': {'mid': 'mid.$cAAXc-q1lTrFnfhVrj1hTNAsh5Q3I', 'seq': 489863, 'text': 'bonjour'}}]}]}
+2018-01-31 16:22:48,890 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:22:54,190 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:22:54,193 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:22:54,196 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:22:56,426 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:22:56,434 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:22:57,643 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:22:57,648 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:22:57] "POST / HTTP/1.1" 200 -
+2018-01-31 16:23:02,200 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517412179111, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517412178392, 'message': {'quick_reply': {'payload': 'sorties_cine-0'}, 'mid': 'mid.$cAAXc-q1lTrFnfhWh2FhTNBhcL8wg', 'seq': 489870, 'text': 'Cinéma'}}]}]}
+2018-01-31 16:23:02,205 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:23:02,794 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:23:02,797 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:23:02,800 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:23:03,677 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:23:03,685 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:23:05,329 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:23:05,337 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:23:06,193 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:23:06,198 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:23:06] "POST / HTTP/1.1" 200 -
+2018-01-31 16:23:10,937 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517412187551, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517412186826, 'message': {'quick_reply': {'payload': 'genres_cine'}, 'mid': 'mid.$cAAXc-q1lTrFnfhXCylhTNCDwcCuK', 'seq': 489877, 'text': 'Choisir un genre !'}}]}]}
+2018-01-31 16:23:10,943 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:23:12,075 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:23:12,078 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:23:12,083 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:23:13,489 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:23:13,497 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:23:14,177 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:23:14,182 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:23:14] "POST / HTTP/1.1" 200 -
+2018-01-31 16:23:17,305 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517412194249, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517412193584, 'message': {'quick_reply': {'payload': 'Animation-1'}, 'mid': 'mid.$cAAXc-q1lTrFnfhXdMFhTNCectiGF', 'seq': 489882, 'text': 'Animation'}}]}]}
+2018-01-31 16:23:17,312 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:23:17,976 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:23:17,979 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:23:17,992 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:23:19,037 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:23:19,048 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:23:20,207 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:23:20,263 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:23:20] "POST / HTTP/1.1" 500 -
+2018-01-31 16:23:21,618 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517412198580, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517412193584, 'message': {'quick_reply': {'payload': 'Animation-1'}, 'mid': 'mid.$cAAXc-q1lTrFnfhXdMFhTNCectiGF', 'seq': 489882, 'text': 'Animation'}}]}]}
+2018-01-31 16:23:21,625 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:23:22,079 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:23:22,084 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:23:22,090 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:23:23,255 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:23:23,266 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:23:24,523 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:23:24,545 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:23:24] "POST / HTTP/1.1" 500 -
+2018-01-31 16:23:25,970 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517412202890, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517412193584, 'message': {'quick_reply': {'payload': 'Animation-1'}, 'mid': 'mid.$cAAXc-q1lTrFnfhXdMFhTNCectiGF', 'seq': 489882, 'text': 'Animation'}}]}]}
+2018-01-31 16:23:25,975 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:23:26,930 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:23:26,934 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:23:26,938 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:23:30,025 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:23:30,039 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:23:31,593 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:23:31,622 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:23:31] "POST / HTTP/1.1" 500 -
+2018-01-31 16:23:33,068 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517412210015, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517412193584, 'message': {'quick_reply': {'payload': 'Animation-1'}, 'mid': 'mid.$cAAXc-q1lTrFnfhXdMFhTNCectiGF', 'seq': 489882, 'text': 'Animation'}}]}]}
+2018-01-31 16:23:33,078 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:23:33,490 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:23:33,495 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:23:33,502 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:23:34,335 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:23:34,348 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:23:35,294 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:23:35,360 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:23:35] "POST / HTTP/1.1" 500 -
+2018-01-31 16:23:37,445 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517412214436, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517412193584, 'message': {'quick_reply': {'payload': 'Animation-1'}, 'mid': 'mid.$cAAXc-q1lTrFnfhXdMFhTNCectiGF', 'seq': 489882, 'text': 'Animation'}}]}]}
+2018-01-31 16:23:37,458 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:23:38,576 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:23:38,581 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:23:38,587 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:23:40,175 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:23:40,192 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:23:41,181 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:23:41,222 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:23:41] "POST / HTTP/1.1" 500 -
+2018-01-31 16:23:47,463 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517412224272, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517412193584, 'message': {'quick_reply': {'payload': 'Animation-1'}, 'mid': 'mid.$cAAXc-q1lTrFnfhXdMFhTNCectiGF', 'seq': 489882, 'text': 'Animation'}}]}]}
+2018-01-31 16:23:47,475 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:23:49,927 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:23:49,930 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:23:49,934 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:23:51,520 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:23:51,527 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:23:52,960 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:23:53,000 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:23:53] "POST / HTTP/1.1" 500 -
+2018-01-31 16:24:09,637 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517412246622, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517412193584, 'message': {'quick_reply': {'payload': 'Animation-1'}, 'mid': 'mid.$cAAXc-q1lTrFnfhXdMFhTNCectiGF', 'seq': 489882, 'text': 'Animation'}}]}]}
+2018-01-31 16:24:09,646 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:24:10,813 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:24:10,819 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:24:10,827 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:24:12,080 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:24:12,087 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:24:13,739 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:24:13,783 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:24:13] "POST / HTTP/1.1" 500 -
+2018-01-31 16:25:05,565 :: INFO ::  * Detected change in 'c:\\Users\\Charles\\Desktop\\Centrale\\Projet OSY\\strolling_back\\server.py', reloading
+2018-01-31 16:25:05,826 :: INFO ::  * Restarting with stat
+2018-01-31 16:25:10,157 :: WARNING ::  * Debugger is active!
+2018-01-31 16:25:10,166 :: INFO ::  * Debugger PIN: 323-325-445
+2018-01-31 16:25:10,183 :: INFO ::  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2018-01-31 16:25:25,307 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517412322287, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517412193584, 'message': {'quick_reply': {'payload': 'Animation-1'}, 'mid': 'mid.$cAAXc-q1lTrFnfhXdMFhTNCectiGF', 'seq': 489882, 'text': 'Animation'}}]}]}
+2018-01-31 16:25:25,322 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:25:25,639 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:25:25,644 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:25:25,652 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:25:26,442 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:25:26,451 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:25:27,149 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:25:27,181 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:25:27] "POST / HTTP/1.1" 500 -
+2018-01-31 16:26:49,564 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517412406552, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517412193584, 'message': {'quick_reply': {'payload': 'Animation-1'}, 'mid': 'mid.$cAAXc-q1lTrFnfhXdMFhTNCectiGF', 'seq': 489882, 'text': 'Animation'}}]}]}
+2018-01-31 16:26:49,571 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:26:49,989 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:26:49,992 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:26:50,000 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:26:50,687 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:26:50,696 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:26:51,387 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:26:51,420 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:26:51] "POST / HTTP/1.1" 500 -
+2018-01-31 16:28:10,135 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517412487024, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517412193584, 'message': {'quick_reply': {'payload': 'Animation-1'}, 'mid': 'mid.$cAAXc-q1lTrFnfhXdMFhTNCectiGF', 'seq': 489882, 'text': 'Animation'}}]}]}
+2018-01-31 16:28:10,144 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:28:10,611 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:28:10,615 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:28:10,619 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:28:11,296 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:28:11,303 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:28:11,975 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:28:12,004 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:28:12] "POST / HTTP/1.1" 500 -
+2018-01-31 16:28:24,879 :: INFO ::  * Detected change in 'c:\\Users\\Charles\\Desktop\\Centrale\\Projet OSY\\strolling_back\\server.py', reloading
+2018-01-31 16:28:25,038 :: INFO ::  * Restarting with stat
+2018-01-31 16:28:29,335 :: WARNING ::  * Debugger is active!
+2018-01-31 16:28:29,347 :: INFO ::  * Debugger PIN: 323-325-445
+2018-01-31 16:28:29,371 :: INFO ::  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2018-01-31 16:29:05,986 :: INFO ::  * Detected change in 'c:\\Users\\Charles\\Desktop\\Centrale\\Projet OSY\\strolling_back\\server.py', reloading
+2018-01-31 16:29:06,122 :: INFO ::  * Restarting with stat
+2018-01-31 16:29:12,350 :: WARNING ::  * Debugger is active!
+2018-01-31 16:29:12,383 :: INFO ::  * Debugger PIN: 323-325-445
+2018-01-31 16:29:12,456 :: INFO ::  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2018-01-31 16:29:27,954 :: INFO ::  * Restarting with stat
+2018-01-31 16:29:32,340 :: WARNING ::  * Debugger is active!
+2018-01-31 16:29:32,347 :: INFO ::  * Debugger PIN: 323-325-445
+2018-01-31 16:29:32,358 :: INFO ::  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2018-01-31 16:29:38,902 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517412575868, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517412193584, 'message': {'quick_reply': {'payload': 'Animation-1'}, 'mid': 'mid.$cAAXc-q1lTrFnfhXdMFhTNCectiGF', 'seq': 489882, 'text': 'Animation'}}]}]}
+2018-01-31 16:29:38,918 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:29:39,254 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:29:39,258 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:29:39,265 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:29:39,945 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:29:39,975 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:29:39] "POST / HTTP/1.1" 500 -
+2018-01-31 16:30:45,825 :: INFO ::  * Detected change in 'c:\\Users\\Charles\\Desktop\\Centrale\\Projet OSY\\strolling_back\\server.py', reloading
+2018-01-31 16:30:45,936 :: INFO ::  * Restarting with stat
+2018-01-31 16:30:49,892 :: WARNING ::  * Debugger is active!
+2018-01-31 16:30:49,899 :: INFO ::  * Debugger PIN: 323-325-445
+2018-01-31 16:30:49,912 :: INFO ::  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2018-01-31 16:31:02,996 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517412659981, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517412193584, 'message': {'quick_reply': {'payload': 'Animation-1'}, 'mid': 'mid.$cAAXc-q1lTrFnfhXdMFhTNCectiGF', 'seq': 489882, 'text': 'Animation'}}]}]}
+2018-01-31 16:31:03,004 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:31:03,328 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:31:03,331 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:31:03,336 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:31:03,969 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:31:03,994 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:31:03] "POST / HTTP/1.1" 500 -
+2018-01-31 16:32:24,711 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517412741712, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517412193584, 'message': {'quick_reply': {'payload': 'Animation-1'}, 'mid': 'mid.$cAAXc-q1lTrFnfhXdMFhTNCectiGF', 'seq': 489882, 'text': 'Animation'}}]}]}
+2018-01-31 16:32:24,718 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:32:25,017 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:32:25,020 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:32:25,025 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:32:25,730 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:32:25,757 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:32:25] "POST / HTTP/1.1" 500 -
+2018-01-31 16:32:28,763 :: INFO ::  * Detected change in 'c:\\Users\\Charles\\Desktop\\Centrale\\Projet OSY\\strolling_back\\server.py', reloading
+2018-01-31 16:32:28,891 :: INFO ::  * Restarting with stat
+2018-01-31 16:32:33,832 :: WARNING ::  * Debugger is active!
+2018-01-31 16:32:33,849 :: INFO ::  * Debugger PIN: 323-325-445
+2018-01-31 16:32:33,868 :: INFO ::  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2018-01-31 16:33:51,372 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517412826560, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517412193584, 'message': {'quick_reply': {'payload': 'Animation-1'}, 'mid': 'mid.$cAAXc-q1lTrFnfhXdMFhTNCectiGF', 'seq': 489882, 'text': 'Animation'}}]}]}
+2018-01-31 16:33:51,418 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:33:58,045 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:33:58,061 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:33:58,084 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:33:59,730 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:33:59,753 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:34:03,148 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:34:03,162 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:34:04,735 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:34:04,747 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:34:04] "POST / HTTP/1.1" 200 -
+2018-01-31 16:35:25,426 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517412922337, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517412193584, 'message': {'quick_reply': {'payload': 'Animation-1'}, 'mid': 'mid.$cAAXc-q1lTrFnfhXdMFhTNCectiGF', 'seq': 489882, 'text': 'Animation'}}]}]}
+2018-01-31 16:35:25,459 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:35:26,811 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:35:26,822 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:35:26,847 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:35:29,044 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:35:29,067 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:35:30,889 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:35:30,901 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:35:32,440 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:35:32,447 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:35:32] "POST / HTTP/1.1" 200 -
+2018-01-31 16:35:33,966 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517412930828, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517412548524, 'message': {'mid': 'mid.$cAAXc-q1lTrFnfhtHrFhTNYI8j11Q', 'seq': 489911, 'text': 'bonjour'}}]}]}
+2018-01-31 16:35:33,978 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:35:38,913 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:35:38,921 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:35:38,927 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:35:40,682 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:35:40,695 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:35:41,487 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:35:41,493 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:35:41] "POST / HTTP/1.1" 200 -
+2018-01-31 16:35:42,198 :: INFO ::  * Detected change in 'c:\\Users\\Charles\\Desktop\\Centrale\\Projet OSY\\strolling_back\\server.py', reloading
+2018-01-31 16:35:43,397 :: INFO ::  * Restarting with stat
+2018-01-31 16:36:10,120 :: WARNING ::  * Debugger is active!
+2018-01-31 16:36:10,179 :: INFO ::  * Debugger PIN: 323-325-445
+2018-01-31 16:36:10,479 :: INFO ::  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2018-01-31 16:36:15,381 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517412972248, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517412600004, 'message': {'mid': 'mid.$cAAXc-q1lTrFnfhwQxFhTNbSFGfaM', 'seq': 489915, 'text': 'bonjour'}}]}]}
+2018-01-31 16:36:15,407 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:36:16,355 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:36:16,362 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:36:16,369 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:36:17,133 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:36:17,145 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:36:17,909 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:36:17,917 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:36:17] "POST / HTTP/1.1" 200 -
+2018-01-31 16:36:19,185 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517412976136, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517412754999, 'message': {'mid': 'mid.$cAAXc-q1lTrFnfh5uN1hTNkvSeyju', 'seq': 489920, 'text': 'bonjour'}}]}]}
+2018-01-31 16:36:19,198 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:36:19,996 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:36:20,002 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:36:20,009 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:36:21,117 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:36:21,129 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:36:22,474 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:36:22,483 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:36:22] "POST / HTTP/1.1" 200 -
+2018-01-31 16:36:23,534 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517412980506, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517412902415, 'message': {'mid': 'mid.$cAAXc-q1lTrFnfiCuD1hTNtuJJ7te', 'seq': 489930, 'text': 'bonjour'}}]}]}
+2018-01-31 16:36:23,545 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:36:23,981 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:36:23,988 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:36:23,995 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:36:24,769 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:36:24,787 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:36:25,658 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:36:25,668 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:36:25] "POST / HTTP/1.1" 200 -
+2018-01-31 16:37:00,331 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517413017217, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517413016558, 'message': {'quick_reply': {'payload': 'sorties_cine-0'}, 'mid': 'mid.$cAAXc-q1lTrFnfiJr7lhTN0s22kud', 'seq': 489944, 'text': 'Cinéma'}}]}]}
+2018-01-31 16:37:00,349 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:37:01,487 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:37:01,494 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:37:01,501 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:37:03,178 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:37:03,192 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:37:04,837 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:37:04,850 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:37:05,762 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:37:05,770 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:37:05] "POST / HTTP/1.1" 200 -
+2018-01-31 16:37:48,418 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517413065414, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517413064748, 'message': {'quick_reply': {'payload': 'genres_cine'}, 'mid': 'mid.$cAAXc-q1lTrFnfiMoLFhTN3pVBqBg', 'seq': 489953, 'text': 'Choisir un genre !'}}]}]}
+2018-01-31 16:37:48,435 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:37:48,759 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:37:48,767 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:37:48,772 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:37:49,482 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:37:49,499 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:37:50,465 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:37:50,471 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:37:50] "POST / HTTP/1.1" 200 -
+2018-01-31 16:38:19,837 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517413096789, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517413096023, 'message': {'quick_reply': {'payload': 'Action-0'}, 'mid': 'mid.$cAAXc-q1lTrFnfiOiV1hTN5jmg6Q9', 'seq': 489957, 'text': 'Action'}}]}]}
+2018-01-31 16:38:19,848 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:38:20,275 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:38:20,280 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:38:20,296 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:38:20,977 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:38:20,999 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:38:22,427 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:38:22,442 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:38:23,127 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:38:23,133 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:38:23] "POST / HTTP/1.1" 200 -
+2018-01-31 16:43:20,392 :: INFO ::  * Detected change in 'c:\\Users\\Charles\\Desktop\\Centrale\\Projet OSY\\strolling_back\\server.py', reloading
+2018-01-31 16:43:20,625 :: INFO ::  * Restarting with stat
+2018-01-31 16:43:27,879 :: WARNING ::  * Debugger is active!
+2018-01-31 16:43:27,892 :: INFO ::  * Debugger PIN: 323-325-445
+2018-01-31 16:43:27,913 :: INFO ::  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2018-01-31 16:43:27,930 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517413404174, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517413403507, 'message': {'mid': 'mid.$cAAXc-q1lTrFnfihTc1hTOMUTLHkG', 'seq': 489963, 'text': 'bonjour'}}]}]}
+2018-01-31 16:43:27,948 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:43:28,543 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:43:28,549 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:43:28,554 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:43:29,257 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:43:29,269 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:43:30,140 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:43:30,145 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:43:30] "POST / HTTP/1.1" 200 -
+2018-01-31 16:44:32,164 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517413468152, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517413467483, 'message': {'quick_reply': {'payload': 'sorties_cine-0'}, 'mid': 'mid.$cAAXc-q1lTrFnfilNW1hTOQNoZ8mQ', 'seq': 489968, 'text': 'Cinéma'}}]}]}
+2018-01-31 16:44:32,177 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:44:33,027 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:44:33,034 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:44:33,039 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:44:34,412 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:44:34,418 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:44:36,500 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:44:36,510 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:44:38,411 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:44:38,417 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:44:38] "POST / HTTP/1.1" 200 -
+2018-01-31 16:58:34,736 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517414311564, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517414310922, 'message': {'quick_reply': {'payload': 'sorties_cine-3'}, 'mid': 'mid.$cAAXc-q1lTrFnfjYsClhTPDsOnRXy', 'seq': 489974, 'text': 'Plus de films !'}}]}]}
+2018-01-31 16:58:34,798 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:58:35,538 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 16:58:35,541 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 16:58:35,552 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 16:58:37,124 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 16:58:37,137 :: INFO :: 127.0.0.1 - - [31/Jan/2018 16:58:37] "POST / HTTP/1.1" 200 -
+2018-01-31 16:59:17,858 :: INFO ::  * Detected change in 'c:\\Users\\Charles\\Desktop\\Centrale\\Projet OSY\\strolling_back\\server.py', reloading
+2018-01-31 16:59:18,224 :: INFO ::  * Restarting with stat
+2018-01-31 16:59:30,002 :: WARNING ::  * Debugger is active!
+2018-01-31 16:59:30,016 :: INFO ::  * Debugger PIN: 323-325-445
+2018-01-31 16:59:30,043 :: INFO ::  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2018-01-31 17:00:30,243 :: INFO ::  * Detected change in 'c:\\Users\\Charles\\Desktop\\Centrale\\Projet OSY\\strolling_back\\server.py', reloading
+2018-01-31 17:00:30,370 :: INFO ::  * Restarting with stat
+2018-01-31 17:00:36,073 :: WARNING ::  * Debugger is active!
+2018-01-31 17:00:36,095 :: INFO ::  * Debugger PIN: 323-325-445
+2018-01-31 17:00:36,125 :: INFO ::  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2018-01-31 17:00:37,459 :: INFO ::  * Detected change in 'c:\\Users\\Charles\\Desktop\\Centrale\\Projet OSY\\strolling_back\\server.py', reloading
+2018-01-31 17:00:37,768 :: INFO ::  * Restarting with stat
+2018-01-31 17:00:44,687 :: WARNING ::  * Debugger is active!
+2018-01-31 17:00:44,701 :: INFO ::  * Debugger PIN: 323-325-445
+2018-01-31 17:00:44,733 :: INFO ::  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2018-01-31 17:00:44,753 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517414441216, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517414438307, 'message': {'mid': 'mid.$cAAXc-q1lTrFnfjgdo1hTPLeygrc_', 'seq': 489978, 'text': 'bonjour'}}]}]}
+2018-01-31 17:00:44,792 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 17:00:45,324 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 17:00:45,334 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 17:00:45,337 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 17:00:46,065 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 17:00:46,086 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 17:00:46,870 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 17:00:46,876 :: INFO :: 127.0.0.1 - - [31/Jan/2018 17:00:46] "POST / HTTP/1.1" 200 -
+2018-01-31 17:01:14,851 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517414471817, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517414471173, 'message': {'quick_reply': {'payload': 'sorties_cine-0'}, 'mid': 'mid.$cAAXc-q1lTrFnfjieBVhTPNfMeMCm', 'seq': 489982, 'text': 'Cinéma'}}]}]}
+2018-01-31 17:01:14,856 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 17:01:15,146 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 17:01:15,148 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 17:01:15,151 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 17:01:15,976 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 17:01:15,982 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 17:01:17,791 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 17:01:17,800 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 17:01:19,706 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 17:01:19,710 :: INFO :: 127.0.0.1 - - [31/Jan/2018 17:01:19] "POST / HTTP/1.1" 200 -
+2018-01-31 17:01:47,850 :: INFO :: DATA: {'object': 'page', 'entry': [{'id': '1554751787948574', 'time': 1517414504818, 'messaging': [{'sender': {'id': '1598547020242483'}, 'recipient': {'id': '1554751787948574'}, 'timestamp': 1517414504153, 'message': {'quick_reply': {'payload': 'sorties_cine-10'}, 'mid': 'mid.$cAAXc-q1lTrFnfjke2VhTPPgInRd3', 'seq': 489989, 'text': 'Plus de films !'}}]}]}
+2018-01-31 17:01:47,856 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 17:01:48,410 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1598547020242483?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 229
+2018-01-31 17:01:48,413 :: INFO :: USER DETAIL: {'first_name': 'Charles', 'last_name': 'Jacquet', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=9c06851a11a2e32e0f54c79cae480e7d&oe=5AE99390', 'gender': 'male', 'locale': 'fr_FR', 'id': '1598547020242483'}
+2018-01-31 17:01:48,416 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
+2018-01-31 17:01:49,874 :: DEBUG :: https://graph.facebook.com:443 "POST /v2.6/me/messages?access_token=EAARN3pzNsFABAC3PnSWAHNhmjzBM02dHNgOGw2jTJaCdQId2AcgEC4LvPTnIANNzaPyHOJDVc9ZCu4pIpgJflfnyRjG0i3kaClxGTn9LA3Oa9XbHg02z3qIULOsUZBgqMeigjWwgzbQ6OmoxtE5JyRJStiFD6REZCen9JZBILgZDZD HTTP/1.1" 200 85
+2018-01-31 17:01:49,878 :: INFO :: 127.0.0.1 - - [31/Jan/2018 17:01:49] "POST / HTTP/1.1" 200 -
+2018-01-31 17:23:12,300 :: INFO ::  * Detected change in 'c:\\Users\\Charles\\Desktop\\Centrale\\Projet OSY\\strolling_back\\server.py', reloading
