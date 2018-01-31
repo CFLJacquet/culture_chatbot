@@ -269,7 +269,7 @@ def episode(code, profile=None, mediafmt=None, format="json", striptags=None):
 def get_last_movies():
 
     # ATTENTION - count parameter not working, len(last_release)=100 movies ! => filtering in return
-    last_release = movielist(0, count=9, page=None, profile="medium", filter="nowshowing", order="toprank", format="json")
+    last_release = movielist(0, count=6, page=None, profile="medium", filter="nowshowing", order="toprank", format="json")
     last_release=last_release["feed"]["movie"]
     results=[]
 
@@ -287,7 +287,7 @@ def get_last_movies():
             "genre": genres
         })
     results = sorted(results, key= lambda x: x["notepresse"], reverse=True)
-    return results
+    return results[:6]
 
 
 if __name__ == '__main__':

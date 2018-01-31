@@ -8,8 +8,9 @@ import datetime # to read datetime objects in exhibition data
 import pickle
 
 from backend.cinema.allocine import get_last_movies
-from backend.messenger.msg_fct import user_details, send_msg, send_button, send_card, send_quick_rep
+from backend.messenger.msg_fct import user_details, typing_bubble, send_msg, send_button, send_card, send_quick_rep
 from backend.exhibition.handle_expo import get_genre, get_exhib
+from backend.language.handle_text import get_meaning
 from backend.others.bdd_jokes import random_joke
 
 
@@ -23,11 +24,16 @@ file_handler.setFormatter(formatter)
 logger.addHandler(file_handler)
 
 app = Flask(__name__)
+# Real page access token:
+# EAAHSfldMxYcBAAt4D30ZAzVHSnhhFqxV15wMJ0RwZCOBH4MZALBJOa8gTvUV0OTL5t3Q4ZBOosziQ3AXIwYpgpdbJCRRkbJKBuB7FASzhnZAcZCsy6expZATAbflsnln2Hd5I1Yo8J2Ddny170yI13r7A224a20yBWczLeYZAzZBDTQZDZD
 
-ACCESS_TOKEN = "EAAHSfldMxYcBAAt4D30ZAzVHSnhhFqxV15wMJ0RwZCOBH4MZALBJOa8gTvUV0OTL5t3Q4ZBOosziQ3AXIwYpgpdbJCRRkbJKBuB7FASzhnZAcZCsy6expZATAbflsnln2Hd5I1Yo8J2Ddny170yI13r7A224a20yBWczLeYZAzZBDTQZDZD"
+# TestJ access token: 
+# EAACQPdicZCwQBAJAkOaE8Na9V0aHSV0mNdQvYrXcySeLtPVffB10NGk4EkwiZBy7qdDWUwz8jKdLN4vOIu14HK6DKoGMBO3X0vyVy1Y0EDqzEV6QK0h1PZCxTTtaklO7NqdqrY9UCjtxUR2uEYdNWBh4cDhLLaBcXgNAhNrXgZDZD
+ACCESS_TOKEN = "EAACQPdicZCwQBAJAkOaE8Na9V0aHSV0mNdQvYrXcySeLtPVffB10NGk4EkwiZBy7qdDWUwz8jKdLN4vOIu14HK6DKoGMBO3X0vyVy1Y0EDqzEV6QK0h1PZCxTTtaklO7NqdqrY9UCjtxUR2uEYdNWBh4cDhLLaBcXgNAhNrXgZDZD"
 
-
-
+@app.route('/test')
+def test():
+    return "<h1>Le serveur fonctionne correctement !</h1>"
 
 @app.route('/', methods=['GET'])
 def handle_verification():
@@ -46,6 +52,8 @@ def handle_event():
     event = data['entry'][0]['messaging'][0]
     sender = event['sender']['id']
     user = user_details(sender, ACCESS_TOKEN)
+    
+    typing_bubble(sender, ACCESS_TOKEN)
 
     if "message" in event:
         #handles quick replies (buttons at the bottom of the conversation)     
@@ -63,12 +71,12 @@ def handle_event():
                 exhibition_display(num, sender, payload)      
             
             elif payload == "Not_interested":
-                send_msg(sender, "Dommage... Voici une dadjoke de consolation:", ACCESS_TOKEN)
+                send_msg(sender, "Je suis en train d'apprendre de nouvelles choses, mais pour l'instant je ne peux que te conseiller en cinéma et en expo ! Pour la peine, voici une dadjoke de consolation:", ACCESS_TOKEN)
                 send_msg(sender, random_joke(), ACCESS_TOKEN)                
                 send_msg(sender, "A bientôt !", ACCESS_TOKEN)
 
             elif payload == "Thanks":
-                send_msg(sender, "Ravie d'avoir pu vous aider ! A bientôt :)", ACCESS_TOKEN)
+                send_msg(sender, "Ravie d'avoir pu t'aider ! A bientôt :)", ACCESS_TOKEN)
         
         #handles stickers sent by user. For the moment, only the like button is recognized
         elif 'sticker_id' in event['message'] :
@@ -87,15 +95,24 @@ def handle_event():
                 else: 
                     send_msg(sender, "Jolie image :)", ACCESS_TOKEN)
             else: 
-                send_msg(sender, "Nous avons bien reçu ton fichier, mais pour l'instant nous ne pouvons pas le traiter !", ACCESS_TOKEN)
+                send_msg(sender, "J'ai bien reçu ton fichier, mais pour l'instant je ne peux pas le traiter !", ACCESS_TOKEN)
 
         #handles text sent by user (including unicode emojis 😰, 😀)
         else:
             message = event['message']['text'].lower()
-            if message == "bonjour":
+            answer = get_meaning(message)
+            if answer[0] == 1:
                 welcome(sender, user)
-            else : 
-                send_msg(sender, "Et si vous me disiez bonjour ?", ACCESS_TOKEN)
+            if answer[1] == 1:
+                film_display(0, sender, latest)
+            if answer[2] == 1:
+                exhibition_display(0, sender)
+            if answer[3] == 1:
+                send_msg(sender, "A bientôt !", ACCESS_TOKEN)
+            if answer == [0,0,0,0]:
+                send_msg(sender, "Je n'ai pas compris ce que tu as dit... 😰", ACCESS_TOKEN)
+                send_msg(sender, "Tu peux me demander des infos sur des expos ou des films. Si tu as eu les informations souhaitées, dis moi juste 'merci' :)", ACCESS_TOKEN)
+
 
     elif "postback" in event:
         if event['postback']['payload'] == "first_conv":
@@ -112,13 +129,13 @@ def handle_event():
             data = get_exhib(x[1], int(x[3]))[0][int(x[2])]
             
             send_msg(sender, "Description: "+data['summary'], ACCESS_TOKEN)
-            time.sleep(10)
-            send_msg(sender, "Horaires: "+data['prog'], ACCESS_TOKEN)
-            time.sleep(2)
+            send_msg(sender, "Horaires: "+data['timetable'], ACCESS_TOKEN)
             send_msg(sender, "Prix: "+data['price'], ACCESS_TOKEN)
+            time.sleep(10)
+            start_buttons(sender, "Autre chose ?")
         
     else: 
-        send_msg(sender, "Je n'ai pas compris votre demande... 😰", ACCESS_TOKEN)
+        send_msg(sender, "Je n'ai pas compris ta demande... 😰", ACCESS_TOKEN)
         
     return "ok"
 
@@ -126,10 +143,12 @@ def handle_event():
 
 
 def welcome(sender, user):
-    answer="Bonjour {} {} {}, bienvenue sur Strolling.  \
-            Je suis Iris votre majordome, je vais vous trouver le \
-            divertissement qui vous plaira.".format(user[0],user[1],user[2])
+    time.sleep(1)
+    answer="Salut {}, je suis Electre ! Je connais les meilleurs films et expos de Paris.".format(user[1])
     send_msg(sender, answer, ACCESS_TOKEN)
+    start_buttons(sender, "Qu'est-ce qui t'intéresserait ?")
+
+def start_buttons(sender, text):
     btns =[
         {
             "content_type":"text",
@@ -143,16 +162,17 @@ def welcome(sender, user):
         },
         {
             "content_type":"text",
-            "title":"Rien de tout ça",
+            "title":"Autre chose",
             "payload":"Not_interested"
         }
     ]
-    send_quick_rep(sender, "Qu'est ce qui vous intéresserait ?", btns ,ACCESS_TOKEN)
+    send_quick_rep(sender, text, btns ,ACCESS_TOKEN)
 
 
 def film_display(num, sender, latest):
     """ returns cards with films from the "latest" var (extracted with API) """
 
+    time.sleep(1)
     if num == 0 :
         send_msg(sender,'Voici les meilleurs films en salle', ACCESS_TOKEN)
 
@@ -184,17 +204,17 @@ def film_display(num, sender, latest):
         },
         {
             "content_type":"text",
-            "title":"Merci Iris",
+            "title":"Merci Electre",
             "payload":"Thanks"
         }
     ]
     if num == 0:
-        send_quick_rep(sender, "Voulez-vous voir d'autres films ?", btns ,ACCESS_TOKEN)
+        send_quick_rep(sender, "Veux-tu voir d'autres films ?", btns ,ACCESS_TOKEN)
         
 def exhibition_display(num, sender, payload =""):
-    if num == 0 :             
-        send_msg(sender, "Une petite expo donc ! ", ACCESS_TOKEN)
-        msg = "Il y a plusieurs types d'expositions, qu'est ce qui vous intéresse le plus ?"
+    time.sleep(1)
+    if num == 0 :
+        msg = "Il y a plusieurs types d'expositions, qu'est-ce qui t'intéresse le plus ?"
         
         btns_genre = get_genre()[1]
         send_quick_rep(sender, msg, btns_genre ,ACCESS_TOKEN)
@@ -206,7 +226,7 @@ def exhibition_display(num, sender, payload =""):
         btns =[
             {
                 "content_type":"text",
-                "title":"Plus d'expos !",
+                "title":"Voir plus d'expos",
                 "payload":"{}-{}".format(payload[:-2], int(payload[-1]) + 1)
             },
             {
@@ -216,14 +236,13 @@ def exhibition_display(num, sender, payload =""):
             },
             {
                 "content_type":"text",
-                "title":"Merci Iris",
+                "title":"Merci Electre",
                 "payload":"Thanks"
             }
         ]
-        time.sleep(10)
-        send_quick_rep(sender, "Voulez-vous voir d'autres expos ?", btns ,ACCESS_TOKEN)
+        send_quick_rep(sender, "Veux-tu voir d'autres expos ?", btns ,ACCESS_TOKEN)
 
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',debug=True)
+    app.run(host='0.0.0.0', debug=True)
