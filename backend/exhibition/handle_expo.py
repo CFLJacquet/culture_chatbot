@@ -13,16 +13,17 @@ def get_genre_exhib():
     with open("backend/exhibition/genre_popularity.json", 'r') as f:
         data = json.load(f)
 
-    genre = [(genre, rank) for genre, rank in data.items()]
-    genre.sort(key=lambda x:x[1], reverse=True)
+    genre_to_sort = [(genre, rank) for genre, rank in data.items()]
+    genre_to_sort.sort(key=lambda x:x[1], reverse=True)
+    genre = [ g[0] for g in genre_to_sort ]
 
     btns = []
     for g in genre[:9]:                 #create button list to be sent
         btns.append(
         {
             "content_type":"text",
-            "title": str(g[0]),
-            "payload": str(g[0]) + "-1"
+            "title": str(g),
+            "payload": str(g) + "-1"
         })
     btns.append(
         {
