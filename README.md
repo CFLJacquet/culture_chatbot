@@ -1,6 +1,6 @@
 # Project Strolling bot
 
-FB Messenger chatbot that recommends you cultural events in Paris (exhibition, movie...) based on the user's interest.
+FB Messenger chatbot that recommends users cultural events in Paris (exhibition, movie...) based on the user's interest.
 
 ### Website: https://www.strolling.club/ 
 
@@ -10,8 +10,8 @@ FB Messenger chatbot that recommends you cultural events in Paris (exhibition, m
 │   ├── cinema  
 │   ├── exhibition  
 │   │   ├── expo_scraper  
-│   │   │   ├── extracted data
-│   │   │   ├── expo_classifier
+│   │   │   ├── extracted data  
+│   │   │   ├── expo_classifier  
 │   │   │   └── expo_scraper  
 │   │   │       └── spiders  
 │   │   └── README.txt  
@@ -46,4 +46,8 @@ FB Messenger chatbot that recommends you cultural events in Paris (exhibition, m
 
 * PIL (pillow) -> to transform image size, download version 4.3.0 (type in console: pip install 'pillow==4.3.0')
 
+# Sources de données
 
+Besoin de rafraichir manuellement les données pour l'instant:
+* expositions: aller dans /backend/exhibition/expo_scraper et run handle_exhibition_data.py
+* films : aller dans /backend/cinema/ et run handle_cinema.py

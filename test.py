@@ -1,8 +1,9 @@
-from server import get_genre_exhib
-from backend.cinema.handle_cinema import get_details_cinema, stock_last_movies
-import sys
-from pprint import pprint
+import treetaggerwrapper as ttw 
+tagger = ttw.TreeTagger(TAGLANG='fr')
 
+s = "salut salt ;) j'aime les expos d'art contemporain et le cinéma ⛄ 🤞 ❤️ ...".lower()
 
-print(sys.stdout.encoding)
-pprint(stock_last_movies())
+tags = tagger.tag_text(s)
+print(tags)
+tags2 = [word.split("\t") for word in tags]
+print(tags2)

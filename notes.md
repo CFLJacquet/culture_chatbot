@@ -1,6 +1,7 @@
 #Notes to myself: 
 
-- activer le bouton "get started": télécharger le plugin 'postman' sur Chrome et 'importer' une requête cURL en texte brut : 
+## activer le bouton "get started": 
+télécharger le plugin 'postman' sur Chrome et 'importer' une requête cURL en texte brut : 
 
 curl -X POST -H "Content-Type: application/json" -d '{
   "greeting": [
@@ -19,11 +20,13 @@ curl -X POST -H "Content-Type: application/json" -d '{
   ...
 }' "https://graph.facebook.com/v2.6/me/messenger_profile?access_token=<XXXXXX>"
 
-- quand on supprime le webhook et on le réactive, penser à l'associer à la page FB
+## Suppression webhook
+quand on supprime le webhook et on le réactive, penser à l'associer à la page FB
 
-- scrapy: exports options !!! https://doc.scrapy.org/en/1.2/topics/feed-exports.html#std:setting-FEED_EXPORT_ENCODING
+## scrapy: 
+* exports options !!! https://doc.scrapy.org/en/1.2/topics/feed-exports.html#std:setting-FEED_EXPORT_ENCODING
 
-- scrapy: appeler d'autres scraper dans le scraper principal
+* appeler d'autres scraper dans le scraper principal
 https://stackoverflow.com/questions/33589136/scrapy-understanding-how-do-items-and-requests-work-between-callbacks 
 
 
@@ -45,3 +48,11 @@ git add [fichier en conflit]
 - dans vérifier le jeton: mettre 'secret'
 - cocher 'messages' et 'messaging_postback'
 4b. toujours dans [Webhooks], sélectionner la page à laquelle souscrire le webhook
+
+## TreeTaggerWrapper
+
+The biggest problem encountered with command-line version of TreeTagger tools which come with the package is the restart of TreeTagger itself at each new text to tag. At each process start, TreeTagger must reload all its language-dependant data. Not a problem to tag few files, it become too time consuming when you try to tag hundreds or thousands files.
+
+The solution we adopt is to start TreeTagger once, with ad-hoc options for the target language, with control over its input and output streams, and to keep communications opened as long as we want/need.
+
+https://perso.limsi.fr/pointal/doku.php?id=dev:treetaggerwrapper 

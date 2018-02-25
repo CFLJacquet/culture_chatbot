@@ -13,6 +13,10 @@ from backend.exhibition.handle_expo import get_genre_exhib, get_exhib, get_exhib
 from backend.messenger.msg_fct import user_details, typing_bubble, send_msg, send_button, send_card, send_quick_rep
 from backend.cinema.handle_cinema import get_details_cinema, get_topmovies_genre
 
+# Need to start the tagger only once
+import treetaggerwrapper as ttw 
+tagger = ttw.TreeTagger(TAGLANG='fr')
+
 from backend.language.handle_text import get_meaning
 from backend.language.handle_text_query import vect_search
 from backend.others.bdd_jokes import random_joke
@@ -52,10 +56,10 @@ app = Flask(__name__)
 
 #Bloc créant des logs
 logger = logging.getLogger()
-logger.setLevel(logging.DEBUG)
+logger.setLevel(logging.INFO)
 formatter = logging.Formatter('%(asctime)s :: %(levelname)s :: %(message)s')
 file_handler = RotatingFileHandler("activity.log", 'w', 1000000, 1) #/Users/constanceleonard/Desktop/projet_osy/strolling/log/
-file_handler.setLevel(logging.DEBUG)
+file_handler.setLevel(logging.INFO)
 file_handler.setFormatter(formatter)
 logger.addHandler(file_handler)
 
@@ -166,7 +170,7 @@ def handle_event():
         #handles text sent by user (including unicode emojis 😰, 😀)
         else:
             message = event['message']['text'].lower()
-            answer = get_meaning(message)
+            answer = get_meaning(message, tagger)
             if answer[0] == 1:
                 welcome(sender, user)
             if answer[1] == 1:
@@ -175,7 +179,7 @@ def handle_event():
             if answer[2] == 1:
                 time.sleep(1)
                 send_msg(sender, "J'ai trouvé ça, certaines devraient te plaire !", ACCESS_TOKEN)
-                send_card(sender, get_exhib_query(vect_search(message), 1), ACCESS_TOKEN)
+                send_card(sender, get_exhib_query(vect_search(message, tagger), 1), ACCESS_TOKEN)
                 #exhibition_display(0, sender)
             if answer[3] == 1:
                 send_msg(sender, "A bientôt !", ACCESS_TOKEN)
@@ -214,10 +218,6 @@ def handle_event():
         send_msg(sender, "Je n'ai pas compris ta demande... 😰", ACCESS_TOKEN)
         
     return "ok"
-
-
-    return "ok"
-
 
 def welcome(sender, user):
     time.sleep(1)

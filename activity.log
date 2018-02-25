@@ -1,3 +1,81 @@
-2018-01-31 19:40:30,532 :: INFO :: DATA: {'entry': [{'messaging': [{'recipient': {'id': '301036963725724'}, 'timestamp': 1517425591819, 'message': {'text': 'yo', 'mid': 'mid.$cAAFLOdAkFTNnfuJOC1hTZ0P4O1kw', 'seq': 490412}, 'sender': {'id': '1518498408229929'}}], 'id': '301036963725724', 'time': 1517427629956}], 'object': 'page'}
-2018-01-31 19:40:30,537 :: DEBUG :: Starting new HTTPS connection (1): graph.facebook.com
-2018-01-31 19:40:30,725 :: DEBUG :: https://graph.facebook.com:443 "GET /v2.6/1518498408229929?fields=first_name%2Clast_name%2Cprofile_pic%2Cgender%2Clocale&access_token=EAACQPdicZCwQBAJAkOaE8Na9V0aHSV0mNdQvYrXcySeLtPVffB10NGk4EkwiZBy7qdDWUwz8jKdLN4vOIu14HK6DKoGMBO3X0vyVy1Y0EDqzEV6QK0h1PZCxTTtaklO7NqdqrY9UCjtxUR2uEYdNWBh4cDhLLaBcXgNAhNrXgZDZD HTTP/1.1" 400 282
+2018-02-25 12:57:42,042 :: INFO :: DATA: {'entry': [{'time': 1519563461360, 'id': '301036963725724', 'messaging': [{'message': {'text': 'hey there', 'mid': 'mid.$cAAFLOdAkFTNn_k-YPFhzQphT29zh', 'seq': 500581}, 'sender': {'id': '1518498408229929'}, 'recipient': {'id': '301036963725724'}, 'timestamp': 1519563460668}]}], 'object': 'page'}
+2018-02-25 12:57:42,266 :: INFO :: USER DETAIL: {'locale': 'fr_FR', 'first_name': 'Charles', 'gender': 'male', 'id': '1518498408229929', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=42ae3831802079f35dcf7ddbaff98a3d&oe=5B112090', 'last_name': 'Jacquet'}
+2018-02-25 12:57:42,422 :: INFO :: Started TreeTagger from command: ['/home/ubuntu/TreeTagger/bin/tree-tagger', '-token', '-lemma', '-sgml', '-quiet', '-no-unknown', '/home/ubuntu/TreeTagger/lib/french-utf8.par']
+2018-02-25 12:57:42,423 :: INFO :: Writing starting part to pipe.
+2018-02-25 12:57:42,423 :: INFO :: Writing data to pipe.
+2018-02-25 12:57:42,423 :: INFO :: Writing ending and flushing part to pipe.
+2018-02-25 12:57:42,423 :: INFO :: Finished writing data to pipe. Pipe flushed.
+2018-02-25 12:57:59,929 :: INFO :: DATA: {'entry': [{'time': 1519563479113, 'id': '301036963725724', 'messaging': [{'message': {'text': "une expo sur l'art africian stp", 'mid': 'mid.$cAAFLOdAkFTNn_k_dwVhzQqm1uuSA', 'seq': 500589}, 'sender': {'id': '1518498408229929'}, 'recipient': {'id': '301036963725724'}, 'timestamp': 1519563478465}]}], 'object': 'page'}
+2018-02-25 12:58:00,105 :: INFO :: USER DETAIL: {'locale': 'fr_FR', 'first_name': 'Charles', 'gender': 'male', 'id': '1518498408229929', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=42ae3831802079f35dcf7ddbaff98a3d&oe=5B112090', 'last_name': 'Jacquet'}
+2018-02-25 12:58:00,253 :: INFO :: Started TreeTagger from command: ['/home/ubuntu/TreeTagger/bin/tree-tagger', '-token', '-lemma', '-sgml', '-quiet', '-no-unknown', '/home/ubuntu/TreeTagger/lib/french-utf8.par']
+2018-02-25 12:58:00,259 :: INFO :: Writing starting part to pipe.
+2018-02-25 12:58:00,259 :: INFO :: Writing data to pipe.
+2018-02-25 12:58:00,259 :: INFO :: Writing ending and flushing part to pipe.
+2018-02-25 12:58:00,259 :: INFO :: Finished writing data to pipe. Pipe flushed.
+2018-02-25 12:58:01,850 :: INFO :: Writing starting part to pipe.
+2018-02-25 12:58:01,850 :: INFO :: Writing data to pipe.
+2018-02-25 12:58:01,851 :: INFO :: Writing ending and flushing part to pipe.
+2018-02-25 12:58:01,851 :: INFO :: Finished writing data to pipe. Pipe flushed.
+2018-02-25 12:58:21,837 :: INFO :: DATA: {'entry': [{'time': 1519563501131, 'id': '301036963725724', 'messaging': [{'message': {'text': 'et au ciné', 'mid': 'mid.$cAAFLOdAkFTNn_lAzwFhzQr8ymz-n', 'seq': 500594}, 'sender': {'id': '1518498408229929'}, 'recipient': {'id': '301036963725724'}, 'timestamp': 1519563500480}]}], 'object': 'page'}
+2018-02-25 12:58:21,963 :: INFO :: USER DETAIL: {'locale': 'fr_FR', 'first_name': 'Charles', 'gender': 'male', 'id': '1518498408229929', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=42ae3831802079f35dcf7ddbaff98a3d&oe=5B112090', 'last_name': 'Jacquet'}
+2018-02-25 12:58:22,093 :: INFO :: Started TreeTagger from command: ['/home/ubuntu/TreeTagger/bin/tree-tagger', '-token', '-lemma', '-sgml', '-quiet', '-no-unknown', '/home/ubuntu/TreeTagger/lib/french-utf8.par']
+2018-02-25 12:58:22,099 :: INFO :: Writing starting part to pipe.
+2018-02-25 12:58:22,099 :: INFO :: Writing data to pipe.
+2018-02-25 12:58:22,099 :: INFO :: Writing ending and flushing part to pipe.
+2018-02-25 12:58:22,099 :: INFO :: Finished writing data to pipe. Pipe flushed.
+2018-02-25 12:58:38,391 :: INFO :: DATA: {'entry': [{'time': 1519563517496, 'id': '301036963725724', 'messaging': [{'message': {'text': "une expo d'art moderne", 'mid': 'mid.$cAAFLOdAkFTNn_lBzrlhzQs8zlPMo', 'seq': 500601}, 'sender': {'id': '1518498408229929'}, 'recipient': {'id': '301036963725724'}, 'timestamp': 1519563516846}]}], 'object': 'page'}
+2018-02-25 12:58:38,510 :: INFO :: USER DETAIL: {'locale': 'fr_FR', 'first_name': 'Charles', 'gender': 'male', 'id': '1518498408229929', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=42ae3831802079f35dcf7ddbaff98a3d&oe=5B112090', 'last_name': 'Jacquet'}
+2018-02-25 12:58:38,626 :: INFO :: Writing starting part to pipe.
+2018-02-25 12:58:38,626 :: INFO :: Writing data to pipe.
+2018-02-25 12:58:38,626 :: INFO :: Writing ending and flushing part to pipe.
+2018-02-25 12:58:38,627 :: INFO :: Finished writing data to pipe. Pipe flushed.
+2018-02-25 12:58:39,899 :: INFO :: Writing starting part to pipe.
+2018-02-25 12:58:39,899 :: INFO :: Writing data to pipe.
+2018-02-25 12:58:39,900 :: INFO :: Writing ending and flushing part to pipe.
+2018-02-25 12:58:39,900 :: INFO :: Finished writing data to pipe. Pipe flushed.
+2018-02-25 12:58:52,807 :: INFO :: DATA: {'entry': [{'time': 1519563531991, 'id': '301036963725724', 'messaging': [{'message': {'text': 'une expo photo', 'mid': 'mid.$cAAFLOdAkFTNn_lCsYVhzQt1Zm_3F', 'seq': 500606}, 'sender': {'id': '1518498408229929'}, 'recipient': {'id': '301036963725724'}, 'timestamp': 1519563531361}]}], 'object': 'page'}
+2018-02-25 12:58:55,954 :: INFO :: USER DETAIL: {'locale': 'fr_FR', 'first_name': 'Charles', 'gender': 'male', 'id': '1518498408229929', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=42ae3831802079f35dcf7ddbaff98a3d&oe=5B112090', 'last_name': 'Jacquet'}
+2018-02-25 12:58:56,161 :: INFO :: Writing starting part to pipe.
+2018-02-25 12:58:56,162 :: INFO :: Writing data to pipe.
+2018-02-25 12:58:56,162 :: INFO :: Writing ending and flushing part to pipe.
+2018-02-25 12:58:56,162 :: INFO :: Finished writing data to pipe. Pipe flushed.
+2018-02-25 12:58:57,533 :: INFO :: Writing starting part to pipe.
+2018-02-25 12:58:57,534 :: INFO :: Writing data to pipe.
+2018-02-25 12:58:57,534 :: INFO :: Writing ending and flushing part to pipe.
+2018-02-25 12:58:57,534 :: INFO :: Finished writing data to pipe. Pipe flushed.
+2018-02-25 12:59:08,384 :: INFO :: DATA: {'entry': [{'time': 1519563547788, 'id': '301036963725724', 'messaging': [{'message': {'text': 'au musée guimet ?', 'mid': 'mid.$cAAFLOdAkFTNn_lDp4lhzQuyxLOEq', 'seq': 500611}, 'sender': {'id': '1518498408229929'}, 'recipient': {'id': '301036963725724'}, 'timestamp': 1519563547106}]}], 'object': 'page'}
+2018-02-25 12:59:08,532 :: INFO :: USER DETAIL: {'locale': 'fr_FR', 'first_name': 'Charles', 'gender': 'male', 'id': '1518498408229929', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=42ae3831802079f35dcf7ddbaff98a3d&oe=5B112090', 'last_name': 'Jacquet'}
+2018-02-25 12:59:08,682 :: INFO :: Writing starting part to pipe.
+2018-02-25 12:59:08,683 :: INFO :: Writing data to pipe.
+2018-02-25 12:59:08,683 :: INFO :: Writing ending and flushing part to pipe.
+2018-02-25 12:59:08,683 :: INFO :: Finished writing data to pipe. Pipe flushed.
+2018-02-25 12:59:09,980 :: INFO :: Writing starting part to pipe.
+2018-02-25 12:59:09,980 :: INFO :: Writing data to pipe.
+2018-02-25 12:59:09,981 :: INFO :: Writing ending and flushing part to pipe.
+2018-02-25 12:59:09,981 :: INFO :: Finished writing data to pipe. Pipe flushed.
+2018-02-25 12:59:22,915 :: INFO :: DATA: {'entry': [{'time': 1519563562295, 'id': '301036963725724', 'messaging': [{'message': {'text': 'ezmeoi', 'mid': 'mid.$cAAFLOdAkFTNn_lEisVhzQvryiPts', 'seq': 500616}, 'sender': {'id': '1518498408229929'}, 'recipient': {'id': '301036963725724'}, 'timestamp': 1519563561649}]}], 'object': 'page'}
+2018-02-25 12:59:23,066 :: INFO :: USER DETAIL: {'locale': 'fr_FR', 'first_name': 'Charles', 'gender': 'male', 'id': '1518498408229929', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=42ae3831802079f35dcf7ddbaff98a3d&oe=5B112090', 'last_name': 'Jacquet'}
+2018-02-25 12:59:23,221 :: INFO :: Writing starting part to pipe.
+2018-02-25 12:59:23,222 :: INFO :: Writing data to pipe.
+2018-02-25 12:59:23,222 :: INFO :: Writing ending and flushing part to pipe.
+2018-02-25 12:59:23,222 :: INFO :: Finished writing data to pipe. Pipe flushed.
+2018-02-25 13:08:29,378 :: INFO :: DATA: {'entry': [{'time': 1519564108548, 'id': '301036963725724', 'messaging': [{'message': {'text': 'et sinon une exposition abstraite', 'mid': 'mid.$cAAFLOdAkFTNn_ll4LVhzRRBHek9C', 'seq': 500621}, 'sender': {'id': '1518498408229929'}, 'recipient': {'id': '301036963725724'}, 'timestamp': 1519564107821}]}], 'object': 'page'}
+2018-02-25 13:08:29,520 :: INFO :: USER DETAIL: {'locale': 'fr_FR', 'first_name': 'Charles', 'gender': 'male', 'id': '1518498408229929', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=42ae3831802079f35dcf7ddbaff98a3d&oe=5B112090', 'last_name': 'Jacquet'}
+2018-02-25 13:08:29,678 :: INFO :: Writing starting part to pipe.
+2018-02-25 13:08:29,679 :: INFO :: Writing data to pipe.
+2018-02-25 13:08:29,679 :: INFO :: Writing ending and flushing part to pipe.
+2018-02-25 13:08:29,679 :: INFO :: Finished writing data to pipe. Pipe flushed.
+2018-02-25 13:08:30,959 :: INFO :: Writing starting part to pipe.
+2018-02-25 13:08:30,960 :: INFO :: Writing data to pipe.
+2018-02-25 13:08:30,960 :: INFO :: Writing ending and flushing part to pipe.
+2018-02-25 13:08:30,960 :: INFO :: Finished writing data to pipe. Pipe flushed.
+2018-02-25 13:08:39,695 :: INFO :: DATA: {'entry': [{'time': 1519564119088, 'id': '301036963725724', 'messaging': [{'message': {'text': 'art martien', 'mid': 'mid.$cAAFLOdAkFTNn_lmhplhzRRqxiQnJ', 'seq': 500626}, 'sender': {'id': '1518498408229929'}, 'recipient': {'id': '301036963725724'}, 'timestamp': 1519564118438}]}], 'object': 'page'}
+2018-02-25 13:08:39,822 :: INFO :: USER DETAIL: {'locale': 'fr_FR', 'first_name': 'Charles', 'gender': 'male', 'id': '1518498408229929', 'profile_pic': 'https://scontent.xx.fbcdn.net/v/t1.0-1/15326462_1359935944070611_2198232127965202185_n.jpg?oh=42ae3831802079f35dcf7ddbaff98a3d&oe=5B112090', 'last_name': 'Jacquet'}
+2018-02-25 13:08:39,955 :: INFO :: Writing starting part to pipe.
+2018-02-25 13:08:39,956 :: INFO :: Writing data to pipe.
+2018-02-25 13:08:39,956 :: INFO :: Writing ending and flushing part to pipe.
+2018-02-25 13:08:39,956 :: INFO :: Finished writing data to pipe. Pipe flushed.
+2018-02-25 13:08:41,237 :: INFO :: Writing starting part to pipe.
+2018-02-25 13:08:41,237 :: INFO :: Writing data to pipe.
+2018-02-25 13:08:41,237 :: INFO :: Writing ending and flushing part to pipe.
+2018-02-25 13:08:41,238 :: INFO :: Finished writing data to pipe. Pipe flushed.

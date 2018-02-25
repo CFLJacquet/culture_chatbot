@@ -1,8 +1,11 @@
 import json
 import pickle
+from nltk.probability import FreqDist
+import regex as re
 from math import log10, sqrt
-from backend.exhibition.indexator import tf_text
 from pprint import pprint
+
+stopwords = open("backend/language/stopwords.txt", 'r', encoding='utf-8').read().split("\n")
 
 with open('backend/exhibition/index_word.json', 'r') as f:
     INDEX_DATA = json.load(f)
@@ -13,6 +16,29 @@ with open('backend/exhibition/index_doc.json', 'r') as f:
 with open('backend/exhibition/data_exhibition.json', 'r') as f:
     COLLECTION = json.load(f)
 COLLECTION_IDS = range(1, len(DOC_LENGTH)+1)
+
+def tf_text(text_title_summary_reviews, docID, tagger):
+    """ Returns a list of filtered terms: (term, (docID, tf/sqrt(len(keywords)))) """
+
+    tags = tagger.tag_text(re.sub(r"[^\w+ \' \.]", " ", text_title_summary_reviews))
+    tags2 = [word.split("\t") for word in tags]
+
+    keywords =[]
+    fdist = FreqDist()
+
+    for elt in tags2:
+        try:
+            if not elt[2].lower() in stopwords:
+                keywords.append(elt[2].lower())
+        except:
+            pass
+
+    fdist = FreqDist(keywords)
+    result = [(x[0],( docID, (1+log10(x[1])) / sqrt(len(keywords)) )) for x in fdist.items()]
+
+    return result
+
+
 
 def get_postings(word):
     """ Returns a tuple (postings (with tf-idf), postings) if word in index """
@@ -28,10 +54,10 @@ def get_postings(word):
     return doc_tfidf, postings
 
 
-def vect_search(query, rappel=20):
+def vect_search(query, tagger, rappel=20):
     
     # Calculates (1+log10(tf)) for each word in the query
-    q = tf_text(query, 0)
+    q = tf_text(query, 0, tagger)
     n_q = 0
     sim = {}
     for i in COLLECTION_IDS:

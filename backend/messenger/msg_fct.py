@@ -6,15 +6,20 @@ import json
 def user_details(sender, ACCESS_TOKEN):
         
     url = "https://graph.facebook.com/v2.6/"+str(sender)
-    params = {'fields':'first_name,last_name,profile_pic,gender,locale', 'access_token':ACCESS_TOKEN}
+    params = {'fields':'first_name,\
+last_name,\
+profile_pic,\
+gender,\
+age_range,\
+locale', 'access_token':ACCESS_TOKEN}
     user_details = requests.get(url, params).json()
+
+    logging.info('USER DETAIL: {}'.format(user_details))
     
     if user_details['gender'] == 'male':
         user_gender="M"
     else:
         user_gender="Mme"
-
-    logging.info('USER DETAIL: {}'.format(user_details))
 
     return user_gender,user_details['first_name'],user_details['last_name']
 
