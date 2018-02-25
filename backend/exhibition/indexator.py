@@ -5,6 +5,8 @@ from nltk.probability import FreqDist
 import regex as re
 import treetaggerwrapper as ttw 
 
+from backend.exhibition.expo_scraper.handle_exhibition_data import run_spiders, append_to_full, merge_results
+
 tagger = ttw.TreeTagger(TAGLANG='fr')
 stopwords = open("backend/language/stopwords.txt", 'r', encoding='utf-8').read().split("\n")
 
@@ -87,7 +89,13 @@ def doc_vector_length():
         json.dump(doc_index, outfile)
 
 if __name__ == "__main__":
-    
+    #---to run all the spiders, uncomment the following line
+    run_spiders()
+
+    #---to get merged result of scraped data, uncomment the following line
+    append_to_full(merge_results("backend/exhibition/expo_scraper/extracted_data/all_expo.jsonl"))
+
+
     #---to create the reverse index for words, uncomment the following line
     c = create_collection()
     a = aggregate(c)

@@ -137,7 +137,7 @@ def append_to_full(new_list):
     """ Appends only the new exhibitions to the existing list of exhibitions """
 
     hist = pd.read_json("backend/exhibition/data_exhibition.json")
-    hist.to_json("backend/exhibition/data_exhibition_backup.json", orient="records")
+    hist.to_json("backend/exhibition/expo_scraper/extracted_data/data_exhibition_backup.json", orient="records")
     
     print("The database contains {} exhibitions.".format(hist.shape[0]))
     
