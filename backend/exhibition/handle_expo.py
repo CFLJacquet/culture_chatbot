@@ -2,21 +2,27 @@ import json
 from operator import itemgetter
 from datetime import datetime as dt
 from pprint import pprint
-import pandas as pd
 
 def get_genre_exhib():
     """ Returns a tuple: list of exhibition genres + cards to be used in quick replies """
-    
-    data = pd.read_json("backend/exhibition/data_exhibition.json")
-    genre = [g for g in data.columns.values if g[0].isupper() and g != 'ID']
-    
+
+    # NB: les genres sont rangés par ordre de préférence, mais il n'y pas de mécanisme de retour 
+    # utilisateur => besoin d'augmenter la valeur quand un utilisateur clique dessus + option: 
+    # "plus de genres"
+
+    with open("backend/exhibition/genre_popularity.json", 'r') as f:
+        data = json.load(f)
+
+    genre = [(genre, rank) for genre, rank in data.items()]
+    genre.sort(key=lambda x:x[1], reverse=True)
+
     btns = []
     for g in genre[:9]:                 #create button list to be sent
         btns.append(
         {
             "content_type":"text",
-            "title": str(g),
-            "payload": str(g) + "-1"
+            "title": str(g[0]),
+            "payload": str(g[0]) + "-1"
         })
     btns.append(
         {
