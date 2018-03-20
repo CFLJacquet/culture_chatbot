@@ -10,9 +10,9 @@ import numpy as np
 from sklearn.externals import joblib
 
 from scrapy.crawler import CrawlerProcess
-from expo_scraper.spiders.spider_expoInTheCity import Expo_expoInTheCity_Spider
-from expo_scraper.spiders.spider_offSpectacles import Expo_offspec_Spider
-from expo_scraper.spiders.spider_parisBouge import Expo_parisbouge_Spider
+from backend.exhibition.expo_scraper.expo_scraper.spiders.spider_expoInTheCity import Expo_expoInTheCity_Spider
+from backend.exhibition.expo_scraper.expo_scraper.spiders.spider_offSpectacles import Expo_offspec_Spider
+from backend.exhibition.expo_scraper.expo_scraper.spiders.spider_parisBouge import Expo_parisbouge_Spider
 #from expo_scraper.spiders.spider_timeout import Expo_timeout_Spider
 
 tokenizer = RegexpTokenizer(r'\w+')

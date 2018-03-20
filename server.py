@@ -13,10 +13,6 @@ from backend.exhibition.handle_expo import get_genre_exhib, get_exhib, get_exhib
 from backend.messenger.msg_fct import user_details, typing_bubble, send_msg, send_button, send_card, send_quick_rep
 from backend.cinema.handle_cinema import get_details_cinema, get_topmovies_genre
 
-# Need to start the tagger only once
-import treetaggerwrapper as ttw 
-tagger = ttw.TreeTagger(TAGLANG='fr')
-
 from backend.language.handle_text import get_meaning
 from backend.language.handle_text_query import vect_search
 from backend.others.bdd_jokes import random_joke
@@ -26,7 +22,7 @@ from backend.others.bdd_jokes import random_joke
 
 # TestJ access token: 
 # EAACQPdicZCwQBAJAkOaE8Na9V0aHSV0mNdQvYrXcySeLtPVffB10NGk4EkwiZBy7qdDWUwz8jKdLN4vOIu14HK6DKoGMBO3X0vyVy1Y0EDqzEV6QK0h1PZCxTTtaklO7NqdqrY9UCjtxUR2uEYdNWBh4cDhLLaBcXgNAhNrXgZDZD
-ACCESS_TOKEN = "EAAHSfldMxYcBAAt4D30ZAzVHSnhhFqxV15wMJ0RwZCOBH4MZALBJOa8gTvUV0OTL5t3Q4ZBOosziQ3AXIwYpgpdbJCRRkbJKBuB7FASzhnZAcZCsy6expZATAbflsnln2Hd5I1Yo8J2Ddny170yI13r7A224a20yBWczLeYZAzZBDTQZDZD"
+ACCESS_TOKEN = "EAACQPdicZCwQBAJAkOaE8Na9V0aHSV0mNdQvYrXcySeLtPVffB10NGk4EkwiZBy7qdDWUwz8jKdLN4vOIu14HK6DKoGMBO3X0vyVy1Y0EDqzEV6QK0h1PZCxTTtaklO7NqdqrY9UCjtxUR2uEYdNWBh4cDhLLaBcXgNAhNrXgZDZD"
 
 
 # Flask config
@@ -170,7 +166,7 @@ def handle_event():
         #handles text sent by user (including unicode emojis 😰, 😀)
         else:
             message = event['message']['text'].lower()
-            answer = get_meaning(message, tagger)
+            answer = get_meaning(message)
             if answer[0] == 1:
                 welcome(sender, user)
             if answer[1] == 1:
@@ -179,13 +175,20 @@ def handle_event():
             if answer[2] == 1:
                 time.sleep(1)
                 send_msg(sender, "J'ai trouvé ça, certaines devraient te plaire !", ACCESS_TOKEN)
-                send_card(sender, get_exhib_query(vect_search(message, tagger), 1), ACCESS_TOKEN)
+                send_card(sender, get_exhib_query(vect_search(message), 1), ACCESS_TOKEN)
                 #exhibition_display(0, sender)
             if answer[3] == 1:
                 send_msg(sender, "A bientôt !", ACCESS_TOKEN)
             if answer[4] == 1:
                 send_msg(sender, "De rien !", ACCESS_TOKEN)
-            if answer == [0,0,0,0,0]:
+            if answer[5] == 1:
+                send_msg(sender, "======= HELP =======\n\n\
+A tout moment tu peux me demander des choses comme \'Est ce qu'il y a des expos d'art moderne ?\' ou \
+\'donne moi le meilleur film comique au ciné\'\n\n\
+Si tu préfères être guidé, tape 'menu' et des petits boutons apparaîtront !", ACCESS_TOKEN) 
+            if answer[6] == 1:    
+                start_buttons(sender, "Qu'est-ce qui t'intéresserait ?")
+            if answer == [0,0,0,0,0,0,0]:
                 send_msg(sender, "Je n'ai pas compris ce que tu as dit... 😰", ACCESS_TOKEN)
                 send_msg(sender, "Tu peux me demander des infos sur des expos ou des films. Si tu as eu les informations souhaitées, dis moi juste 'stop' ou 'merci' :)", ACCESS_TOKEN)
 
@@ -221,11 +224,9 @@ def handle_event():
 
 def welcome(sender, user):
     time.sleep(1)
-    answer="Salut {}, je suis Electre ! Je connais les meilleurs films et expos de Paris.\n\n \
-Il y a 2-3 trucs qui ont changé depuis la dernière fois :\n \
-- tu peux choisir des types de films (action, comédie...) dans les cartes\n \
-- tu peux me demander avec des phrases des infos sur les expos!".format(user[1])
+    answer="Salut {}, je suis Electre ! Je connais les meilleurs films et expos de Paris.".format(user[1])
     send_msg(sender, answer, ACCESS_TOKEN)
+    
     start_buttons(sender, "Qu'est-ce qui t'intéresserait ?")
 
 def start_buttons(sender, text):

@@ -125,6 +125,8 @@ expo
 exposition
 x
 v
+un
+de
 &
 .
 ...
