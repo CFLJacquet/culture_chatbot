@@ -43,9 +43,9 @@ def process_text(msg):
     keywords = []
 
     for elt in words:
-        with open("backend/language/"+LEMMA_DIC[elt[0]]) as json_data:
-            d = json.load(json_data)
-        try: # on prend le 1e lemma possible meme si ça peut etre faux (ex: abstrait -> abstraire (verbe))
+        try: # on prend le 1e lemma possible meme si ça peut etre faux (ex: abstrait -> abstraire (verbe))      
+            with open("backend/language/"+LEMMA_DIC[elt[0]]) as json_data:
+                d = json.load(json_data)
             tags = [x[0] for x in d if x[0][0] == elt][0]
             keywords.append(tags)
         except:
@@ -106,10 +106,10 @@ Si tu préfères être guidé, tape 'menu' et des boutons apparaîtront !", ACCE
         start_buttons(sender, "Qu'est-ce qui t'intéresserait ?", ACCESS_TOKEN)
 
     elif keys == [0,0,0,0,0,0,0]:
+        with open("backend/language/misunderstood_sentences.txt", "a") as f:
+            f.write(msg + "\n")
         send_msg(sender, random.choice(SENTENCES["UNKNOWN"]), ACCESS_TOKEN)
         send_msg(sender, "Mais si tu as besoin d'aide, tape 'help'. Sinon pour accéder au menu, tape 'menu' :)", ACCESS_TOKEN)
-        with open("misunderstood_sentences.txt", "a") as f:
-            f.write(msg + "\n")
 
     return cinema 
 
