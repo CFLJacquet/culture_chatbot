@@ -10,10 +10,10 @@ import datetime # to read datetime objects in exhibition data
 import pickle
 
 from backend.exhibition.handle_expo import get_genre_exhib, get_exhib, get_exhib_query, get_detail_exhib
-from backend.messenger.msg_fct import user_details, typing_bubble, send_msg, send_button, send_card, send_quick_rep
+from backend.messenger.msg_fct import user_details, typing_bubble, send_msg, send_button, send_card, send_quick_rep, start_buttons
 from backend.cinema.handle_cinema import get_details_cinema, get_topmovies_genre
 
-from backend.language.handle_text import get_meaning
+from backend.language.handle_text import analyse_text
 from backend.language.handle_text_query import vect_search
 from backend.others.bdd_jokes import random_joke
 
@@ -166,32 +166,10 @@ def handle_event():
         #handles text sent by user (including unicode emojis 😰, 😀)
         else:
             message = event['message']['text'].lower()
-            answer = get_meaning(message)
-            if answer[0] == 1:
-                welcome(sender, user)
-            if answer[1] == 1:
+            result = analyse_text(message, sender, user, ACCESS_TOKEN)
+            if result:
                 latest = get_details_cinema()
                 film_display(0, sender, latest)
-            if answer[2] == 1:
-                time.sleep(1)
-                send_msg(sender, "J'ai trouvé ça, certaines devraient te plaire !", ACCESS_TOKEN)
-                send_card(sender, get_exhib_query(vect_search(message), 1), ACCESS_TOKEN)
-                #exhibition_display(0, sender)
-            if answer[3] == 1:
-                send_msg(sender, "A bientôt !", ACCESS_TOKEN)
-            if answer[4] == 1:
-                send_msg(sender, "De rien !", ACCESS_TOKEN)
-            if answer[5] == 1:
-                send_msg(sender, "======= HELP =======\n\n\
-A tout moment tu peux me demander des choses comme \'Est ce qu'il y a des expos d'art moderne ?\' ou \
-\'donne moi le meilleur film comique au ciné\'\n\n\
-Si tu préfères être guidé, tape 'menu' et des petits boutons apparaîtront !", ACCESS_TOKEN) 
-            if answer[6] == 1:    
-                start_buttons(sender, "Qu'est-ce qui t'intéresserait ?")
-            if answer == [0,0,0,0,0,0,0]:
-                send_msg(sender, "Je n'ai pas compris ce que tu as dit... 😰", ACCESS_TOKEN)
-                send_msg(sender, "Tu peux me demander des infos sur des expos ou des films. Si tu as eu les informations souhaitées, dis moi juste 'stop' ou 'merci' :)", ACCESS_TOKEN)
-
 
     elif "postback" in event:
         if event['postback']['payload'] == "first_conv":
@@ -203,7 +181,7 @@ Si tu préfères être guidé, tape 'menu' et des petits boutons apparaîtront !
             result = [ x for x in latest if x["ID"] == ID][0]
             send_msg(sender, "-- "+result['title']+" -- Résumé -- \n\n"+result['summary'], ACCESS_TOKEN)
             time.sleep(4)
-            start_buttons(sender, "Autre chose ?")
+            start_buttons(sender, "Autre chose ?", ACCESS_TOKEN)
 
         elif event['postback']['payload'][:12] == "Summary_expo":
             x = event['postback']['payload'].split("*-/") 
@@ -215,7 +193,7 @@ Si tu préfères être guidé, tape 'menu' et des petits boutons apparaîtront !
             send_msg(sender, "Horaires: "+data['timetable'], ACCESS_TOKEN)
             send_msg(sender, "Prix: "+data['price'], ACCESS_TOKEN)
             time.sleep(10)
-            start_buttons(sender, "Autre chose ?")
+            start_buttons(sender, "Autre chose ?",ACCESS_TOKEN)
         
     else: 
         send_msg(sender, "Je n'ai pas compris ta demande... 😰", ACCESS_TOKEN)
@@ -227,27 +205,8 @@ def welcome(sender, user):
     answer="Salut {}, je suis Electre ! Je connais les meilleurs films et expos de Paris.".format(user[1])
     send_msg(sender, answer, ACCESS_TOKEN)
     
-    start_buttons(sender, "Qu'est-ce qui t'intéresserait ?")
+    start_buttons(sender, "Qu'est-ce qui t'intéresserait ?",ACCESS_TOKEN)
 
-def start_buttons(sender, text):
-    btns =[
-        {
-            "content_type":"text",
-            "title":"Cinéma",
-            "payload":"sorties_cine-0"
-        },
-        {
-            "content_type":"text",
-            "title":"Exposition",
-            "payload":"exhibition-0"
-        },
-        {
-            "content_type":"text",
-            "title":"Autre chose",
-            "payload":"Not_interested"
-        }
-    ]
-    send_quick_rep(sender, text, btns ,ACCESS_TOKEN)
 
 
 def film_display(num, sender, latest):

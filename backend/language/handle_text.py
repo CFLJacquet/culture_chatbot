@@ -1,15 +1,27 @@
+from backend.messenger.msg_fct import send_msg, send_card, send_quick_rep, start_buttons
 from backend.language.handle_emoji import convert_string
-from pprint import pprint	
+from backend.exhibition.handle_expo import get_genre_exhib, get_exhib, get_exhib_query, get_detail_exhib
+from backend.cinema.handle_cinema import get_details_cinema
+from backend.language.handle_text_query import vect_search
+
+
+from pprint import pprint
+import random	
 import json
 import nltk
+import time
 
 GREETINGS = ('salut', 'bonjour', 'coucou', 'yo', 'hello', 'hi', 'hey', 'ola')
 CINEMA = ('ciné', 'cine', 'cinéma', 'cinema', 'film')
-EXHIBITION = ('expo', 'exposition', 'musée', 'musee', 'gallerie', 'art', 'artiste')
-EXIT = ('stop', 'merci')
-THANKS = ('cimer', 'cool', 'okay', 'k', 'ok')
+EXHIBITION = ('exposition', 'musée', 'musee', 'gallerie', 'art', 'artiste',)
+EXHIB_GENRE = ('architecture', 'sculpture', 'peinture', 'musique', 'littérature', 'danse', 'photographie', 'mode', 'beaux-arts', 'contemporain', 'histoire','civilisation', 'famille')
+EXIT = ('stop', 'tchao' 'bye')
+THANKS = ('merci', 'cimer', 'cool', 'okay', 'k', 'ok')
 HELP = ('help', 'aide')
 MENU = ('menu')
+
+with open('backend/language/sentences_DB.json') as f:
+    SENTENCES = json.load(f)
 
 def process_text(msg):
     """ Input: str or list / Output: list of named tuples containing the POS tag and lemma of each word """
@@ -44,40 +56,68 @@ def process_text(msg):
 
     return keywords
 
-def analyse_text(word_list):
+def analyse_text(msg, sender, user, ACCESS_TOKEN):
     """ Records all keywords that triggers an action. So far: greeting / cinema / exhibition / exit / help """
 
-    keywords = [0,0,0,0,0,0,0]
-    for elt in word_list:
-        if elt[1] in GREETINGS:
-            keywords[0] = 1
-        elif elt[1] in CINEMA:
-            keywords[1] = 1
-        elif elt[1] in EXHIBITION:
-            keywords[2] = 1
-        elif elt[1] in EXIT:
-            keywords[3] = 1
-        elif elt[1] in THANKS:
-            keywords[4] = 1
-        elif elt[1] in HELP and len(word_list) == 1:
-            keywords[5] = 1
-        elif elt[1] in MENU and len(word_list) == 1:
-            keywords[6] = 1
-
-    return keywords
-
-def get_meaning(msg):
-    """ combines process and analyse fct. outputs presence vector x=[0,0,0,0] with 
-            x[0]: greetings / x[1]: cinema / x[2]: exhibition / x[3]: exit """
+    word_list = process_text(msg)
+    cinema = False
+    # system : [greetings, cinema, exhibition, exit, thanks,
+    keys = [0,0,0,0,0,0,0]
     
-    p = process_text(msg)
+    for elt in word_list:
+        if elt[1] in GREETINGS: keys[0] = 1
+        elif elt[1] in CINEMA: keys[1] = 1
+        elif elt[1] in EXHIBITION or elt[1] in EXHIB_GENRE: keys[2] = 1
+        elif elt[1] in EXIT: keys[3] = 1
+        elif elt[1] in THANKS: keys[4] = 1
+        elif elt[1] in HELP : keys[5] = 1
+        elif elt[1] in MENU : keys[6] = 1
 
-    return analyse_text(p)
+    if keys[0] :
+        time.sleep(1)
+        start_buttons(sender, random.choice(SENTENCES["GREETINGS"]).format(user[1]), ACCESS_TOKEN)
+
+    elif keys[1]:
+        # ATTENTION parce qu'on ne pouvait pas importer les fonctions du serveur, c'est la seule 
+        # action pas gérée ici mais dans le serveur.
+        cinema = True
+
+    elif keys[2]:
+        time.sleep(1)
+
+        filter_exhib = [w for w in word_list if w in EXHIB_GENRE] 
+        if not filter_exhib: filter_exhib = ["all"]     
+
+        send_msg(sender, random.choice(SENTENCES['EXHIBITIONS']), ACCESS_TOKEN)
+        send_card(sender, get_exhib_query(vect_search(msg), filter_exhib, 1), ACCESS_TOKEN)
+
+    elif keys[3]:
+        send_msg(sender, random.choice(SENTENCES["EXIT"]), ACCESS_TOKEN)
+
+    elif keys[4]:
+        send_msg(sender, random.choice(SENTENCES["THANKS"]), ACCESS_TOKEN)
+
+    elif keys[5]:
+        send_msg(sender, "======= HELP =======\n\n\
+A tout moment tu peux me demander des choses comme \'Est ce qu'il y a des expos d'art moderne ?\' ou \
+\'donne moi le meilleur film comique au ciné\'\n\n\
+Si tu préfères être guidé, tape 'menu' et des boutons apparaîtront !", ACCESS_TOKEN) 
+    
+    elif keys[6]:
+        start_buttons(sender, "Qu'est-ce qui t'intéresserait ?", ACCESS_TOKEN)
+
+    elif keys == [0,0,0,0,0,0,0]:
+        send_msg(sender, random.choice(SENTENCES["UNKNOWN"]), ACCESS_TOKEN)
+        send_msg(sender, "Mais si tu as besoin d'aide, tape 'help'. Sinon pour accéder au menu, tape 'menu' :)", ACCESS_TOKEN)
+        action=True    
+
+    return cinema 
+
 
 
 if __name__ == "__main__":
     
     s = "salut salt ;) j'aime les expos d'art contemporain et le cinéma ⛄ 🤞 ❤️ ...".lower()
 
-    a = get_meaning(s)
+    a = analyse_text(s, "na", ["na", "na","na"], "na")
     print(a)

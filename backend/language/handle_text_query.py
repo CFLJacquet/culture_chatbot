@@ -15,7 +15,8 @@ with open('backend/exhibition/index_doc.json', 'r') as f:
 
 with open('backend/exhibition/data_exhibition.json', 'r') as f:
     COLLECTION = json.load(f)
-COLLECTION_IDS = range(1, len(DOC_LENGTH)+1)
+# In index_doc, we only have current exhibition, so IDs can be high
+COLLECTION_IDS = [int(x) for x in DOC_LENGTH.keys()]
 
 LEMMA_DIC = {"'": "lemma/first_letter_'.json", '-': 'lemma/first_letter_-.json', 'a': 'lemma/first_letter_a.json', 'b': 'lemma/first_letter_b.json', 'c': 'lemma/first_letter_c.json', 'd': 'lemma/first_letter_d.json', 'e': 'lemma/first_letter_e.json', 'f': 'lemma/first_letter_f.json', 'g': 'lemma/first_letter_g.json', 'h': 'lemma/first_letter_h.json', 'i': 'lemma/first_letter_i.json', 'j': 'lemma/first_letter_j.json', 'k': 'lemma/first_letter_k.json', 'l': 'lemma/first_letter_l.json', 'm': 'lemma/first_letter_m.json', 'n': 'lemma/first_letter_n.json', 'o': 'lemma/first_letter_o.json', 'p': 'lemma/first_letter_p.json', 'q': 'lemma/first_letter_q.json', 'r': 'lemma/first_letter_r.json', 's': 'lemma/first_letter_s.json', 't': 'lemma/first_letter_t.json', 'u': 'lemma/first_letter_u.json', 'v': 'lemma/first_letter_v.json', 'w': 'lemma/first_letter_w.json', 'y': 'lemma/first_letter_y.json', 'z': 'lemma/first_letter_z.json', 'x': 'lemma/first_letter_x.json', '£': 'lemma/first_letter_pound.json', 'é': 'lemma/first_letter_a_down.json', 'à': 'lemma/first_letter_a_circ.json', 'â': 'lemma/first_letter_c_ced.json', 'ç': 'lemma/first_letter_e_down.json', 'è': 'lemma/first_letter_i_circ.json', 'ê':
 'lemma/first_letter_i_trema.json', 'î': 'lemma/first_letter_o_circ.json'}
@@ -72,8 +73,11 @@ def get_postings(word):
     return doc_tfidf, postings
 
 
-def vect_search(query, rappel=20):
-    
+def vect_search(query):
+    """ :param query: full text query\n
+    :return: list of doc IDs ranked by highest proximity
+    """
+
     # Calculates (1+log10(tf)) for each word in the query
     q = tf_text(query, 0)
     n_q = 0
@@ -96,7 +100,7 @@ def vect_search(query, rappel=20):
                 sim[doc[0]] += w_doc * w_q
 
     for j, value in sim.items():
-        n_d = DOC_LENGTH[str(j)]
+        n_d = DOC_LENGTH[str(j)] 
         if value != 0:
             value = value / ( sqrt( n_q * n_d ) ) 
 
@@ -106,14 +110,14 @@ def vect_search(query, rappel=20):
     for key, value in sim.items():
         temp = (key,value)
         dictList.append(temp)
-    s = sorted(dictList, key=lambda x:x[1], reverse=True)[:rappel]
+    s = sorted(dictList, key=lambda x:x[1], reverse=True)
 
     # RESULT just to check results
     # result = []
     # for elt in s :
     #     result.append((COLLECTION[elt[0]-1]["title"], "weight: {}".format(round(elt[1], 2))))
     
-    return [str(x[0]) for x in s]   #, result
+    return [int(x[0]) for x in s]   #, result
 
 if __name__ == "__main__":
     print(tf_text("un film d'action ou une expo d'art abstrait", 0))

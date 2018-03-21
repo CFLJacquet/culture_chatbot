@@ -37,6 +37,29 @@ def typing_bubble(recipient, ACCESS_TOKEN):
 
     return 'sent'
 
+def start_buttons(sender, text,ACCESS_TOKEN):
+    btns =[
+        {
+            "content_type":"text",
+            "title":"Cinéma",
+            "payload":"sorties_cine-0"
+        },
+        {
+            "content_type":"text",
+            "title":"Exposition",
+            "payload":"exhibition-0"
+        },
+        {
+            "content_type":"text",
+            "title":"Autre chose",
+            "payload":"Not_interested"
+        }
+    ]
+    send_quick_rep(sender, text, btns ,ACCESS_TOKEN)
+
+
+
+
 def send_msg(recipient, answer, ACCESS_TOKEN):
 
     r = requests.post("https://graph.facebook.com/v2.6/me/messages",

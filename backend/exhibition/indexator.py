@@ -6,7 +6,9 @@ import nltk
 import regex as re
 import unidecode
 
-#from backend.exhibition.expo_scraper.handle_exhibition_data import run_spiders, append_to_full, merge_results
+from datetime import datetime as dt
+
+from backend.exhibition.expo_scraper.handle_exhibition_data import run_spiders, append_to_full, merge_results
 
 stopwords = open("backend/language/stopwords.txt", 'r', encoding='utf-8').read().split("\n")
 LEMMA_DIC = {"'": "lemma/first_letter_'.json", '-': 'lemma/first_letter_-.json', 'a': 'lemma/first_letter_a.json', 'b': 'lemma/first_letter_b.json', 'c': 'lemma/first_letter_c.json', 'd': 'lemma/first_letter_d.json', 'e': 'lemma/first_letter_e.json', 'f': 'lemma/first_letter_f.json', 'g': 'lemma/first_letter_g.json', 'h': 'lemma/first_letter_h.json', 'i': 'lemma/first_letter_i.json', 'j': 'lemma/first_letter_j.json', 'k': 'lemma/first_letter_k.json', 'l': 'lemma/first_letter_l.json', 'm': 'lemma/first_letter_m.json', 'n': 'lemma/first_letter_n.json', 'o': 'lemma/first_letter_o.json', 'p': 'lemma/first_letter_p.json', 'q': 'lemma/first_letter_q.json', 'r': 'lemma/first_letter_r.json', 's': 'lemma/first_letter_s.json', 't': 'lemma/first_letter_t.json', 'u': 'lemma/first_letter_u.json', 'v': 'lemma/first_letter_v.json', 'w': 'lemma/first_letter_w.json', 'y': 'lemma/first_letter_y.json', 'z': 'lemma/first_letter_z.json', 'x': 'lemma/first_letter_x.json', '£': 'lemma/first_letter_pound.json', 'é': 'lemma/first_letter_a_down.json', 'à': 'lemma/first_letter_a_circ.json', 'â': 'lemma/first_letter_c_ced.json', 'ç': 'lemma/first_letter_e_down.json', 'è': 'lemma/first_letter_i_circ.json', 'ê':
@@ -17,16 +19,15 @@ for elt in LEMMA_DIC:
     with open("backend/language/"+LEMMA_DIC[elt]) as json_data:
         LOADED_LEMMA[elt]  = json.load(json_data)
             
-
 with open('backend/exhibition/data_exhibition.json', 'r') as f:
-    DB = json.load(f)
-
+    DB = [ elt for elt in json.load(f) if dt.strptime(elt['d_end'], "%Y-%m-%d") >= dt.today() ]
+    
 def create_collection():
+    """ only considers current exhibition """
 
     collection = []
     temp=0
     for elt in DB:
-        # lower some bits because TreeTagger lemmatizes according to both caps and full stops
         text = elt['title'].lower() +". "+ elt['summary'] +". "+ elt['reviews'] +". "+ str(elt['genre']).lower() +". "+ str(elt['tags']).lower() +". "+ elt['location']
         terms = tf_text(text, elt['ID'])
         collection += terms

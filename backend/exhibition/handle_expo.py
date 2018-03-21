@@ -71,25 +71,39 @@ def get_exhib(genre, iteration):
 
     return cards
 
-def get_exhib_query(exhib_ID_list, iteration):
-    """ returns tuple: data of 5 exhibitions from the list of exhibition found by vect_search + cards to send """
+def get_exhib_query(exhib_ID_list, filter_exhib, iteration):
+    """ returns tuple: data of 10 exhibitions from the list of exhibition found by vect_search + cards to send """
 
     with open("backend/exhibition/data_exhibition.json", 'r') as f:
         data = json.load(f)
     
-    #Appends exhibitions from the list, if it is still shown 
+    #Take out exhibs not on display anymore and Sort data based on ID_list
+    data = [x for x in data if x['ID'] in exhib_ID_list]
+    order_dict = {color: index for index, color in enumerate(exhib_ID_list)}
+    data.sort(key=lambda x: order_dict[x["ID"]])
+
+    #Retranslate categories
+    for i, genre in enumerate(filter_exhib):
+        filter_exhib[i] = filter_exhib[i].capitalize()
+        if genre in ["Moderne", "Contemporain"]:
+            filter_exhib[i] = "Art Contemporain"
+        elif genre in ['Histoire', 'Civilisation']:
+            filter_exhib[i] = 'Histoire / Civilisations'
+    if filter_exhib == ["All"]:
+        filter_exhib = ['Architecture', 'Sculpture', 'Peinture', 'Musique', 'Littérature', 'Danse', 'Cinéma', 
+    'Photographie', 'Mode', 'Beaux-Arts', 'Art contemporain', 'Histoire / Civilisations', 'Famille']
+    
+    # We display in total 10 exchibitions: we take the first 7 of the relevant categories, 
+    # then 3 exhibs from other categories which got a good score
     exhibs = []
-    for ID in exhib_ID_list:
-        exhib = [ x for x in data if x['ID'] == int(ID) \
-        and dt.strptime(x['d_end'], "%Y-%m-%d") >= dt.today() \
-        and dt.strptime(x['d_start'], "%Y-%m-%d") <= dt.today()] 
-        if exhib:
-            exhibs.append(exhib[0])   
-
-
-    #Results sorted by rank then ascending date of end , 
-    per_date = sorted(exhibs[:20], key = itemgetter('d_end'))
-    per_rank = sorted(per_date, key= itemgetter('rank'), reverse=True)[(iteration-1)*5 : iteration*5]
+    temp = []
+    while len(exhibs)+len(temp)<10:
+        for x in data:
+            if dt.strptime(x['d_start'], "%Y-%m-%d") <= dt.today() and [1 for genre in filter_exhib if x[genre]==1] and len(exhibs)<7:
+                exhibs.append(x)
+            else:
+                temp.append(x)
+    exhibs += temp
 
     cards=[]
     for i, r in enumerate(exhibs[:10]):
@@ -131,4 +145,4 @@ if __name__ == "__main__":
 
     #---to test get exhibition per query function, uncomment the following line
     # the list corresponds to the sentence input "trouve moi une expo d'art moderne"
-    pprint(get_exhib_query(['266', '193', '105', '251', '81', '221', '182', '174', '89', '249', '243', '137', '211', '51', '50', '297', '98', '127', '64', '264'], 1))
+    pprint(get_exhib_query(['266', '193', '105', '251', '81', '221', '182', '174', '89', '249', '243', '137', '211', '51', '50', '297', '98', '127', '64', '264'],"All", 1))
