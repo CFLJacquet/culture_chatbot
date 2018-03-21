@@ -4,7 +4,9 @@ import requests
 import json
 
 def user_details(sender, ACCESS_TOKEN):
-        
+    """ :param sender: takes the sender ID as input
+    :return: user_gender,user_details['first_name'],user_details['last_name'], user_details
+    """
     url = "https://graph.facebook.com/v2.6/"+str(sender)
     params = {'fields':'first_name,\
 last_name,\
@@ -21,7 +23,7 @@ locale', 'access_token':ACCESS_TOKEN}
     else:
         user_gender="Mme"
 
-    return user_gender,user_details['first_name'],user_details['last_name']
+    return user_gender,user_details['first_name'],user_details['last_name'], user_details
 
 def typing_bubble(recipient, ACCESS_TOKEN):
 

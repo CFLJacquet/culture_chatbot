@@ -7,6 +7,7 @@ import requests
 import json
 import time
 import datetime # to read datetime objects in exhibition data
+from datetime import date as dt
 import pickle
 
 from backend.exhibition.handle_expo import get_genre_exhib, get_exhib, get_exhib_query, get_detail_exhib
@@ -101,8 +102,27 @@ def handle_event():
 
     event = data['entry'][0]['messaging'][0]
 
+    #Log user details in the database
     sender = event['sender']['id']
-    user = user_details(sender, ACCESS_TOKEN)
+    with open("backend/others/users_DB.json", "r") as f:
+        users_DB = json.load(f)
+
+    if sender not in users_DB:
+        user = user_details(sender, ACCESS_TOKEN)
+        users_DB[sender] = {
+            "last": str(dt.today()), 
+            "gender": user[3]["gender"],
+            "first_name": user[3]["first_name"], 
+            "last_name": user[3]["last_name"], 
+            "locale": user[3]["locale"],
+            "nb_interactions": 1}
+    else:
+        users_DB[sender]["last"] = str(dt.today())
+        users_DB[sender]["nb_interactions"] += 1
+        user = user_details(sender, ACCESS_TOKEN)
+
+    with open("backend/others/users_DB.json", "w") as jsonFile:
+        json.dump(users_DB, jsonFile)
 
     typing_bubble(sender, ACCESS_TOKEN)
 

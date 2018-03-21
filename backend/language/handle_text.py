@@ -4,7 +4,6 @@ from backend.exhibition.handle_expo import get_genre_exhib, get_exhib, get_exhib
 from backend.cinema.handle_cinema import get_details_cinema
 from backend.language.handle_text_query import vect_search
 
-
 from pprint import pprint
 import random	
 import json
@@ -109,7 +108,8 @@ Si tu préfères être guidé, tape 'menu' et des boutons apparaîtront !", ACCE
     elif keys == [0,0,0,0,0,0,0]:
         send_msg(sender, random.choice(SENTENCES["UNKNOWN"]), ACCESS_TOKEN)
         send_msg(sender, "Mais si tu as besoin d'aide, tape 'help'. Sinon pour accéder au menu, tape 'menu' :)", ACCESS_TOKEN)
-        action=True    
+        with open("misunderstood_sentences.txt", "a") as f:
+            f.write(msg + "\n")
 
     return cinema 
 
