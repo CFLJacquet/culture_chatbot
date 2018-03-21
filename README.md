@@ -38,7 +38,7 @@ FB Messenger chatbot that recommends users cultural events in Paris (exhibition,
 
 * dateparser -> to transform dates in French in date objects
 * nltk -> to work on text  
-* treetaggerwrapper (+TreeTagger) -> to tag and lemmatize French   (http://treetaggerwrapper.readthedocs.io/en/latest/)   
+* unidecode -> to get rid of accents, etc.
 
 * pandas -> to concatenate text from different sources
 * numpy -> to handle some table operations
