@@ -3,6 +3,7 @@ from flask import Flask, request, session
 
 import logging
 from logging.handlers import RotatingFileHandler
+from backend.cinema.transform_json import critique_movie
 import requests
 import json
 import time
@@ -17,6 +18,7 @@ from backend.cinema.handle_cinema import get_details_cinema, get_topmovies_genre
 from backend.language.handle_text import analyse_text
 from backend.language.handle_text_query import vect_search
 from backend.others.bdd_jokes import random_joke
+
 
 # Real page access token:
 # EAAHSfldMxYcBAAt4D30ZAzVHSnhhFqxV15wMJ0RwZCOBH4MZALBJOa8gTvUV0OTL5t3Q4ZBOosziQ3AXIwYpgpdbJCRRkbJKBuB7FASzhnZAcZCsy6expZATAbflsnln2Hd5I1Yo8J2Ddny170yI13r7A224a20yBWczLeYZAzZBDTQZDZD
@@ -133,13 +135,17 @@ def handle_event():
             if payload[:12] == "sorties_cine":
                 latest = get_details_cinema()
                 num = int(event['message']['quick_reply']['payload'].split("-")[1])
+                #on affiche les cartes des films
                 film_display(num, sender, latest)
+            elif payload[:12] == "cine_around":
+                send_location(sender)
+                send_msg(sender," ", ACCESS_TOKEN)
             elif "genres_cine" in event['message']['quick_reply']['payload']:
                 send_msg(sender, "Quel genre t'intéresse?", ACCESS_TOKEN)
                 btns = get_genre_movie(sender)[1]
                 send_quick_rep(sender, "Voici les genres possibles: ", btns , ACCESS_TOKEN)
 
-                #intégrer NLP dialogflow:
+                #intégrer NLTKw:
                 #boucle pour récupérer le genre du film:
             elif event['message']['quick_reply']['payload'] in [ genre for genre in get_genre_movie(sender)[2] if genre != "Not_interested" ]:
                 #on récupère le genre du film pour obtenir une liste des derniers films sortis mais filtrée par le genre
@@ -147,7 +153,8 @@ def handle_event():
                 #print(p)
                 ranking= get_topmovies_genre(p)
                 #print(ranking)
-                film_display_genre(sender, p)
+                #on affiche les cartes des films triés par genre
+                film_display_bygenre(sender, p)
             
             elif payload[:10] == "exhibition":
                 num = int(payload[-1])
@@ -203,6 +210,14 @@ def handle_event():
             time.sleep(4)
             start_buttons(sender, "Autre chose ?", ACCESS_TOKEN)
 
+        elif "Critiques_cine" in event['postback']['payload'] :
+            ID = int(event['postback']['payload'].split("*-/")[1])
+            latest = get_details_cinema()
+            result = [x for x in latest if x["ID"] == ID][0]
+            send_msg(sender, "-- " + result['title'] + " -- Critiques -- \n\n" + result['critiques'], ACCESS_TOKEN)
+            time.sleep(4)
+            start_buttons(sender, "Autre chose ?")
+
         elif event['postback']['payload'][:12] == "Summary_expo":
             x = event['postback']['payload'].split("*-/") 
             
@@ -254,7 +269,13 @@ def film_display(num, sender, latest):
                 "title":"Résumé",
                 # rajout du séparateur *-/, derrière il y a l'ID du film
                 "payload": "Summary_cine*-/{}".format(latest[i]["ID"])
-                }]      
+                },
+                {
+                "type": "postback",
+                "title": "Match des Critiques",
+                # rajout du séparateur *-/, derrière il y a l'ID du film
+                "payload": "Critiques_cine*-/{}".format(latest[i]["ID")
+                }]
             }
         )
     send_card(sender,cards, ACCESS_TOKEN)
@@ -282,7 +303,7 @@ def film_display(num, sender, latest):
 def get_genre_movie(sender):
     """ returns : genre, btns, list_payload"""
 
-    with open("backend/cinema/cinema_allocine", 'rb') as f: #/Users/constanceleonard/Desktop/projet_osy/strolling/
+    with open("backend/cinema/cinema_allocine.json", 'rb') as f: #/Users/constanceleonard/Desktop/projet_osy/strolling/
         d = pickle.Unpickler(f)
         data = d.load()
 
@@ -319,7 +340,7 @@ def get_genre_movie(sender):
     return genre, btns, list_payload
 
 
-def film_display_genre(sender, genre):
+def film_display_bygenre(sender, genre):
 
         send_msg(sender, "Voici donc les meilleurs films pour le genre sélectionné ! ", ACCESS_TOKEN)
 
@@ -343,11 +364,30 @@ def film_display_genre(sender, genre):
                             "title": "Résumé",
                             # rajout du séparateur *-/, derrière il y a l'ID du film
                             "payload": "Summary_cine*-/{}".format(movies_filtered[i]["ID"])
+                        },
+                        {
+                            "type": "postback",
+                            "title": "Match des Critiques",
+                            # rajout du séparateur *-/, derrière il y a l'ID du film
+                            "payload": "Critiques_cine*-/{}".format(movies_filtered[i]["ID"])
                         }]
                 }
             )
         send_card(sender, cards, ACCESS_TOKEN)
         send_msg(sender, "Si tu veux voir un autre film ou une expo, n'hésite pas !", ACCESS_TOKEN)
+
+
+def send_location(sender):
+    send_msg(sender, "Pourriez-vous nous indiquer votre position en cliquant sur le bouton ci-dessous? ", ACCESS_TOKEN)
+    btns = [
+        {
+            "content_type": "location",
+            "title": "Je me géocalise",
+            "payload": "bouton_geocalisation"
+        }
+    ]
+    send_quick_rep(sender, "Merci beaucoup nous allons trouver les films qui se situent autour de vous!", btns,
+                   ACCESS_TOKEN)
 
 
 def exhibition_display(num, sender, payload =""):

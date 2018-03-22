@@ -2,6 +2,8 @@
 # code found here: https://github.com/thomasRousseau/python-allocine-api
 
 import pickle
+from backend.cinema.transform_json import critique_movie
+import codecs
 import sys
 import hashlib
 from base64 import b64encode
@@ -93,14 +95,14 @@ def stock_last_movies():
 
     #changer le path (avec backend etc.. comme handle_expo) avant de faire tourner le serveur
 
-    with open("backend/cinema/cinema_allocine", 'wb') as fichier: #/Users/constanceleonard/Desktop/projet_osy/strolling/
+    with open("/Users/constanceleonard/Desktop/strolling/backend/cinema/cinema_allocine.json", 'wb') as fichier: #/Users/constanceleonard/Desktop/projet_osy/strolling/
         allocine_pickle = pickle.Pickler(fichier)
         allocine_pickle.dump(last_release)
 
 
 def get_details_cinema():
     #print(os.getcwd())
-    with open("backend/cinema/cinema_allocine", 'rb') as f: #/Users/constanceleonard/Desktop/projet_osy/strolling/
+    with open("/Users/constanceleonard/Desktop/strolling/backend/cinema/cinema_allocine.json",'rb') as f: #/Users/constanceleonard/Desktop/projet_osy/strolling/
         d = pickle.Unpickler(f)
         data = d.load()
 
@@ -118,7 +120,8 @@ def get_details_cinema():
             "url": data[i]["link"][0]["href"],
             "summary": data[i].get('synopsisShort', '').replace('<span>', '').replace('</span>', '').replace(
                 '<br/>', '').replace('\xa0', ''),
-            "genre": genres
+            "genre": genres,
+            "critiques": critique_movie(data[i]["title"])
         })
     results = sorted(results, key=lambda x: x["notepresse"], reverse=True)
     return results
@@ -127,7 +130,7 @@ def get_details_cinema():
 def get_topmovies_genre(genre):
     #return the top movies filtered by the genre selected by the user of the chatbot:
 
-    with open("backend/cinema/cinema_allocine", 'rb') as f: #/Users/constanceleonard/Desktop/projet_osy/strolling/
+    with open("/Users/constanceleonard/Desktop/strolling/backend/cinema/cinema_allocine.json", 'rb') as f: #/Users/constanceleonard/Desktop/projet_osy/strolling/
         d = pickle.Unpickler(f)
         data = d.load()
         #pprint(data)
@@ -147,7 +150,8 @@ def get_topmovies_genre(genre):
             "img_url": data[i]["poster"]["href"],
             "url": data[i]["link"][0]["href"],
             "summary": data[i].get('synopsisShort', '').replace('<span>', '').replace('</span>', '').replace(
-                '<br/>', '').replace('\xa0', '')
+                '<br/>', '').replace('\xa0', ''),
+            "critiques": critique_movie(data[i]["title"])
         })
     results_genre = sorted(results_genre, key=lambda x: x["notepresse"], reverse=True)
     return results_genre
@@ -167,7 +171,41 @@ def get_topmovies_genre(genre):
 #     # On envoie le png en base 64 (ie sous forme de chaine de caractères)
 #     return ""
 
+
+#Liste des cinémas dans un rayon de 5km par rapport à notre géocalisation
+#   radius : radius around the location (between 1 and 500 km)
+#   theater : theater code (should be an integer)
+#   location : string identifying the theater
+#   format (optionnal) : returns the result in JSON or XML format ("json" or "xml", default set to JSON)
+def theaterlist(zip=None, lat=48.84127721747719, long=2.339015007019043, radius=5, location=None, format="json"):
+    data = {"format": format}
+    if zip is not None:
+        data["zip"] = str(zip)
+    if lat is not None:
+        data["lat"] = str(lat)
+    if long is not None:
+        data["long"] = str(long)
+    if radius is not None:
+        data["radius"] = str(radius)
+    if location is not None:
+        data["location"] = location
+    return do_request("theaterlist", data)
+
+
+def movies_around(latitude,longitude):
+
+    results=[]
+    data= theaterlist(zip=None, lat=latitude, long=longitude, radius=5, location=None, format="json")["feed"]["theater"]
+    for i in range (0,len(data)):
+        results.append({
+            "name": data[i]["name"],
+            "codepostal": data[i]["postalCode"],
+            "adresse": data[i]["address"],
+        })
+    pprint(results)
+
+
+
 if __name__ == '__main__':
-    print(sys.stdout.encoding)
+    #print(sys.stdout.encoding)
     pprint(stock_last_movies())
-    pprint(get_details_cinema())
