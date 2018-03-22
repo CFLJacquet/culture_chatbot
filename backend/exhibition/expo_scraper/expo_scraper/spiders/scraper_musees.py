@@ -15,6 +15,9 @@ class MuseesParis(scrapy.Spider):
     def parse(self, response):
         musee_list = response.css("article.Article-line.Article-line--visitors")
 
+        categorie = response.css("div.Row.Row--visitors.spaceBefore--2.phoneSpaceBefore--0 div.Row-content-c3 div.Main-column article.Article-full header.Heading h1.Heading--title::text").extract_first()
+        categorie_sous_titre = response.css("div.Row.Row--visitors.spaceBefore--2.phoneSpaceBefore--0 div.Row-content-c3 div.Main-column article.Article-full header.Heading h2.Heading--subtitle::text").extract_first()
+
         for musee in musee_list:
             try:
                 url = 'https://www.parisinfo.com' + musee.css("figure.Article-line-image a::attr(href)").extract_first()
@@ -31,13 +34,21 @@ class MuseesParis(scrapy.Spider):
                 location = musee.css("header.Article-line-heading div.Article-line-info div.Article-line-place::text").extract_first()
             except:
                 location = "Lieu indisp."
-            print(url)
+
+
+            try:
+                img_url = musee.css("figure.Article-line-image a img::attr(src)").extract_first()
+            except:
+                img_url = ""
 
 
             request_details = scrapy.Request(url, self.parse_info)
             request_details.meta["data"] = {
+                "Categorie": categorie,
+                "What": categorie_sous_titre,
                 "name" : name,
                 "location" : location,
+                "image" : img_url,
             }
 
             yield request_details
@@ -49,6 +60,9 @@ class MuseesParis(scrapy.Spider):
         dict_prixethoraires = {}
         dict_infosutiles = {}
         informations = response.css("div.Row-box")
+        liste_images = response.css("div.Light-slider default.Light-slider--visitors div.Light-slider-carousel")
+        images_alternatives = []
+
 
         for detail in details_prix_horaires :
 
@@ -69,16 +83,21 @@ class MuseesParis(scrapy.Spider):
             contenu = information.css("div.eztext-field::text").extract_first()
             dict_infosutiles[type_info] = contenu
 
+        for image in liste_images :
+            image_aleatoire = 'https://www.parisinfo.com' + image.css("figure img::attr(src)").extract_first()
+            images_alternatives += [image_aleatoire]
+
         data["prix_horaires"] = dict_prixethoraires
         data["infos_utiles"] = dict_infosutiles
+        data["images_supplementaires"] = images_alternatives
 
         yield data
 
 
 process = CrawlerProcess({
     'USER_AGENT': 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)',
-    'FEED_FORMAT': 'jsonlines',
-    'FEED_URI': 'backend/exhibition/expo_scraper/extracted_data/museum_list.jsonl'
+    'FEED_FORMAT': 'json',
+    'FEED_URI': 'musees/musees/listeM.json'
 })
 
 process.crawl(MuseesParis)
