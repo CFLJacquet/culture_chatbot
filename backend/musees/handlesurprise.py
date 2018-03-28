@@ -19,21 +19,9 @@ import os
 from backend.messenger.msg_fct import send_quick_rep, send_card, send_button
 #from flask import Flask, request
 import logging
-# from scraper-musees-surprise.py import MuseesParis
-#
-#
-# def start_request(reponse):
-#     approbation = ["Oui", "oui", "Yes", "yes", "ok", "Ok", "OK", "go", "Yep", "yep"]
-#     if reponse in approbation :
-#         scraper-musees-surprise.process.crawl(MuseesParis)
-#         scraper - musees - surprise.process.start()
-#         try:
-#             return json.loads(results)
-#         except Exception as e:
-#             return results
-
 
 def indice():
+	""" pour ajouter les ID aux musees """
 	with open("musees/spiders/musees/musees/listeM.json", 'r') as f:
 		musees = json.load(f)
 
@@ -49,7 +37,7 @@ def liste_surprise_categories():
 	""" Transforme le document json en dictionnaire avec comme clefs les catégories et comme
 	 	valeurs les musées dans ces catégories """
 
-	with open("musees/spiders/musees/musees/listeM.json", 'r') as f:
+	with open("backend/musees/musees/spiders/musees/musees/listeM.json", 'r') as f:
 		musees = json.load(f)
 
 	categories = {}
@@ -63,14 +51,12 @@ def liste_surprise_categories():
 
 	return categories
 
-print(liste_surprise_categories())
-
 
 def liste_surprise_infos_musees():
 	""" Transforme le document json en dictionnaire avec comme clefs les musées et comme valeurs
 	 	les informations sur chacun des musées """
 
-	with open("musees/spiders/musees/musees/listeM.json", 'r') as f:
+	with open("backend/musees/musees/spiders/musees/musees/listeM.json", 'r') as f:
 		musees = json.load(f)
 
 	infos_musees = {}
@@ -89,10 +75,6 @@ def liste_surprise_infos_musees():
 		infos_musees[musees[i]["name"]]["prix_horaires"] = musees[i]["prix_horaires"]
 
 	return infos_musees
-
-print(liste_surprise_infos_musees())
-print(type(liste_surprise_infos_musees()))
-print(liste_surprise_infos_musees()["Musée d'Orsay"]["description"]["Descriptif"])
 
 
 def get_categorie_surprise(sender, text, ACCESS_TOKEN):
@@ -118,19 +100,14 @@ def get_categorie_surprise(sender, text, ACCESS_TOKEN):
 			{
 				"content_type": "text",
 				"title": dict_choix_categories[cat],
-				"payload": "surprise*-/{}".format(cat)
+				"payload": "surprise_cat*-/{}".format(cat)
 			}
 		)
-	#send_quick_rep(sender, text, btns, ACCESS_TOKEN)
-	pprint(btns)
-
-get_categorie_surprise("h", "dfghjk", "iguuh")
+	
+	send_quick_rep(sender, text, btns, ACCESS_TOKEN)
 
 
-
-
-
-def get_musee_surprise(categorie) :
+def get_musee_surprise(sender, categorie, ACCESS_TOKEN):
 	tous_les_musees_par_categorie = liste_surprise_categories()
 	toutes_les_infos_par_musee = liste_surprise_infos_musees()
 
@@ -161,41 +138,23 @@ def get_musee_surprise(categorie) :
 					}
 					]}
 		)
-	return cards
+	
+	send_card(sender, cards, ACCESS_TOKEN)
+	
 
-pprint(get_musee_surprise("Musées de beaux-arts à Paris"))
-
-
-def art_buttons(sender, text,ACCESS_TOKEN):
-    btns =[
-        {
-            "content_type":"text",
-            "title":"Exposition",
-            "payload":"exhibition-0"
-        },
-        {
-            "content_type":"text",
-            "title": "A court d'inspiration !",
-            "payload": "surprise-0"
-        },
-    ]
-
-    send_quick_rep(sender, text, btns ,ACCESS_TOKEN)
+def get_details_surprise(ID, action):
+	
+	with open("backend/musees/musees/spiders/musees/musees/listeM.json", 'r') as f:
+		musees = json.load(f)
+	
+	result = [ x for x in musees if x["ID"] == ID][0]
+	if action  == 'surprise_tarifs' :
+		return result['infos_utiles']['prix_horaires']['Visite libre']
+	else: 
+		return result['infos_utiles']['Descriptif']
 
 
-
-# categories = {}
-# infos_musees = {}
-# for i in range(0, len(musees)) :
-# 	if musees[i]["Categorie"] not in categories :
-# 		categories[musees[i]["Categorie"]] = []
-# 	if musees[i]["name"] not in categories[musees[i]["Categorie"]] :
-# 		categories[musees[i]["Categorie"]] += [musees[i]["name"]]
-# for i in range(0, len(musees)) :
-# 	if musees[i]["name"] not in infos_musees :
-# 		infos_musees[musees[i]["name"]] = {}
-# 	infos_musees[musees[i]["name"]]["adresse"] = musees[i]["location"]
-# 	infos_musees[musees[i]["name"]]["image"] = musees[i]["image"]
-# 	infos_musees[musees[i]["name"]]["description"] = musees[i]["infos_utiles"]
-# 	infos_musees[musees[i]["name"]]["prix_horaires"] = musees[i]["prix_horaires"]
-#
+if __name__ == "__main__":
+	print(liste_surprise_infos_musees())
+	print(type(liste_surprise_infos_musees()))
+	print(liste_surprise_infos_musees()["Musée d'Orsay"]["description"]["Descriptif"])

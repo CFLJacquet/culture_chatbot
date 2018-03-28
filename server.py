@@ -11,8 +11,9 @@ from datetime import date as dt
 import pickle
 
 from backend.exhibition.handle_expo import get_genre_exhib, get_exhib, get_exhib_query, get_detail_exhib
-from backend.messenger.msg_fct import user_details, typing_bubble, send_msg, send_button, send_card, send_quick_rep, start_buttons
+from backend.messenger.msg_fct import user_details, typing_bubble, send_msg, send_button, send_card, send_quick_rep, start_buttons, art_buttons
 from backend.cinema.handle_cinema import get_details_cinema, get_topmovies_genre
+from backend.musees.handlesurprise import get_details_surprise, get_musee_surprise, get_categorie_surprise
 
 from backend.language.handle_text import analyse_text
 from backend.language.handle_text_query import vect_search
@@ -130,6 +131,8 @@ def handle_event():
         #handles quick replies (buttons at the bottom of the conversation)     
         if 'quick_reply' in event['message'] :
             payload = event['message']['quick_reply']['payload']
+        
+        # Gestion du cas cinema
             if payload[:12] == "sorties_cine":
                 latest = get_details_cinema()
                 num = int(event['message']['quick_reply']['payload'].split("-")[1])
@@ -139,16 +142,25 @@ def handle_event():
                 btns = get_genre_movie(sender)[1]
                 send_quick_rep(sender, "Voici les genres possibles: ", btns , ACCESS_TOKEN)
 
-                #intégrer NLP dialogflow:
                 #boucle pour récupérer le genre du film:
             elif event['message']['quick_reply']['payload'] in [ genre for genre in get_genre_movie(sender)[2] if genre != "Not_interested" ]:
                 #on récupère le genre du film pour obtenir une liste des derniers films sortis mais filtrée par le genre
                 p = event['message']['quick_reply']['payload'][:-2]
-                #print(p)
                 ranking= get_topmovies_genre(p)
-                #print(ranking)
                 film_display_genre(sender, p)
             
+        # Gestion des cas sur l'art
+            elif payload[:3] == "art":
+                art_buttons(sender, "Clique sur ce qui t'intéresse",ACCESS_TOKEN)
+
+        # Si l'utilisateur veut une surprise
+            elif payload == "surprise-0":
+                get_categorie_surprise(sender, "Voila les catégories disponibles !", ACCESS_TOKEN)
+            elif payload[:12] == "surprise_cat":
+                category = payload.split("*-/")[1]
+                get_musee_surprise(sender, category, ACCESS_TOKEN)
+
+        # Si l'utilisateur veut une expo
             elif payload[:10] == "exhibition":
                 num = int(payload[-1])
                 exhibition_display(num, sender)
@@ -200,6 +212,13 @@ def handle_event():
             latest = get_details_cinema()
             result = [ x for x in latest if x["ID"] == ID][0]
             send_msg(sender, "-- "+result['title']+" -- Résumé -- \n\n"+result['summary'], ACCESS_TOKEN)
+            time.sleep(4)
+            start_buttons(sender, "Autre chose ?", ACCESS_TOKEN)
+
+        elif "surprise" in event['postback']['payload'] :
+            action, ID = event['postback']['payload'].split("*-/")
+            info = get_details_surprise(ID, action)
+            send_msg(sender, info, ACCESS_TOKEN)
             time.sleep(4)
             start_buttons(sender, "Autre chose ?", ACCESS_TOKEN)
 

@@ -1,4 +1,7 @@
-msg = "moizfnezonf"
+import json
+from pprint import pprint
 
-with open("backend/language/misunderstood_sentences.txt", "a") as f:
-    f.write(msg + "\n")
+with open("backend/musees/musees/spiders/musees/musees/listeM.json", 'r') as f:
+    musees = json.load(f)
+
+pprint(musees[0])
