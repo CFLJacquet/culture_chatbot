@@ -20,24 +20,23 @@ from backend.messenger.msg_fct import send_quick_rep, send_card, send_button
 #from flask import Flask, request
 import logging
 
-def indice():
+def norm_indice():
 	""" pour ajouter les ID aux musees """
-	with open("musees/spiders/musees/musees/listeM.json", 'r') as f:
-		musees = json.load(f)
+	musees = []
+	with open("backend/musees/musees/listeM.jsonl", 'r') as f:
+		for e, line in enumerate(f):
+			temp = json.loads(line)
+			temp["ID"] = "m"+str(e)
+			musees.append(temp)
 
-	for e,element in enumerate(musees) :
-		element["ID"] = "m"+str(e)
-
-	with open("musees/spiders/musees/musees/listeM.json", 'w') as file:
+	with open("backend/musees/musees/listeM.json", 'w') as file:
 		json.dump(musees, file)
-
-
 
 def liste_surprise_categories():
 	""" Transforme le document json en dictionnaire avec comme clefs les catégories et comme
 	 	valeurs les musées dans ces catégories """
 
-	with open("backend/musees/musees/spiders/musees/musees/listeM.json", 'r') as f:
+	with open("backend/musees/musees/listeM.json", 'r') as f:
 		musees = json.load(f)
 
 	categories = {}
@@ -56,7 +55,7 @@ def liste_surprise_infos_musees():
 	""" Transforme le document json en dictionnaire avec comme clefs les musées et comme valeurs
 	 	les informations sur chacun des musées """
 
-	with open("backend/musees/musees/spiders/musees/musees/listeM.json", 'r') as f:
+	with open("backend/musees/musees/listeM.json", 'r') as f:
 		musees = json.load(f)
 
 	infos_musees = {}
@@ -138,18 +137,19 @@ def get_musee_surprise(sender, categorie, ACCESS_TOKEN):
 					}
 					]}
 		)
-	
+		
+	logging.info("CARDS: {}".format(cards))
 	send_card(sender, cards, ACCESS_TOKEN)
 	
 
 def get_details_surprise(ID, action):
 	
-	with open("backend/musees/musees/spiders/musees/musees/listeM.json", 'r') as f:
+	with open("backend/musees/musees/listeM.json", 'r') as f:
 		musees = json.load(f)
 	
 	result = [ x for x in musees if x["ID"] == ID][0]
 	if action  == 'surprise_tarifs' :
-		return result['infos_utiles']['prix_horaires']['Visite libre']
+		return result['prix_horaires']['Visite libre']
 	else: 
 		return result['infos_utiles']['Descriptif']
 

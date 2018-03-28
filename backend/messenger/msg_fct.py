@@ -70,7 +70,7 @@ def art_buttons(sender, text,ACCESS_TOKEN):
         },
         {
             "content_type":"text",
-            "title": "A court d'inspiration !",
+            "title": "Pas d'idée !",
             "payload": "surprise-0"
         },
         # {

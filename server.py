@@ -24,7 +24,7 @@ from backend.others.bdd_jokes import random_joke
 
 # TestJ access token: 
 # EAACQPdicZCwQBAJAkOaE8Na9V0aHSV0mNdQvYrXcySeLtPVffB10NGk4EkwiZBy7qdDWUwz8jKdLN4vOIu14HK6DKoGMBO3X0vyVy1Y0EDqzEV6QK0h1PZCxTTtaklO7NqdqrY9UCjtxUR2uEYdNWBh4cDhLLaBcXgNAhNrXgZDZD
-ACCESS_TOKEN = "EAAHSfldMxYcBAAt4D30ZAzVHSnhhFqxV15wMJ0RwZCOBH4MZALBJOa8gTvUV0OTL5t3Q4ZBOosziQ3AXIwYpgpdbJCRRkbJKBuB7FASzhnZAcZCsy6expZATAbflsnln2Hd5I1Yo8J2Ddny170yI13r7A224a20yBWczLeYZAzZBDTQZDZD"
+ACCESS_TOKEN = "EAACQPdicZCwQBAJAkOaE8Na9V0aHSV0mNdQvYrXcySeLtPVffB10NGk4EkwiZBy7qdDWUwz8jKdLN4vOIu14HK6DKoGMBO3X0vyVy1Y0EDqzEV6QK0h1PZCxTTtaklO7NqdqrY9UCjtxUR2uEYdNWBh4cDhLLaBcXgNAhNrXgZDZD"
 
 
 # Flask config
@@ -399,83 +399,6 @@ def exhibition_display(num, sender, payload =""):
             }
         ]
         send_quick_rep(sender, "Veux-tu voir d'autres expos ?", btns ,ACCESS_TOKEN)
-
-
-
-def expo_surprise(num, sender, dict_cat):
-
-    if num == 0 :
-        send_msg(sender,"Veux-tu découvrir un nouveau musée ou une nouvelle exposition ?", ACCESS_TOKEN)
-
-    cards = []
-    for key in dict_cat:
-        cards.append(
-            {
-            "categorie": key,
-
-            "buttons":[{
-                "content_type":"text",
-                "title": key,
-                "payload":"Explorer cette catégorie"
-                },
-            ]
-            }
-        )
-    send_card(sender,cards, ACCESS_TOKEN)
-    btns =[
-        {
-            "content_type":"text",
-            "title":"PExplorer cette surprise !",
-            "payload":"cliquez"
-        },
-        {
-            "content_type":"text",
-            "title": "Merci Iris, je sais ce que je veux en fait",
-            "payload":"Thanks"
-        }
-    ]
-    if num == 0:
-        send_quick_rep(sender, "As-tu trouvé une surprise qui te ferait plaisir ?", btns ,ACCESS_TOKEN)
-
-
-def trouver_musee_surprise(num, sender, payload=""):
-    if num == 0:
-        send_msg(sender, "Bon choix de catégorie !", ACCESS_TOKEN)
-        msg = "Tiens je te présente les musées qui sont dedans ! Lequel préfères-tu ?"
-
-        cat = expo_surprise()
-        films = []
-        for key in cat :
-            films += cat[key]
-
-        btns_genre = films
-        send_quick_rep(sender, msg, btns_genre, ACCESS_TOKEN)
-
-    elif num in range(1, 4):
-        cards = get_exhib(payload[:-2], int(payload[-1]))[1]
-        send_card(sender, cards, ACCESS_TOKEN)
-
-        btns = [
-            {
-                "content_type": "text",
-                "title": "Plus d'expos !",
-                "payload": "{}-{}".format(payload[:-2], int(payload[-1]) + 1)
-            },
-            {
-                "content_type": "text",
-                "title": "Un autre genre",
-                "payload": "exhibition-0"
-            },
-            {
-                "content_type": "text",
-                "title": "Merci Iris",
-                "payload": "Thanks"
-            }
-        ]
-        time.sleep(10)
-        send_quick_rep(sender, "Voulez-vous voir d'autres expos ?", btns, ACCESS_TOKEN)
-
-
 
 
 if __name__ == '__main__':

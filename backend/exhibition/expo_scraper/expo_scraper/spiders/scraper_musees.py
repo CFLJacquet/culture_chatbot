@@ -1,4 +1,5 @@
 import scrapy
+import os
 from scrapy.crawler import CrawlerProcess
 
 class MuseesParis(scrapy.Spider):
@@ -80,12 +81,18 @@ class MuseesParis(scrapy.Spider):
 
         for information in informations :
             type_info = information.css("h2.Heading::text").extract_first()
-            contenu = information.css("div.eztext-field::text").extract_first()
-            dict_infosutiles[type_info] = contenu
+            liste_contenu = " ".join(information.css("div.eztext-field::text").extract())
+            dict_infosutiles[type_info] = liste_contenu
 
         for image in liste_images :
             image_aleatoire = 'https://www.parisinfo.com' + image.css("figure img::attr(src)").extract_first()
             images_alternatives += [image_aleatoire]
+        
+        toutes_les_keys = []
+        for key in dict_infosutiles :
+            toutes_les_keys += [key]
+        if "Descriptif" not in toutes_les_keys :
+            dict_infosutiles["Descriptif"] = "Va visiter le site, je n'ai pas de description à te proposer !"
 
         data["prix_horaires"] = dict_prixethoraires
         data["infos_utiles"] = dict_infosutiles
@@ -94,11 +101,17 @@ class MuseesParis(scrapy.Spider):
         yield data
 
 
-process = CrawlerProcess({
-    'USER_AGENT': 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)',
-    'FEED_FORMAT': 'json',
-    'FEED_URI': 'musees/musees/listeM.json'
-})
+if __name__ == '__main__':
+    try:
+        os.remove("backend/musees/musees/liste.jsonl")
+    except OSError:
+        pass
 
-process.crawl(MuseesParis)
-process.start()
+    process = CrawlerProcess({
+        'USER_AGENT': 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)',
+        'FEED_FORMAT': 'jsonlines',
+        'FEED_URI': 'backend/musees/musees/listeM.jsonl'
+    })
+
+    process.crawl(MuseesParis)
+    process.start()
