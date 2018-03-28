@@ -40,14 +40,14 @@ def tf_text(request, docID):
     fdist = FreqDist()
 
     for elt in words:
-
-        with open("backend/language/"+LEMMA_DIC[elt[0]]) as json_data:
-            d = json.load(json_data)
         try: # on prend le 1e lemma possible meme si ça peut etre faux (ex: abstrait -> abstraire (verbe))
+            with open("backend/language/"+LEMMA_DIC[elt[0]]) as json_data:
+                d = json.load(json_data)
             lemma = [x[0] for x in d if x[0][0] == elt][0][1]
         except:
             with open("backend/language/lemma/missing.txt", "a") as f:
                 f.write(elt+"\n")
+            lemma = elt
 
         if not lemma in stopwords:
             keywords.append(lemma)

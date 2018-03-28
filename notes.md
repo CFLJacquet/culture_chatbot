@@ -37,6 +37,18 @@ git add [fichier en conflit]
 
 => git push -f (force push)
 
+## Changer de repo git pour pousser
+
+* git remote -v : regarde vers où pointe le git
+* git remote set-url origin [lien vers nouveau repo git]
+
+## Git stash
+
+* git stash : pour mettre en cache les modifs
+* git checkout (-b) [branch] : se mettre sur une nouvelle branche
+* git stash pop : récupérer les modifs
+* git add / commit / push
+
 ## Créer serveur de test 
 
 1. créer une Test-app
