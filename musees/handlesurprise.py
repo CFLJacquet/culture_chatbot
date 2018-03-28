@@ -9,6 +9,7 @@ except: #python2
 import requests
 import time
 import json
+import random
 import base64
 import pathlib
 from urllib.request import urlopen
@@ -32,6 +33,15 @@ import logging
 #             return results
 
 
+def indice():
+	with open("musees/spiders/musees/musees/listeM.json", 'r') as f:
+		musees = json.load(f)
+
+	for e,element in enumerate(musees) :
+		element["ID"] = "m"+str(e)
+
+	with open("musees/spiders/musees/musees/listeM.json", 'w') as file:
+		json.dump(musees, file)
 
 
 
@@ -69,6 +79,7 @@ def liste_surprise_infos_musees():
 		if musees[i]["name"] not in infos_musees:
 			infos_musees[musees[i]["name"]] = {}
 
+		infos_musees[musees[i]["name"]]["ID"] = musees[i]["ID"]
 		infos_musees[musees[i]["name"]]["adresse"] = musees[i]["location"]
 		infos_musees[musees[i]["name"]]["image"] = musees[i]["image"]
 		if "Descriptif" in musees[i]["infos_utiles"]:
@@ -81,97 +92,97 @@ def liste_surprise_infos_musees():
 
 print(liste_surprise_infos_musees())
 print(type(liste_surprise_infos_musees()))
+print(liste_surprise_infos_musees()["Musée d'Orsay"]["description"]["Descriptif"])
 
 
-def get_musees_surprise() :
-	with open("musees/spiders/musees/musees/listeM.json", 'r') as f:
-		musees = json.load(f)
-
-
-
-
-
-
-def get_categorie_surprise():
+def get_categorie_surprise(sender, text, ACCESS_TOKEN):
 
 	toutes_categories = liste_surprise_categories()
 
 	choix_categories = []
 	for key in toutes_categories:
-		# if elt["Categorie"] == musees:
-		#     categories.append(elt)
 		if key not in choix_categories:
 			choix_categories += [key]
 
-	cards = []
-	for cat in choix_categories :
-		cards.append(
+	dict_choix_categories = {"Musées de beaux-arts à Paris" : "Beaux Arts",
+							 "Histoire et cultures d'ailleurs" : "Histoire",
+							 "Les musées les plus visités" : "Les plus visités",
+							 "Les musées insolites de Paris" : "Insolite",
+							 "Musées d'art moderne et contemporain" : "Art moderne",
+							 "Les musées à découvrir en famille à Paris" : "Famille"
+							 }
+
+	btns = []
+	for cat in dict_choix_categories :
+		btns.append(
 			{
-				"nom": cat["name"],
+				"content_type": "text",
+				"title": dict_choix_categories[cat],
+				"payload": "surprise*-/{}".format(cat)
 			}
 		)
-			# 	"image_url": cat["image"],
-			# 	"subtitle": cat["location"],
-			# 	"buttons": [{
-			# 	"type": "text",
-			# 	"content": cat["prix_horaires"]["Visite libre"],
-			# 	"title": "Prix et horaire d'une visite libre"
-			# 	},
-			# 			# {
-			# 			# "type": "text",
-			# 			# "url": cat["prix_horaires"]["Visite libre"],
-			# 			# "title": "Prix et horaire d'une visite libre"
-			# 			# }
-			# 	{
-			# 	"type": "postback",
-			# 	"title": "Détails",
-			# 	"payload": cat["infos_utiles"]["Descriptif"],
-			# 	},
-			# 	{
-			# 	"type": "image",
-			# 	"image_url": cat["image"],
-			# 	"subtitle": cat["name"],
-            #
-			# 	}]
-			# }
-			# )
+	#send_quick_rep(sender, text, btns, ACCESS_TOKEN)
+	pprint(btns)
 
-	return choix_categories, cards
+get_categorie_surprise("h", "dfghjk", "iguuh")
+
+
+
 
 
 def get_musee_surprise(categorie) :
 	tous_les_musees_par_categorie = liste_surprise_categories()
 	toutes_les_infos_par_musee = liste_surprise_infos_musees()
 
-	cards = []
+	musees_possibles = []
 	for cat in tous_les_musees_par_categorie :
 		if cat == categorie :
-			for musee in tous_les_musees_par_categorie[cat]:
-				cards.append(
+			musees_possibles += tous_les_musees_par_categorie[cat]
+
+	random.shuffle(musees_possibles)
+	cards = []
+	for musee in musees_possibles[:6] :
+
+		cards.append(
+			{
+				"title" : musee,
+				"image_url" : toutes_les_infos_par_musee[musee]["image"],
+				"subtitle" : toutes_les_infos_par_musee[musee]["adresse"],
+				"buttons" :
+					[{
+						"type" : "postback",
+						"title" : "Tarifs",
+						"payload" : "surprise_tarifs*-/{}".format(toutes_les_infos_par_musee[musee]["ID"]),
+					},
 					{
-						"nom" : musee,
-						"adresse" : toutes_les_infos_par_musee[musee]["adresse"],
-						"image" : toutes_les_infos_par_musee[musee]["image"],
+						"type": "postback",
+						"title": "Description",
+						"payload": "surprise_description*-/{}".format(toutes_les_infos_par_musee[musee]["ID"]),
 					}
-				)
+					]}
+		)
+	return cards
+
+pprint(get_musee_surprise("Musées de beaux-arts à Paris"))
 
 
+def art_buttons(sender, text,ACCESS_TOKEN):
+    btns =[
+        {
+            "content_type":"text",
+            "title":"Exposition",
+            "payload":"exhibition-0"
+        },
+        {
+            "content_type":"text",
+            "title": "A court d'inspiration !",
+            "payload": "surprise-0"
+        },
+    ]
+
+    send_quick_rep(sender, text, btns ,ACCESS_TOKEN)
 
 
-
-# donnees = jsonlines.open("musees/spiders/musees/musees/listeM.jsonl")
-# musees = list(donnees)
-# print(musees[0])
-# print(type(musees[0]))
-# print(type(musees))
-# print(len(musees))
-
-
-with open("musees/spiders/musees/musees/listeM.json", 'r') as f:
-	musees = json.load(f)
-
-print(type(musees))
-print(len(musees))
 
 # categories = {}
 # infos_musees = {}
@@ -188,17 +199,3 @@ print(len(musees))
 # 	infos_musees[musees[i]["name"]]["description"] = musees[i]["infos_utiles"]
 # 	infos_musees[musees[i]["name"]]["prix_horaires"] = musees[i]["prix_horaires"]
 #
-#
-#
-# print(categories)
-# #print(categories["Les musées insolites de Paris"])
-# #print(len(categories["Les musées insolites de Paris"]))
-# print(infos_musees)
-
-
-
-# with open("musees/spiders/musees/musees/listeM.jsonl", "wb") as f :
-# 	d = pickle.Pickler(f)
-# 	d.dump(True)
-#
-# print(type(d))

@@ -48,8 +48,8 @@ def start_buttons(sender, text,ACCESS_TOKEN):
         },
         {
             "content_type":"text",
-            "title":"Exposition",
-            "payload":"exhibition-0"
+            "title":"Art",
+            "payload":"art-0"
         },
         {
             "content_type":"text",
@@ -59,6 +59,27 @@ def start_buttons(sender, text,ACCESS_TOKEN):
     ]
     send_quick_rep(sender, text, btns ,ACCESS_TOKEN)
 
+
+
+def art_buttons(sender, text,ACCESS_TOKEN):
+    btns =[
+        {
+            "content_type":"text",
+            "title":"Exposition",
+            "payload":"exhibition-0"
+        },
+        {
+            "content_type":"text",
+            "title": "A court d'inspiration !",
+            "payload": "surprise-0"
+        },
+        # {
+        #     "content_type":"text",
+        #     "title":"Autre chose",
+        #     "payload":"Not_interested"
+        # }
+    ]
+    send_quick_rep(sender, text, btns ,ACCESS_TOKEN)
 
 
 
