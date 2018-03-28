@@ -9,14 +9,13 @@ except: #python2
 import requests
 import time
 import json
-import jsonlines
 import base64
 import pathlib
-# from PIL import Image
 from urllib.request import urlopen
 from io import StringIO, BytesIO
 from pprint import pprint # for a more readable json output
 import os
+from backend.messenger.msg_fct import send_quick_rep, send_card, send_button
 #from flask import Flask, request
 import logging
 # from scraper-musees-surprise.py import MuseesParis
@@ -54,36 +53,41 @@ def liste_surprise_categories():
 
 	return categories
 
-
+print(liste_surprise_categories())
 
 
 def liste_surprise_infos_musees():
 	""" Transforme le document json en dictionnaire avec comme clefs les musées et comme valeurs
 	 	les informations sur chacun des musées """
 
-	donnees = open("musees/spiders/musees/musees/listeM.json")
-	musees = list(donnees)
+	with open("musees/spiders/musees/musees/listeM.json", 'r') as f:
+		musees = json.load(f)
 
 	infos_musees = {}
-	for i in range(982, len(musees)):
+	for i in range(0, len(musees)):
 
 		if musees[i]["name"] not in infos_musees:
 			infos_musees[musees[i]["name"]] = {}
 
 		infos_musees[musees[i]["name"]]["adresse"] = musees[i]["location"]
 		infos_musees[musees[i]["name"]]["image"] = musees[i]["image"]
-		infos_musees[musees[i]["name"]]["description"] = musees[i]["infos_utiles"]
+		if "Descriptif" in musees[i]["infos_utiles"]:
+			infos_musees[musees[i]["name"]]["description"] = musees[i]["infos_utiles"]
+		else :
+			infos_musees[musees[i]["name"]]["description"] = "Nous n'avons pas encore de description !"
 		infos_musees[musees[i]["name"]]["prix_horaires"] = musees[i]["prix_horaires"]
 
 	return infos_musees
 
-
+print(liste_surprise_infos_musees())
+print(type(liste_surprise_infos_musees()))
 
 
 def get_musees_surprise() :
-	with open("backend/cinema/cinema_allocine", 'rb') as f:
-		d = pickle.Unpickler(f)
-		data = d.load()
+	with open("musees/spiders/musees/musees/listeM.json", 'r') as f:
+		musees = json.load(f)
+
+
 
 
 
@@ -92,15 +96,15 @@ def get_categorie_surprise():
 
 	toutes_categories = liste_surprise_categories()
 
-	categories = []
+	choix_categories = []
 	for key in toutes_categories:
 		# if elt["Categorie"] == musees:
 		#     categories.append(elt)
-		if key not in categories:
-			categories += [key]
+		if key not in choix_categories:
+			choix_categories += [key]
 
 	cards = []
-	for cat in categories:
+	for cat in choix_categories :
 		cards.append(
 			{
 				"nom": cat["name"],
@@ -132,7 +136,7 @@ def get_categorie_surprise():
 			# }
 			# )
 
-	return categories, cards
+	return choix_categories, cards
 
 
 def get_musee_surprise(categorie) :
@@ -147,7 +151,7 @@ def get_musee_surprise(categorie) :
 					{
 						"nom" : musee,
 						"adresse" : toutes_les_infos_par_musee[musee]["adresse"],
-						"image" : 
+						"image" : toutes_les_infos_par_musee[musee]["image"],
 					}
 				)
 
@@ -167,28 +171,29 @@ with open("musees/spiders/musees/musees/listeM.json", 'r') as f:
 	musees = json.load(f)
 
 print(type(musees))
+print(len(musees))
 
-categories = {}
-infos_musees = {}
-for i in range(0, len(musees)) :
-	if musees[i]["Categorie"] not in categories :
-		categories[musees[i]["Categorie"]] = []
-	if musees[i]["name"] not in categories[musees[i]["Categorie"]] :
-		categories[musees[i]["Categorie"]] += [musees[i]["name"]]
-for i in range(0, len(musees)) :
-	if musees[i]["name"] not in infos_musees :
-		infos_musees[musees[i]["name"]] = {}
-	infos_musees[musees[i]["name"]]["adresse"] = musees[i]["location"]
-	infos_musees[musees[i]["name"]]["image"] = musees[i]["image"]
-	infos_musees[musees[i]["name"]]["description"] = musees[i]["infos_utiles"]
-	infos_musees[musees[i]["name"]]["prix_horaires"] = musees[i]["prix_horaires"]
-
-
-
-print(categories)
-#print(categories["Les musées insolites de Paris"])
-#print(len(categories["Les musées insolites de Paris"]))
-print(infos_musees)
+# categories = {}
+# infos_musees = {}
+# for i in range(0, len(musees)) :
+# 	if musees[i]["Categorie"] not in categories :
+# 		categories[musees[i]["Categorie"]] = []
+# 	if musees[i]["name"] not in categories[musees[i]["Categorie"]] :
+# 		categories[musees[i]["Categorie"]] += [musees[i]["name"]]
+# for i in range(0, len(musees)) :
+# 	if musees[i]["name"] not in infos_musees :
+# 		infos_musees[musees[i]["name"]] = {}
+# 	infos_musees[musees[i]["name"]]["adresse"] = musees[i]["location"]
+# 	infos_musees[musees[i]["name"]]["image"] = musees[i]["image"]
+# 	infos_musees[musees[i]["name"]]["description"] = musees[i]["infos_utiles"]
+# 	infos_musees[musees[i]["name"]]["prix_horaires"] = musees[i]["prix_horaires"]
+#
+#
+#
+# print(categories)
+# #print(categories["Les musées insolites de Paris"])
+# #print(len(categories["Les musées insolites de Paris"]))
+# print(infos_musees)
 
 
 
