@@ -1,16 +1,11 @@
-import re
 import json
 from math import log10, sqrt
 from nltk.probability import FreqDist
 import nltk
-import regex as re
 import unidecode
 
-from datetime import datetime as dt
-
-from backend.exhibition.expo_scraper.handle_exhibition_data import run_spiders, append_to_full, merge_results
-
 stopwords = open("backend/language/stopwords.txt", 'r', encoding='utf-8').read().split("\n")
+
 LEMMA_DIC = {"'": "lemma/first_letter_'.json", '-': 'lemma/first_letter_-.json', 'a': 'lemma/first_letter_a.json',
              'b': 'lemma/first_letter_b.json', 'c': 'lemma/first_letter_c.json', 'd': 'lemma/first_letter_d.json',
              'e': 'lemma/first_letter_e.json', 'f': 'lemma/first_letter_f.json', 'g': 'lemma/first_letter_g.json',
@@ -31,22 +26,19 @@ for elt in LEMMA_DIC:
     with open("backend/language/" + LEMMA_DIC[elt]) as json_data:
         LOADED_LEMMA[elt] = json.load(json_data)
 
-with open('backend/exhibition/data_exhibition.json', 'r') as f:
-    DB = [elt for elt in json.load(f) if dt.strptime(elt['d_end'], "%Y-%m-%d") >= dt.today()]
+with open('backend/cinema/cinema_full.json', 'r') as f:
+    DB = json.load(f)
 
-
-def create_collection():
-    """ only considers current exhibition """
-
+def create_collection_cine():
     collection = []
-    temp = 0
+
     for elt in DB:
-        text = elt['title'].lower() + ". " + elt['summary'] + ". " + elt['reviews'] + ". " + str(
-            elt['genre']).lower() + ". " + str(elt['tags']).lower() + ". " + elt['location']
+        if "good_critique" in elt :
+            text = elt['title'] + " " + elt['title'] + " " + elt["summary"] + " " + elt['good_critique'] + " " + elt['bad_critique']+ " " + str(elt['genre'])+ " " + str(elt['actors'])+ " " + str(elt['directors'])+ " " + str(elt["movieType"])
+        if not "bad_critique" not in elt:
+            text = elt['title'] + " " + elt['title'] + " " + elt["summary"] + " " + str(elt['genre'])+ " " + str(elt['actors'])+ " " + str(elt['directors'])+ " " + str(elt["movieType"])
         terms = tf_text(text, elt['ID'])
         collection += terms
-        temp += 1
-        if temp % 10 == 0: print('doc {}/{}'.format(temp, len(DB)))
 
     s_list = sorted(collection)
 
@@ -89,7 +81,7 @@ def tf_text(text_title_summary_reviews, docID):
     return result
 
 
-def aggregate(full_collection_terms):
+def aggregate_cine(full_collection_terms):
     """ Creates the reverse index: list of (term, collection_freq, [posting_list: (docID, tf-idf)]) """
 
     term = [(x[0], 1, [x[1]]) for x in full_collection_terms]
@@ -115,7 +107,7 @@ def aggregate(full_collection_terms):
 def doc_vector_length():
     """ Create json file with exhibition vectors length = sum( (tf-idf)² ) """
 
-    with open('backend/exhibition/index_word.json', 'r') as f:
+    with open('backend/cinema/index_word_cine.json', 'r') as f:
         index = json.load(f)
 
     doc_index = {}
@@ -127,23 +119,17 @@ def doc_vector_length():
         for doc in postings:
             doc_index[doc[0]] += doc[1] ** 2
 
-    with open('backend/exhibition/index_doc.json', 'w') as outfile:
+    with open('backend/cinema/index_doc_cine.json', 'w') as outfile:
         json.dump(doc_index, outfile)
     print('Fin doc index creation')
 
 
 if __name__ == "__main__":
-    # ---to run all the spiders, uncomment the following line
-    # run_spiders()
-
-    # ---to get merged result of scraped data, uncomment the following line
-    # append_to_full(merge_results("backend/exhibition/expo_scraper/extracted_data/all_expo.jsonl"))
-
-
     # ---to create the reverse index for words, uncomment the following line
-    c = create_collection()
-    a = aggregate(c)
-    with open('backend/exhibition/index_word.json', 'w') as outfile:
+    c = create_collection_cine()
+    a = aggregate_cine(c)
+
+    with open('backend/cinema/index_word_cine.json', 'w') as outfile:
         json.dump(a, outfile)
     print("the index contains {} words".format(len(a)))
 
