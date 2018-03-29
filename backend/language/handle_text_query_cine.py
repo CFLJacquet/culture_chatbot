@@ -5,15 +5,15 @@ import nltk
 from math import log10, sqrt
 from pprint import pprint
 
-stopwords = open("/Users/constanceleonard/Desktop/strolling/backend/language/stopwords.txt", 'r', encoding='utf-8').read().split("\n")
+stopwords = open("backend/language/stopwords.txt", 'r', encoding='utf-8').read().split("\n")
 
-with open('/Users/constanceleonard/Desktop/strolling/backend/cinema/index_word_cine.json', 'r') as f:
+with open('backend/cinema/index_word_cine.json', 'r') as f:
     INDEX_DATA = json.load(f)
 
-with open('/Users/constanceleonard/Desktop/strolling/backend/cinema/index_doc_cine.json', 'r') as f:
+with open('backend/cinema/index_doc_cine.json', 'r') as f:
     DOC_LENGTH = json.load(f)
 
-with open('/Users/constanceleonard/Desktop/strolling/backend/cinema/cinema_full.json', 'r') as f:
+with open('backend/cinema/cinema_full.json', 'r') as f:
     COLLECTION = json.load(f)
 # In index_doc, we only have current exhibition, so IDs can be high
 COLLECTION_IDS = [x for x in DOC_LENGTH.keys()]
@@ -41,12 +41,12 @@ def tf_text(request, docID):
 
     for elt in words:
 
-        with open("/Users/constanceleonard/Desktop/strolling/backend/language/"+LEMMA_DIC[elt[0]]) as json_data:
+        with open("backend/language/"+LEMMA_DIC[elt[0]]) as json_data:
             d = json.load(json_data)
         try: # on prend le 1e lemma possible meme si ça peut etre faux (ex: abstrait -> abstraire (verbe))
             lemma = [x[0] for x in d if x[0][0] == elt][0][1]
         except:
-            with open("/Users/constanceleonard/Desktop/strolling/backend/language/lemma/missing.txt", "a") as f:
+            with open("backend/language/lemma/missing.txt", "a") as f:
                 f.write(elt+"\n")
 
         if not lemma in stopwords:
@@ -120,4 +120,4 @@ def vect_search(query):
     return [x[0] for x in s]   #, result
 
 if __name__ == "__main__":
-    print(tf_text("un film d'action ou une expo d'art abstrait", 0))
+    print(vect_search("un film d'action avec Spielberg"))

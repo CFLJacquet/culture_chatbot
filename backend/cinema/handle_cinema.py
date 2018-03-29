@@ -236,7 +236,7 @@ def get_cine_query(cine_ID_list, filter_cine, iteration):
     # Retranslate categories
     for i, genre in enumerate(filter_cine):
         filter_cine[i] = filter_cine[i].capitalize()
-        if genre in ["Thriller", "Aventure",'Policier','Suspens']:
+        if genre in ["Thriller", "Aventure",'Policier','Suspens','Suspense']:
             filter_cine[i] = "Action"
         elif genre == 'Science fiction':
             filter_cine[i] = 'Fantastique'
@@ -256,7 +256,8 @@ def get_cine_query(cine_ID_list, filter_cine, iteration):
     temp = []
     while len(cine) + len(temp) < 10:
         for x in data:
-            if [1 for genre in filter_cine if x[genre] == 1] and len(cine) < 7:
+            # print(filter_cine)
+            if set(filter_cine) & set(x["genre"]) and len(cine) < 7:
                 cine.append(x)
             else:
                 temp.append(x)
@@ -264,32 +265,40 @@ def get_cine_query(cine_ID_list, filter_cine, iteration):
 
     cards = []
     for i, r in enumerate(cine[:10]):
-        cards.append(
-            {
+        etoile = u'\U0001F31F' * int(round(r['pressRating']))
+        cards.append({
                 "title": r['title'],
                 "image_url": r['img_url'],
-                "subtitle": r['location'] + "\nJusqu'au " + dt.strptime(r['d_end'], "%Y-%m-%d").strftime('%d/%m'),
-                "buttons": [{
-                    "type": "web_url",
-                    "url": "https://www.google.fr/maps/search/" + r['location'],
-                    "title": "C'est où ?"
-                },
+                "subtitle": "Note Presse : {}/5 \n Genre: {}".format(etoile, ', '.join(r['genre'])),
+                "buttons":[
                     {
-                        "type": "postback",
-                        "title": "C'est quoi ?",
-                        "payload": "Summary_expo*-/{}".format(r['ID'])
-                    }]
-            }
-        )
+                    "type": "web_url",
+                    "url": r['film_url'],
+                    "title":"Voir sur Allociné"
+                    },
+                    {
+                    "type":"postback",
+                    "title":"Résumé",
+                    # rajout du séparateur *-/, derrière il y a l'ID du film
+                    "payload": "Summary_cine*-/{}".format(r["ID"])
+                    },
+                    {
+                    "type": "postback",
+                    "title": "Match des Critiques",
+                    # rajout du séparateur *-/, derrière il y a l'ID du film
+                    "payload": "Critiques_cine*-/{}".format(r["ID"])
+                    }
+                ]})
 
     return cards
 
 if __name__ == '__main__':
 
     #--- To download the latest movies and fusion it with sens critique 
-    stock_last_movies()
-    fusion()
+    # stock_last_movies()
+    # fusion()
 
     #--- Other tests
     # print(get_details_cinema()[:5])
-    pprint(get_topmovies_genre("Action"))
+    # pprint(get_topmovies_genre("Action"))
+    pprint(get_cine_query(['c5', 'c34', 'c35', 'c36', 'c37', 'c38', 'c1', 'c2', 'c3', 'c4', 'c0', 'c6', 'c7', 'c8', 'c9', 'c10', 'c11', 'c12', 'c13', 'c14', 'c15', 'c16', 'c17', 'c18', 'c19', 'c20', 'c21', 'c22', 'c23', 'c24', 'c25', 'c26', 'c27', 'c28', 'c29', 'c30', 'c31', 'c32', 'c33', 'c39', 'c40', 'c41', 'c42', 'c43', 'c44', 'c45', 'c46', 'c47', 'c48', 'c49'], ["Action"],1))

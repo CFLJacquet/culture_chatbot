@@ -3,7 +3,6 @@ from flask import Flask, request, session
 
 import logging
 from logging.handlers import RotatingFileHandler
-from backend.cinema.transform_json import critique_movie
 import requests
 import json
 import time
@@ -25,7 +24,7 @@ from backend.others.bdd_jokes import random_joke
 
 # TestJ access token: 
 # EAACQPdicZCwQBAJAkOaE8Na9V0aHSV0mNdQvYrXcySeLtPVffB10NGk4EkwiZBy7qdDWUwz8jKdLN4vOIu14HK6DKoGMBO3X0vyVy1Y0EDqzEV6QK0h1PZCxTTtaklO7NqdqrY9UCjtxUR2uEYdNWBh4cDhLLaBcXgNAhNrXgZDZD
-ACCESS_TOKEN = "EAAHSfldMxYcBAAt4D30ZAzVHSnhhFqxV15wMJ0RwZCOBH4MZALBJOa8gTvUV0OTL5t3Q4ZBOosziQ3AXIwYpgpdbJCRRkbJKBuB7FASzhnZAcZCsy6expZATAbflsnln2Hd5I1Yo8J2Ddny170yI13r7A224a20yBWczLeYZAzZBDTQZDZD"
+ACCESS_TOKEN = "EAACQPdicZCwQBAJAkOaE8Na9V0aHSV0mNdQvYrXcySeLtPVffB10NGk4EkwiZBy7qdDWUwz8jKdLN4vOIu14HK6DKoGMBO3X0vyVy1Y0EDqzEV6QK0h1PZCxTTtaklO7NqdqrY9UCjtxUR2uEYdNWBh4cDhLLaBcXgNAhNrXgZDZD"
 
 
 # Flask config
@@ -203,7 +202,7 @@ def handle_event():
             welcome(sender, user)
 
         elif "Summary_cine" in event['postback']['payload'] :
-            ID = int(event['postback']['payload'].split("*-/")[1])
+            ID = event['postback']['payload'].split("*-/")[1]
             latest = get_details_cinema()
             result = [ x for x in latest if x["ID"] == ID][0]
             send_msg(sender, "-- "+result['title']+" -- Résumé -- \n\n"+result['summary'], ACCESS_TOKEN)
@@ -211,12 +210,16 @@ def handle_event():
             start_buttons(sender, "Autre chose ?", ACCESS_TOKEN)
 
         elif "Critiques_cine" in event['postback']['payload'] :
-            ID = int(event['postback']['payload'].split("*-/")[1])
+            ID = event['postback']['payload'].split("*-/")[1]
             latest = get_details_cinema()
             result = [x for x in latest if x["ID"] == ID][0]
-            send_msg(sender, "-- " + result['title'] + " -- Critiques -- \n\n" + result['critiques'], ACCESS_TOKEN)
+            if "good_critique" in result:
+                send_msg(sender, "-- " + result['title'] + " -- Critiques -- \n\n" + result['good_critique'], ACCESS_TOKEN)
+                send_msg(sender, result['bad_critique'], ACCESS_TOKEN)
+            else : 
+                send_msg(sender, "J'ai malheureusement pas trouvé de critiques", ACCESS_TOKEN)
             time.sleep(4)
-            start_buttons(sender, "Autre chose ?")
+            start_buttons(sender, "Autre chose ?", ACCESS_TOKEN)
 
         elif event['postback']['payload'][:12] == "Summary_expo":
             x = event['postback']['payload'].split("*-/") 
@@ -274,7 +277,7 @@ def film_display(num, sender, latest):
                 "type": "postback",
                 "title": "Match des Critiques",
                 # rajout du séparateur *-/, derrière il y a l'ID du film
-                "payload": "Critiques_cine*-/{}".format(latest[i]["ID")
+                "payload": "Critiques_cine*-/{}".format(latest[i]["ID"])
                 }]
             }
         )

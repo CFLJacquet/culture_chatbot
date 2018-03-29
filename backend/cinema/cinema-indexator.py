@@ -4,7 +4,7 @@ from nltk.probability import FreqDist
 import nltk
 import unidecode
 
-stopwords = open("/Users/constanceleonard/Desktop/strolling/backend/language/stopwords.txt", 'r', encoding='utf-8').read().split("\n")
+stopwords = open("backend/language/stopwords.txt", 'r', encoding='utf-8').read().split("\n")
 
 LEMMA_DIC = {"'": "lemma/first_letter_'.json", '-': 'lemma/first_letter_-.json', 'a': 'lemma/first_letter_a.json',
              'b': 'lemma/first_letter_b.json', 'c': 'lemma/first_letter_c.json', 'd': 'lemma/first_letter_d.json',
@@ -23,23 +23,20 @@ LEMMA_DIC = {"'": "lemma/first_letter_'.json", '-': 'lemma/first_letter_-.json',
 
 LOADED_LEMMA = {}
 for elt in LEMMA_DIC:
-    with open("/Users/constanceleonard/Desktop/strolling/backend/language/" + LEMMA_DIC[elt]) as json_data:
+    with open("backend/language/" + LEMMA_DIC[elt]) as json_data:
         LOADED_LEMMA[elt] = json.load(json_data)
 
-with open('/Users/constanceleonard/Desktop/strolling/backend/cinema/cinema_full.json', 'r') as f:
+with open('backend/cinema/cinema_full.json', 'r') as f:
     DB = json.load(f)
 
 def create_collection_cine():
     collection = []
 
     for elt in DB:
-        liste_genre=[]
-        for i in elt["genre"]:
-            liste_genre.append(i['$'])
-        if "critique_1" in elt :
-            text = elt['title'] + " " + elt['title'] + " " + elt["synopsisShort"] + " " + elt['critique_1'] + " " + elt['critique_2']+ " " + str(liste_genre)+ " " + str(elt["castingShort"]['actors'])+ " " + str(elt["castingShort"]['directors'])+ " " + str(elt["movieType"]['$'])
-        if not "critique_1" not in elt:
-            text = elt['title'] + " " + elt['title'] + " " + elt["synopsisShort"]+ " " + str(liste_genre) + " " + str(elt["castingShort"]['actors'])+ " " + str(elt["castingShort"]['directors'])+ " " + str(elt["movieType"]['$'])
+        if "good_critique" in elt :
+            text = elt['title'] + " " + elt['title'] + " " + elt["summary"] + " " + elt['good_critique'] + " " + elt['bad_critique']+ " " + str(elt['genre'])+ " " + str(elt['actors'])+ " " + str(elt['directors'])+ " " + str(elt["movieType"])
+        if not "bad_critique" not in elt:
+            text = elt['title'] + " " + elt['title'] + " " + elt["summary"] + " " + str(elt['genre'])+ " " + str(elt['actors'])+ " " + str(elt['directors'])+ " " + str(elt["movieType"])
         terms = tf_text(text, elt['ID'])
         collection += terms
 
@@ -71,7 +68,7 @@ def tf_text(text_title_summary_reviews, docID):
             try:  # on prend le 1e lemma possible meme si ça peut etre faux (ex: abstrait -> abstraire (verbe))
                 lemma = [x[0] for x in LOADED_LEMMA[elt[0]] if x[0][0] == elt][0][1]
             except:
-                with open("/Users/constanceleonard/Desktop/strolling/backend/language/lemma/missing.txt", "a") as f:
+                with open("backend/language/lemma/missing.txt", "a") as f:
                     f.write(unidecode.unidecode(elt) + "\n")
                 lemma = elt
 
@@ -110,7 +107,7 @@ def aggregate_cine(full_collection_terms):
 def doc_vector_length():
     """ Create json file with exhibition vectors length = sum( (tf-idf)² ) """
 
-    with open('/Users/constanceleonard/Desktop/strolling/backend/cinema/index_word_cine.json', 'r') as f:
+    with open('backend/cinema/index_word_cine.json', 'r') as f:
         index = json.load(f)
 
     doc_index = {}
@@ -122,24 +119,17 @@ def doc_vector_length():
         for doc in postings:
             doc_index[doc[0]] += doc[1] ** 2
 
-    with open('/Users/constanceleonard/Desktop/strolling/backend/cinema/index_doc_cine.json', 'w') as outfile:
+    with open('backend/cinema/index_doc_cine.json', 'w') as outfile:
         json.dump(doc_index, outfile)
     print('Fin doc index creation')
 
 
 if __name__ == "__main__":
-    # ---to run all the spiders, uncomment the following line
-    # run_spiders()
-
-    # ---to get merged result of scraped data, uncomment the following line
-    # append_to_full(merge_results("backend/exhibition/expo_scraper/extracted_data/all_expo.jsonl"))
-
-
     # ---to create the reverse index for words, uncomment the following line
     c = create_collection_cine()
     a = aggregate_cine(c)
 
-    with open('/Users/constanceleonard/Desktop/strolling/backend/cinema/index_word_cine.json', 'w') as outfile:
+    with open('backend/cinema/index_word_cine.json', 'w') as outfile:
         json.dump(a, outfile)
     print("the index contains {} words".format(len(a)))
 
