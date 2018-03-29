@@ -144,7 +144,6 @@ def handle_event():
                 btns = get_genre_movie(sender)[1]
                 send_quick_rep(sender, "Voici les genres possibles: ", btns , ACCESS_TOKEN)
 
-                #intégrer NLTKw:
                 #boucle pour récupérer le genre du film:
             elif event['message']['quick_reply']['payload'] in [ genre for genre in get_genre_movie(sender)[2] if genre != "Not_interested" ]:
                 #on récupère le genre du film pour obtenir une liste des derniers films sortis mais filtrée par le genre
@@ -192,10 +191,7 @@ def handle_event():
         #handles text sent by user (including unicode emojis 😰, 😀)
         else:
             message = event['message']['text'].lower()
-            result = analyse_text(message, sender, user, ACCESS_TOKEN)
-            if result:
-                latest = get_details_cinema()
-                film_display(0, sender, latest)
+            analyse_text(message, sender, user, ACCESS_TOKEN)
 
     elif "postback" in event:
         if event['postback']['payload'] == "first_conv":
@@ -217,7 +213,7 @@ def handle_event():
                 send_msg(sender, "-- " + result['title'] + " -- Critiques -- \n\n" + result['good_critique'], ACCESS_TOKEN)
                 send_msg(sender, result['bad_critique'], ACCESS_TOKEN)
             else : 
-                send_msg(sender, "J'ai malheureusement pas trouvé de critiques", ACCESS_TOKEN)
+                send_msg(sender, "Je n'ai malheureusement pas trouvé de critiques", ACCESS_TOKEN)
             time.sleep(4)
             start_buttons(sender, "Autre chose ?", ACCESS_TOKEN)
 
@@ -230,8 +226,6 @@ def handle_event():
             send_msg(sender, "Description: "+data['summary'], ACCESS_TOKEN)
             send_msg(sender, "Horaires: "+data['timetable'], ACCESS_TOKEN)
             send_msg(sender, "Prix: "+data['price'], ACCESS_TOKEN)
-            time.sleep(10)
-            start_buttons(sender, "Autre chose ?",ACCESS_TOKEN)
         
     else: 
         send_msg(sender, "Je n'ai pas compris ta demande... 😰", ACCESS_TOKEN)
@@ -240,7 +234,10 @@ def handle_event():
 
 def welcome(sender, user):
     time.sleep(1)
-    answer="Salut {}, je suis Electre ! Je connais les meilleurs films et expos de Paris.".format(user[1])
+    answer="Salut {}, je suis Electre ! Je connais les meilleurs films et expos de Paris.\n\
+A tout moment tu peux me demander des choses comme \'Est ce qu'il y a des expos d'art moderne ?\' ou \
+\'donne moi le meilleur film comique au ciné\'\n\n\
+Si tu préfères être guidé, tape 'menu' et des boutons apparaîtront !".format(user[1])
     send_msg(sender, answer, ACCESS_TOKEN)
     
     start_buttons(sender, "Qu'est-ce qui t'intéresserait ?",ACCESS_TOKEN)
@@ -256,7 +253,7 @@ def film_display(num, sender, latest):
 
     cards=[]
     for i in range (num, num+9):
-        etoile = u'\U0001F31F' * int(round(latest[i]['notepresse']))
+        etoile = u'\U0001F31F' * int(round(latest[i]['pressRating']))
         cards.append(
             {
             "title": latest[i]['title'],
@@ -264,7 +261,7 @@ def film_display(num, sender, latest):
             "subtitle":"Note Presse : {}/5 \n Genre: {}".format(etoile, ', '.join(latest[i]['genre'])),
             "buttons":[{
                 "type": "web_url",
-                "url": latest[i]['url'],
+                "url": latest[i]['film_url'],
                 "title":"Voir sur Allociné"
                 },
                 {
@@ -285,12 +282,12 @@ def film_display(num, sender, latest):
     btns =[
         {
             "content_type":"text",
-            "title":"Plus de films !",
+            "title":"Plus de films",
             "payload":"sorties_cine-10"
         },
         {
             "content_type": "text",
-            "title": "Choisir un genre !",
+            "title": "Choisir un genre",
             "payload": "genres_cine"
         },
         {
@@ -306,12 +303,12 @@ def film_display(num, sender, latest):
 def get_genre_movie(sender):
     """ returns : genre, btns, list_payload"""
 
-    with open("backend/cinema/cinema_allocine.json", 'r') as f: #/Users/constanceleonard/Desktop/projet_osy/strolling/
+    with open("backend/cinema/cinema_full.json", 'r') as f: #/Users/constanceleonard/Desktop/projet_osy/strolling/
         data = json.load(f)
 
     genre = []
-    for i in range(0, len(data)):
-        genre.append(data[i]["genre"])
+    for elt in data:
+        genre += elt['genre']
     no_duplicates = list(set(genre))
     genre = sorted(no_duplicates)[:10]  # genre list without duplicates
 
@@ -346,8 +343,8 @@ def film_display_bygenre(sender, genre):
         movies_filtered= get_topmovies_genre(genre)
 
         cards=[]
-        for i in range(0, len(movies_filtered)):
-            etoile = u'\U0001F31F' * int(round(movies_filtered[i]['notepresse']))
+        for i in range(10):
+            etoile = u'\U0001F31F' * int(round(movies_filtered[i]['pressRating']))
             cards.append(
                 {
                     "title": movies_filtered[i]['title'],
@@ -355,7 +352,7 @@ def film_display_bygenre(sender, genre):
                     "subtitle": "Note Presse : {}/5 ".format(etoile),
                     "buttons": [{
                         "type": "web_url",
-                        "url": movies_filtered[i]['url'],
+                        "url": movies_filtered[i]['film_url'],
                         "title": "Voir sur Allociné"
                     },
                         {

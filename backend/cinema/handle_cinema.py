@@ -70,6 +70,17 @@ def movielist(code, count=None, page=None, profile=None, filter=None, order=None
     return do_request("movielist", data)
 
 
+def get_genre_allocine():
+    
+    last_release = movielist(0, count=100, page=None, profile="medium", filter="nowshowing", order="toprank", format="json")
+    last_release=last_release["feed"]["movie"]
+
+    all_films=[]
+    for elt in last_release:
+        for i in elt["genre"]:
+            all_films.append(i['$'])
+    print(set(all_films))
+
 def stock_last_movies():
 
     last_release = movielist(0, count=50, page=None, profile="medium", filter="nowshowing", order="toprank", format="json")
@@ -83,17 +94,35 @@ def stock_last_movies():
         details_film["actors"]=elt["castingShort"]["actors"] if "castingShort" in elt and "actors" in elt["castingShort"] else ""
         details_film["directors"]=elt["castingShort"]["directors"] if "castingShort" in elt and "directors" in elt["castingShort"] else ""
         details_film["genre"] = []
+
         for i in elt["genre"]:
-            if i['$'] in ["Thriller", 'Aventure','Policier','Suspens'] and "Action" not in details_film["genre"]:
+            if i['$'] in ['Policier', 'Action', 'Guerre', 'Aventure','Thriller', 'Western', 'Judiciaire'] and "Action" not in details_film["genre"]:
                 details_film["genre"].append("Action")
-            elif i['$'] == 'Science fiction'and "Fantastique" not in details_film["genre"]:
+
+            elif i['$'] == 'Sport event' :
+                details_film["genre"].append('Sport') 
+            elif i['$'] == 'Epouvante-horreur' :
+                details_film["genre"].append('Horreur') 
+
+            elif i['$'] in ['Erotique', 'Romance'] and "Romantique" not in details_film["genre"]:
+                details_film["genre"].append('Romantique')
+
+            elif i['$'] in ['Opera', 'Musical'] and "Musique" not in details_film["genre"]:
+                details_film["genre"].append('Musique')
+
+            elif i['$'] == 'Science fiction' and "Fantastique" not in details_film["genre"]:
                 details_film["genre"].append('Fantastique') 
-            elif i['$'] in ["Guerre", 'Biopic'] and "Historique" not in details_film["genre"]:
+
+            elif i['$'] in ['Documentaire', 'Biopic'] and "Historique" not in details_film["genre"]:
                 details_film["genre"].append('Historique')
+
             elif i['$'] == 'Comédie dramatique' and "Drame" not in details_film["genre"]:
                 details_film["genre"].append('Drame')
-            elif i['$'] in ['Comédie musicale', "Dessin animé"] and "Comédie" not in details_film["genre"]:
+            elif i['$'] == 'Comédie musicale' and "Comédie" not in details_film["genre"]:
                 details_film["genre"].append("Comédie")
+            elif i['$'] in ['Dessin animé'] and "Animation" not in details_film["genre"]:
+                details_film["genre"].append("Animation")
+
             else :
                 details_film["genre"].append(i["$"])
 
@@ -164,16 +193,16 @@ def get_topmovies_genre(genre):
             results_genre.append({
             "ID": data[i]["ID"],
             "title": data[i]["title"],
-            "notespectateur": data[i]['userRating'],
-            "notepresse": data[i]['pressRating'],
+            "userRating": data[i]['userRating'],
+            "pressRating": data[i]['pressRating'],
             "img_url": data[i]["img_url"],
-            "url": data[i]["film_url"],
+            "film_url": data[i]["film_url"],
             "summary": data[i]["summary"],
             "genre": data[i]["genre"],
             "good_critique": data[i]["good_critique"] if "good_critique" in data[i] else "",
             "bad_critique": data[i]["bad_critique"] if "bad_critique" in data[i] else ""
             })
-    results_genre = sorted(results_genre, key=lambda x: x["notepresse"], reverse=True)
+    results_genre = sorted(results_genre, key=lambda x: x["pressRating"], reverse=True)
     return results_genre
 
 # def resize_image_from_url(url):
@@ -230,34 +259,51 @@ def movies_around(latitude,longitude):
 def get_cine_query(cine_ID_list, filter_cine, iteration):
     """ returns tuple: data of 10 exhibitions from the list of exhibition found by vect_search + cards to send """
 
-    with open("backend/cinema/cinema_full.json", 'r') as f:
+    filter_cine = [filter_cine] if isinstance(filter_cine, str) else filter_cine
+    with open("backend/cinema/cinema_full.json") as f: 
         data = json.load(f)
-
+    
+    # Sort data based on ID_list given by vectorial search
+    order_dict = {color: index for index, color in enumerate(cine_ID_list)}
+    data.sort(key=lambda x: order_dict[x["ID"]])
+    
     # Retranslate categories
-    for i, genre in enumerate(filter_cine):
-        filter_cine[i] = filter_cine[i].capitalize()
-        if genre in ["Thriller", "Aventure",'Policier','Suspens','Suspense']:
-            filter_cine[i] = "Action"
-        elif genre == 'Science fiction':
-            filter_cine[i] = 'Fantastique'
-        elif genre in ["Guerre", 'Biopic']:
-            filter_cine[i] = 'Historique'
-        elif genre == 'Comédie dramatique':
-            filter_cine[i] = 'Drame'
-        elif genre in ['Comédie musicale',"Dessin animé"]:
-            filter_cine[i] = "Comédie"
-
     if filter_cine == ["All"]:
-        filter_cine = ('Romance','Fantastique','Opera','Documentaire','Famille','Comédie','Epouvante','Horreur','Policier','Action','Divers','Dessin animé','Animation','Drame','Historique','Western','Suspens')
+        clean_cat = ['Action', 'Animation', 'Biopic', 'Musique', 'Aventure', 'Comédie', 'Romantique', 'Fantastique', 'Drame', 'Historique', 'Horreur', 'Divers', 'Thriller', 'Famille']
+    else: 
+        clean_cat = []
+        for filt in filter_cine:
+            genre = filt.capitalize()
+            if genre in ['Suspens', 'Suspense','Policier', 'Action', 'Guerre', 'Aventure','Thriller', 'Western', 'Judiciaire']:
+                clean_cat.append("Action")
+            elif genre in ['Sf','Science','Fiction','Fantastique', "Magie"]:
+                clean_cat.append('Fantastique')
+            elif genre in ['Rigolo', 'Amusant', 'Marrer', 'Comique', 'Fun','Comédie']:
+                clean_cat.append("Comédie")
+            elif genre in ['Documentaire','Biopic','Autobiographique']:
+                clean_cat.append('Historique')
+            elif genre in ['Amour','Romance',"Coeur"]:
+                clean_cat.append("Romantique")
+            elif genre in ['Peur','Epouvante','Horreur',"Flipper"]:
+                clean_cat.append("Horreur")
+            elif genre in ['Dessin', 'Animé','Animation',"Enfant"]:
+                clean_cat.append("Animation")
+            elif genre in ['Dramatique', 'Triste', 'Badant']:
+                clean_cat.append('Drame')
+            elif genre in ['Opera', 'Musique']:
+                clean_cat.append("Musique")
+            else:
+                clean_cat.append(genre)
 
-    # We display in total 10 exhibitions: we take the first 7 of the relevant categories,
+    # We display in total 10 movies: we take the first 7 of the relevant categories,
     # then 3 exhibs from other categories which got a good score
     cine = []
-    temp = []
+    temp = [] 
     while len(cine) + len(temp) < 10:
         for x in data:
-            # print(filter_cine)
-            if set(filter_cine) & set(x["genre"]) and len(cine) < 7:
+            clean_cat = list(clean_cat) if len(clean_cat)==1 else clean_cat
+            # print(set(clean_cat) & set(x["genre"]), "clean:", set(clean_cat),"data:", set(x["genre"]) )
+            if set(clean_cat) & set(x["genre"]) and len(cine) < 7:
                 cine.append(x)
             else:
                 temp.append(x)
@@ -293,7 +339,7 @@ def get_cine_query(cine_ID_list, filter_cine, iteration):
     return cards
 
 if __name__ == '__main__':
-
+    
     #--- To download the latest movies and fusion it with sens critique 
     # stock_last_movies()
     # fusion()

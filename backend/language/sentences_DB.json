@@ -1,6 +1,7 @@
 {
     "GREETINGS":["Yo {}, une petite expo ou un cin\u00e9 ?","Hey {}! \u00e7a fait longtemps","Wazzup {} ? J'ai plein de nouveaux bails croustillants ;)","Salut {}, j'ai d\u00e9couvert plein de nouvelles choses depuis la derni\u00e8re fois","Hello toi !","Hey {}, quoi de neuf ?","Long time no see {} ! Qu'est ce que je peux faire pour toi ?"],
     "EXHIBITIONS":["Et tadaaa :","Tiens, celles-ci sont bien","J'ai trouv\u00e9 \u00e7a, certaines devraient te plaire !", "Voila ce que j'ai de mieux", "Je te conseille une de ces expos","J'ai vu la 1e, elle est styl\u00e9e, mais les autres sont bien aussi !","Tu vas en kiffer certaines je suis s\u00fbr","Voila ce qui se fait de mieux dans le milieu :p"],
+    "CINEMA":["Et tadaaa :","Tiens, ces films sont bien","J'ai trouv\u00e9 \u00e7a, certains devraient te plaire !", "Voila ce que j'ai de mieux", "Je te conseille un de ces films","J'ai vu le 1e, il est styl\u00e9e, mais les autres sont bien aussi !","Tu vas en kiffer certains je suis s\u00fbr","Voila ce qui se fait de mieux dans le domaine"],
     "THANKS":["De rien !","No prob","\u00e7a me fait plaisir","t'inqui\u00e8tes !","N'h\u00e9site pas si tu as besoin d'autres choses :)"],
     "EXIT": ["A plus !","A bientot", "Tchao", "Hasta la vista ;)", "Ciao !", "Bye bye", "See ya!"],
     "UNKNOWN":["Je n'ai pas compris ce que tu as dit...", "D\u00e9sol\u00e9, mais je n'ai pas compris", "Je suis un peu lent, d\u00e9sol\u00e9 ! Est-ce que tu pourrais reformuler ta question ?", "Errrr... Je ne suis pas sur d'avoir saisi, tu peux reformuler s'il te plait ?"]

@@ -3,7 +3,9 @@ from backend.language.handle_emoji import convert_string
 from backend.exhibition.handle_expo import get_exhib_query
 from backend.cinema.handle_cinema import get_cine_query
 from backend.language.handle_text_query import vect_search
+from backend.language.handle_text_query_cine import vect_search_cine
 
+import logging
 from pprint import pprint
 import random	
 import json
@@ -13,7 +15,17 @@ import time
 GREETINGS = ('salut', 'bonjour', 'coucou', 'yo', 'hello', 'hi', 'hey', 'ola')
 
 CINEMA = ('ciné', 'cine', 'cinéma', 'cinema', 'film')
-CINE_GENRE = ('romance','fantastique','opera','documentaire','famille','comédie','epouvante','horreur','policier','action','divers','dessin animé','animation','drame','historique','western','suspens')
+#NB: les mots comme amusant, flippant sont lemmatises en "amuser" et "flipper"
+CINE_GENRE = ("romantique",     'romance', 'amour', 
+"fantastique",  'sf','science','fiction', 'magie',
+"musique",      'opera', 
+"historique",   'documentaire', 'biopic','autobiographique',
+"comédie",      'rigolo', 'amuser', 'marrer', 'fun', 'comique',
+"horreur",      'peur','épouvante',"flipper",
+"action",       'suspens', 'suspense','policier', 'guerre', 'aventure','thriller', 'western', 'judiciaire',
+"animation",    'dessin', 'animé','enfant',
+"drame",        'dramatique', 'triste','badant',
+'familial', "sport" )
 EXHIBITION = ('exposition', 'musée', 'musee', 'gallerie', 'art', 'artiste',)
 EXHIB_GENRE = ('architecture', 'sculpture', 'peinture', 'musique', 'littérature', 'danse', 'photographie', 'mode', 'beaux-arts', 'contemporain', 'histoire','civilisation', 'famille')
 
@@ -68,7 +80,7 @@ def analyse_text(msg, sender, user, ACCESS_TOKEN):
     
     for elt in word_list:
         if elt[1] in GREETINGS: keys[0] = 1
-        elif elt[1] in CINEMA: keys[1] = 1
+        elif elt[1] in CINEMA or elt[1] in CINE_GENRE: keys[1] = 1
         elif elt[1] in EXHIBITION or elt[1] in EXHIB_GENRE: keys[2] = 1
         elif elt[1] in EXIT: keys[3] = 1
         elif elt[1] in THANKS: keys[4] = 1
@@ -82,21 +94,28 @@ def analyse_text(msg, sender, user, ACCESS_TOKEN):
     elif keys[1]:
         time.sleep(1)
 
-        filter_cine = [w for w in word_list if w in CINE_GENRE]
+        filter_cine = [w[1] for w in word_list if w[1] in CINE_GENRE]
+        logging.info("genre cine : {} == {} ".format(filter_cine, word_list))
+        
         if not filter_cine: filter_cine = ["all"]
 
         send_msg(sender, random.choice(SENTENCES['CINEMA']), ACCESS_TOKEN)
-        send_card(sender, get_cine_query(vect_search(msg), filter_cine, 1), ACCESS_TOKEN)
-
+        send_card(sender, get_cine_query(vect_search_cine(msg), filter_cine, 1), ACCESS_TOKEN)
+        # time.sleep(10)
+        # start_buttons(sender, "Envie d'autre chose ?", ACCESS_TOKEN)
 
     elif keys[2]:
         time.sleep(1)
 
-        filter_exhib = [w for w in word_list if w in EXHIB_GENRE] 
+        filter_exhib = [w[1] for w in word_list if w[1] in EXHIB_GENRE] 
+        logging.info("genre expo : {} == {} ".format(filter_exhib, word_list))
+        
         if not filter_exhib: filter_exhib = ["all"]     
 
         send_msg(sender, random.choice(SENTENCES['EXHIBITIONS']), ACCESS_TOKEN)
         send_card(sender, get_exhib_query(vect_search(msg), filter_exhib, 1), ACCESS_TOKEN)
+        # time.sleep(10)
+        # start_buttons(sender, "Envie d'autre chose ?", ACCESS_TOKEN)
 
     elif keys[3]:
         send_msg(sender, random.choice(SENTENCES["EXIT"]), ACCESS_TOKEN)
@@ -119,13 +138,14 @@ Si tu préfères être guidé, tape 'menu' et des boutons apparaîtront !", ACCE
         send_msg(sender, random.choice(SENTENCES["UNKNOWN"]), ACCESS_TOKEN)
         send_msg(sender, "Mais si tu as besoin d'aide, tape 'help'. Sinon pour accéder au menu, tape 'menu' :)", ACCESS_TOKEN)
 
-    return cinema 
+    
 
 
 
 if __name__ == "__main__":
     
-    s = "salut salt ;) j'aime les expos d'art contemporain et le cinéma ⛄ 🤞 ❤️ ...".lower()
+    # s = "salut salt ;) j'aime les expos d'art contemporain et le cinéma ⛄ 🤞 ❤️ ...".lower()
 
-    a = analyse_text(s, "na", ["na", "na","na"], "na")
-    print(a)
+    # a = analyse_text(s, "na", ["na", "na","na"], "na")
+    # print(a)
+    print('ok')

@@ -73,7 +73,7 @@ def get_postings(word):
     return doc_tfidf, postings
 
 
-def vect_search(query):
+def vect_search_cine(query):
     """ :param query: full text query\n
     :return: list of doc IDs ranked by highest proximity
     """
@@ -120,4 +120,4 @@ def vect_search(query):
     return [x[0] for x in s]   #, result
 
 if __name__ == "__main__":
-    print(vect_search("un film d'action avec Spielberg"))
+    print(vect_search_cine("un film d'action avec Spielberg"))
