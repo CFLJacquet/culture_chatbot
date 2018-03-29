@@ -1,24 +1,10 @@
-import pickle
 import sys
-import hashlib
-from base64 import b64encode
-try: # python3
-	from urllib.parse import urlencode
-except: #python2
-	from urllib import urlencode
-import requests
-import time
 import json
 import random
-import base64
-import pathlib
-from urllib.request import urlopen
-from io import StringIO, BytesIO
 from pprint import pprint # for a more readable json output
 import os
 from backend.messenger.msg_fct import send_quick_rep, send_card, send_button
-#from flask import Flask, request
-import logging
+
 
 def norm_indice():
 	""" pour ajouter les ID aux musees """
@@ -137,8 +123,7 @@ def get_musee_surprise(sender, categorie, ACCESS_TOKEN):
 					}
 					]}
 		)
-		
-	logging.info("CARDS: {}".format(cards))
+
 	send_card(sender, cards, ACCESS_TOKEN)
 	
 

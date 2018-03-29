@@ -24,7 +24,7 @@ from backend.others.bdd_jokes import random_joke
 
 # TestJ access token: 
 # EAACQPdicZCwQBAJAkOaE8Na9V0aHSV0mNdQvYrXcySeLtPVffB10NGk4EkwiZBy7qdDWUwz8jKdLN4vOIu14HK6DKoGMBO3X0vyVy1Y0EDqzEV6QK0h1PZCxTTtaklO7NqdqrY9UCjtxUR2uEYdNWBh4cDhLLaBcXgNAhNrXgZDZD
-ACCESS_TOKEN = "EAACQPdicZCwQBAJAkOaE8Na9V0aHSV0mNdQvYrXcySeLtPVffB10NGk4EkwiZBy7qdDWUwz8jKdLN4vOIu14HK6DKoGMBO3X0vyVy1Y0EDqzEV6QK0h1PZCxTTtaklO7NqdqrY9UCjtxUR2uEYdNWBh4cDhLLaBcXgNAhNrXgZDZD"
+ACCESS_TOKEN = "EAAHSfldMxYcBAAt4D30ZAzVHSnhhFqxV15wMJ0RwZCOBH4MZALBJOa8gTvUV0OTL5t3Q4ZBOosziQ3AXIwYpgpdbJCRRkbJKBuB7FASzhnZAcZCsy6expZATAbflsnln2Hd5I1Yo8J2Ddny170yI13r7A224a20yBWczLeYZAzZBDTQZDZD"
 
 
 # Flask config
@@ -108,7 +108,7 @@ def handle_event():
     with open("backend/others/users_DB.json", "r") as f:
         users_DB = json.load(f)
 
-    if sender not in users_DB:
+    if sender not in users_DB and ACCESS_TOKEN == "EAAHSfldMxYcBAAt4D30ZAzVHSnhhFqxV15wMJ0RwZCOBH4MZALBJOa8gTvUV0OTL5t3Q4ZBOosziQ3AXIwYpgpdbJCRRkbJKBuB7FASzhnZAcZCsy6expZATAbflsnln2Hd5I1Yo8J2Ddny170yI13r7A224a20yBWczLeYZAzZBDTQZDZD":
         user = user_details(sender, ACCESS_TOKEN)
         users_DB[sender] = {
             "last": str(dt.today()), 
@@ -117,7 +117,7 @@ def handle_event():
             "last_name": user[3]["last_name"], 
             "locale": user[3]["locale"],
             "nb_interactions": 1}
-    else:
+    elif sender in users_DB and ACCESS_TOKEN == "EAAHSfldMxYcBAAt4D30ZAzVHSnhhFqxV15wMJ0RwZCOBH4MZALBJOa8gTvUV0OTL5t3Q4ZBOosziQ3AXIwYpgpdbJCRRkbJKBuB7FASzhnZAcZCsy6expZATAbflsnln2Hd5I1Yo8J2Ddny170yI13r7A224a20yBWczLeYZAzZBDTQZDZD":
         users_DB[sender]["last"] = str(dt.today())
         users_DB[sender]["nb_interactions"] += 1
         user = user_details(sender, ACCESS_TOKEN)
