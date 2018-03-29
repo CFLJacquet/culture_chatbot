@@ -278,7 +278,7 @@ def get_cine_query(cine_ID_list, filter_cine, iteration):
                 clean_cat.append("Action")
             elif genre in ['Sf','Science','Fiction','Fantastique', "Magie"]:
                 clean_cat.append('Fantastique')
-            elif genre in ['Rigolo', 'Amusant', 'Marrer', 'Comique', 'Fun','Comédie']:
+            elif genre in ['Rigolo', 'Amusant', 'Marrer', 'Comique', 'Fun','Comédie', 'Drole', 'Drôle']:
                 clean_cat.append("Comédie")
             elif genre in ['Documentaire','Biopic','Autobiographique']:
                 clean_cat.append('Historique')
