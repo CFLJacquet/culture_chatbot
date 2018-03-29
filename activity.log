@@ -1,7 +1,0 @@
-2018-03-29 18:46:08,810 :: INFO ::  * Detected change in 'c:\\Users\\Charles\\Desktop\\Centrale\\Projet OSY\\strolling\\server.py', reloading
-2018-03-29 18:46:09,100 :: INFO ::  * Restarting with stat
-2018-03-29 18:46:13,033 :: WARNING ::  * Debugger is active!
-2018-03-29 18:46:13,042 :: INFO ::  * Debugger PIN: 327-498-208
-2018-03-29 18:46:14,000 :: INFO ::  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
-2018-03-29 18:46:24,482 :: INFO ::  * Detected change in 'c:\\Users\\Charles\\Desktop\\Centrale\\Projet OSY\\strolling\\server.py', reloading
-2018-03-29 18:46:24,691 :: INFO ::  * Restarting with stat
