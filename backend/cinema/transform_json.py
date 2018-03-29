@@ -17,9 +17,13 @@ def critique_movie(film_nom):
     if film_nom in film_à_laffiche_extracted:
         num=film_à_laffiche_extracted.index(film_nom)
         print(num)
-        prem_critique=data[num]["critique_1"]
-        deux_critique=data[num]["critique_2"]
-    return print("Voici la première critique:", prem_critique), print("Voici la deuxième critique:", deux_critique)
+        critique1=data[num]["critique_1"]
+        critique2=data[num]["critique_2"]
+        note_critique1=data[num]["note_critique_1"]
+        note_critique2=data[num]["note_critique_1"]
+        url_critique1=data[num]["critique_1_url"]
+        url_critique2=data[num]["critique_2_url"]
+    return print("Voici la première critique:", critique1), print("Voici la deuxième critique:", critique2)
 
 if __name__ == '__main__':
     print(sys.stdout.encoding)

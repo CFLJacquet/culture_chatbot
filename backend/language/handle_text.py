@@ -1,7 +1,7 @@
 from backend.messenger.msg_fct import send_msg, send_card, send_quick_rep, start_buttons
 from backend.language.handle_emoji import convert_string
-from backend.exhibition.handle_expo import get_genre_exhib, get_exhib, get_exhib_query, get_detail_exhib
-from backend.cinema.handle_cinema import get_details_cinema
+from backend.exhibition.handle_expo import get_exhib_query
+from backend.cinema.handle_cinema import get_cine_query
 from backend.language.handle_text_query import vect_search
 
 from pprint import pprint
@@ -11,9 +11,12 @@ import nltk
 import time
 
 GREETINGS = ('salut', 'bonjour', 'coucou', 'yo', 'hello', 'hi', 'hey', 'ola')
+
 CINEMA = ('ciné', 'cine', 'cinéma', 'cinema', 'film')
+CINE_GENRE = ('romance','fantastique','opera','documentaire','famille','comédie','epouvante','horreur','policier','action','divers','dessin animé','animation','drame','historique','western','suspens')
 EXHIBITION = ('exposition', 'musée', 'musee', 'gallerie', 'art', 'artiste',)
 EXHIB_GENRE = ('architecture', 'sculpture', 'peinture', 'musique', 'littérature', 'danse', 'photographie', 'mode', 'beaux-arts', 'contemporain', 'histoire','civilisation', 'famille')
+
 EXIT = ('stop', 'tchao' 'bye')
 THANKS = ('merci', 'cimer', 'cool', 'okay', 'k', 'ok')
 HELP = ('help', 'aide')
@@ -77,9 +80,14 @@ def analyse_text(msg, sender, user, ACCESS_TOKEN):
         start_buttons(sender, random.choice(SENTENCES["GREETINGS"]).format(user[1]), ACCESS_TOKEN)
 
     elif keys[1]:
-        # ATTENTION parce qu'on ne pouvait pas importer les fonctions du serveur, c'est la seule 
-        # action pas gérée ici mais dans le serveur.
-        cinema = True
+        time.sleep(1)
+
+        filter_cine = [w for w in word_list if w in CINE_GENRE]
+        if not filter_cine: filter_cine = ["all"]
+
+        send_msg(sender, random.choice(SENTENCES['CINEMA']), ACCESS_TOKEN)
+        send_card(sender, get_cine_query(vect_search(msg), filter_cine, 1), ACCESS_TOKEN)
+
 
     elif keys[2]:
         time.sleep(1)

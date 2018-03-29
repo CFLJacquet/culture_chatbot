@@ -303,18 +303,14 @@ def film_display(num, sender, latest):
 def get_genre_movie(sender):
     """ returns : genre, btns, list_payload"""
 
-    with open("backend/cinema/cinema_allocine.json", 'rb') as f: #/Users/constanceleonard/Desktop/projet_osy/strolling/
-        d = pickle.Unpickler(f)
-        data = d.load()
+    with open("backend/cinema/cinema_allocine.json", 'r') as f: #/Users/constanceleonard/Desktop/projet_osy/strolling/
+        data = json.load(f)
 
     genre = []
     for i in range(0, len(data)):
-        sous_genres = []
-        for item in data[i]["genre"]:
-            sous_genres.append(item['$'])
-        genre.extend(sous_genres)
-        no_duplicates = list(set(genre))
-        genre = sorted(no_duplicates)[:10]  # genre list without duplicates
+        genre.append(data[i]["genre"])
+    no_duplicates = list(set(genre))
+    genre = sorted(no_duplicates)[:10]  # genre list without duplicates
 
     btns = []
     i=0

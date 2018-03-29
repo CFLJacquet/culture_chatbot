@@ -56,7 +56,7 @@ class MatchDesCritiquesSpider(scrapy.Spider):
 
 if __name__ == "__main__":
     try:
-        os.remove("backend/cinema/senscritiquescrapping/extracted-data/critiques_films.jsonl")
+        os.remove("/Users/constanceleonard/Desktop/strolling/backend/cinema/senscritiquescrapping/extracted-data/critiques_films.jsonl")
     except OSError:
         pass
 
