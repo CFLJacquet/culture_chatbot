@@ -2,7 +2,6 @@
 # code found here: https://github.com/thomasRousseau/python-allocine-api
 
 
-from backend.cinema.transform_json import critique_movie
 import sys
 import hashlib
 from base64 import b64encode
@@ -73,105 +72,107 @@ def movielist(code, count=None, page=None, profile=None, filter=None, order=None
 
 def stock_last_movies():
 
-    # ATTENTION - count parameter not working, len(last_release)=100 movies ! => filtering in return
     last_release = movielist(0, count=50, page=None, profile="medium", filter="nowshowing", order="toprank", format="json")
     last_release=last_release["feed"]["movie"]
 
     all_films=[]
     for num, elt in enumerate(last_release):
-        print("ok")
-        pprint(elt)
         details_film = {}
         details_film["title"]=elt["title"]
-        details_film["summary"]=elt["synopsisShort"]
-        if "actors" in elt["castingShort"]:
-            details_film["actors"]=elt["castingShort"]["actors"]
-        else:
-            details_film["actors"]=""
-        details_film["directors"]=elt["castingShort"]["directors"]
+        details_film["summary"] = elt["synopsisShort"].replace('<span>', '').replace('</span>', '').replace('<br/>', '').replace('\xa0', '') if "synopsisShort" in elt else "Résumé Indisponible"
+        details_film["actors"]=elt["castingShort"]["actors"] if "castingShort" in elt and "actors" in elt["castingShort"] else ""
+        details_film["directors"]=elt["castingShort"]["directors"] if "castingShort" in elt and "directors" in elt["castingShort"] else ""
         details_film["genre"] = []
         for i in elt["genre"]:
-            if i['$'] in ["Thriller", 'Aventure','Policier','Suspens']:
+            if i['$'] in ["Thriller", 'Aventure','Policier','Suspens'] and "Action" not in details_film["genre"]:
                 details_film["genre"].append("Action")
-            elif i['$'] == 'Science fiction':
-                details_film["genre"].append('Fantastique')
-            elif i['$'] in ["Guerre", 'Biopic']:
+            elif i['$'] == 'Science fiction'and "Fantastique" not in details_film["genre"]:
+                details_film["genre"].append('Fantastique') 
+            elif i['$'] in ["Guerre", 'Biopic'] and "Historique" not in details_film["genre"]:
                 details_film["genre"].append('Historique')
-            elif i['$'] == 'Comédie dramatique' :
+            elif i['$'] == 'Comédie dramatique' and "Drame" not in details_film["genre"]:
                 details_film["genre"].append('Drame')
-            elif i['$'] in ['Comédie musicale', "Dessin animé"]:
+            elif i['$'] in ['Comédie musicale', "Dessin animé"] and "Comédie" not in details_film["genre"]:
                 details_film["genre"].append("Comédie")
             else :
                 details_film["genre"].append(i["$"])
 
-        details_film["movieType"]=elt["movieType"]["$"]
-        details_film["rankTopMovie"]=elt['statistics']["rankTopMovie"]
-        details_film["userRating"]=elt['statistics']["userRating"]
-        details_film["pressRating"] = elt['statistics']["userRating"]
+        details_film["movieType"]=elt["movieType"]["$"] if "movieType" in elt else ""
+        details_film["rankTopMovie"]=elt['statistics']["rankTopMovie"] if 'statistics' in elt and "rankTopMovie" in elt['statistics'] else ""
+        details_film["userRating"]=elt['statistics']["userRating"] if  'statistics' in elt and "userRating" in elt['statistics'] else 0
+        details_film["pressRating"] = elt['statistics']["userRating"] if  'statistics' in elt and "userRating" in elt['statistics'] else 0
         details_film["film_url"]=elt["link"][0]["href"]
-        details_film["img_url"]=elt["poster"]["href"]
+        details_film["img_url"]=elt["poster"]["href"] if "poster" in elt else "https://www.elegantthemes.com/blog/wp-content/uploads/2017/07/404-error.png"
         details_film["ID"] = "c" + str(num)
         all_films.append(details_film)
 
-    #changer le path (avec backend etc.. comme handle_expo) avant de faire tourner le serveur
-
-    with open("/Users/constanceleonard/Desktop/strolling/backend/cinema/cinema_allocine.json", 'w') as fichier: #/Users/constanceleonard/Desktop/projet_osy/strolling/
+    with open("backend/cinema/allocine/cinema_allocine.json", 'w') as fichier: #/Users/constanceleonard/Desktop/projet_osy/strolling/
         json.dump(all_films,fichier)
 
 
+def fusion():
+    with open("backend/cinema/allocine/cinema_allocine.json", 'r') as f: #/Users/constanceleonard/Desktop/projet_osy/strolling/
+        allocine = json.load(f)
+
+    scrapy = []
+    with open('backend/cinema/senscritiquescrapping/extracted-data/critiques_films.jsonl') as f:
+        for line in f:
+            scrapy.append(json.loads(line))
+
+    fichier_merged = []
+    for i in range(0, len(allocine)):
+        found = False
+        for critique in scrapy:
+            if allocine[i]["title"].lower() == critique["titre"].lower():
+                temp = allocine[i]
+                if int(critique["note_critique_1"]) < int(critique["note_critique_2"]):
+                    temp["bad_critique"] = "Mauvaise note:"+critique["note_critique_1"]+"/10\n\n"+"Critique : "+critique["critique_1"]+"\n\n"+"Suite de la critique: "+critique["critique_1_url"]
+                    temp["good_critique"] = "Bonne note:"+critique["note_critique_2"]+"/10\n\n"+"Critique : "+critique["critique_2"]+"\n\n"+ "Suite de la critique: "+critique["critique_2_url"]
+                else:
+                    temp["good_critique"] = "Bonne note:"+critique["note_critique_1"]+"/10\n\n"+"Critique : "+critique["critique_1"]+"\n\n"+"Suite de la critique: "+critique["critique_1_url"]
+                    temp["bad_critique"] = "Mauvaise note:"+critique["note_critique_2"]+"/10\n\n"+"Critique : "+critique["critique_2"]+"\n\n"+ "Suite de la critique: "+critique["critique_2_url"]
+                fichier_merged.append(temp)
+                print("merged", allocine[i]["title"])
+                found=True
+        if found is False:
+            fichier_merged.append(allocine[i])
+
+    with open('backend/cinema/cinema_full.json', 'w') as f: #/Users/constanceleonard/Desktop/projet_osy/strolling/
+        json.dump(fichier_merged, f)
+
+
+
 def get_details_cinema():
-    #print(os.getcwd())
-    with open("/Users/constanceleonard/Desktop/strolling/backend/cinema/cinema_allocine.json") as f: #/Users/constanceleonard/Desktop/projet_osy/strolling/
+    with open("backend/cinema/cinema_full.json") as f: #/Users/constanceleonard/Desktop/projet_osy/strolling/
         data = json.load(f)
 
-    results = []
-    for i in range(0, len(data)):
-        genres = []
-        for item in data[i]["genre"]:
-            genres.append(item['$'])
-        results.append({
-            "allocine_ID": data[i]["ID"],
-            "title": data[i]["title"],
-            "notespectateur": data[i].get('userRating', -1),
-            "notepresse": data[i].get('pressRating', -1),
-            "img_url": data[i]["img_url"],
-            "url": data[i]["film_url"],
-            "summary": data[i].get('summary', '').replace('<span>', '').replace('</span>', '').replace(
-                '<br/>', '').replace('\xa0', ''),
-            "genre": genres,
-            "critique1": "Note 1: "+data[i]["note_critique_1"]+"\n\n"+"Critique 1: "+data[i]["critique_1"]+"\n\n"+"Lien critique 1: "+data[i]["critique_1_url"],
-            "critique2": "Note 2: "+data[i]["note_critique_2"]+"\n\n"+"Critique 2: "+data[i]["critique_2"]+"\n\n"++ "Lien critique 2: "+data[i]["critique_2_url"]
-        })
-    results = sorted(results, key=lambda x: x["notepresse"], reverse=True)
+    results = sorted(data, key=lambda x: x["pressRating"], reverse=True)
     return results
 
 
 def get_topmovies_genre(genre):
-    #return the top movies filtered by the genre selected by the user of the chatbot:
+    """return the top movies filtered by the genre selected by the user of the chatbot"""
 
-    with open("/Users/constanceleonard/Desktop/strolling/backend/cinema/cinema_full.json", 'r') as f: #/Users/constanceleonard/Desktop/projet_osy/strolling/
+    with open("backend/cinema/cinema_full.json", 'r') as f: #/Users/constanceleonard/Desktop/projet_osy/strolling/
         data = json.load(f)
-        #pprint(data)
 
     results_genre = []
     for i in range(0, len(data)):
-        genre_informations = data[i]["genre"]
-        #print(genre_informations)
-        film_genre=[x["$"] for x in genre_informations]
+        film_genre = data[i]["genre"]
         #print(film_genre)
         if genre in film_genre:
             results_genre.append({
             "ID": data[i]["ID"],
             "title": data[i]["title"],
-            "notespectateur": data[i].get('userRating', -1),
-            "notepresse": data[i].get('pressRating', -1),
+            "notespectateur": data[i]['userRating'],
+            "notepresse": data[i]['pressRating'],
             "img_url": data[i]["img_url"],
             "url": data[i]["film_url"],
-            "summary": data[i].get('summary', '').replace('<span>', '').replace('</span>', '').replace(
-                '<br/>', '').replace('\xa0', ''),
-            "critique1": "Note 1: "+data[i]["note_critique_1"]+"\n\n"+"Critique 1: "+data[i]["critique_1"]+"\n\n"+"Lien critique 1: "+data[i]["critique_1_url"],
-            "critique2": "Note 2: "+data[i]["note_critique_2"]+"\n\n"+"Critique 2: "+data[i]["critique_2"]+"\n\n"++ "Lien critique 2: "+data[i]["critique_2_url"]
-        })
+            "summary": data[i]["summary"],
+            "genre": data[i]["genre"],
+            "good_critique": data[i]["good_critique"] if "good_critique" in data[i] else "",
+            "bad_critique": data[i]["bad_critique"] if "bad_critique" in data[i] else ""
+            })
     results_genre = sorted(results_genre, key=lambda x: x["notepresse"], reverse=True)
     return results_genre
 
@@ -223,40 +224,13 @@ def movies_around(latitude,longitude):
         })
     pprint(results)
 
-def merge_two_dicts(x, y):
-    z = x.copy()
-    z.update(y)
-    return z
 
-def fusion():
-    with open("/Users/constanceleonard/Desktop/strolling/backend/cinema/cinema_allocine.json", 'r') as f: #/Users/constanceleonard/Desktop/projet_osy/strolling/
-        allocine = json.load(f)
-
-    scrapy = []
-    with open('/Users/constanceleonard/Desktop/strolling/backend/cinema/senscritiquescrapping/extracted-data/critiques_films.jsonl') as f:
-        for line in f:
-            scrapy.append(json.loads(line))
-
-    fichier_merged = []
-    for i in range(0, len(allocine)):
-        found = False
-        for critique in scrapy:
-            if allocine[i]["title"].lower() == critique["titre"].lower():
-                fichier_merged.append(merge_two_dicts(allocine[i], critique))
-                print("merged", allocine[i]["title"])
-                found=True
-        if found is False:
-            fichier_merged.append(allocine[i])
-
-
-    with open('/Users/constanceleonard/Desktop/strolling/backend/cinema/cinema_full.json', 'w') as f: #/Users/constanceleonard/Desktop/projet_osy/strolling/
-        json.dump(fichier_merged, f)
 
 
 def get_cine_query(cine_ID_list, filter_cine, iteration):
     """ returns tuple: data of 10 exhibitions from the list of exhibition found by vect_search + cards to send """
 
-    with open("/Users/constanceleonard/Desktop/strolling/backend/cinema/cinema_full.json", 'r') as f:
+    with open("backend/cinema/cinema_full.json", 'r') as f:
         data = json.load(f)
 
     # Retranslate categories
@@ -311,10 +285,11 @@ def get_cine_query(cine_ID_list, filter_cine, iteration):
     return cards
 
 if __name__ == '__main__':
-    #print(sys.stdout.encoding)
-    stock_last_movies()
-    #fusion()
- #   with open("/Users/constanceleonard/Desktop/strolling/backend/cinema/cinema_allocine.json", 'r') as f: #/Users/constanceleonard/Desktop/projet_osy/strolling/
- #       allocine = json.load(f)
 
-#    pprint(allocine)
+    #--- To download the latest movies and fusion it with sens critique 
+    stock_last_movies()
+    fusion()
+
+    #--- Other tests
+    # print(get_details_cinema()[:5])
+    pprint(get_topmovies_genre("Action"))

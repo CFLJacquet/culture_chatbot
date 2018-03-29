@@ -1,16 +1,6 @@
 import json
 from pprint import pprint
-from backend.language.handle_text_query_cine import vect_search
+from backend.cinema.handle_cinema import stock_last_movies
 
-with open('backend/cinema/cinema_full.json', 'r') as f:
-    DB = json.load(f)
+stock_last_movies()
 
-pprint(DB[0])
-
-all_genre= []
-for i in DB:
-    for k in i["genre"]:
-        all_genre.append(k["$"])
-all_genre=list(set(all_genre))
-pprint(all_genre)
-print(len(all_genre))
