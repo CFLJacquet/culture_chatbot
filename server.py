@@ -1,4 +1,7 @@
+# -*- coding: utf-8 -*-
+
 from flask import Flask, request, session
+import traceback
 # from flask_oauthlib.client import OAuth, OAuthException
 
 import logging
@@ -25,7 +28,7 @@ from backend.others.bdd_jokes import random_joke
 
 # TestJ access token: 
 # EAACQPdicZCwQBAJAkOaE8Na9V0aHSV0mNdQvYrXcySeLtPVffB10NGk4EkwiZBy7qdDWUwz8jKdLN4vOIu14HK6DKoGMBO3X0vyVy1Y0EDqzEV6QK0h1PZCxTTtaklO7NqdqrY9UCjtxUR2uEYdNWBh4cDhLLaBcXgNAhNrXgZDZD
-ACCESS_TOKEN = "EAACQPdicZCwQBAJAkOaE8Na9V0aHSV0mNdQvYrXcySeLtPVffB10NGk4EkwiZBy7qdDWUwz8jKdLN4vOIu14HK6DKoGMBO3X0vyVy1Y0EDqzEV6QK0h1PZCxTTtaklO7NqdqrY9UCjtxUR2uEYdNWBh4cDhLLaBcXgNAhNrXgZDZD"
+ACCESS_TOKEN = "EAAHSfldMxYcBAAjHjAxYeZC1HOEYXurvr7sJ8No6vxoiScJkYd8r5TJ1WtpSNMEGByZBRZCgsV9jwxp2LgfFZAiddVk0KX2nryb7Hy68CTKLYzTAPBgEj0B1FP20eXaYWuZCeSDx2QJYtt8QOZBXhqI8ZADwv2MZBoR1P4NUkMKUaQZDZD"
 
 
 # Flask config
@@ -53,7 +56,7 @@ app = Flask(__name__)
 #     authorize_url='https://www.facebook.com/dialog/oauth'
 # )
 
-#Bloc créant des logs
+#Bloc creant des logs
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 formatter = logging.Formatter('%(asctime)s :: %(levelname)s :: %(message)s')
@@ -96,6 +99,7 @@ def handle_verification():
     logging.info(request.args['hub.challenge'])
     return request.args['hub.challenge']
 
+
 @app.route('/', methods=['POST'])
 def handle_event():
     #NB: la requête API est effectuée à chaque msg entrant
@@ -107,7 +111,7 @@ def handle_event():
 
     # if data['entry'][0]['time'] in msg_spam:
     #     return ""
-    # logging.info("DATA: {}".format(data))
+    logging.info("DATA: {}".format(data))
 
     event = data['entry'][0]['messaging'][0]
 
@@ -425,6 +429,11 @@ def exhibition_display(num, sender, payload =""):
         ]
         send_quick_rep(sender, "Veux-tu voir d'autres expos ?", btns ,ACCESS_TOKEN)
 
+@app.errorhandler(500)
+def internal_error(exception):
+    """ Used to log internel errors & the return "200" prevent the bot from spamming """
+    logging.error(traceback.format_exc())
+    return "200"
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True)
+    app.run(host='0.0.0.0', debug=False)

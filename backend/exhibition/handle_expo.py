@@ -110,7 +110,8 @@ def get_exhib_query(exhib_ID_list, filter_exhib, iteration):
             filter_exhib[i] = 'Art contemporain'
         elif genre in ['famille']:
             filter_exhib[i] = 'Famille'
-
+        else:
+            filter_exhib[i] = filter_exhib[i].capitalize()
 
     if filter_exhib == ["All"]:
         filter_exhib = ['Architecture', 'Sculpture', 'Peinture', 'Musique', 'Littérature', 'Danse', 'Cinéma', 

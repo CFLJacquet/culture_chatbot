@@ -20,44 +20,41 @@ locale', 'access_token':ACCESS_TOKEN}
     logging.info('USER DETAIL: {}'.format(user_details))
     print(user_details)
 
-    # # Transform and load in DB, and exception if user ID not found
-    # with open("backend/others/users_DB.json", "r") as f:
-    #     users_DB = json.load(f)
+    # Transform and load in DB, and exception if user ID not found
+    with open("backend/others/users_DB.json", "r") as f:
+        users_DB = json.load(f)
     
-    # try : 
-    #     if "error" in user_details:
-    #         user_gender, user_details['first_name'],user_details['last_name'] = "","toi",""
-    #         print("error")
-    #     else:
-    #         if user_details['gender'] == 'male':
-    #             user_gender="M"
-    #         elif user_details['gender'] == 'female':
-    #             user_gender="Mme"
-    #         else: 
-    #             user_gender=""
-            
-    #         if sender not in users_DB and ACCESS_TOKEN == "EAAHSfldMxYcBAAt4D30ZAzVHSnhhFqxV15wMJ0RwZCOBH4MZALBJOa8gTvUV0OTL5t3Q4ZBOosziQ3AXIwYpgpdbJCRRkbJKBuB7FASzhnZAcZCsy6expZATAbflsnln2Hd5I1Yo8J2Ddny170yI13r7A224a20yBWczLeYZAzZBDTQZDZD":
-    #             users_DB[sender] = {
-    #                 "last": str(dt.today()), 
-    #                 "gender": user_details["gender"],
-    #                 "first_name": user_details["first_name"], 
-    #                 "last_name": user_details["last_name"], 
-    #                 "locale": user_details["locale"],
-    #                 "nb_interactions": 1}
-    #         elif sender in users_DB and ACCESS_TOKEN == "EAAHSfldMxYcBAAt4D30ZAzVHSnhhFqxV15wMJ0RwZCOBH4MZALBJOa8gTvUV0OTL5t3Q4ZBOosziQ3AXIwYpgpdbJCRRkbJKBuB7FASzhnZAcZCsy6expZATAbflsnln2Hd5I1Yo8J2Ddny170yI13r7A224a20yBWczLeYZAzZBDTQZDZD":
-    #             users_DB[sender]["last"] = str(dt.today())
-    #             users_DB[sender]["nb_interactions"] += 1    
+    try : 
+        if "error" in user_details:
+            user_gender, first_name , last_name = "","toi",""
+
+        else:
+            if user_details['gender'] == 'male':
+                user_gender="M"
+            elif user_details['gender'] == 'female':
+                user_gender="Mme"
+            else: 
+                user_gender=""
+            first_name , last_name = user_details["first_name"], user_details["last_name"]
+
+            if sender not in users_DB:
+                users_DB[sender] = {
+                    "last": str(dt.today()), 
+                    "gender": user_details["gender"],
+                    "first_name": user_details["first_name"], 
+                    "last_name": user_details["last_name"], 
+                    "locale": user_details["locale"],
+                    "nb_interactions": 1}
+            elif sender in users_DB:
+                users_DB[sender]["last"] = str(dt.today())
+                users_DB[sender]["nb_interactions"] += 1    
                 
-    #         with open("backend/others/users_DB.json", "w") as jsonFile:
-    #             json.dump(users_DB, jsonFile)    
-        
-    #     print(user_details)
+            with open("backend/others/users_DB.json", "w") as jsonFile:
+                json.dump(users_DB, jsonFile)    
 
-    # except Exception as e: 
-    #     logging.error("USER DETAIL ERROR : {}".format(e))
-    #     user_gender, user_details['first_name'],user_details['last_name'] = "","toi",""
-
-    user_gender, first_name , last_name = "","",""
+    except Exception as e: 
+        logging.error("USER DETAIL ERROR : {}".format(e))
+        user_gender, first_name , last_name = "","toi",""
 
     return user_gender, first_name , last_name
 

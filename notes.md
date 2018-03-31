@@ -61,4 +61,4 @@ https://perso.limsi.fr/pointal/doku.php?id=dev:treetaggerwrapper
 
 1) se connecter à putty
 2) cd var/www/chatbot_fb
-3) "trail -f activity.log"
+3) "tail -f activity.log"
