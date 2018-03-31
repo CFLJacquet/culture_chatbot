@@ -2,6 +2,7 @@ import json
 from operator import itemgetter
 from datetime import datetime as dt
 from pprint import pprint
+import logging
 
 def get_genre_exhib():
     """ Returns a tuple: list of exhibition genres + cards to be used in quick replies """
@@ -84,11 +85,33 @@ def get_exhib_query(exhib_ID_list, filter_exhib, iteration):
 
     #Retranslate categories
     for i, genre in enumerate(filter_exhib):
-        filter_exhib[i] = filter_exhib[i].capitalize()
-        if genre in ["Moderne", "Contemporain"]:
-            filter_exhib[i] = "Art Contemporain"
-        elif genre in ['Histoire', 'Civilisation']:
+        filter_exhib[i] = filter_exhib[i]
+        if genre in ['architecture', 'archi', 'batiment']:
+            filter_exhib[i] = "Architecture"
+        elif genre in ['histoire', 'civilisation', 'culture']:
             filter_exhib[i] = 'Histoire / Civilisations'
+        elif genre in ['sculpture', 'design', 'artisanat','sculpteur']:
+            filter_exhib[i] = 'Sculpture'
+        elif genre in ['peinture','dessin','plastique','peintre','gravure']:
+            filter_exhib[i] = 'Peinture'
+        elif genre in ['musique','chanteur','rock','pop']:
+            filter_exhib[i] = 'Musique'
+        elif genre in ['littérature','auteur','livre']:
+            filter_exhib[i] = 'Littérature'
+        elif genre in ['danse','ballet', 'opéra']:
+            filter_exhib[i] = 'Danse'
+        elif genre in ['photographie', 'photographe','image']:
+            filter_exhib[i] = 'Photographie'
+        elif genre in ['mode','fashion']:
+            filter_exhib[i] = 'Mode'
+        elif genre in ['beaux-arts','classique','renaissance','flamand']:
+            filter_exhib[i] = 'Beaux-Arts'
+        elif genre in ['contemporain', 'moderne','abstrait']:
+            filter_exhib[i] = 'Art contemporain'
+        elif genre in ['famille']:
+            filter_exhib[i] = 'Famille'
+
+
     if filter_exhib == ["All"]:
         filter_exhib = ['Architecture', 'Sculpture', 'Peinture', 'Musique', 'Littérature', 'Danse', 'Cinéma', 
     'Photographie', 'Mode', 'Beaux-Arts', 'Art contemporain', 'Histoire / Civilisations', 'Famille']
@@ -97,6 +120,7 @@ def get_exhib_query(exhib_ID_list, filter_exhib, iteration):
     # then 3 exhibs from other categories which got a good score
     exhibs = []
     temp = []
+    #logging.info("clean genre expo: {}".format(filter_exhib))
     while len(exhibs)+len(temp)<10:
         for x in data:
             if dt.strptime(x['d_start'], "%Y-%m-%d") <= dt.today() and [1 for genre in filter_exhib if x[genre]==1] and len(exhibs)<7:

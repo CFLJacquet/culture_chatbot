@@ -21,11 +21,11 @@ from backend.others.bdd_jokes import random_joke
 
 
 # Real page access token:
-# EAAHSfldMxYcBAAt4D30ZAzVHSnhhFqxV15wMJ0RwZCOBH4MZALBJOa8gTvUV0OTL5t3Q4ZBOosziQ3AXIwYpgpdbJCRRkbJKBuB7FASzhnZAcZCsy6expZATAbflsnln2Hd5I1Yo8J2Ddny170yI13r7A224a20yBWczLeYZAzZBDTQZDZD
+# EAAHSfldMxYcBAAjHjAxYeZC1HOEYXurvr7sJ8No6vxoiScJkYd8r5TJ1WtpSNMEGByZBRZCgsV9jwxp2LgfFZAiddVk0KX2nryb7Hy68CTKLYzTAPBgEj0B1FP20eXaYWuZCeSDx2QJYtt8QOZBXhqI8ZADwv2MZBoR1P4NUkMKUaQZDZD
 
 # TestJ access token: 
 # EAACQPdicZCwQBAJAkOaE8Na9V0aHSV0mNdQvYrXcySeLtPVffB10NGk4EkwiZBy7qdDWUwz8jKdLN4vOIu14HK6DKoGMBO3X0vyVy1Y0EDqzEV6QK0h1PZCxTTtaklO7NqdqrY9UCjtxUR2uEYdNWBh4cDhLLaBcXgNAhNrXgZDZD
-ACCESS_TOKEN = "EAAHSfldMxYcBAAt4D30ZAzVHSnhhFqxV15wMJ0RwZCOBH4MZALBJOa8gTvUV0OTL5t3Q4ZBOosziQ3AXIwYpgpdbJCRRkbJKBuB7FASzhnZAcZCsy6expZATAbflsnln2Hd5I1Yo8J2Ddny170yI13r7A224a20yBWczLeYZAzZBDTQZDZD"
+ACCESS_TOKEN = "EAACQPdicZCwQBAJAkOaE8Na9V0aHSV0mNdQvYrXcySeLtPVffB10NGk4EkwiZBy7qdDWUwz8jKdLN4vOIu14HK6DKoGMBO3X0vyVy1Y0EDqzEV6QK0h1PZCxTTtaklO7NqdqrY9UCjtxUR2uEYdNWBh4cDhLLaBcXgNAhNrXgZDZD"
 
 
 # Flask config
@@ -100,33 +100,20 @@ def handle_verification():
 def handle_event():
     #NB: la requête API est effectuée à chaque msg entrant
     data = request.json
-    logging.info("DATA: {}".format(data))
+
+    # Verifie que c'est la 1e fois que le message est recu => empeche spam
+    # with open("backend/others/msg_spam.json", "r") as f:
+    #     msg_spam = json.load(f) 
+
+    # if data['entry'][0]['time'] in msg_spam:
+    #     return ""
+    # logging.info("DATA: {}".format(data))
 
     event = data['entry'][0]['messaging'][0]
 
     #Log user details in the database
     sender = event['sender']['id']
-    with open("backend/others/users_DB.json", "r") as f:
-        users_DB = json.load(f)
-
-    if sender not in users_DB and ACCESS_TOKEN == "EAAHSfldMxYcBAAt4D30ZAzVHSnhhFqxV15wMJ0RwZCOBH4MZALBJOa8gTvUV0OTL5t3Q4ZBOosziQ3AXIwYpgpdbJCRRkbJKBuB7FASzhnZAcZCsy6expZATAbflsnln2Hd5I1Yo8J2Ddny170yI13r7A224a20yBWczLeYZAzZBDTQZDZD":
-        user = user_details(sender, ACCESS_TOKEN)
-        users_DB[sender] = {
-            "last": str(dt.today()), 
-            "gender": user[3]["gender"],
-            "first_name": user[3]["first_name"], 
-            "last_name": user[3]["last_name"], 
-            "locale": user[3]["locale"],
-            "nb_interactions": 1}
-    elif sender in users_DB and ACCESS_TOKEN == "EAAHSfldMxYcBAAt4D30ZAzVHSnhhFqxV15wMJ0RwZCOBH4MZALBJOa8gTvUV0OTL5t3Q4ZBOosziQ3AXIwYpgpdbJCRRkbJKBuB7FASzhnZAcZCsy6expZATAbflsnln2Hd5I1Yo8J2Ddny170yI13r7A224a20yBWczLeYZAzZBDTQZDZD":
-        users_DB[sender]["last"] = str(dt.today())
-        users_DB[sender]["nb_interactions"] += 1
-        user = user_details(sender, ACCESS_TOKEN)
-    else: # for test
-        user = user_details(sender, ACCESS_TOKEN)
-
-    with open("backend/others/users_DB.json", "w") as jsonFile:
-        json.dump(users_DB, jsonFile)
+    user = user_details(sender, ACCESS_TOKEN)
 
     typing_bubble(sender, ACCESS_TOKEN)
 
@@ -190,7 +177,7 @@ def handle_event():
             if int(sticker) == 369239263222822 :        # Like button sticker
                 send_msg(sender, "De rien ! ;)", ACCESS_TOKEN)
             else:
-                send_msg(sender, "Nice sticker {} !".format(user)[1], ACCESS_TOKEN)
+                send_msg(sender, "Nice sticker {} !".format(user[1]), ACCESS_TOKEN)
 
         #handles attachments (images, selfies, docs...)
         elif 'attachments' in event['message'] :

@@ -56,3 +56,9 @@ The biggest problem encountered with command-line version of TreeTagger tools wh
 The solution we adopt is to start TreeTagger once, with ad-hoc options for the target language, with control over its input and output streams, and to keep communications opened as long as we want/need.
 
 https://perso.limsi.fr/pointal/doku.php?id=dev:treetaggerwrapper 
+
+## Lire le log en live
+
+1) se connecter à putty
+2) cd var/www/chatbot_fb
+3) "trail -f activity.log"

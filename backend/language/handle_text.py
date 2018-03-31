@@ -18,7 +18,6 @@ CINEMA = ('ciné', 'cine', 'cinéma', 'cinema', 'film')
 #NB: les mots comme amusant, flippant sont lemmatises en "amuser" et "flipper"
 CINE_GENRE = ("romantique",     'romance', 'amour', 
 "fantastique",  'sf','science','fiction', 'magie',
-"musique",      'opera', 
 "historique",   'documentaire', 'biopic','autobiographique',
 "comédie",      'rigolo', 'amuser', 'marrer', 'fun', 'comique', 'drole', 'drôle',
 "horreur",      'peur','épouvante',"flipper",
@@ -26,8 +25,19 @@ CINE_GENRE = ("romantique",     'romance', 'amour',
 "animation",    'dessin', 'animé','enfant',
 "drame",        'dramatique', 'triste','badant',
 'familial', "sport" )
-EXHIBITION = ('exposition', 'musée', 'musee', 'gallerie', 'art', 'artiste',)
-EXHIB_GENRE = ('architecture', 'sculpture', 'peinture', 'musique', 'littérature', 'danse', 'photographie', 'mode', 'beaux-arts', 'contemporain', 'histoire','civilisation', 'famille')
+EXHIBITION = ('exposition', 'musée', 'musee', 'gallerie', 'art', 'artiste')
+EXHIB_GENRE = ('architecture', 'archi', 'batiment',
+'sculpture',    'design', 'artisanat','sculpteur',
+'peinture',     'dessin','plastique','peintre','gravure',
+'musique',      'chanteur','rock','pop',
+'littérature',  'auteur','livre',
+'danse',        'ballet', 'opéra',
+'photographie', 'photographe','image',
+'mode',         'fashion',
+'beaux-arts',   'classique','renaissance','flamand',
+'contemporain', 'moderne','abstrait',
+'histoire',     'civilisation', 'culture',
+'famille')
 
 EXIT = ('stop', 'tchao' 'bye')
 THANKS = ('merci', 'cimer', 'cool', 'okay', 'k', 'ok')
@@ -75,7 +85,6 @@ def analyse_text(msg, sender, user, ACCESS_TOKEN):
 
     word_list = process_text(msg)
     cinema = False
-    # system : [greetings, cinema, exhibition, exit, thanks,
     keys = [0,0,0,0,0,0,0]
     
     for elt in word_list:
@@ -95,7 +104,7 @@ def analyse_text(msg, sender, user, ACCESS_TOKEN):
         time.sleep(1)
 
         filter_cine = [w[1] for w in word_list if w[1] in CINE_GENRE]
-        logging.info("genre cine : {} == {} ".format(filter_cine, word_list))
+        # logging.info("genre cine : {} == {} ".format(filter_cine, word_list))
         
         if not filter_cine: filter_cine = ["all"]
 
@@ -108,7 +117,7 @@ def analyse_text(msg, sender, user, ACCESS_TOKEN):
         time.sleep(1)
 
         filter_exhib = [w[1] for w in word_list if w[1] in EXHIB_GENRE] 
-        logging.info("genre expo : {} == {} ".format(filter_exhib, word_list))
+        # logging.info("genre expo : {} == {} ".format(filter_exhib, word_list))
         
         if not filter_exhib: filter_exhib = ["all"]     
 

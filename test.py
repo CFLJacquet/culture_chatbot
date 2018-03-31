@@ -1,20 +1,5 @@
-from backend.musees.handlesurprise import get_details_surprise, get_musee_surprise
-import json
-from pprint import pprint
+from backend.messenger.msg_fct import user_details
 
-# with open("backend/musees/musees/spiders/musees/musees/listeM.json", 'r') as f:
-# 	musees = json.load(f)
-
-# liste_insolites = []
-# for element in musees :
-#     if element["Categorie"] == "Les mus\u00e9es insolites de Paris" :
-#         liste_insolites += [element["image"]]
-
-
-with open("backend/musees/musees/listeM.json", 'r') as f:
-    musees = json.load(f)
-
-print(musees)
-
-# get_musee_surprise('esf', 'Les musées insolites de Paris', 'oiofnz')
-
+sender = 1680982418636079
+ACCESS_TOKEN = "EAAHSfldMxYcBAAt4D30ZAzVHSnhhFqxV15wMJ0RwZCOBH4MZALBJOa8gTvUV0OTL5t3Q4ZBOosziQ3AXIwYpgpdbJCRRkbJKBuB7FASzhnZAcZCsy6expZATAbflsnln2Hd5I1Yo8J2Ddny170yI13r7A224a20yBWczLeYZAzZBDTQZDZD"
+user_details(sender, ACCESS_TOKEN)
